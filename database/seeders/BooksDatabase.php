@@ -29,6 +29,30 @@ class BooksDatabase extends Seeder
                     'books_price',
                     'books_ISBN',
                 ],
+
+                [
+                    'books_name'=>'Lord of the Ring',
+                    'category_id',
+                    'publisher_id',
+                    'books_description',
+                    'books_author',
+                    'books_quantity',
+                    'books_image',
+                    'books_price',
+                    'books_ISBN',
+                ],
+
+                [
+                    'books_name'=>'The Hunger Games',
+                    'category_id',
+                    'publisher_id',
+                    'books_description',
+                    'books_author',
+                    'books_quantity',
+                    'books_image',
+                    'books_price',
+                    'books_ISBN',
+                ],
             ]);
     }
 }
