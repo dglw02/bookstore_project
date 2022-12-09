@@ -28,7 +28,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
-            //$table->foreign('user_province')->references('province_id')->on('provinces');
+            $table->foreign('user_province')->references('province_id')->on('provinces');
         });
     }
 
