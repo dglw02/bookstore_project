@@ -28,5 +28,8 @@ class DatabaseSeeder extends Seeder
         $this->call((AreasDatabase::class));
         $this->call((ProvinceDatabase::class));
         $this->call((UsersDatabase::class));
+        $this->call((CategoryDatabase::class));
+        $this->call((PublisherDatabase::class));
+        $this->call((AuthorDatabase::class));
     }
 }

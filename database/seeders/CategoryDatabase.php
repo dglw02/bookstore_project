@@ -16,7 +16,7 @@ class CategoryDatabase extends Seeder
     public function run()
     {
         //
-        DB::table('category')->insert(
+        DB::table('categories')->insert(
             [
                 [
                     'category_name'=>'Novel',

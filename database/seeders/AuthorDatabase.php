@@ -16,7 +16,7 @@ class AuthorDatabase extends Seeder
     public function run()
     {
         //
-        DB::table('category')->insert(
+        DB::table('authors')->insert(
             [
                 [
                     'author_name'=>'Stephen King',
