@@ -28,7 +28,7 @@ class LoginController extends Controller
             }
         }
         else{
-            dd("fail");
+            return view('/login');
         }
     }
 

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->string('name');
             $table->string('email')->unique();
-            //$table->unsignedInteger('user_province');
+            $table->unsignedInteger('user_province');
             $table->string('phone');
             $table->string('password');
 
