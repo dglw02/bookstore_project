@@ -62,6 +62,12 @@ Route::get('/admin/category',[AdminController::class,'viewAllCategory']);
 Route::get('/admin/dashboard',[AdminController::class,'viewDashboard']);
 Route::get('/admin/settings',[AdminController::class,'viewProfile']);
 
+
+//login
 Route::get('/login',[LoginController::class,'viewLogin']);
 Route::post('/login',[LoginController::class,'login']);
 Route::post('/logout',[LoginController::class,'logout']);
+
+
+//Books
+Route::get('/home',[\App\Http\Controllers\BooksController::class,'index'])->name('home');
