@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class ProductsDatabase extends Seeder
+class CategoryDatabase extends Seeder
 {
     /**
      * Run the database seeds.
