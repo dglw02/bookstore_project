@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BooksController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -70,4 +71,4 @@ Route::post('/logout',[LoginController::class,'logout']);
 
 
 //Books
-Route::get('/home',[\App\Http\Controllers\BooksController::class,'index'])->name('home');
+Route::get('/onsale',[BooksController::class,'showBooks']);
