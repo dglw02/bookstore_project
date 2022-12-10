@@ -106,7 +106,11 @@
 
                     <div class="product-btn-group">
                         <div class="button buy-now"><i class='bx bxs-zap' ></i> Buy Now</div>
-                        <div class="button add-cart"><i class='bx bxs-cart' ></i> Add to Cart</div>
+                        <form action="/add_to_cart" method="POST">
+                            @csrf
+                            <input type="hidden" name="books_id" value={{$books['books_id']}}>
+                        <button class="button add-cart"><i class='bx bxs-cart' ></i> Add to Cart</button>
+                        </form>
                         <div class="button heart"><i class='bx bxs-heart' ></i> Add to Wishlist</div>
                     </div>
                 </div>

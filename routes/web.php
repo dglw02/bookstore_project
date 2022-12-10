@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,8 +17,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('/home');
+Route::get('/logins', function () {
+    return view('/logins');
 });
 
 //user
@@ -65,6 +66,9 @@ Route::get('/admin/settings',[AdminController::class,'viewProfile']);
 
 
 //login
+Route::post('/logins',[UserController::class,'login']);
+
+
 Route::get('/login',[LoginController::class,'viewLogin']);
 Route::post('/login',[LoginController::class,'login']);
 Route::post('/logout',[LoginController::class,'logout']);
@@ -75,3 +79,5 @@ Route::get('/',[BooksController::class,'showBooks']);
 Route::get('/allbooks',[BooksController::class,'allBooks']);
 Route::get('/detail/{id}',[BooksController::class,'showDetail']);
 Route::get('search',[BooksController::class,'search']);
+Route::post('add_to_cart',[BooksController::class,'addToCart']);
+

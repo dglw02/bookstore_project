@@ -29,4 +29,13 @@ class BooksController extends Controller
         $data = Books::where('books_name','like', '%'.$req->input('query').'%')->get();
         return view('search',['books'=>$data]);
     }
+
+    function addToCart(Request $req){
+        if($req->session()->has('user')){
+            return "hello";
+        }
+        else{
+            return redirect('login');
+        }
+    }
 }
