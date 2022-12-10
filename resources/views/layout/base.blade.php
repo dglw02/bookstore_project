@@ -47,7 +47,7 @@
             </div>
             <a href="{{URL::to('/topsellers')}}">Top Sellers</a>
             <a href="{{URL::to('/highrating')}}">High Rating</a>
-            <a href="{{URL::to('/onsale')}}">On Sale</a>
+            <a href="{{URL::to('/allbooks')}}">All</a>
         </nav>
     </div>
 </header>
@@ -60,7 +60,7 @@
     <a href="{{URL::to('/new')}}">New</a>
     <a href="{{URL::to('/topsellers')}}">Top Sellers</a>
     <a href="{{URL::to('/highrating')}}">High Rating</a>
-    <a href="{{URL::to('/onsale')}}">On Sale</a>
+    <a href="{{URL::to('/allbooks')}}">All</a>
 </nav>
 
 <!-- login form  -->
@@ -113,7 +113,7 @@
             <a href="{{URL::to('/new')}}"><i class="fas fa-arrow-right"></i>New</a>
             <a href="{{URL::to('/topsellers')}}"><i class="fas fa-arrow-right"></i>Top Sellers</a>
             <a href="{{URL::to('/highrating')}}"><i class="fas fa-arrow-right"></i>High Rating</a>
-            <a href="{{URL::to('/onsale')}}"><i class="fas fa-arrow-right"></i>On Sale</a>
+            <a href="{{URL::to('/allbooks')}}"><i class="fas fa-arrow-right"></i>All</a>
         </div>
 
         <div class="box">

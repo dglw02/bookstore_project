@@ -29,8 +29,8 @@ Route::get('/new', function () {
     return view('new');
 });
 
-Route::get('/onsale', function () {
-    return view('onsale');
+Route::get('/allbooks', function () {
+    return view('allbooks');
 });
 
 Route::get('/topsellers', function () {
@@ -72,3 +72,4 @@ Route::post('/logout',[LoginController::class,'logout']);
 
 //Books
 Route::get('/',[BooksController::class,'showBooks']);
+Route::get('/detail/{id}',[BooksController::class,'showDetail']);

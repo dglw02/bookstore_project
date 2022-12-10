@@ -17,7 +17,7 @@
             <div class="swiper books-slider">
                 <div class="swiper-wrapper">
                     @foreach($books as $book)
-                        <a href="#" class="swiper-slide"><img src={{$book['books_image']}} alt=""></a>
+                        <a href="detail/{{$book['books_id']}}" class="swiper-slide"><img src={{$book['books_image']}} alt=""></a>
                     @endforeach
                 </div>
             </div>
@@ -82,14 +82,14 @@
                     <div class="icons">
                         <a href="#" class="fas fa-search"></a>
                         <a href="#" class="fas fa-heart"></a>
-                        <a href="#" class="fas fa-eye"></a>
+                        <a href="detail/{{$book['books_id']}}" class="fas fa-eye"></a>
                     </div>
                     <div class="image">
-                        <a href="{{URL::to('/')}}"><img src={{$book['books_image']}} alt="a"></a>
+                        <a href="detail/{{$book['books_id']}}"><img src={{$book['books_image']}} alt="a"></a>
                     </div>
                     <div class="content">
-                        <h3>book 2</h3>
-                        <div class="price">$15.99 <span>$20.99</span></div>
+                        <h3>{{$book['books_name']}}</h3>
+                        <div class="price">${{$book['books_price']}}</div>
                         <div class="stars">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
@@ -122,14 +122,14 @@
         <div class="swiper arrivals-slider">
 
             <div class="swiper-wrapper">
-
+                @foreach($books as $book)
                 <a href="#" class="swiper-slide box">
                     <div class="image">
-                        <img src={{asset('/asset/img/book_3.jpg')}} alt="a">
+                        <img src={{$book['books_image']}} alt="a">
                     </div>
                     <div class="content">
-                        <h3>new arrivals</h3>
-                        <div class="price">$15.99 <span>$20.99</span></div>
+                        <h3>{{$book['books_name']}}</h3>
+                        <div class="price">${{$book['books_price']}}</div>
                         <div class="stars">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
@@ -139,170 +139,31 @@
                         </div>
                     </div>
                 </a>
-
-                <a href="#" class="swiper-slide box">
-                    <div class="image">
-                        <img src={{asset('/asset/img/book_1.jpg')}} alt="a">
-                    </div>
-                    <div class="content">
-                        <h3>new arrivals</h3>
-                        <div class="price">$15.99 <span>$20.99</span></div>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="#" class="swiper-slide box">
-                    <div class="image">
-                        <img src={{asset('/asset/img/book_2.jpg')}} alt="a">
-                    </div>
-                    <div class="content">
-                        <h3>new arrivals</h3>
-                        <div class="price">$15.99 <span>$20.99</span></div>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="#" class="swiper-slide box">
-                    <div class="image">
-                        <img src={{asset('/asset/img/book_4.jpg')}} alt="a">
-                    </div>
-                    <div class="content">
-                        <h3>new arrivals</h3>
-                        <div class="price">$15.99 <span>$20.99</span></div>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="#" class="swiper-slide box">
-                    <div class="image">
-                        <img src={{asset('/asset/img/book_5.jpg')}} alt="a">
-                    </div>
-                    <div class="content">
-                        <h3>new arrivals</h3>
-                        <div class="price">$15.99 <span>$20.99</span></div>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                    </div>
-                </a>
-
+                @endforeach
             </div>
-
         </div>
 
         <div class="swiper arrivals-slider">
-
             <div class="swiper-wrapper">
-
-                <a href="#" class="swiper-slide box">
-                    <div class="image">
-                        <img src={{asset('/asset/img/book_6.jpg')}} alt="a">
-                    </div>
-                    <div class="content">
-                        <h3>new arrivals</h3>
-                        <div class="price">$15.99 <span>$20.99</span></div>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
+                @foreach($books as $book)
+                    <a href="#" class="swiper-slide box">
+                        <div class="image">
+                            <img src={{$book['books_image']}} alt="a">
                         </div>
-                    </div>
-                </a>
-
-                <a href="#" class="swiper-slide box">
-                    <div class="image">
-                        <img src={{asset('/asset/img/book_7.jpg')}} alt="a">
-                    </div>
-                    <div class="content">
-                        <h3>new arrivals</h3>
-                        <div class="price">$15.99 <span>$20.99</span></div>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
+                        <div class="content">
+                            <h3>{{$book['books_name']}}</h3>
+                            <div class="price">${{$book['books_price']}}</div>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
                         </div>
-                    </div>
-                </a>
-
-                <a href="#" class="swiper-slide box">
-                    <div class="image">
-                        <img src={{asset('/asset/img/book_8.jpg')}} alt="a">
-                    </div>
-                    <div class="content">
-                        <h3>new arrivals</h3>
-                        <div class="price">$15.99 <span>$20.99</span></div>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="#" class="swiper-slide box">
-                    <div class="image">
-                        <img src={{asset('/asset/img/book_9.jpg')}} alt="a">
-                    </div>
-                    <div class="content">
-                        <h3>new arrivals</h3>
-                        <div class="price">$15.99 <span>$20.99</span></div>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="#" class="swiper-slide box">
-                    <div class="image">
-                        <img src={{asset('/asset/img/book_10.jpg')}} alt="a">
-                    </div>
-                    <div class="content">
-                        <h3>new arrivals</h3>
-                        <div class="price">$15.99 <span>$20.99</span></div>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                    </div>
-                </a>
-
+                    </a>
+                @endforeach
             </div>
-
         </div>
 
     </section>
@@ -414,83 +275,8 @@
                         <i class="fas fa-star-half-alt"></i>
                     </div>
                 </div>
-
             </div>
-
         </div>
-
     </section>
 
-    <!-- reviews section ends -->
-
-    <!-- blogs section starts  -->
-
-    <section class="blogs" id="blogs">
-
-        <h1 class="heading"> <span>our blogs</span> </h1>
-
-        <div class="swiper blogs-slider">
-
-            <div class="swiper-wrapper">
-
-                <div class="swiper-slide box">
-                    <div class="image">
-                        <img src="image/blog-1.jpg" alt="">
-                    </div>
-                    <div class="content">
-                        <h3>blog title goes here</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, odio.</p>
-                        <a href="#" class="btn">read more</a>
-                    </div>
-                </div>
-
-                <div class="swiper-slide box">
-                    <div class="image">
-                        <img src="image/blog-2.jpg" alt="">
-                    </div>
-                    <div class="content">
-                        <h3>blog title goes here</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, odio.</p>
-                        <a href="#" class="btn">read more</a>
-                    </div>
-                </div>
-
-                <div class="swiper-slide box">
-                    <div class="image">
-                        <img src="image/blog-3.jpg" alt="">
-                    </div>
-                    <div class="content">
-                        <h3>blog title goes here</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, odio.</p>
-                        <a href="#" class="btn">read more</a>
-                    </div>
-                </div>
-
-                <div class="swiper-slide box">
-                    <div class="image">
-                        <img src="image/blog-4.jpg" alt="">
-                    </div>
-                    <div class="content">
-                        <h3>blog title goes here</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, odio.</p>
-                        <a href="#" class="btn">read more</a>
-                    </div>
-                </div>
-
-                <div class="swiper-slide box">
-                    <div class="image">
-                        <img src="image/blog-5.jpg" alt="">
-                    </div>
-                    <div class="content">
-                        <h3>blog title goes here</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, odio.</p>
-                        <a href="#" class="btn">read more</a>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
 @endsection

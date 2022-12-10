@@ -13,4 +13,10 @@ class BooksController extends Controller
         $data = Books::all();
         return view('home',['books'=>$data]);
     }
+
+
+    function showDetail($books_id){
+        $data = Books::find($books_id);
+        return view('detail',['books'=>$data]);
+    }
 }
