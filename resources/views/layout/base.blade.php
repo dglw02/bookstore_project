@@ -17,8 +17,8 @@
 
         <a href="{{url('/')}}" class="logo"> <i class="fas fa-book"></i> Book Forest </a>
 
-        <form action="" class="search-form">
-            <input type="search" name="" placeholder="search here..." id="search-box">
+        <form action="/search" class="search-form">
+            <input type="search" name="query" placeholder="search here..." id="search-box">
             <label for="search-box" class="fas fa-search"></label>
         </form>
 
