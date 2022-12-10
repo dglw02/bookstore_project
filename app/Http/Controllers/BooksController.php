@@ -11,6 +11,6 @@ class BooksController extends Controller
     //
     function showBooks(){
         $data = Books::all();
-        return view('onsale',['books'=>$data]);
+        return view('home',['books'=>$data]);
     }
 }

@@ -16,14 +16,10 @@
 
             <div class="swiper books-slider">
                 <div class="swiper-wrapper">
-                    <a href="#" class="swiper-slide"><img src={{asset('/asset/img/book_2.jpg')}} alt=""></a>
-                    <a href="#" class="swiper-slide"><img src={{asset('/asset/img/book_1.jpg')}} alt=""></a>
-                    <a href="#" class="swiper-slide"><img src={{asset('/asset/img/book_3.jpg')}} alt=""></a>
-                    <a href="#" class="swiper-slide"><img src={{asset('/asset/img/book_4.jpg')}} alt=""></a>
-                    <a href="#" class="swiper-slide"><img src={{asset('/asset/img/book_5.jpg')}} alt=""></a>
-                    <a href="#" class="swiper-slide"><img src={{asset('/asset/img/book_6.jpg')}} alt=""></a>
+                    @foreach($books as $book)
+                        <a href="#" class="swiper-slide"><img src={{$book['books_image']}} alt=""></a>
+                    @endforeach
                 </div>
-                <img src="image/stand.png" class="stand" alt="">
             </div>
 
         </div>
@@ -81,7 +77,7 @@
         <div class="swiper featured-slider">
 
             <div class="swiper-wrapper">
-
+                @foreach($books as $book)
                 <div class="swiper-slide box">
                     <div class="icons">
                         <a href="#" class="fas fa-search"></a>
@@ -89,7 +85,7 @@
                         <a href="#" class="fas fa-eye"></a>
                     </div>
                     <div class="image">
-                        <a href="{{URL::to('/')}}"><img src={{asset('/asset/img/book_2.jpg')}} alt="a"></a>
+                        <a href="{{URL::to('/')}}"><img src={{$book['books_image']}} alt="a"></a>
                     </div>
                     <div class="content">
                         <h3>book 2</h3>
@@ -104,181 +100,7 @@
                         <a href="#" class="btn">add to cart</a>
                     </div>
                 </div>
-
-                <div class="swiper-slide box">
-                    <div class="icons">
-                        <a href="#" class="fas fa-search"></a>
-                        <a href="#" class="fas fa-heart"></a>
-                        <a href="#" class="fas fa-eye"></a>
-                    </div>
-                    <div class="image">
-                        <a href="{{URL::to('/')}}"><img src={{asset('/asset/img/book_1.jpg')}} alt="a"></a>
-                    </div>
-                    <div class="content">
-                        <h3>featured books</h3>
-                        <div class="price">$15.99 <span>$20.99</span></div>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <a href="#" class="btn">add to cart</a>
-                    </div>
-                </div>
-
-                <div class="swiper-slide box">
-                    <div class="icons">
-                        <a href="#" class="fas fa-search"></a>
-                        <a href="#" class="fas fa-heart"></a>
-                        <a href="#" class="fas fa-eye"></a>
-                    </div>
-                    <div class="image">
-                        <a href="{{URL::to('/')}}"><img src={{asset('/asset/img/book_3.jpg')}} alt="a"></a>
-                    </div>
-                    <div class="content">
-                        <h3>featured books</h3>
-                        <div class="price">$15.99 <span>$20.99</span></div>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                        <a href="#" class="btn">add to cart</a>
-                    </div>
-                </div>
-
-                <div class="swiper-slide box">
-                    <div class="icons">
-                        <a href="#" class="fas fa-search"></a>
-                        <a href="#" class="fas fa-heart"></a>
-                        <a href="#" class="fas fa-eye"></a>
-                    </div>
-                    <div class="image">
-                        <a href="{{URL::to('/')}}"><img src={{asset('/asset/img/book_4.jpg')}} alt="a"></a>
-                    </div>
-                    <div class="content">
-                        <h3>featured books</h3>
-                        <div class="price">$15.99 <span>$20.99</span></div>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <a href="#" class="btn">add to cart</a>
-                    </div>
-                </div>
-
-                <div class="swiper-slide box">
-                    <div class="icons">
-                        <a href="#" class="fas fa-search"></a>
-                        <a href="#" class="fas fa-heart"></a>
-                        <a href="#" class="fas fa-eye"></a>
-                    </div>
-                    <div class="image">
-                        <a href="{{URL::to('/')}}"><img src={{asset('/asset/img/book_5.jpg')}} alt="a"></a>
-                    </div>
-                    <div class="content">
-                        <h3>featured books</h3>
-                        <div class="price">$15.99 <span>$20.99</span></div>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <a href="#" class="btn">add to cart</a>
-                    </div>
-                </div>
-
-                <div class="swiper-slide box">
-                    <div class="icons">
-                        <a href="#" class="fas fa-search"></a>
-                        <a href="#" class="fas fa-heart"></a>
-                        <a href="#" class="fas fa-eye"></a>
-                    </div>
-                    <div class="image">
-                        <a href="{{URL::to('/')}}"><img src={{asset('/asset/img/book_6.jpg')}} alt="a"></a>
-                    </div>
-                    <div class="content">
-                        <h3>featured books</h3>
-                        <div class="price">$15.99 <span>$20.99</span></div>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <a href="#" class="btn">add to cart</a>
-                    </div>
-                </div>
-
-                <div class="swiper-slide box">
-                    <div class="icons">
-                        <a href="#" class="fas fa-search"></a>
-                        <a href="#" class="fas fa-heart"></a>
-                        <a href="#" class="fas fa-eye"></a>
-                    </div>
-                    <div class="image">
-                        <a href="{{URL::to('/')}}"><img src={{asset('/asset/img/book_7.jpg')}} alt="a"></a>
-                    </div>
-                    <div class="content">
-                        <h3>featured books</h3>
-                        <div class="price">$15.99 <span>$20.99</span></div>
-                        <a href="#" class="btn">add to cart</a>
-                    </div>
-                </div>
-
-                <div class="swiper-slide box">
-                    <div class="icons">
-                        <a href="#" class="fas fa-search"></a>
-                        <a href="#" class="fas fa-heart"></a>
-                        <a href="#" class="fas fa-eye"></a>
-                    </div>
-                    <div class="image">
-                        <a href="{{URL::to('/')}}"><img src={{asset('/asset/img/book_8.jpg')}} alt="a"></a>
-                    </div>
-                    <div class="content">
-                        <h3>featured books</h3>
-                        <div class="price">$15.99 <span>$20.99</span></div>
-                        <a href="#" class="btn">add to cart</a>
-                    </div>
-                </div>
-
-                <div class="swiper-slide box">
-                    <div class="icons">
-                        <a href="#" class="fas fa-search"></a>
-                        <a href="#" class="fas fa-heart"></a>
-                        <a href="#" class="fas fa-eye"></a>
-                    </div>
-                    <div class="image">
-                        <a href="{{URL::to('/')}}"><img src={{asset('/asset/img/book_9.jpg')}} alt="a"></a>
-                    </div>
-                    <div class="content">
-                        <h3>featured books</h3>
-                        <div class="price">$15.99 <span>$20.99</span></div>
-                        <a href="#" class="btn">add to cart</a>
-                    </div>
-                </div>
-
-                <div class="swiper-slide box">
-                    <div class="icons">
-                        <a href="#" class="fas fa-search"></a>
-                        <a href="#" class="fas fa-heart"></a>
-                        <a href="#" class="fas fa-eye"></a>
-                    </div>
-                    <div class="image">
-                        <a href="{{URL::to('/')}}"><img src={{asset('/asset/img/book_10.jpg')}} alt="a"></a>
-                    </div>
-                    <div class="content">
-                        <h3>featured books</h3>
-                        <div class="price">$15.99 <span>$20.99</span></div>
-                        <a href="#" class="btn">add to cart</a>
-                    </div>
-                </div>
+                @endforeach
 
             </div>
 

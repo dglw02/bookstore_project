@@ -71,4 +71,4 @@ Route::post('/logout',[LoginController::class,'logout']);
 
 
 //Books
-Route::get('/onsale',[BooksController::class,'showBooks']);
+Route::get('/',[BooksController::class,'showBooks']);
