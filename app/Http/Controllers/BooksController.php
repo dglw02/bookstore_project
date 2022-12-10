@@ -14,3 +14,4 @@ class BooksController extends Controller
         return view('home',['books'=> $books]);
     }
 }
+//function
