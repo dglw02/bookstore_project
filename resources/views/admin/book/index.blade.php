@@ -9,14 +9,14 @@
             <div class="row">
                 <div class="col-6">
                     <div>
-                        <a href="#" class="btn-primary btn-sm">
+                        <a href="{{url('admin/products/create')}}" class="btn-primary btn-sm">
                             <i class="fas fa-plus-circle mr-1"></i>
                             Add Book
                         </a>
                     </div>
                 </div>
                 <div class="col-6 text-right">
-                    <span class="mr-2"><a href="#">All books</a> |</span>
+                    <span class="mr-2"><a href="{{route('admin.book')}}">All books</a> |</span>
 
                 </div>
             </div>
@@ -35,53 +35,59 @@
                         <thead>
                         <tr>
                             <th>Action</th>
-                            <th>Image</th>
-                            <th>Title</th>
+                            <th>Name</th>
                             <th>Category</th>
+                            <th>Publisher</th>
+                            <th>Description</th>
                             <th>Author</th>
-                            <th>Regular Price</th>
-                            <th>Discount</th>
-                            <th>Price</th>
                             <th>Quantity</th>
+                            <th>Image</th>
+                            <th>Price</th>
+                            <th>ISBN</th>
                         </tr>
                         </thead>
                         <tfoot>
                         <tr>
                             <th>Action</th>
-                            <th>Image</th>
-                            <th>Title</th>
+                            <th>Name</th>
                             <th>Category</th>
+                            <th>Publisher</th>
+                            <th>Description</th>
                             <th>Author</th>
-                            <th>Regular Price</th>
-                            <th>Discount</th>
-                            <th>Price</th>
                             <th>Quantity</th>
+                            <th>Image</th>
+                            <th>Price</th>
+                            <th>ISBN</th>
                         </tr>
                         </tfoot>
                         <tbody>
+                        @foreach($books as $book)
 
                         <tr>
                             <td>
 
                                 <div class="action d-flex flex-row">
-                                    <a href="#" class="btn-primary btn btn-sm mr-2"><i class="fas fa-edit"></i></a>
-
-                                    <button type="submit"
-                                            onclick="return confirm('Book will move to trash! Are you sure to delete??')"
-                                            class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                    <a href="{{url('/admin/products/'.$book->books_id.'/edit')}}" class="btn-primary btn btn-sm mr-2"><i class="fas fa-edit"></i></a>
+                                    <form method="POST" action="{{url('/admin/products/'.$book->books_id.'/delete')}}">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" onclick="return confirm('Book will move to trash! Are you sure to delete??')"
+                                                class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                    </form>
                                 </div>
 
                             </td>
-                            <td><img src="#" width="60" height="70" alt=""></td>
-                            <td><a href="#"></a></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>{{$book->books_name}}</td>
+                            <td>{{$book->category_id}}</td>
+                            <td>{{$book->publisher_id}}</td>
+                            <td>{{$book->books_description}}</td>
+                            <td>{{$book->books_author}}</td>
+                            <td>{{$book->books_quantity}}</td>
+                            <td><img src="{{$book->books_image}}" width="150px"/></td>
+                            <td>{{$book->books_price}}</td>
+                            <td>{{$book->books_ISBN}}</td>
                         </tr>
-
+                        @endforeach
                         </tbody>
                     </table>
                 </div>

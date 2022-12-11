@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('orders_id');
-            $table->unsignedInteger('id');
+            $table->unsignedInteger('user_id');
             $table->string('orders_payment');
             $table->double('orders_totalprice');
             $table->integer('orders_status')->default(0);
 
-            $table->foreign('id')->references('id')->on('users');
+            $table->foreign('user_id')->references('user_id')->on('users');
 
             $table->timestamps();
         });

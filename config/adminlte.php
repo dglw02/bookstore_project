@@ -326,30 +326,30 @@ return [
         ],
 
         [
-            'text'        => 'Manage Products',
+            'text'        => 'Books',
             'url'         => 'admin/products',
-            'icon'        => 'fas fa-shopping-bag text-success',
+            'icon'        => 'fas fa-book text-success',
 
         ],
 
         [
-            'text'        => 'Manage Users',
+            'text'        => 'Users',
             'url'         => 'admin/user',
-            'icon'        => 'fas fa-shopping-bag text-success',
+            'icon'        => 'fas fa-user text-success',
 
         ],
 
         [
-            'text'        => 'Manage Orders',
+            'text'        => 'Orders',
             'url'         => 'admin/order',
             'icon'        => 'fas fa-shopping-bag text-success',
 
         ],
 
         [
-            'text'        => 'Manage Category',
+            'text'        => 'Category',
             'url'         => 'admin/category',
-            'icon'        => 'fas fa-shopping-bag text-success',
+            'icon'        => 'fas fa-list text-success',
 
         ],
 

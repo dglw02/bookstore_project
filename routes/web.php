@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Admin\AdminBooksController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -57,12 +58,25 @@ Route::get('/philosophy', function () {
 
 //Admin
 Route::get('/admin/home',[AdminController::class,'viewHome']);
-Route::get('/admin/products',[AdminController::class,'viewAllProducts']);
+Route::get('/admin/products',[AdminController::class,'viewAllProducts'])->name('admin.book');
 Route::get('/admin/user',[AdminController::class,'viewAllUsers']);
 Route::get('/admin/order',[AdminController::class,'viewAllOrders']);
 Route::get('/admin/category',[AdminController::class,'viewAllCategory']);
 Route::get('/admin/dashboard',[AdminController::class,'viewDashboard']);
 Route::get('/admin/settings',[AdminController::class,'viewProfile']);
+
+// Them 1 san pham: view
+Route::get('/admin/products/create', [AdminBooksController::class, 'create']);
+// Them sp: xu ly => ko co giao dien
+Route::post("/admin/products/create", [AdminBooksController::class, 'save']);
+
+// Sua 1 san pham: view
+Route::get("/admin/products/{id}/edit", [AdminBooksController::class, 'edit']);
+// Cap nhat sp => ko co giao dien
+Route::put("/admin/products/{id}/edit", [AdminBooksController::class, 'update']);
+
+// Xoa 1 san pham
+Route::delete("/admin/products/{id}/delete", [AdminBooksController::class, 'delete']);
 
 
 //login
