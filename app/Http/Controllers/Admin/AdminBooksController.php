@@ -15,7 +15,7 @@ class AdminBooksController extends Controller
 // Xoa 1 sp theo id
     function delete($books_id)
     {
-        DB::table('books')->delete($books_id);
+        DB::table('books')->where('books_id', $books_id)->delete();
         return redirect()->route('admin.book');
     }
 
@@ -61,7 +61,7 @@ class AdminBooksController extends Controller
     // View
     function edit($books_id)
     {
-        $book = DB::table('books')->find($books_id);
+        $book = DB::table('books')->where('books_id', $books_id);
         if ($book == null) {
             return redirect()->route('error');
         }

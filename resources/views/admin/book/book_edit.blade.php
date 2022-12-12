@@ -4,7 +4,7 @@
 
 @section('content')
     <h1 class="text-center">Cập nhật sản phẩm</h1>
-    <form action="{{url('admin/product/'.$book->books_id.'/edit')}}" method="POST">
+    <form action="{{url('/admin/product/'.$book->books_id.'/edit')}}" method="POST">
         @csrf
         @method('put')
         <br>
