@@ -80,9 +80,6 @@ Route::delete("/admin/products/{id}/delete", [AdminBooksController::class, 'dele
 
 
 //login
-Route::post('/logins',[UserController::class,'login']);
-
-
 Route::get('/login',[LoginController::class,'viewLogin']);
 Route::post('/login',[LoginController::class,'login']);
 Route::post('/logout',[LoginController::class,'logout']);
@@ -95,3 +92,4 @@ Route::get('/detail/{id}',[BooksController::class,'showDetail']);
 Route::get('search',[BooksController::class,'search']);
 Route::post('add_to_cart',[BooksController::class,'addToCart']);
 
+Route::post('/education',[BooksController::class,'showEducationBooks']);

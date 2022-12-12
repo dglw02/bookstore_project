@@ -5,7 +5,7 @@
 @section('content')
 
     <section class="featured" id="featured">
-        <h1 class="heading"> <span>Education</span> </h1>
+        <h1  class="heading"> <span >Education</span> </h1>
         <div class="swiper featured-slider">
             <div class="swiper-wrapper">
                 @foreach($books as $book)
@@ -36,6 +36,7 @@
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
         </div>
+        <h1  class="heading"> <a href="{{URL::to('/education')}}" class="btn">Show more</a> </h1>
     </section>
 
     <section class="featured" id="featured">
@@ -73,6 +74,7 @@
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
         </div>
+        <h1  class="heading"> <a href="{{URL::to('/manga')}}" class="btn">Show more</a> </h1>
     </section>
 
     <section class="featured" id="featured">
@@ -113,7 +115,7 @@
             <div class="swiper-button-prev"></div>
 
         </div>
-
+        <h1  class="heading"> <a href="{{URL::to('/guide')}}" class="btn">Show more</a> </h1>
     </section>
 
     <section class="featured" id="featured">
@@ -154,7 +156,7 @@
             <div class="swiper-button-prev"></div>
 
         </div>
-
+        <h1  class="heading"> <a href="{{URL::to('/novel')}}" class="btn">Show more</a> </h1>
     </section>
 
     <section class="featured" id="featured">
@@ -195,6 +197,6 @@
             <div class="swiper-button-prev"></div>
 
         </div>
-
+        <h1  class="heading"> <a href="{{URL::to('/philosophy')}}" class="btn">Show more</a> </h1>
     </section>
 @endsection
