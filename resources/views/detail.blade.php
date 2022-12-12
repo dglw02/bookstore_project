@@ -24,32 +24,18 @@
                     <div class="product-image-main">
                         <img src={{$books['books_image']}} alt="" id="product-main-image">
                     </div>
-                    <div class="product-image-slider">
-                        <img src={{$books['books_image']}} alt=""  class="image-list">
-                        <img src={{$books['books_image']}} alt=""  class="image-list">
-                        <img src={{$books['books_image']}} alt=""  class="image-list">
-                        <img src={{$books['books_image']}} alt=""  class="image-list">
-                    </div>
+
                 </div>
             </div>
             <div class="col-6">
                 <div class="breadcrumb">
                     <span><a href="#">Home</a></span>
-                    <span><a href="#">Product</a></span>
-                    <span class="active">Books</span>
+                    <span><a href="#">{{$books->category->category_name}}</a></span>
                 </div>
 
                 <div class="product">
                     <div class="product-title">
                         <h2>{{$books['books_name']}}</h2>
-                    </div>
-                    <div class="product-rating">
-                        <span><i class="bx bxs-star"></i></span>
-                        <span><i class="bx bxs-star"></i></span>
-                        <span><i class="bx bxs-star"></i></span>
-                        <span><i class="bx bxs-star"></i></span>
-                        <span><i class="bx bxs-star"></i></span>
-                        <span class="review">(47 Review)</span>
                     </div>
                     <div class="product-price">
                         <span class="offer-price">${{$books['books_price']}}</span>
@@ -58,6 +44,21 @@
                     <div class="product-details">
                         <h3>ISBN</h3>
                         <p>{{$books['books_ISBN']}}</p>
+                    </div>
+
+                    <div class="product-details">
+                        <h3>Category</h3>
+                        <p>{{$books->category->category_name}}</p>
+                    </div>
+
+                    <div class="product-details">
+                        <h3>Publisher</h3>
+                        <p>{{$books->publisher->publisher_name}}</p>
+                    </div>
+
+                    <div class="product-details">
+                        <h3>Author</h3>
+                        <p>{{$books->author->author_name}}</p>
                     </div>
 
                     <div class="product-details">

@@ -22,10 +22,7 @@ Route::get('/logins', function () {
     return view('/logins');
 });
 
-//user
-Route::get('/highrating', function () {
-    return view('highrating');
-});
+//user;
 
 Route::get('/new', function () {
     return view('new');
@@ -39,21 +36,8 @@ Route::get('/topsellers', function () {
     return view('topsellers');
 });
 
-
-Route::get('/education', function () {
-    return view('category.education');
-});
-Route::get('/guide', function () {
-    return view('category.guide');
-});
-Route::get('/manga', function () {
-    return view('category.manga');
-});
-Route::get('/novel', function () {
-    return view('category.novel');
-});
-Route::get('/philosophy', function () {
-    return view('category.philosophy');
+Route::get('/category', function () {
+    return view('category');
 });
 
 //Admin
@@ -92,4 +76,6 @@ Route::get('/detail/{id}',[BooksController::class,'showDetail']);
 Route::get('search',[BooksController::class,'search']);
 Route::post('add_to_cart',[BooksController::class,'addToCart']);
 
-Route::post('/education',[BooksController::class,'showEducationBooks']);
+//Category
+Route::get('view-category/{id}',[BooksController::class,'viewCategory']);
+Route::get('/category',[BooksController::class,'allCategory']);

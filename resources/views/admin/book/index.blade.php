@@ -34,36 +34,42 @@
                     <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                         <tr>
-                            <th>Action</th>
                             <th>Name</th>
                             <th>Category</th>
                             <th>Publisher</th>
                             <th>Author</th>
                             <th>Quantity</th>
-                            <th>Image</th>
                             <th>Price</th>
                             <th>ISBN</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
                         <tfoot>
                         <tr>
-                            <th>Action</th>
                             <th>Name</th>
                             <th>Category</th>
                             <th>Publisher</th>
                             <th>Author</th>
                             <th>Quantity</th>
-                            <th>Image</th>
                             <th>Price</th>
                             <th>ISBN</th>
+                            <th>Action</th>
                         </tr>
                         </tfoot>
                         <tbody>
                         @foreach($books as $book)
 
                         <tr>
+                            <td>{{$book->books_name}}
+                                <p></p>
+                                <img src="{{$book->books_image}}" width="150px"/></td>
+                            <td>{{$book->category_name}}</td>
+                            <td>{{$book->publisher_name}}</td>
+                            <td>{{$book->author_name}}</td>
+                            <td>{{$book->books_quantity}}</td>
+                            <td>{{$book->books_price}}</td>
+                            <td>{{$book->books_ISBN}}</td>
                             <td>
-
                                 <div class="action d-flex flex-row">
                                     <a href="{{url('/admin/products/'.$book->books_id.'/edit')}}" class="btn-primary btn btn-sm mr-2"><i class="fas fa-edit"></i></a>
                                     <form method="POST" action="{{url('/admin/products/'.$book->books_id.'/delete')}}">
@@ -75,14 +81,6 @@
                                 </div>
 
                             </td>
-                            <td>{{$book->books_name}}</td>
-                            <td>{{$book->category_name}}</td>
-                            <td>{{$book->publisher_name}}</td>
-                            <td>{{$book->books_author}}</td>
-                            <td>{{$book->books_quantity}}</td>
-                            <td><img src="{{$book->books_image}}" width="150px"/></td>
-                            <td>{{$book->books_price}}</td>
-                            <td>{{$book->books_ISBN}}</td>
                         </tr>
                         @endforeach
                         </tbody>

@@ -23,7 +23,8 @@ class AdminController extends Controller
         $books = DB::table('books')
             ->join('categories', 'books.category_id', '=', 'categories.category_id')
             ->join('publishers', 'books.publisher_id', '=', 'publishers.publisher_id')
-            ->select('books.*', 'categories.category_name', 'publishers.publisher_name')->get();
+            ->join('authors', 'books.books_author', '=', 'authors.author_id')
+            ->select('books.*', 'categories.category_name', 'publishers.publisher_name','authors.author_name')->get();
         return view('admin/book/index',['books'=> $books]);
     }
 

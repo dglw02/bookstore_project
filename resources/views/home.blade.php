@@ -90,13 +90,6 @@
                     <div class="content">
                         <h3>{{$book['books_name']}}</h3>
                         <div class="price">${{$book['books_price']}}</div>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
                         <a href="#" class="btn">add to cart</a>
                     </div>
                 </div>
@@ -130,13 +123,6 @@
                     <div class="content">
                         <h3>{{$book['books_name']}}</h3>
                         <div class="price">${{$book['books_price']}}</div>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
                     </div>
                 </a>
                 @endforeach
@@ -153,13 +139,6 @@
                         <div class="content">
                             <h3>{{$book['books_name']}}</h3>
                             <div class="price">${{$book['books_price']}}</div>
-                            <div class="stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
                         </div>
                     </a>
                 @endforeach
@@ -201,41 +180,20 @@
 
                 <div class="swiper-slide box">
                     <img src={{asset('/asset/img/1576065115PP4.1.png')}} alt="">
-                    <h3>john deo</h3>
+                    <h3>John Leo</h3>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur nihil ipsa placeat. Aperiam at sint, eos ex similique facere hic.</p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
                 </div>
 
                 <div class="swiper-slide box">
-                    <img src="image/pic-2.png" alt="">
-                    <h3>john deo</h3>
+                    <img src={{asset('/asset/img/1576065115PP4.1.png')}} alt="">
+                    <h3>John Smith</h3>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur nihil ipsa placeat. Aperiam at sint, eos ex similique facere hic.</p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
                 </div>
 
                 <div class="swiper-slide box">
-                    <img src="image/pic-3.png" alt="">
-                    <h3>john deo</h3>
+                    <img src={{asset('/asset/img/1576065115PP4.1.png')}} alt="">
+                    <h3>John David</h3>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur nihil ipsa placeat. Aperiam at sint, eos ex similique facere hic.</p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
                 </div>
             </div>
         </div>

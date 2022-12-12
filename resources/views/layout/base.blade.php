@@ -35,16 +35,7 @@
         <nav class="navbar">
             <a href="{{url('/')}}">Home</a>
             <a href="{{URL::to('/new')}}">New</a>
-            <div class="dropdown">
-                <button onclick="myFunction()" class="dropbtn">Category</button>
-                <div id="myDropdown" class="dropdown-content">
-                    <a href="{{URL::to('/education')}}">Education</a>
-                    <a href="{{URL::to('/manga')}}">Manga</a>
-                    <a href="{{URL::to('/philosophy')}}">Philosophy</a>
-                    <a href="{{URL::to('/guide')}}">Guide</a>
-                    <a href="{{URL::to('/novel')}}">Novel</a>
-                </div>
-            </div>
+            <a href="{{URL::to('/category')}}">Category</a>
             <a href="{{URL::to('/topsellers')}}">Top Sellers</a>
             <a href="{{URL::to('/allbooks')}}">All</a>
         </nav>
