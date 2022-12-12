@@ -40,6 +40,7 @@ class AdminBooksController extends Controller
         $isbn = $request->get('bookIsbn');
 
 
+
         // Insert
         DB::table('books')->insert(
             ['books_name' => $name,
@@ -61,7 +62,7 @@ class AdminBooksController extends Controller
     // View
     function edit($books_id)
     {
-        $book = DB::table('books')->where('books_id', $books_id);
+        $book = DB::table('books')->where('books_id', $books_id)->get();
         if ($book == null) {
             return redirect()->route('error');
         }

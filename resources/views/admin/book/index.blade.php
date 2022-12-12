@@ -38,7 +38,6 @@
                             <th>Name</th>
                             <th>Category</th>
                             <th>Publisher</th>
-                            <th>Description</th>
                             <th>Author</th>
                             <th>Quantity</th>
                             <th>Image</th>
@@ -52,7 +51,6 @@
                             <th>Name</th>
                             <th>Category</th>
                             <th>Publisher</th>
-                            <th>Description</th>
                             <th>Author</th>
                             <th>Quantity</th>
                             <th>Image</th>
@@ -78,9 +76,8 @@
 
                             </td>
                             <td>{{$book->books_name}}</td>
-                            <td>{{$book->category_id}}</td>
-                            <td>{{$book->publisher_id}}</td>
-                            <td>{{$book->books_description}}</td>
+                            <td>{{$book->category_name}}</td>
+                            <td>{{$book->publisher_name}}</td>
                             <td>{{$book->books_author}}</td>
                             <td>{{$book->books_quantity}}</td>
                             <td><img src="{{$book->books_image}}" width="150px"/></td>

@@ -20,7 +20,10 @@ class AdminController extends Controller
     }
 
     function viewAllProducts(){
-        $books = DB::table('books')->get();
+        $books = DB::table('books')
+            ->join('categories', 'books.category_id', '=', 'categories.category_id')
+            ->join('publishers', 'books.publisher_id', '=', 'publishers.publisher_id')
+            ->select('books.*', 'categories.category_name', 'publishers.publisher_name')->get();
         return view('admin/book/index',['books'=> $books]);
     }
 
