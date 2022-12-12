@@ -53,7 +53,6 @@
                     </div>
                     <div class="product-price">
                         <span class="offer-price">${{$books['books_price']}}</span>
-                        <span class="sale-price">$129.00</span>
                     </div>
 
                     <div class="product-details">
@@ -71,37 +70,7 @@
                         <p>{{$books['books_description']}}</p>
                     </div>
 
-                    <div class="product-size">
-                        <h4>Size</h4>
-                        <div class="size-layout">
-                            <input type="radio" name="size" value="S" id="1" class="size-input">
-                            <label for="1" class="size">S</label>
 
-                            <input type="radio" name="size" value="M" id="2" class="size-input">
-                            <label for="2" class="size">M</label>
-
-                            <input type="radio" name="size" value="L" id="3" class="size-input">
-                            <label for="3" class="size">L</label>
-
-                            <input type="radio" name="size" value="XL" id="4" class="size-input">
-                            <label for="4" class="size">XL</label>
-
-                            <input type="radio" name="size" value="XXL" id="5" class="size-input">
-                            <label for="5" class="size">XXL</label>
-                        </div>
-                    </div>
-                    <div class="product-color">
-                        <h4>Color</h4>
-                        <div class="color-layout">
-                            <input type="radio" name="color"  value="black" class="color-input">
-                            <label for="black" class="black"></label>
-                            <input type="radio" name="color"  value="red" class="color-input">
-                            <label for="red" class="red"></label>
-
-                            <input type="radio" name="color"  value="blue" class="color-input">
-                            <label for="blue" class="blue"></label>
-                        </div>
-                    </div>
                     <span class="divider"></span>
 
                     <div class="product-btn-group">

@@ -53,6 +53,8 @@ class BooksDatabase extends Seeder
                     'books_price'=>'20',
                     'books_ISBN'=>'2143658709',
                 ],
+
+
             ]);
     }
 }

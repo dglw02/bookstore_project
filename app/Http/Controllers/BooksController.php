@@ -14,6 +14,11 @@ class BooksController extends Controller
         return view('home',['books'=>$data]);
     }
 
+    function showEducationBooks($category_id){
+        $data =Books::where('category_id', $category_id)->get();
+        return view('category/education',['books'=>$data]);
+    }
+
     function allBooks(){
         $data = Books::all();
         return view('allbooks',['books'=>$data]);
