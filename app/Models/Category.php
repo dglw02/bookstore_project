@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'category_id';
     public function books()
     {
         return $this->hasMany(Books::class,'category_id','category_id');

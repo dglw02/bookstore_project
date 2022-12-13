@@ -326,6 +326,20 @@ return [
         ],
 
         [
+            'text'        => 'Category',
+            'url'         => 'admin/category',
+            'icon'        => 'fas fa-list text-success',
+
+        ],
+
+        [
+            'text'        => 'Author',
+            'url'         => 'admin/author',
+            'icon'        => 'fas fa-users text-success',
+
+        ],
+
+        [
             'text'        => 'Books',
             'url'         => 'admin/products',
             'icon'        => 'fas fa-book text-success',
@@ -346,12 +360,6 @@ return [
 
         ],
 
-        [
-            'text'        => 'Category',
-            'url'         => 'admin/category',
-            'icon'        => 'fas fa-list text-success',
-
-        ],
 
         ['header' => 'account_settings'],
         [

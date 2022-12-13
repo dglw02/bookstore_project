@@ -19,6 +19,14 @@ class AdminController extends Controller
         return view('admin/dashboard');
     }
 
+    function viewAllCategory(){
+        return view('admin/category/index');
+    }
+
+    function viewAllAuthor(){
+        return view('admin/author/index');
+    }
+
     function viewAllProducts(){
         $books = DB::table('books')
             ->join('categories', 'books.category_id', '=', 'categories.category_id')
@@ -35,10 +43,6 @@ class AdminController extends Controller
 
     function viewAllOrders(){
         return view('admin/order/all-orders');
-    }
-
-    function viewAllCategory(){
-        return view('admin/category/index');
     }
 
     function viewProfile(){

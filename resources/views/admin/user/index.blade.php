@@ -14,10 +14,6 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-6 text-right">
-                    <span class="mr-2"><a href="#">Discount books</a> |</span>
-                    <span class="mr-2"><a href="#">Trash books</a></span>
-                </div>
             </div>
         </div>
 
@@ -33,27 +29,35 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                         <tr>
-                            <th>Action</th>
-                            <th>Photo</th>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Total orders</th>
+                            <th>Address</th>
+                            <th>Province</th>
+                            <th>Phone</th>
                             <th>Role</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
                         <tfoot>
                         <tr>
-                            <th>Action</th>
-                            <th>Photo</th>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Total orders</th>
+                            <th>Address</th>
+                            <th>Province</th>
+                            <th>Phone</th>
                             <th>Role</th>
+                            <th>Action</th>
                         </tr>
                         </tfoot>
                         <tbody>
 
                         <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                             <td>
 
                                 <div class="action d-flex flex-row">
@@ -65,11 +69,6 @@
                                 </div>
 
                             </td>
-                            <td><img src="#" height="50" alt=""></td>
-                            <td><a href="#"></a></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
                         </tr>
 
                         </tbody>
