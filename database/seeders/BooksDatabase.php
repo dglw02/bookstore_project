@@ -18,16 +18,17 @@ class BooksDatabase extends Seeder
         //
         DB::table('books')->insert(
             [
+                /*Stephen King*/
                 [
-                    'books_name'=>'Harry Potter',
+                    'books_name'=>'The Blue Lotus',
                     'category_id'=>'1',
                     'publisher_id'=>'1',
-                    'books_description'=>'Harry Potter is a series of seven fantasy novels written by British author J. K. Rowling. The novels chronicle the lives of a young wizard, Harry Potter, and his friends Hermione Granger and Ron Weasley, all of whom are students at Hogwarts School of Witchcraft and Wizardry',
+                    'books_description'=>'Surviving several attempts on his life by mysterious assailants, Tintin attempts to leave for India by boat, but is kidnapped and brought back to China. His abductors reveal themselves as members of a secret society known as the Sons of the Dragon, who, like the Maharaja, are devoted to combating the opium trade.',
                     'books_author'=>'1',
-                    'books_quantity'=>'30',
-                    'books_image'=>'http://prodimage.images-bn.com/pimages/9780545139700_p0_v5_s1200x630.jpg',
-                    'books_price'=>'30',
-                    'books_ISBN'=>'1234567890',
+                    'books_quantity'=>'40',
+                    'books_image'=>'https://upload.wikimedia.org/wikipedia/en/5/57/The_Adventures_of_Tintin_-_05_-_The_Blue_Lotus.jpg',
+                    'books_price'=>'40',
+                    'books_ISBN'=>'6272347247',
                 ],
 
                 [
