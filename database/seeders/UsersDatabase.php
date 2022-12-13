@@ -18,7 +18,7 @@ class UsersDatabase extends Seeder
         \App\Models\User::factory()->create(
             [
                 'name' => 'Admin1',
-                'email' => 'duong@gmail.com',
+                'email' => 'admin1@gmail.com',
                 'isAdmin'=>true,
                 'level'=>0,
                 'phone'=>'0989296235',

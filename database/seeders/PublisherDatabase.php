@@ -20,18 +20,22 @@ class PublisherDatabase extends Seeder
             [
                 [
                     'publisher_name'=>'Penguin Random House',
+                    'publisher_image'=>'https://d3.harvard.edu/platform-digit/wp-content/uploads/sites/2/2022/10/penguin-random-house.jpg'
                 ],
 
                 [
                     'publisher_name'=>'HarperCollins',
+                    'publisher_image'=>'https://static.wikia.nocookie.net/bignate/images/a/ab/Eae333301417dfd9bf53ee13c6a6ff59.jpg/revision/latest?cb=20200914073605'
                 ],
 
                 [
                     'publisher_name'=>'Simon & Schuster',
+                    'publisher_image'=>'https://upload.wikimedia.org/wikipedia/en/thumb/d/db/Simon_and_Schuster.svg/1200px-Simon_and_Schuster.svg.png'
                 ],
 
                 [
                     'publisher_name'=>'Hachette Book Group',
+                    'publisher_image'=>'https://www.hachettebooks.com/wp-content/uploads/2017/06/HB_FeaturedImage_Slider1.png?fit=661%2C480'
                 ],
 
             ]);

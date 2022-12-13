@@ -10,9 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Single E-commerce Product Page using HTML, CSS - Codingscape</title>
-    <!-- Stylesheet -->
     <link href="{{ asset('css/detail.css') }}" rel="stylesheet">
-    <!---Boxicons CDN Setup for icons-->
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
