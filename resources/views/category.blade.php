@@ -1,25 +1,31 @@
 @extends('layout.base')
 
-@section('title','category')
+@section('title','Allcategory')
 
 @section('content')
-    <div class="swiper featured-slider">
-        <div class="swiper-wrapper">
-            @foreach($category as $cate)
+
+    <section class="blogs" id="blogs">
+
+        <h1 class="heading"> <span>our blogs</span> </h1>
+
+        <div class="swiper blogs-slider">
+
+            <div class="swiper-wrapper">
+                @foreach($categories as $cate)
                 <div class="swiper-slide box">
+                    <div class="image">
+                        <img src={{asset('/asset/img/book_1.jpg')}} alt="">
+                    </div>
                     <div class="content">
-                        <h3></h3>
-                        <div class="price"></div>
-                        <a href="{{url('view-category/'.$cate->category_id)}}" class="btn">{{$cate->category_name}}</a>
+                        <h3>{{$cate->category_name}}</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, odio.</p>
+                        <a href={{url('/category/'.$cate->category_name)}} class="btn">Check now</a>
                     </div>
                 </div>
-            @endforeach
+                @endforeach
+            </div>
 
         </div>
 
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-
-    </div>
-
+    </section>
 @endsection

@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('publishers', function (Blueprint $table) {
             $table->increments('publisher_id');
             $table->string('publisher_name');
+            $table->string('publisher_image');
             $table->timestamps();
         });
     }

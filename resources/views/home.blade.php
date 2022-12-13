@@ -105,7 +105,14 @@
     </section>
 
     <!-- featured section ends -->
+    <section class="newsletter">
+        <form action="">
+            <h3 style="color: black">subscribe for latest updates</h3>
+            <input type="email" name="" placeholder="enter your email" id="" class="box">
+            <input type="submit" value="subscribe" class="btn">
+        </form>
 
+    </section>
     <!-- arrivals section starts  -->
 
     <section class="arrivals" id="arrivals">
@@ -161,7 +168,7 @@
         </div>
 
         <div class="image">
-            <img src="image/deal-img.jpg" alt="">
+            <img src={{asset('/asset/img/logo.png')}} alt="">
         </div>
 
     </section>

@@ -77,5 +77,5 @@ Route::get('search',[BooksController::class,'search']);
 Route::post('add_to_cart',[BooksController::class,'addToCart']);
 
 //Category
-Route::get('view-category/{id}',[BooksController::class,'viewCategory']);
 Route::get('/category',[BooksController::class,'allCategory']);
+Route::get('/category/{category_name}',[BooksController::class,'productsByCategory']);

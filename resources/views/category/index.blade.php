@@ -4,7 +4,7 @@
 
 @section('content')
     <section class="featured" id="featured">
-        <h1  class="heading"> <span >{{$categories->category_name}}</span> </h1>
+        <h1  class="heading"> <span >Education</span> </h1>
         <div class="swiper featured-slider">
             <div class="swiper-wrapper">
                 @foreach($books as $book)
@@ -12,14 +12,14 @@
                         <div class="icons">
                             <a href="#" class="fas fa-search"></a>
                             <a href="#" class="fas fa-heart"></a>
-                            <a href="detail/{{$book->books_id}}" class="fas fa-eye"></a>
+                            <a href="detail/{{$book['books_id']}}" class="fas fa-eye"></a>
                         </div>
                         <div class="image">
-                            <a href="detail/{{$book->books_id}}"><img src={{$book->books_image}} alt="a"></a>
+                            <a href="detail/{{$book['books_id']}}"><img src={{$book['books_image']}} alt="a"></a>
                         </div>
                         <div class="content">
-                            <h3>{{$book->books_name}}</h3>
-                            <div class="price">${{$book->books_price}}</div>
+                            <h3>{{$book['books_name']}}</h3>
+                            <div class="price">${{$book['books_price']}}</div>
                             <div class="stars">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -35,5 +35,6 @@
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
         </div>
+        <h1  class="heading"> <a href="{{URL::to('/education')}}" class="btn">Show more</a> </h1>
     </section>
 @endsection

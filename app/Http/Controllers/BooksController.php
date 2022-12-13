@@ -16,15 +16,10 @@ class BooksController extends Controller
     }
 
     function allCategory(){
-        $data = Category::all();
-        return view('category',['category'=>$data]);
+        $categories = Category::get();
+        return view('category',compact('categories'));
     }
 
-    function viewCategory($category_id){
-        $categories = Category::where('category_id',$category_id)->first();
-        $books = Books::where('category_id',$categories->$category_id)->get();
-        return view('category.index',compact('categories','books'));
-    }
 
     function allBooks(){
         $data = Books::all();
@@ -53,6 +48,16 @@ class BooksController extends Controller
         }
         else{
             return redirect('login');
+        }
+    }
+
+    function productsByCategory($category_name){
+        $category =Category::where('category_name',$category_name)->first();
+        if($category){
+            $books = $category->books()->get();
+            return view('category.index',compact('category','books'));
+        }else{
+            return redirect()->back();
         }
     }
 }
