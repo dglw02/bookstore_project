@@ -56,6 +56,8 @@ Route::put("/admin/products/{id}/edit", [AdminBooksController::class, 'update'])
 // Xoa 1 san pham
 Route::delete("/admin/products/{id}/delete", [AdminBooksController::class, 'delete']);
 
+//register
+Route::get('/register',[LoginController::class,'viewRegister']);
 
 //login
 Route::get('/login',[LoginController::class,'viewLogin']);

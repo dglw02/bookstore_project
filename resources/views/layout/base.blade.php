@@ -14,8 +14,7 @@
 <header class="header">
 
     <div class="header-1">
-
-        <a href="{{url('/')}}" class="logo"> <i class="fas fa-book"></i> Book Forest </a>
+        <a href="{{url('/')}}" class="logo"> <img style="height:30px;width: 50px;border-radius: 950px;" src={{asset('/asset/img/logo.png')}} alt=""> Book Forest </a>
 
         <form action="/search" class="search-form">
             <input type="search" name="query" placeholder="search here..." id="search-box">
