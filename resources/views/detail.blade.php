@@ -26,8 +26,8 @@
             </div>
             <div class="col-6">
                 <div class="breadcrumb">
-                    <span><a href="#">Home</a></span>
-                    <span><a href="#">{{$books->category->category_name}}</a></span>
+                    <span><a href={{url('/')}}>Home</a></span>
+                    <span><a href={{url('/category/'.$books->category->category_name)}}>{{$books->category->category_name}}</a></span>
                 </div>
 
                 <div class="product">
