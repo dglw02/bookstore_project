@@ -55,7 +55,7 @@ class BooksController extends Controller
         $category =Category::where('category_name',$category_name)->first();
         if($category){
             $books = $category->books()->get();
-            return view('category.index',compact('category','books'));
+            return view('category.index',compact('category','books',));
         }else{
             return redirect()->back();
         }

@@ -850,6 +850,166 @@ section{
     display: block;
 }
 
+/* Books */
+.products .filter-buttons {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    padding-bottom: 2.5rem;
+    gap: 2rem;
+}
+
+.products .filter-buttons .buttons {
+    font-size: 1.7rem;
+    color: #666;
+    cursor: pointer;
+}
+
+.products .filter-buttons .buttons:hover, .products .filter-buttons .buttons.active {
+    color: #eb4d4b;
+}
+
+.products .box-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.products .box-container .box {
+    width: 26rem;
+    border-radius: .5rem;
+    overflow: hidden;
+    position: relative;
+    -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    border: 0.1rem solid rgba(0, 0, 0, 0.3);
+}
+
+.products .box-container .box.hide {
+    display: none;
+}
+
+.products .box-container .box.active {
+    -webkit-animation: fadeUp .4s linear;
+    animation: fadeUp .4s linear;
+}
+
+.products .box-container .box .icons {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.7);
+    height: 35rem;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    gap: .5rem;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    z-index: 1;
+}
+
+.products .box-container .box .icons a {
+    font-size: 2rem;
+    height: 5rem;
+    width: 5rem;
+    line-height: 5rem;
+    text-align: center;
+    background: #fff;
+    border-radius: .5rem;
+}
+
+.products .box-container .box:hover .icons {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+.products .box-container .box .image {
+    height: 35rem;
+    width: 100%;
+    overflow: hidden;
+}
+
+.products .box-container .box .image img {
+    height: 100%;
+    width: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+
+.products .box-container .box:hover .image img {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.products .box-container .box .content {
+    padding: 1rem 1.5rem;
+}
+
+.products .box-container .box .content h3 {
+    font-size: 2rem;
+    color: #130f40;
+    font-weight: normal;
+}
+
+.products .box-container .box .content .price {
+    padding: .5rem 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    gap: .5rem;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.products .box-container .box .content .price .amount {
+    font-size: 2.2rem;
+    font-weight: bolder;
+    color: #130f40;
+}
+
+.products .box-container .box .content .price .cut {
+    font-size: 1.5rem;
+    text-decoration: line-through;
+    color: #666;
+}
+
+.products .box-container .box .content .price .offer {
+    font-size: 2rem;
+    color: #eb4d4b;
+}
+
+.products .box-container .box .content .stars {
+    font-size: 1.7rem;
+}
+
+.products .box-container .box .content .stars i {
+    color: gold;
+}
+
+.products .box-container .box .content .stars span {
+    color: #666;
+}
+
 
 
 

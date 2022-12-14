@@ -20,22 +20,22 @@ class PublisherDatabase extends Seeder
             [
                 [
                     'publisher_name'=>'Penguin Random House',
-                    'publisher_image'=>'https://locusmag.com/wp-content/uploads/2018/05/penguin-books.png',
+                    'publisher_image'=>'https://d3.harvard.edu/platform-digit/wp-content/uploads/sites/2/2022/10/penguin-random-house.jpg'
                 ],
 
                 [
                     'publisher_name'=>'HarperCollins',
-                    'publisher_image'=>'https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/rxzdnwsn8vmjrm5tzc4e',
+                    'publisher_image'=>'https://static.wikia.nocookie.net/bignate/images/a/ab/Eae333301417dfd9bf53ee13c6a6ff59.jpg/revision/latest?cb=20200914073605'
                 ],
 
                 [
                     'publisher_name'=>'Simon & Schuster',
-                    'publisher_image'=>'https://www.gasscompany.com/web/wp-content/uploads/2015/02/simon-schuster-logo-300x300.jpg',
+                    'publisher_image'=>'https://upload.wikimedia.org/wikipedia/en/thumb/d/db/Simon_and_Schuster.svg/1200px-Simon_and_Schuster.svg.png'
                 ],
 
                 [
                     'publisher_name'=>'Hachette Book Group',
-                    'publisher_image'=>'https://pbs.twimg.com/profile_images/1179864624302317569/-V8mcmAH_400x400.jpg',
+                    'publisher_image'=>'https://www.hachettebooks.com/wp-content/uploads/2017/06/HB_FeaturedImage_Slider1.png?fit=661%2C480'
                 ],
 
             ]);
