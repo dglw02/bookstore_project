@@ -20,11 +20,13 @@ class AdminController extends Controller
     }
 
     function viewAllCategory(){
-        return view('admin/category/index');
+        $categories = DB::table('categories')->get();
+        return view('admin/category/index', ['categories'=> $categories]);
     }
 
     function viewAllAuthor(){
-        return view('admin/author/index');
+        $authors = DB::table('authors')->get();
+        return view('admin/author/index', ['authors'=> $authors]);
     }
 
     function viewAllProducts(){
@@ -38,7 +40,10 @@ class AdminController extends Controller
 
 
     function viewAllUsers(){
-        return view('admin/user/index');
+        $users = DB::table('users')
+            ->join('provinces', 'users.user_province', '=', 'provinces.province_id')
+            ->select('users.*', 'provinces.province_name')->get();
+        return view('admin/user/index', ['users'=> $users]);
     }
 
     function viewAllOrders(){

@@ -5,6 +5,8 @@ use App\Http\Controllers\BooksController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Admin\AdminBooksController;
+use App\Http\Controllers\Admin\AdminCategoryController;
+use App\Http\Controllers\Admin\AdminAuthorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,18 +45,41 @@ Route::get('/admin/order',[AdminController::class,'viewAllOrders']);
 Route::get('/admin/dashboard',[AdminController::class,'viewDashboard']);
 Route::get('/admin/settings',[AdminController::class,'viewProfile']);
 
+//admin san pham
 // Them 1 san pham: view
 Route::get('/admin/products/create', [AdminBooksController::class, 'create']);
 // Them sp: xu ly => ko co giao dien
-Route::post("/admin/products/create", [AdminBooksController::class, 'save']);
-
+Route::post("/admin/products/create", [AdminBooksController::class, 'store']);
 // Sua 1 san pham: view
-Route::get("/admin/products/{id}/edit", [AdminBooksController::class, 'edit']);
+Route::get("/admin/products/{book}/edit", [AdminBooksController::class, 'edit']);
 // Cap nhat sp => ko co giao dien
-Route::put("/admin/products/{id}/edit", [AdminBooksController::class, 'update']);
-
+Route::put("/admin/products/{book}/edit", [AdminBooksController::class, 'update']);
 // Xoa 1 san pham
-Route::delete("/admin/products/{id}/delete", [AdminBooksController::class, 'delete']);
+Route::delete("/admin/products/{book}/delete", [AdminBooksController::class, 'destroy']);
+
+//admin category
+// Them 1 san pham: view
+Route::get('/admin/category/create', [AdminCategoryController::class, 'create']);
+// Them sp: xu ly => ko co giao dien
+Route::post("/admin/category/create", [AdminCategoryController::class, 'store']);
+// Sua 1 san pham: view
+Route::get("/admin/category/{category}/edit", [AdminCategoryController::class, 'edit']);
+// Cap nhat sp => ko co giao dien
+Route::put("/admin/category/{category}/edit", [AdminCategoryController::class, 'update']);
+// Xoa 1 san pham
+Route::delete("/admin/category/{category}/delete", [AdminCategoryController::class, 'destroy']);
+
+//admin author
+// Them 1 san pham: view
+Route::get('/admin/author/create', [AdminAuthorController::class, 'create']);
+// Them sp: xu ly => ko co giao dien
+Route::post("/admin/author/create", [AdminAuthorController::class, 'store']);
+// Sua 1 san pham: view
+Route::get("/admin/author/{author}/edit", [AdminAuthorController::class, 'edit']);
+// Cap nhat sp => ko co giao dien
+Route::put("/admin/author/{author}/edit", [AdminAuthorController::class, 'update']);
+// Xoa 1 san pham
+Route::delete("/admin/author/{author}/delete", [AdminAuthorController::class, 'destroy']);
 
 //register
 Route::get('/register',[LoginController::class,'viewRegister']);

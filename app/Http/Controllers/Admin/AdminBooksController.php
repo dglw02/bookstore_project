@@ -10,89 +10,78 @@ use Illuminate\Support\Facades\DB;
 
 class AdminBooksController extends Controller
 {
-
-
-// Xoa 1 sp theo id
-    function delete($books_id)
-    {
-        DB::table('books')->where('books_id', $books_id)->delete();
-        return redirect()->route('admin.book');
-    }
-
-    // View: Tao san pham
-    function create()
+    public function create()
     {
         return view('admin.book.book_create');
     }
-
-    // Ko co giao dien: them san pham
-    function save(Request $request)
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
     {
-        // Lay du lieu
-        $name = $request->get('bookName');
-        $book_category = $request->get('bookCategory');
-        $book_publisher = $request->get('bookPublisher');
-        $description = $request->get('bookDescription');
-        $book_author = $request->get('bookAuthor');
-        $quantity = $request->get('bookQuantity');
-        $image = $request->get('bookImage');
-        $price = $request->get('bookPrice');
-        $isbn = $request->get('bookIsbn');
-
-
-
-        // Insert
-        DB::table('books')->insert(
-            ['books_name' => $name,
-                'category_id' => $book_category,
-                'publisher_id' => $book_publisher,
-                'books_description' => $description,
-                'books_author' => $book_author,
-                'books_quantity' => $quantity,
-                'books_image' => $image,
-                'books_price' => $price,
-                'books_ISBN' => $isbn
-            ]
-        );
-        // Chuyen huong ve trang home
-        return redirect()->route('admin.book');
-
+        $storeData = $request->validate([
+            'books_name' => 'required|max:255',
+            'category_id' => 'required|numeric',
+            'publisher_id' => 'required|numeric',
+            'books_description' => 'required|max:5000',
+            'books_author' => 'required|numeric',
+            'books_quantity' => 'required|numeric',
+            'books_image' => 'required|max:500',
+            'books_price' => 'required|numeric',
+            'books_ISBN' => 'required|numeric',
+        ]);
+        $book = Books::create($storeData);
+        return redirect('/admin/products')->with('completed', 'Book has been saved!');
     }
 
-    // View
-    function edit($books_id)
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $books_id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($books_id)
     {
-        $book = DB::table('books')->where('books_id', $books_id)->get();
-        if ($book == null) {
-            return redirect()->route('error');
-        }
-        return view('admin.book.book_edit', ['books' => $book]);
+        $book = Books::findOrFail($books_id);
+        return view('admin.book.book_edit', compact('book'));
     }
-
-    // ko co giao dien
-    function update(Request $request, $books_id)
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $books_id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $books_id)
     {
-        $name = $request->get('bookName');
-        $book_category = $request->get('bookCategory');
-        $book_publisher = $request->get('bookPublisher');
-        $description = $request->get('bookDescription');
-        $book_author = $request->get('bookAuthor');
-        $quantity = $request->get('bookQuantity');
-        $image = $request->get('bookImage');
-        $price = $request->get('bookPrice');
-        $isbn = $request->get('bookIsbn');
-
-        DB::table('books')->where('books_id', $books_id)
-            ->update(['books_name' => $name,
-                'category_id' => $book_category,
-                'publisher_id' => $book_publisher,
-                'books_description' => $description,
-                'books_author' => $book_author,
-                'books_quantity' => $quantity,
-                'books_image' => $image,
-                'books_price' => $price,
-                'books_ISBN' => $isbn]);
-        return redirect()->back();
+        $updateData = $request->validate([
+            'books_name' => 'required|max:255',
+            'category_id' => 'required|numeric',
+            'publisher_id' => 'required|numeric',
+            'books_description' => 'required|max:5000',
+            'books_author' => 'required|numeric',
+            'books_quantity' => 'required|numeric',
+            'books_image' => 'required|max:500',
+            'books_price' => 'required|numeric',
+            'books_ISBN' => 'required|numeric',
+        ]);
+        Books::where($books_id)->update($updateData);
+        return redirect('/admin/products')->with('completed', 'Book has been updated');
+    }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $books_id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($books_id)
+    {
+        $book = Books::findOrFail($books_id);
+        $book->delete();
+        return redirect('/admin/products')->with('completed', 'Author has been deleted');
     }
 
 

@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-6">
                     <div>
-                        <a href="#" class="btn-primary btn-sm">
+                        <a href="{{url('admin/author/create')}}" class="btn-primary btn-sm">
                             <i class="fas fa-plus-circle mr-1"></i>
                             Add author
                         </a>
@@ -27,7 +27,7 @@
                 <span class="m-0 font-weight-bold text-primary">Author list</span>
             </div>
             <div class="card-body">
-
+                @if($authors->count())
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
@@ -45,26 +45,29 @@
                         </tr>
                         </tfoot>
                         <tbody>
-
+                        @foreach($authors as $aut)
                         <tr>
-                            <td></td>
-                            <td></td>
+                            <td>{{$aut->author_name}}</td>
+                            <td><img src="{{$aut->author_image}}" width="150px"/></td>
                             <td>
+                                <div class="action d-flex flex-row">
+                                    <a href="{{url('/admin/author/'.$aut->author_id.'/edit')}}" class="btn-primary btn btn-sm mr-2"><i class="fas fa-edit"></i></a>
 
-
-                                <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
-
-                                <button type="submit"
-                                        onclick="return confirm('Category will delete permanently. All books related with this category will deleted. Are you sure to delete??')"
-                                        class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                    <form method="POST" action="{{url('/admin/author/'.$aut->author_id.'/delete')}}">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" onclick="return confirm('Author will move to trash! Are you sure to delete??')"
+                                                class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                    </form>
+                                </div>
 
                             </td>
                         </tr>
-
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
-
+                @endif
             </div>
         </div>
 

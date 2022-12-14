@@ -50,14 +50,14 @@
                         </tr>
                         </tfoot>
                         <tbody>
-
+                        @foreach($users as $user)
                         <tr>
+                            <td>{{$user->name}}</td>
+                            <td>{{$user->email}}</td>
                             <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>{{$user->province_name}}</td>
+                            <td>{{$user->phone}}</td>
+                            <td>{{$user->level}}</td>
                             <td>
 
                                 <div class="action d-flex flex-row">
@@ -70,7 +70,7 @@
 
                             </td>
                         </tr>
-
+                        @endforeach
                         </tbody>
                     </table>
                 </div>

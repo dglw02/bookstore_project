@@ -9,4 +9,5 @@ class Author extends Model
 {
     use HasFactory;
     protected $primaryKey = 'author_id';
+    protected $fillable = ['author_name', 'author_image', 'author_description'];
 }

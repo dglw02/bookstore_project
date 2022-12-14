@@ -18,16 +18,6 @@ class CategoryDatabase extends Seeder
         //
         DB::table('categories')->insert(
             [
-                [
-                    'category_name'=>'Novel',
-                    'category_image'=>'https://upload.wikimedia.org/wikipedia/en/e/e0/AspectsOfTheNovel.jpg',
-                ],
-
-                [
-                    'category_name'=>'Education',
-                    'category_image'=> 'https://4.imimg.com/data4/WT/KH/MY-23932603/educational-book-printing-500x500.png',
-
-                ],
 
                 [
                     'category_name'=>'Fiction',
@@ -47,18 +37,6 @@ class CategoryDatabase extends Seeder
                     'category_image'=>'https://staticg.sportskeeda.com/editor/2022/03/59485-16462404746687-1920.jpg',
                     'category_description'=>'Manga are comics or graphic novels originating from Japan. Most manga conform to a style developed in Japan in the late 19th century, and the form has a long prehistory in earlier Japanese art. The term manga is used in Japan to refer to both comics and cartooning.'
                 ],
-
-                [
-                    'category_name'=>'Philosophy',
-                    'category_image'=>'https://www.hoaxanh.vn/image/cache/catalog/062020/philosophy_book-400x600.png',
-                ],
-
-                [
-                    'category_name'=>'Guide',
-                    'category_image'=>'https://img.freepik.com/free-vector/yellow-guide-book-cartoon-style_1308-87103.jpg?w=2000',
-                ],
-
-
 
 
             ]);

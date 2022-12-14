@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-6">
                     <div>
-                        <a href="#" class="btn-primary btn-sm">
+                        <a href="{{url('admin/category/create')}}" class="btn-primary btn-sm">
                             <i class="fas fa-plus-circle mr-1"></i>
                             Add categories
                         </a>
@@ -45,22 +45,24 @@
                         </tr>
                         </tfoot>
                         <tbody>
-
+                        @foreach($categories as $cate)
                         <tr>
-                            <td></td>
-                            <td></td>
+                            <td>{{$cate->category_name}}</td>
+                            <td> <img src="{{$cate->category_image}}" width="150px"/></td>
                             <td>
+                                <div class="action d-flex flex-row">
+                                <a href="{{url('/admin/category/'.$cate->category_id.'/edit')}}" class="btn-primary btn btn-sm mr-2"><i class="fas fa-edit"></i></a>
 
-
-                                <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
-
-                                <button type="submit"
-                                        onclick="return confirm('Category will delete permanently. All books related with this category will deleted. Are you sure to delete??')"
-                                        class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
-
+                                <form method="POST" action="{{url('/admin/category/'.$cate->category_id.'/delete')}}">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" onclick="return confirm('Category will move to trash! Are you sure to delete??')"
+                                            class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                </form>
+                                </div>
                             </td>
                         </tr>
-
+                        @endforeach
                         </tbody>
                     </table>
                 </div>

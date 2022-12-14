@@ -1,49 +1,75 @@
 @extends('layouts.admin_base')
-
-@section('title','Cập nhật sản phẩm')
-
 @section('content')
-    <h1 class="text-center">Cập nhật sản phẩm</h1>
-
-    <form action="{{url('/admin/product/'.$book->books_id.'/edit')}}" method="POST">
-        @csrf
-        @method('put')
-        <br>
-        <input value="{{ $book->books_name  }}" name="bookName" type="text" class="form-control"
-               placeholder="Tên sản phẩm">
-        <br>
-        <input value="{{ $book->books_category  }}" name="bookCategory" type="number" class="form-control" placeholder="Danh mục sản phẩm">
-        <br>
-        <input value="{{ $book->books_publisher  }}" name="bookPublisher" type="number" class="form-control" placeholder="Nhà phát hành sản phẩm">
-        <br>
-        <textarea name="bookDescription" id="editor" placeholder="Mô tả sản phẩm">{{$product->books_description}}</textarea>
-        <br>
-        <input value="{{ $book->books_author  }}" name="bookAuthor" type="number" class="form-control" placeholder="Tác giả sản phẩm">
-        <br>
-        <input value="{{ $book->books_quantity  }}" name="quantity" type="number" class="form-control" placeholder="Số lượng sản phẩm">
-        <br>
-        <input value="{{ $book->books_image }}" name="productImageURL" type="text" class="form-control"
-               placeholder="Link ảnh sản phẩm - nhập URL">
-        <br>
-        <input value="{{ $book->books_price  }}" name="productPrice" type="number" class="form-control"
-               placeholder="Giá sản phẩm">
-        <br>
-        <input value="{{ $book->books_ISBN  }}" name="bookIsbn" type="number" class="form-control" placeholder="Mã sản phẩm">
-        <br>
-        <button type="submit" class="btn btn-primary">Cập nhật</button>
-    </form>
+    <div class="card push-top">
+        <div class="card-header">
+            Edit & Update Book
+        </div>
+        <div class="card-body">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div><br />
+            @endif
+            <form method="POST" action="{{url('/admin/products/{book}/edit')}}">
+                @csrf
+                @method('put')
+                <div class="form-group">
+                    <label for="books_name">Name</label>
+                    <input type="text" class="form-control" name="books_name" value="{{ $book->books_name }}"/>
+                </div>
+                <div class="form-group">
+                    <label for="category_id">Category</label>
+                    <input type="number" class="form-control" name="category_id" value="{{ $book->category_id }}"/>
+                </div>
+                <div class="form-group">
+                    <label for="publisher_id">Publisher</label>
+                    <input type="number" class="form-control" name="publisher_id" value="{{ $book->publisher_id }}"/>
+                </div>
+                <div class="form-group">
+                    <label for="books_description">Description</label><br>
+                    <textarea name="books_description" id="editor"> {{ $book->books_description }}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="books_author">Author</label>
+                    <input type="number" class="form-control" name="books_author" value="{{ $book->books_author }}"/>
+                </div>
+                <div class="form-group">
+                    <label for="books_quantity">Quantity</label>
+                    <input type="number" class="form-control" name="books_quantity" value="{{ $book->books_quantity }}"/>
+                </div>
+                <div class="form-group">
+                    <label for="books_image">Image</label>
+                    <input type="text" class="form-control" name="books_image" value="{{ $book->books_image }}"/> <br>
+                    <img src="{{$book->books_image}}" width="150px"/>
+                </div>
+                <div class="form-group">
+                    <label for="books_price">Price</label>
+                    <input type="number" class="form-control" name="books_price" value="{{ $book->books_price }}"/>
+                </div>
+                <div class="form-group">
+                    <label for="books_ISBN">ISBN</label>
+                    <input type="number" class="form-control" name="books_ISBN" value="{{ $book->books_ISBN }}"/>
+                </div>
+                <button type="submit" class="btn btn-block btn-danger">Update Book</button>
+            </form>
+        </div>
+    </div>
 @endsection
 
 @section('js')
     @parent
     <script>
         ClassicEditor
-            .create(document.querySelector('#editor'))
-            .then(editor => {
-                console.log(editor);
-            })
-            .catch(error => {
-                console.error(error);
-            });
+            .create( document.querySelector( '#editor' ) )
+            .then( editor => {
+                console.log( editor );
+            } )
+            .catch( error => {
+                console.error( error );
+            } );
     </script>
 @endsection
