@@ -14,7 +14,7 @@
                 @foreach($categories as $cate)
                 <div class="swiper-slide box">
                     <div class="image">
-                        <img src={{asset('/asset/img/book_background1.jpg')}} alt="">
+                        <img src={{$cate->category_image}} alt="">
                     </div>
                     <div class="content">
                         <h3>{{$cate->category_name}}</h3>
