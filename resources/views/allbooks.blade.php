@@ -3,200 +3,30 @@
 @section('title','Danh mục sản phẩm')
 
 @section('content')
+    <section class="products" id="products">
 
-    <section class="featured" id="featured">
-        <h1  class="heading"> <span >Education</span> </h1>
-        <div class="swiper featured-slider">
-            <div class="swiper-wrapper">
-                @foreach($books as $book)
-                    <div class="swiper-slide box">
-                        <div class="icons">
-                            <a href="#" class="fas fa-search"></a>
-                            <a href="#" class="fas fa-heart"></a>
-                            <a href="detail/{{$book['books_id']}}" class="fas fa-eye"></a>
-                        </div>
-                        <div class="image">
-                            <a href="detail/{{$book['books_id']}}"><img src={{$book['books_image']}} alt="a"></a>
-                        </div>
-                        <div class="content">
-                            <h3>{{$book['books_name']}}</h3>
-                            <div class="price">${{$book['books_price']}}</div>
-                            <div class="stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                            <a href="#" class="btn">add to cart</a>
+        <h1  class="heading"> <span >Our products</span> </h1>
+
+        <div class="box-container">
+            @foreach($books as $book)
+                <div class="box" data-item="special">
+                    <div class="icons">
+                        <a href="#" class="fas fa-shopping-cart"></a>
+                        <a href="#" class="fas fa-heart"></a>
+                        <a href="#" class="fas fa-search"></a>
+                        <a href="/detail/{{$book['books_id']}}" class="fas fa-eye"></a>
+                    </div>
+                    <div class="image">
+                        <img src={{$book['books_image']}} alt="">
+                    </div>
+                    <div class="content">
+                        <h3>{{$book['books_name']}}</h3>
+                        <div class="price">
+                            <div class="amount">${{$book['books_price']}}</div>
                         </div>
                     </div>
-                @endforeach
-            </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
+                </div>
+            @endforeach
         </div>
-        <h1  class="heading"> <a href="{{URL::to('/education')}}" class="btn">Show more</a> </h1>
-    </section>
-
-    <section class="featured" id="featured">
-
-        <h1 class="heading"> <span>Manga</span> </h1>
-
-        <div class="swiper featured-slider">
-
-            <div class="swiper-wrapper">
-                @foreach($books as $book)
-                    <div class="swiper-slide box">
-                        <div class="icons">
-                            <a href="#" class="fas fa-search"></a>
-                            <a href="#" class="fas fa-heart"></a>
-                            <a href="detail/{{$book['books_id']}}" class="fas fa-eye"></a>
-                        </div>
-                        <div class="image">
-                            <a href="detail/{{$book['books_id']}}"><img src={{$book['books_image']}} alt="a"></a>
-                        </div>
-                        <div class="content">
-                            <h3>{{$book['books_name']}}</h3>
-                            <div class="price">${{$book['books_price']}}</div>
-                            <div class="stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                            <a href="#" class="btn">add to cart</a>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-        </div>
-        <h1  class="heading"> <a href="{{URL::to('/manga')}}" class="btn">Show more</a> </h1>
-    </section>
-
-    <section class="featured" id="featured">
-
-        <h1 class="heading"> <span>Guide</span> </h1>
-
-        <div class="swiper featured-slider">
-
-            <div class="swiper-wrapper">
-                @foreach($books as $book)
-                    <div class="swiper-slide box">
-                        <div class="icons">
-                            <a href="#" class="fas fa-search"></a>
-                            <a href="#" class="fas fa-heart"></a>
-                            <a href="detail/{{$book['books_id']}}" class="fas fa-eye"></a>
-                        </div>
-                        <div class="image">
-                            <a href="detail/{{$book['books_id']}}"><img src={{$book['books_image']}} alt="a"></a>
-                        </div>
-                        <div class="content">
-                            <h3>{{$book['books_name']}}</h3>
-                            <div class="price">${{$book['books_price']}}</div>
-                            <div class="stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                            <a href="#" class="btn">add to cart</a>
-                        </div>
-                    </div>
-                @endforeach
-
-            </div>
-
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-
-        </div>
-        <h1  class="heading"> <a href="{{URL::to('/guide')}}" class="btn">Show more</a> </h1>
-    </section>
-
-    <section class="featured" id="featured">
-
-        <h1 class="heading"> <span>Novel</span> </h1>
-
-        <div class="swiper featured-slider">
-
-            <div class="swiper-wrapper">
-                @foreach($books as $book)
-                    <div class="swiper-slide box">
-                        <div class="icons">
-                            <a href="#" class="fas fa-search"></a>
-                            <a href="#" class="fas fa-heart"></a>
-                            <a href="detail/{{$book['books_id']}}" class="fas fa-eye"></a>
-                        </div>
-                        <div class="image">
-                            <a href="detail/{{$book['books_id']}}"><img src={{$book['books_image']}} alt="a"></a>
-                        </div>
-                        <div class="content">
-                            <h3>{{$book['books_name']}}</h3>
-                            <div class="price">${{$book['books_price']}}</div>
-                            <div class="stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                            <a href="#" class="btn">add to cart</a>
-                        </div>
-                    </div>
-                @endforeach
-
-            </div>
-
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-
-        </div>
-        <h1  class="heading"> <a href="{{URL::to('/novel')}}" class="btn">Show more</a> </h1>
-    </section>
-
-    <section class="featured" id="featured">
-
-        <h1 class="heading"> <span>Philosophy</span> </h1>
-
-        <div class="swiper featured-slider">
-
-            <div class="swiper-wrapper">
-                @foreach($books as $book)
-                    <div class="swiper-slide box">
-                        <div class="icons">
-                            <a href="#" class="fas fa-search"></a>
-                            <a href="#" class="fas fa-heart"></a>
-                            <a href="detail/{{$book['books_id']}}" class="fas fa-eye"></a>
-                        </div>
-                        <div class="image">
-                            <a href="detail/{{$book['books_id']}}"><img src={{$book['books_image']}} alt="a"></a>
-                        </div>
-                        <div class="content">
-                            <h3>{{$book['books_name']}}</h3>
-                            <div class="price">${{$book['books_price']}}</div>
-                            <div class="stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                            <a href="#" class="btn">add to cart</a>
-                        </div>
-                    </div>
-                @endforeach
-
-            </div>
-
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-
-        </div>
-        <h1  class="heading"> <a href="{{URL::to('/philosophy')}}" class="btn">Show more</a> </h1>
     </section>
 @endsection

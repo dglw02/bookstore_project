@@ -18,7 +18,7 @@
                     </div>
                     <div class="content">
                         <h3>{{$cate->category_name}}</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, odio.</p>
+                        <p>{{$cate->category_description}}</p>
                         <a href={{url('/category/'.$cate->category_name)}} class="btn">Check now</a>
                     </div>
                 </div>

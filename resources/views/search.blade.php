@@ -3,29 +3,31 @@
 @section('title','Danh mục sản phẩm')
 
 @section('content')
-    <section class="featured" id="featured">
+    <section class="products" id="products">
 
-        <h1 class="heading"> <span>Result for Books</span> </h1>
-        @foreach($books as $book)
-            <div class="swiper-slide box">
-                <div class="image">
-                    <a href="detail/{{$book['books_id']}}"><img src={{$book['books_image']}} alt="a"></a>
-                </div>
-                <div class="content">
-                    <h1>{{$book['books_name']}}</h1>
-                    <div class="price">${{$book['books_price']}}</div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
+        <h1  class="heading"> <span >Our products</span> </h1>
+
+        <div class="box-container">
+            @foreach($books as $book)
+                <div class="box" data-item="special">
+                    <div class="icons">
+                        <a href="#" class="fas fa-shopping-cart"></a>
+                        <a href="#" class="fas fa-heart"></a>
+                        <a href="#" class="fas fa-search"></a>
+                        <a href="/detail/{{$book['books_id']}}" class="fas fa-eye"></a>
                     </div>
-                    <a href="#" class="btn">add to cart</a>
+                    <div class="image">
+                        <img src={{$book['books_image']}} alt="">
+                    </div>
+                    <div class="content">
+                        <h3>{{$book['books_name']}}</h3>
+                        <div class="price">
+                            <div class="amount">${{$book['books_price']}}</div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-        @endforeach
+            @endforeach
+        </div>
     </section>
 
 @endsection
