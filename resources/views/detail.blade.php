@@ -22,7 +22,6 @@
                     <div class="product-image-main">
                         <img src={{$books['books_image']}} alt="" id="product-main-image">
                     </div>
-
                 </div>
             </div>
             <div class="col-6">
@@ -86,6 +85,43 @@
         </div>
     </div>
 </div>
+
+
+
+<section class="featured" id="featured">
+
+    <h1 class="heading"> <span>Related Products</span> </h1>
+
+    <div class="swiper featured-slider">
+
+        <div class="swiper-wrapper">
+            @foreach($books->category->books as $book)
+                <div class="swiper-slide box">
+                    <div class="icons">
+                        <a href="#" class="fas fa-search"></a>
+                        <a href="#" class="fas fa-heart"></a>
+                        <a href="/detail/{{$book->books_id}}" class="fas fa-eye"></a>
+                    </div>
+                    <div class="image">
+                        <a href="/detail/{{$book->books_id}}"><img src={{$book->books_image}} alt="a"></a>
+                    </div>
+                    <div class="content">
+                        <h3>{{$book->books_name}}</h3>
+                        <div class="price">${{$book->books_price}}</div>
+                        <a href="#" class="btn">add to cart</a>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+
+    </div>
+
+</section>
+
+
 
 <!--script-->
 <script src="{{ asset('js/detail.js') }}"></script>

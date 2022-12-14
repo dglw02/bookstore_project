@@ -32,13 +32,6 @@ Route::get('/allbooks', function () {
     return view('allbooks');
 });
 
-Route::get('/topsellers', function () {
-    return view('topsellers');
-});
-
-Route::get('/category', function () {
-    return view('category');
-});
 
 //Admin
 Route::get('/admin/home',[AdminController::class,'viewHome']);
@@ -75,7 +68,7 @@ Route::get('/',[BooksController::class,'showBooks']);
 Route::get('/allbooks',[BooksController::class,'allBooks']);
 Route::get('/detail/{id}',[BooksController::class,'showDetail']);
 Route::get('search',[BooksController::class,'search']);
-Route::post('add_to_cart',[BooksController::class,'addToCart']);
+
 
 //Category
 Route::get('/category',[BooksController::class,'allCategory']);

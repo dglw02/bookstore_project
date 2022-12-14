@@ -28,13 +28,9 @@ class BooksController extends Controller
 
 
     function showDetail($books_id){
-        $data = Books::find($books_id);
-        $books = DB::table('books')
-            ->join('categories', 'books.category_id', '=', 'categories.category_id')
-            ->join('publishers', 'books.publisher_id', '=', 'publishers.publisher_id')
-            ->join('authors', 'books.books_author', '=', 'authors.author_id')
-            ->select('books.*', 'categories.category_name', 'publishers.publisher_name','authors.author_name')->get();
-        return view('detail',['books'=>$data]);
+        $books = Books::find($books_id);
+        $category = Category::all();
+        return view('detail',compact('category','books',));
     }
 
     function search(Request $req){
@@ -42,14 +38,6 @@ class BooksController extends Controller
         return view('search',['books'=>$data]);
     }
 
-    function addToCart(Request $req){
-        if($req->session()->has('user')){
-            return "hello";
-        }
-        else{
-            return redirect('login');
-        }
-    }
 
     function productsByCategory($category_name){
         $category =Category::where('category_name',$category_name)->first();
@@ -60,4 +48,6 @@ class BooksController extends Controller
             return redirect()->back();
         }
     }
+
+
 }
