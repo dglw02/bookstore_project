@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Author;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -11,8 +12,11 @@ class BooksController extends Controller
 {
     //
     function showBooks(){
-        $data = Books::all();
-        return view('home',['books'=>$data]);
+        $books = Books::all();
+        $author =Author::all();
+        $category =Category::all();
+        $newbook =Books::orderBy('created_at','DESC')->get()->take(10);
+        return view('home',compact('books','author','category','newbook'));
     }
 
     function allCategory(){
@@ -49,5 +53,9 @@ class BooksController extends Controller
         }
     }
 
+    function newestBook(){
+        $books =Books::orderBy('created_at','DESC')->get()->take(10);
+        return view('new',compact('books',));
+    }
 
 }

@@ -25,7 +25,7 @@ class PublisherDatabase extends Seeder
 
                 [
                     'publisher_name'=>'HarperCollins',
-                    'publisher_image'=>'https://static.wikia.nocookie.net/bignate/images/a/ab/Eae333301417dfd9bf53ee13c6a6ff59.jpg/revision/latest?cb=20200914073605'
+                    'publisher_image'=>'https://www.publishersweekly.com/images/data/ARTICLE_PHOTO/photo/000/025/25401-1.JPG'
                 ],
 
                 [

@@ -95,7 +95,7 @@ Route::get('/',[BooksController::class,'showBooks']);
 Route::get('/allbooks',[BooksController::class,'allBooks']);
 Route::get('/detail/{id}',[BooksController::class,'showDetail']);
 Route::get('search',[BooksController::class,'search']);
-
+Route::get('new',[BooksController::class,'newestBook']);
 
 //Category
 Route::get('/category',[BooksController::class,'allCategory']);

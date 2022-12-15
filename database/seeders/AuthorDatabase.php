@@ -83,7 +83,7 @@ class AuthorDatabase extends Seeder
                 [
                     'author_name'=>'Akira Toriyama',
                     'author_description'=>'Akira Toriyama is a Japanese manga artist and character designer. He first achieved mainstream recognition for his highly successful manga series Dr. Slump, before going on to create Dragon Ball.',
-                    'author_image'=>'https://static.wikia.nocookie.net/dragonquest/images/6/6a/Toriyama.jpg/revision/latest/top-crop/width/360/height/450?cb=20200228172344'
+                    'author_image'=>'https://m.media-amazon.com/images/M/MV5BZTczMjRlNGYtMTUzYy00NjVmLThmOTYtM2VkMmVjODg1YzE4XkEyXkFqcGdeQXVyNjUwNzk3NDc@._V1_.jpg'
                 ],
 
                 [

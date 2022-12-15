@@ -51,11 +51,13 @@
                     <div class="product-details">
                         <h3>Publisher</h3>
                         <p>{{$books->publisher->publisher_name}}</p>
+                        <a href="{{url('/')}}" class="logo"> <img style="height:100px;width: 100px;border-radius: 950px;" src={{$books->publisher->publisher_image}} alt=""></a>
                     </div>
 
                     <div class="product-details">
                         <h3>Author</h3>
                         <p>{{$books->author->author_name}}</p>
+                        <a href="{{url('/')}}" class="logo"> <img style="height:100px;width: 100px;border-radius: 950px" src={{$books->author->author_image}} alt=""></a>
                     </div>
 
                     <div class="product-details">
