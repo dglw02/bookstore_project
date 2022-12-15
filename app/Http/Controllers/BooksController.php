@@ -52,7 +52,7 @@ class BooksController extends Controller
             return redirect()->back();
         }
     }
-
+//new page
     function newestBook(){
         $books =Books::orderBy('created_at','DESC')->get()->take(10);
         return view('new',compact('books',));
