@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Author;
 use App\Models\Books;
+use App\Models\Category;
 use App\Http\Controllers\Controller;
+use App\Models\Publisher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -12,7 +15,12 @@ class AdminBooksController extends Controller
 {
     public function create()
     {
-        return view('admin.book.book_create');
+        $categories = Category::get();
+        $publishers = Publisher::get();
+        $authors = Author::get();
+        return view('admin.book.book_create', [
+            'categories' => $categories, 'publishers' => $publishers, 'authors' => $authors
+        ]);
     }
     /**
      * Store a newly created resource in storage.
@@ -24,10 +32,10 @@ class AdminBooksController extends Controller
     {
         $storeData = $request->validate([
             'books_name' => 'required|max:255',
-            'category_id' => 'required|numeric',
-            'publisher_id' => 'required|numeric',
+            'category_id' => 'required',
+            'publisher_id' => 'required',
             'books_description' => 'required|max:5000',
-            'books_author' => 'required|numeric',
+            'books_author' => 'required',
             'books_quantity' => 'required|numeric',
             'books_image' => 'required|max:500',
             'books_price' => 'required|numeric',
@@ -46,7 +54,12 @@ class AdminBooksController extends Controller
     public function edit($books_id)
     {
         $book = Books::findOrFail($books_id);
-        return view('admin.book.book_edit', compact('book'));
+        $categories = Category::get();
+        $publishers = Publisher::get();
+        $authors = Author::get();
+        return view('admin.book.book_edit', compact('book'), [
+            'categories' => $categories, 'publishers' => $publishers, 'authors' => $authors
+        ]);
     }
     /**
      * Update the specified resource in storage.
@@ -59,10 +72,10 @@ class AdminBooksController extends Controller
     {
         $updateData = $request->validate([
             'books_name' => 'required|max:255',
-            'category_id' => 'required|numeric',
-            'publisher_id' => 'required|numeric',
+            'category_id' => 'required',
+            'publisher_id' => 'required',
             'books_description' => 'required|max:5000',
-            'books_author' => 'required|numeric',
+            'books_author' => 'required',
             'books_quantity' => 'required|numeric',
             'books_image' => 'required|max:500',
             'books_price' => 'required|numeric',

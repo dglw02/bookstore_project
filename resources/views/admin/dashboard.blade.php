@@ -38,7 +38,7 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total Users</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{$users->count()}}</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -55,7 +55,7 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total Books</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{$books_quantity}}</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-book fa-2x text-gray-300"></i>

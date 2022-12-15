@@ -2,7 +2,7 @@
 @section('content')
     <div class="card push-top">
         <div class="card-header">
-            Add Book
+            <h1>Add Book</h1>
         </div>
         <div class="card-body">
             @if ($errors->any())
@@ -18,15 +18,23 @@
                 @csrf
                 <div class="form-group">
                     <label for="books_name">Name</label>
-                    <input type="text" class="form-control" name="books_name"/>
+                    <input type="text" class="form-control" name="books_name" placeholder="Please enter book name"/>
                 </div>
                 <div class="form-group">
                     <label for="category_id">Category</label>
-                    <input type="number" class="form-control" name="category_id"/>
+                    <select class="form-control" name="category_id">
+                        @foreach($categories as $cate)
+                            <option value="{{ $cate->category_id }}">{{ $cate->category_name }}</option>
+                    @endforeach
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="publisher_id">Publisher</label>
-                    <input type="number" class="form-control" name="publisher_id"/>
+                    <select class="form-control" name="publisher_id">
+                        @foreach($publishers as $pub)
+                            <option value="{{ $pub->publisher_id }}">{{ $pub->publisher_name }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="books_description">Description</label><br>
@@ -34,23 +42,27 @@
                 </div>
                 <div class="form-group">
                     <label for="books_author">Author</label>
-                    <input type="number" class="form-control" name="books_author"/>
+                    <select class="form-control" name="books_author">
+                        @foreach($authors as $aut)
+                            <option value="{{ $aut->author_id }}">{{ $aut->author_name }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="books_quantity">Quantity</label>
-                    <input type="number" class="form-control" name="books_quantity"/>
+                    <input type="number" class="form-control" name="books_quantity" placeholder="Please enter book quantity"/>
                 </div>
                 <div class="form-group">
                     <label for="books_image">Image</label>
-                    <input type="text" class="form-control" name="books_image"/>
+                    <input type="text" class="form-control" name="books_image" />
                 </div>
                 <div class="form-group">
                     <label for="books_price">Price</label>
-                    <input type="number" class="form-control" name="books_price"/>
+                    <input type="number" class="form-control" name="books_price" placeholder="book price" placeholder="Please enter book price"/>
                 </div>
                 <div class="form-group">
                     <label for="books_ISBN">ISBN</label>
-                    <input type="number" class="form-control" name="books_ISBN"/>
+                    <input type="number" class="form-control" name="books_ISBN" placeholder="book ISBN" placeholder="Please enter book ISBN"/>
                 </div>
                 <button type="submit" class="btn btn-block btn-danger">Create Book</button>
             </form>

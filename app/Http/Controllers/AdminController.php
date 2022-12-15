@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\User;
+use App\Models\Books;
 
 class AdminController extends Controller
 {
@@ -16,7 +18,10 @@ class AdminController extends Controller
     }
 
     function viewDashboard(){
-        return view('admin/dashboard');
+            $users = User::all();
+            $books_quantity = Books::sum('books_quantity');
+
+        return view('admin/dashboard', compact('users', 'books_quantity'));
     }
 
     function viewAllCategory(){

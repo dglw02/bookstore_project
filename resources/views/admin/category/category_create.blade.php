@@ -18,11 +18,11 @@
                 @csrf
                 <div class="form-group">
                     <label for="category_name">Name</label>
-                    <input type="text" class="form-control" name="category_name"/>
+                    <input type="text" class="form-control" name="category_name" placeholder="Please enter category name"/>
                 </div>
                 <div class="form-group">
                     <label for="category_image">Image</label>
-                    <input type="text" class="form-control" name="category_image"/>
+                    <input type="text" class="form-control" name="category_image" placeholder="Please enter category image"/>
                 </div>
                 <div class="form-group">
                     <label for="category_description">Name</label><br>

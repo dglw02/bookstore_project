@@ -30,42 +30,34 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                         <tr>
-                            <th>Action</th>
                             <th>id</th>
                             <th>User</th>
                             <th>Payment</th>
                             <th>Total Price</th>
                             <th>Order status</th>
                             <th>Details</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
                         <tfoot>
                         <tr>
-                            <th>Action</th>
                             <th>id</th>
                             <th>User</th>
                             <th>Payment</th>
                             <th>Total Price</th>
                             <th>Order status</th>
                             <th>Details</th>
+                            <th>Action</th>
                         </tr>
                         </tfoot>
                         <tbody>
 
                         <tr>
-                            <td>
-
-                                <button class="btn btn-danger btn-sm" type="submit"><i class="fas fa-times"></i>
-                                </button>
-
-                            </td>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td>
-
-
                                 <input type="hidden" name="order_status" value="0">
                                 <button type="submit" class="btn btn-success btn-sm">Accepted</button>
 
@@ -76,6 +68,12 @@
 
                             </td>
                             <td><a href="#">Order Details</a></td>
+                            <td>
+
+                                <button class="btn btn-danger btn-sm" type="submit"><i class="fas fa-times"></i>
+                                </button>
+
+                            </td>
                         </tr>
 
                         </tbody>

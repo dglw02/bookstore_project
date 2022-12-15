@@ -23,11 +23,19 @@
                 </div>
                 <div class="form-group">
                     <label for="category_id">Category</label>
-                    <input type="number" class="form-control" name="category_id" value="{{ $book->category_id }}"/>
+                    <select class="form-control" name="category_id">
+                        @foreach($categories as $cate)
+                            <option value="{{ $cate->category_id }}"{{ old('category_id', $book->category_id) == $cate->category_id ? 'selected' : '' }}>{{ $cate->category_name }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="publisher_id">Publisher</label>
-                    <input type="number" class="form-control" name="publisher_id" value="{{ $book->publisher_id }}"/>
+                    <select class="form-control" name="publisher_id">
+                        @foreach($publishers as $pub)
+                            <option value="{{ $pub->publisher_id }}">{{ $pub->publisher_name }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="books_description">Description</label><br>
@@ -35,7 +43,11 @@
                 </div>
                 <div class="form-group">
                     <label for="books_author">Author</label>
-                    <input type="number" class="form-control" name="books_author" value="{{ $book->books_author }}"/>
+                    <select class="form-control" name="books_author">
+                        @foreach($authors as $aut)
+                            <option value="{{ $aut->author_id }}">{{ $aut->author_name }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="books_quantity">Quantity</label>
