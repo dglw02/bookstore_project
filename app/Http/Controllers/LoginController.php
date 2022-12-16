@@ -2,6 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Author;
+use App\Models\Books;
+use App\Models\Category;
+use App\Models\Province;
+use App\Models\Publisher;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -39,5 +45,33 @@ class LoginController extends Controller
         $request->session()->regenerateToken();
         return redirect('/');
 
+    }
+
+    public function createUser()
+    {
+        $provinces = Province::get();
+        return view('register', ['provinces' => $provinces]);
+    }
+
+    public function hashPassword()
+    {
+        $password = ;
+        return view('register', ['password' => $password]);
+    }
+
+    public function storeUser(Request $request)
+    {
+        $storeData = $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required',
+            'password' => 'required',
+            'user_province' => 'required',
+            'phone' => 'required|max:10|numeric',
+
+
+            'isAdmin' => 'false',
+        ]);
+        $user = User::create($storeData);
+        return redirect('/')->with('completed', 'Has created account!');
     }
 }

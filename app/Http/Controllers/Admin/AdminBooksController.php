@@ -39,7 +39,7 @@ class AdminBooksController extends Controller
             'books_quantity' => 'required|numeric',
             'books_image' => 'required|max:500',
             'books_price' => 'required|numeric',
-            'books_ISBN' => 'required|numeric',
+            'isAdmin' => 'required|numeric',
         ]);
         $book = Books::create($storeData);
         return redirect('/admin/products')->with('completed', 'Book has been saved!');
@@ -81,13 +81,8 @@ class AdminBooksController extends Controller
             'books_price' => 'required|numeric',
             'books_ISBN' => 'required|numeric',
         ]);
-//        dd($updateData);
-        //dd($books_id);
-
-
-        $rs =  Books::where('books_id',"=",$books_id)->update($updateData);
-        //dd($rs);
-       return redirect('/admin/products')->with('completed', 'Book has been updated');
+        Books::where('books_id',"=",$books_id)->update($updateData);
+        return redirect('/admin/products')->with('completed', 'Book has been updated');
     }
     /**
      * Remove the specified resource from storage.

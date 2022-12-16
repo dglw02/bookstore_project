@@ -83,6 +83,7 @@ Route::delete("/admin/author/{author}/delete", [AdminAuthorController::class, 'd
 
 //register
 Route::get('/register',[LoginController::class,'viewRegister']);
+Route::get('/register', [LoginController::class, 'createUser']);
 
 //login
 Route::get('/login',[LoginController::class,'viewLogin']);
