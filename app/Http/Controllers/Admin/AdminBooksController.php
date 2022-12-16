@@ -81,8 +81,13 @@ class AdminBooksController extends Controller
             'books_price' => 'required|numeric',
             'books_ISBN' => 'required|numeric',
         ]);
-        Books::where($books_id)->update($updateData);
-        return redirect('/admin/products')->with('completed', 'Book has been updated');
+//        dd($updateData);
+        //dd($books_id);
+
+
+        $rs =  Books::where('books_id',"=",$books_id)->update($updateData);
+        //dd($rs);
+       return redirect('/admin/products')->with('completed', 'Book has been updated');
     }
     /**
      * Remove the specified resource from storage.

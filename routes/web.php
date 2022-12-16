@@ -51,9 +51,9 @@ Route::get('/admin/products/create', [AdminBooksController::class, 'create']);
 // Them sp: xu ly => ko co giao dien
 Route::post("/admin/products/create", [AdminBooksController::class, 'store']);
 // Sua 1 san pham: view
-Route::get("/admin/products/{book}/edit", [AdminBooksController::class, 'edit']);
+Route::get("/admin/products/{books_id}/edit", [AdminBooksController::class, 'edit']);
 // Cap nhat sp => ko co giao dien
-Route::put("/admin/products/{book}/edit", [AdminBooksController::class, 'update']);
+Route::put("/admin/products/{books_id}/edit", [AdminBooksController::class, 'update']);
 // Xoa 1 san pham
 Route::delete("/admin/products/{book}/delete", [AdminBooksController::class, 'destroy']);
 
