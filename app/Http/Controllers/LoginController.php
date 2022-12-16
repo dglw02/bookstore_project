@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Areas;
 use App\Models\Author;
 use App\Models\Books;
 use App\Models\Category;
-use App\Models\Province;
+use App\Models\City;
 use App\Models\Publisher;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -49,26 +50,24 @@ class LoginController extends Controller
 
     public function createUser()
     {
-        $provinces = Province::get();
-        return view('register', ['provinces' => $provinces]);
+        $areas = Areas::get();
+        return view('register', ['areas' => $areas]);
     }
 
-    public function hashPassword()
-    {
 
-    }
 
     public function storeUser(Request $request)
     {
         $storeData = $request->validate([
             'name' => 'required|max:255',
-            'email' => 'required',
+            'email' => 'required|max:255',
+            'address'=>'required|max:255',
             'password' => 'required',
-            'user_province' => 'required',
+            'user_areas' => 'required',
             'phone' => 'required|max:10|numeric',
-            'isAdmin' => 'false',
+            'isAdmin' => 'required',
         ]);
         $user = User::create($storeData);
-        return redirect('/')->with('completed', 'Has created account!');
+        return redirect('/')->with('completed', '!! Account has created !!');
     }
 }

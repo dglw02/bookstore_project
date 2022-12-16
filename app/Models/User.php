@@ -22,7 +22,7 @@ class User extends Authenticatable
         'address',
         'email',
         'password',
-        'user_province',
+        'user_areas',
         'phone',
 
         'isAdmin',

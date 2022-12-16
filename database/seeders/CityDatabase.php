@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class ProvinceDatabase extends Seeder
+class CityDatabase extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,194 +15,194 @@ class ProvinceDatabase extends Seeder
      */
     public function run()
     {
-        DB::table('provinces')->insert(
+        DB::table('cities')->insert(
             [
                 //North
                 [
-                    'province_name'=>'Ha Noi',
+                    'city_name'=>'Ha Noi',
                     'areas_id'=>1
                 ],
 
                 [
-                    'province_name'=>'Bac Giang',
+                    'city_name'=>'Bac Giang',
                     'areas_id'=>1
                 ],
 
                 [
-                    'province_name'=>'Viet Tri',
+                    'city_name'=>'Viet Tri',
                     'areas_id'=>1
                 ],
 
                 [
-                    'province_name'=>'Lang Son',
+                    'city_name'=>'Lang Son',
                     'areas_id'=>1
                 ],
 
                 [
-                    'province_name'=>'Thai Nguyen',
+                    'city_name'=>'Thai Nguyen',
                     'areas_id'=>1
                 ],
 
                 [
-                    'province_name'=>'Hoa Binh',
+                    'city_name'=>'Hoa Binh',
                     'areas_id'=>1
                 ],
 
                 [
-                    'province_name'=>'Ha Giang',
+                    'city_name'=>'Ha Giang',
                     'areas_id'=>1
                 ],
 
                 [
-                    'province_name'=>'Ha Long',
+                    'city_name'=>'Ha Long',
                     'areas_id'=>1
                 ],
 
                 [
-                    'province_name'=>'Cao Bang',
+                    'city_name'=>'Cao Bang',
                     'areas_id'=>1
                 ],
 
                 [
-                    'province_name'=>'Yen Bai',
+                    'city_name'=>'Yen Bai',
                     'areas_id'=>1
                 ],
 
                 [
-                    'province_name'=>'Vinh Yen',
+                    'city_name'=>'Vinh Yen',
                     'areas_id'=>1
                 ],
 
                 [
-                    'province_name'=>'Hai Phong',
+                    'city_name'=>'Hai Phong',
                     'areas_id'=>1
                 ],
 
                 [
-                    'province_name'=>'Hai Duong',
+                    'city_name'=>'Hai Duong',
                     'areas_id'=>1
                 ],
 
                 [
-                    'province_name'=>'Thai Binh',
+                    'city_name'=>'Thai Binh',
                     'areas_id'=>1
                 ],
 
                 //Center
 
                 [
-                    'province_name'=>'Da Nang',
+                    'city_name'=>'Da Nang',
                     'areas_id'=>2
                 ],
 
                 [
-                    'province_name'=>'Hue',
+                    'city_name'=>'Hue',
                     'areas_id'=>2
                 ],
 
                 [
-                    'province_name'=>'Nha Trang',
+                    'city_name'=>'Nha Trang',
                     'areas_id'=>2
                 ],
 
                 [
-                    'province_name'=>'Quy Nhon',
+                    'city_name'=>'Quy Nhon',
                     'areas_id'=>2
                 ],
 
                 [
-                    'province_name'=>'Hoi An',
+                    'city_name'=>'Hoi An',
                     'areas_id'=>2
                 ],
 
                 [
-                    'province_name'=>'Quang Ngai',
+                    'city_name'=>'Quang Ngai',
                     'areas_id'=>2
                 ],
 
                 [
-                    'province_name'=>'Tuy Hoa',
+                    'city_name'=>'Tuy Hoa',
                     'areas_id'=>2
                 ],
 
                 [
-                    'province_name'=>'Thanh Hoa',
+                    'city_name'=>'Thanh Hoa',
                     'areas_id'=>2
                 ],
 
                 [
-                    'province_name'=>'Buon Ma Thuot',
+                    'city_name'=>'Buon Ma Thuot',
                     'areas_id'=>2
                 ],
 
                 [
-                    'province_name'=>'Da Lat',
+                    'city_name'=>'Da Lat',
                     'areas_id'=>2
                 ],
 
                 [
-                    'province_name'=>'Dong Hoi',
+                    'city_name'=>'Dong Hoi',
                     'areas_id'=>2
                 ],
 
                 [
-                    'province_name'=>'Ha Tinh',
+                    'city_name'=>'Ha Tinh',
                     'areas_id'=>2
                 ],
 
                 [
-                    'province_name'=>'Kon Tum',
+                    'city_name'=>'Kon Tum',
                     'areas_id'=>2
                 ],
 
                 [
-                    'province_name'=>'Dong Ha',
+                    'city_name'=>'Dong Ha',
                     'areas_id'=>2
                 ],
 
                 //South
                 [
-                    'province_name'=>'TP.HCM',
+                    'city_name'=>'TP.HCM',
                     'areas_id'=>3
                 ],
 
                 [
-                    'province_name'=>'Can Tho',
+                    'city_name'=>'Can Tho',
                     'areas_id'=>3
                 ],
 
                 [
-                    'province_name'=>'Vung Tau',
+                    'city_name'=>'Vung Tau',
                     'areas_id'=>3
                 ],
 
                 [
-                    'province_name'=>'My Tho',
+                    'city_name'=>'My Tho',
                     'areas_id'=>3
                 ],
 
                 [
-                    'province_name'=>'Bien Hoa',
+                    'city_name'=>'Bien Hoa',
                     'areas_id'=>3
                 ],
 
                 [
-                    'province_name'=>'Ca Mau',
+                    'city_name'=>'Ca Mau',
                     'areas_id'=>3
                 ],
 
                 [
-                    'province_name'=>'Loc Xuyen',
+                    'city_name'=>'Loc Xuyen',
                     'areas_id'=>3
                 ],
 
                 [
-                    'province_name'=>'Cao Lanh',
+                    'city_name'=>'Cao Lanh',
                     'areas_id'=>3
                 ],
 
                 [
-                    'province_name'=>'Tra Vinh',
+                    'city_name'=>'Tra Vinh',
                     'areas_id'=>3
                 ],
 

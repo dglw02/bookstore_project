@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('provinces', function (Blueprint $table) {
-            $table->increments('province_id');
-            $table->string('province_name');
+        Schema::create('cities', function (Blueprint $table) {
+            $table->increments('city_id');
+            $table->string('city_name');
             $table->unsignedInteger('areas_id');
             $table->timestamps();
 

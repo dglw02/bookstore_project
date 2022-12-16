@@ -82,9 +82,8 @@ Route::put("/admin/author/{author}/edit", [AdminAuthorController::class, 'update
 Route::delete("/admin/author/{author}/delete", [AdminAuthorController::class, 'destroy']);
 
 //register
-Route::get('/register',[LoginController::class,'viewRegister']);
 Route::get('/register', [LoginController::class, 'createUser']);
-
+Route::post('/register', [LoginController::class, 'storeUser']);
 //login
 Route::get('/login',[LoginController::class,'viewLogin']);
 Route::post('/login',[LoginController::class,'login']);

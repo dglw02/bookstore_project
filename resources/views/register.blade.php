@@ -1,74 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Calibri, Helvetica, sans-serif;
+            background-color: pink;
+        }
 
-@section('content')
-    <div class="card push-top">
-        <div class="card-header">
-            <h1>Add Book</h1>
+        .container {
+            padding: 50px;
+            background-color: lightblue;
+        }
+
+        input[type=text], input[type=password], textarea {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+        }
+
+        input[type=text]:focus, input[type=password]:focus {
+            background-color: orange;
+            outline: none;
+        }
+
+        div {
+            padding: 10px 0;
+        }
+
+        hr {
+            border: 1px solid #f1f1f1;
+            margin-bottom: 25px;
+        }
+
+        .registerbtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 16px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;
+        }
+
+        .registerbtn:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+<div class="card-body">
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div><br />
+    @endif
+<form method="POST" action="{{url('register')}}">
+    @csrf
+    <div class="container">
+        <center>
+            <h1>
+                Customer Register Form
+            </h1>
+        </center>
+        <hr>
+        <label for="name">
+            Name
+        </label>
+        <input type="text" name="name" placeholder="Name" size="15" required/>
+
+        <div>
+            <label for="user_areas">
+                Area :
+            </label>
+            <br>
+            <select class="form-control" name="category_id">
+                @foreach($areas as $area)
+                    <option value="{{ $area->areas_id }}">{{ $area->areas_name }}</option>
+                @endforeach
+            </select>
         </div>
-        <div class="card-body">
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div><br />
-            @endif
-            <form method="POST" action="{{url('admin/products/create')}}">
-                @csrf
-                <div class="form-group">
-                    <label for="books_name">Name</label>
-                    <input type="text" class="form-control" name="books_name" placeholder="Please enter book name"/>
-                </div>
-                <div class="form-group">
-                    <label for="category_id">Category</label>
-                    <select class="form-control" name="category_id">
-                        @foreach($categories as $cate)
-                            <option value="{{ $cate->category_id }}">{{ $cate->category_name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="publisher_id">Publisher</label>
-                    <select class="form-control" name="publisher_id">
-                        @foreach($publishers as $pub)
-                            <option value="{{ $pub->publisher_id }}">{{ $pub->publisher_name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="books_description">Description</label><br>
-                    <textarea name="books_description" id="editor"> </textarea>
-                </div>
-                <div class="form-group">
-                    <label for="books_author">Author</label>
-                    <select class="form-control" name="books_author">
-                        @foreach($authors as $aut)
-                            <option value="{{ $aut->author_id }}">{{ $aut->author_name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="books_quantity">Quantity</label>
-                    <input type="number" class="form-control" name="books_quantity" placeholder="Please enter book quantity"/>
-                </div>
-                <div class="form-group">
-                    <label for="books_image">Image</label>
-                    <input type="text" class="form-control" name="books_image" />
-                </div>
-                <div class="form-group">
-                    <label for="books_price">Price</label>
-                    <input type="number" class="form-control" name="books_price" placeholder="book price" placeholder="Please enter book price"/>
-                </div>
-                <div class="form-group">
-                    <label for="books_ISBN">ISBN</label>
-                    <input type="number" class="form-control" name="books_ISBN" placeholder="book ISBN" placeholder="Please enter book ISBN"/>
-                </div>
-                <button type="submit" class="btn btn-block btn-danger">Create Book</button>
-            </form>
+
+        <div>
+            <label>
+                City :
+            </label>
         </div>
+        <label for="phone">
+            Phone :
+        </label>
+        <input type="text" name="phone" placeholder="phone no." size="10" required>
+        <label for="address">
+            Current Address :
+        </label>
+
+        <textarea cols="80" rows="5" placeholder="Address" value="address" required>
+        </textarea>
+        <label for="email">
+                Email
+        </label>
+        <input type="text" placeholder="Enter Email" name="email" required>
+        <label for="password">
+                Password
+        </label>
+        <input type="password" placeholder="Enter Password" name="password" required>
     </div>
-@endsection
+    <h3 type="submit" class="registerbtn">Register</h3>
+</form>
+</div>
+</body>
+</html>
 
 @section('js')
     @parent

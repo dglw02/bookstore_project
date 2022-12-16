@@ -18,9 +18,7 @@ class AdminBooksController extends Controller
         $categories = Category::get();
         $publishers = Publisher::get();
         $authors = Author::get();
-        return view('admin.book.book_create', [
-            'categories' => $categories, 'publishers' => $publishers, 'authors' => $authors
-        ]);
+        return view('admin.book.book_create', ['categories' => $categories, 'publishers' => $publishers, 'authors' => $authors]);
     }
     /**
      * Store a newly created resource in storage.

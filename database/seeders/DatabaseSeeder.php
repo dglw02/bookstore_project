@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
         // tao cho 1 nguoi dung
 
         $this->call((AreasDatabase::class));
-        $this->call((ProvinceDatabase::class));
+        $this->call((CityDatabase::class));
         $this->call((UsersDatabase::class));
         $this->call((CategoryDatabase::class));
         $this->call((PublisherDatabase::class));
