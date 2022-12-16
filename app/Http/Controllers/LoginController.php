@@ -55,8 +55,7 @@ class LoginController extends Controller
 
     public function hashPassword()
     {
-        $password = ;
-        return view('register', ['password' => $password]);
+
     }
 
     public function storeUser(Request $request)
@@ -67,8 +66,6 @@ class LoginController extends Controller
             'password' => 'required',
             'user_province' => 'required',
             'phone' => 'required|max:10|numeric',
-
-
             'isAdmin' => 'false',
         ]);
         $user = User::create($storeData);
