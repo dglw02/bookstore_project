@@ -12,10 +12,6 @@ class LoginController extends Controller
         return view('/login');
     }
 
-    function viewRegister(){
-        return view('/register');
-    }
-
     function login(Request $request){
         $email = $request->get('email');
         $password = $request->get('password');
@@ -42,10 +38,6 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect('/');
-
-    }
-
-    function register(){
 
     }
 }
