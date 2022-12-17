@@ -70,10 +70,10 @@
 
 .product-image .product-image-main{
     position: relative;
-    display: block;
-    height: 480px;
+    display: flex;
+    height: 700px;
     background: var(--bg-grey);
-    padding: 10px;
+    padding: 50px;
 }
 
 .product-image-main img{
@@ -83,19 +83,6 @@
     object-fit: contain;
 }
 
-.product-image-slider{
-    display: flex;
-    gap: 10px;
-    margin: 10px 0;
-}
-
-.product-image-slider img{
-    width: 90px;
-    height: 90px;
-    background: var(--bg-grey);
-    padding: 6px;
-    cursor: pointer;
-}
 
 /** product title **/
 
@@ -151,13 +138,13 @@
     margin: 10px 0;
 }
 .product-details h3{
-    font-size: 18px;
+    font-size: 25px;
     font-weight: 500;
 }
 .product-details p{
     margin: 5px 0;
     font-size: 14px;
-    line-height: 1.2rem;
+    line-height: 2.2rem;
 }
 
 /** Product size **/

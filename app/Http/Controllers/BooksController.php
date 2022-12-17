@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Author;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\Books;
+use App\Models\Cart;
+use App\Models\User;
 
 class BooksController extends Controller
 {
@@ -56,6 +59,27 @@ class BooksController extends Controller
     function newestBook(){
         $books =Books::orderBy('created_at','DESC')->get()->take(10);
         return view('new',compact('books',));
+    }
+
+    function addCart(Request $request ,$books_id){
+        if(Auth::id())
+        {
+            $user =auth()->user();
+            $books=Books::find($books_id);
+            $cart =new cart;
+            $cart->cart_name=$user->name;
+            $cart->cart_phone=$user->phone;
+            $cart->cart_address=$user->address;
+            $cart->books_name=$books->books_name;
+            $cart->cart_price=$books->books_price;
+            $cart->cart_quantity=$request->books_quantity;
+            $cart->save();
+            return redirect()->back();
+        }
+        else
+        {
+            return redirect('login');
+        }
     }
 
 }

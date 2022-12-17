@@ -14,6 +14,7 @@
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
+<form action="{{url('cart',$books->books_id)}}" method="POST">
 <div class="container">
     <div class="single-product">
         <div class="row">
@@ -44,14 +45,8 @@
                     </div>
 
                     <div class="product-details">
-                        <h3>Category</h3>
-                        <p>{{$books->category->category_name}}</p>
-                    </div>
-
-                    <div class="product-details">
                         <h3>Publisher</h3>
                         <p>{{$books->publisher->publisher_name}}</p>
-                        <a href="{{url('/')}}" class="logo"> <img style="height:100px;width: 100px;border-radius: 950px;" src={{$books->publisher->publisher_image}} alt=""></a>
                     </div>
 
                     <div class="product-details">
@@ -60,10 +55,18 @@
                         <a href="{{url('/')}}" class="logo"> <img style="height:100px;width: 100px;border-radius: 950px" src={{$books->author->author_image}} alt=""></a>
                     </div>
 
+
+
+                    @if($books->books_quantity > 0)
+                        <a href="#" class="btn">In Stock</a>
                     <div class="product-details">
-                        <h3>Quantity</h3>
-                        <p>{{$books['books_quantity']}}</p>
+                        <br>
+                        <input type="number" value="1" min="1" class="form-control" style="width: 100px" name="books_quantity">
+                        @else
+                            <a href="#" class="btn">Out of Stock</a>
+                        @endif
                     </div>
+
 
                     <div class="product-details">
                         <h3>Description</h3>
@@ -72,7 +75,7 @@
 
 
                     <span class="divider"></span>
-
+                    @if($books->books_quantity >0)
                     <div class="product-btn-group">
                         <div class="button buy-now"><i class='bx bxs-zap' ></i> Buy Now</div>
                         <form action="/add_to_cart" method="POST">
@@ -82,12 +85,13 @@
                         </form>
                         <div class="button heart"><i class='bx bxs-heart' ></i> Add to Wishlist</div>
                     </div>
+                        @endif
                 </div>
             </div>
         </div>
     </div>
 </div>
-
+</form>
 
 
 <section class="featured" id="featured">
@@ -130,3 +134,4 @@
 </body>
 </html>
 @endsection
+
