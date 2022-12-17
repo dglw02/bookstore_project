@@ -14,7 +14,7 @@
                     </ul>
                 </div><br />
             @endif
-            <form method="POST" action="{{url('/admin/author/{author}/edit')}}">
+            <form method="POST" action="{{url('/admin/author/'.$author->author_id.'/edit')}}">
                 @csrf
                 @method('put')
                 <div class="form-group">

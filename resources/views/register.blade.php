@@ -13,7 +13,7 @@
             background-color: lightblue;
         }
 
-        input[type=text], input[type=password], textarea {
+        input[type=text], input[type=password], input[type=number], select, textarea {
             width: 100%;
             padding: 15px;
             margin: 5px 0 22px 0;
@@ -72,48 +72,57 @@
             </h1>
         </center>
         <hr>
+        <div class="form-group">
         <label for="name">
             Name
         </label>
-        <input type="text" name="name" placeholder="Name" size="15" required/>
+        <input type="text" name="name" class="form-control" placeholder="Name" size="15"/>
+        </div>
 
-        <div>
-            <label for="user_areas">
-                Area :
+        <div class="form-group">
+            <label>
+                City :
             </label>
             <br>
-            <select class="form-control" name="category_id">
-                @foreach($areas as $area)
-                    <option value="{{ $area->areas_id }}">{{ $area->areas_name }}</option>
+            <select class="form-control" name="user_city">
+                @foreach($cities as $city)
+                    <option value="{{ $city->city_id }}">{{ $city->city_name }}</option>
                 @endforeach
             </select>
         </div>
 
-        <div>
-            <label>
-                City :
-            </label>
-        </div>
+        <div class="form-group">
         <label for="phone">
             Phone :
         </label>
-        <input type="text" name="phone" placeholder="phone no." size="10" required>
+        <input type="number" class="form-control" name="phone" placeholder="phone no." >
+        </div>
+
+        <div class="form-group">
         <label for="address">
             Current Address :
         </label>
 
-        <textarea cols="80" rows="5" placeholder="Address" value="address" required>
+        <textarea cols="80" rows="5" placeholder="Address" name="address" required>
         </textarea>
+        </div>
+
+        <div class="form-group">
         <label for="email">
                 Email
         </label>
-        <input type="text" placeholder="Enter Email" name="email" required>
+        <input type="text" class="form-control" placeholder="Enter Email" name="email" required>
+        </div>
+
+        <div class="form-group">
         <label for="password">
                 Password
         </label>
-        <input type="password" placeholder="Enter Password" name="password" required>
+        <input type="password" class="form-control" placeholder="Enter Password" name="password" required>
+        </div>
+
     </div>
-    <h3 type="submit" class="registerbtn">Register</h3>
+    <button type="submit" class="registerbtn">Register</button>
 </form>
 </div>
 </body>

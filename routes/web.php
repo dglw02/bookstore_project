@@ -63,11 +63,11 @@ Route::get('/admin/category/create', [AdminCategoryController::class, 'create'])
 // Them sp: xu ly => ko co giao dien
 Route::post("/admin/category/create", [AdminCategoryController::class, 'store']);
 // Sua 1 san pham: view
-Route::get("/admin/category/{category}/edit", [AdminCategoryController::class, 'edit']);
+Route::get("/admin/category/{category_id}/edit", [AdminCategoryController::class, 'edit']);
 // Cap nhat sp => ko co giao dien
-Route::put("/admin/category/{category}/edit", [AdminCategoryController::class, 'update']);
+Route::put("/admin/category/{category_id}/edit", [AdminCategoryController::class, 'update']);
 // Xoa 1 san pham
-Route::delete("/admin/category/{category}/delete", [AdminCategoryController::class, 'destroy']);
+Route::delete("/admin/category/{category_id}/delete", [AdminCategoryController::class, 'destroy']);
 
 //admin author
 // Them 1 san pham: view
@@ -75,11 +75,11 @@ Route::get('/admin/author/create', [AdminAuthorController::class, 'create']);
 // Them sp: xu ly => ko co giao dien
 Route::post("/admin/author/create", [AdminAuthorController::class, 'store']);
 // Sua 1 san pham: view
-Route::get("/admin/author/{author}/edit", [AdminAuthorController::class, 'edit']);
+Route::get("/admin/author/{author_id}/edit", [AdminAuthorController::class, 'edit']);
 // Cap nhat sp => ko co giao dien
-Route::put("/admin/author/{author}/edit", [AdminAuthorController::class, 'update']);
+Route::put("/admin/author/{author_id}/edit", [AdminAuthorController::class, 'update']);
 // Xoa 1 san pham
-Route::delete("/admin/author/{author}/delete", [AdminAuthorController::class, 'destroy']);
+Route::delete("/admin/author/{author_id}/delete", [AdminAuthorController::class, 'destroy']);
 
 //register
 Route::get('/register', [LoginController::class, 'createUser']);

@@ -54,7 +54,7 @@ class AdminAuthorController extends Controller
             'author_image' => 'required|max:255',
             'author_description' => 'required|max:2000',
         ]);
-        Author::where($author_id)->update($updateData);
+        Author::where('author_id',"=",$author_id)->update($updateData);
         return redirect('/admin/author')->with('completed', 'Author has been updated');
     }
     /**

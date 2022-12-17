@@ -50,8 +50,8 @@ class LoginController extends Controller
 
     public function createUser()
     {
-        $areas = Areas::get();
-        return view('register', ['areas' => $areas]);
+        $cities = City::get();
+        return view('register', ['cities' => $cities]);
     }
 
 
@@ -60,14 +60,15 @@ class LoginController extends Controller
     {
         $storeData = $request->validate([
             'name' => 'required|max:255',
-            'email' => 'required|max:255',
+            'email' => 'required|email|unique:users',
             'address'=>'required|max:255',
             'password' => 'required',
-            'user_areas' => 'required',
-            'phone' => 'required|max:10|numeric',
-            'isAdmin' => 'required',
+            'user_city' => 'required',
+            'phone' => 'required|numeric|max:10',
         ]);
+        dd($storeData);
         $user = User::create($storeData);
+        //dd($user);
         return redirect('/')->with('completed', '!! Account has created !!');
     }
 }

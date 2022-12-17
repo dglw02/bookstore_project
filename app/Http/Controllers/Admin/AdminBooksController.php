@@ -37,7 +37,7 @@ class AdminBooksController extends Controller
             'books_quantity' => 'required|numeric',
             'books_image' => 'required|max:500',
             'books_price' => 'required|numeric',
-            'isAdmin' => 'required|numeric',
+            'books_ISBN' => 'required|numeric',
         ]);
         $book = Books::create($storeData);
         return redirect('/admin/products')->with('completed', 'Book has been saved!');

@@ -54,7 +54,7 @@ class AdminCategoryController extends Controller
             'category_image' => 'required|max:255',
             'category_description' => 'required|max:2000',
         ]);
-        Category::wherecategory_id($category_id)->update($updateData);
+        Category::where('category_id',"=",$category_id)->update($updateData);
         return redirect('/admin/category')->with('completed', 'Category has been updated');
     }
     /**
