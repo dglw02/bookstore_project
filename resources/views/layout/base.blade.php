@@ -119,7 +119,6 @@
             <a href="#"> <i class="fas fa-envelope"></i> asdfghj@gmail.com </a>
             <img src="image/worldmap.png" class="map" alt="">
         </div>
-
     </div>
 
     <div class="share">

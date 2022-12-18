@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Author;
 use App\Models\Category;
-use Illuminate\Http\Request;
+use Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\Books;
@@ -30,6 +30,12 @@ class BooksController extends Controller
 
     function allBooks(){
         $data = Books::all();
+        if(Request::get('sort')=='price_asc'){
+            $data = Books::orderBy('books_price','ASC')->get();
+        }
+        elseif(Request::get('sort') =='price_desc'){
+            $data = Books::orderBy('books_price','DESC')->get();
+        }
         return view('allbooks',['books'=>$data]);
     }
 
@@ -48,13 +54,17 @@ class BooksController extends Controller
 
     function productsByCategory($category_name){
         $category =Category::where('category_name',$category_name)->first();
-        if($category){
-            $books = $category->books()->get();
-            return view('category.index',compact('category','books',));
-        }else{
-            return redirect()->back();
+        $books = $category->books()->get();
+        $category_id = $category->category_id;
+        if(Request::get('sort')=='price_asc'){
+            $books = $category->books()->where('category_id',$category_id)->orderBy('books_price','ASC')->get();
         }
+        elseif(Request::get('sort') =='price_desc'){
+        $books = $category->books()->where('category_id',$category_id)->orderBy('books_price','DESC')->get();
+        }
+        return view('category.index',compact('category','books',));
     }
+    
 //new page
     function newestBook(){
         $books =Books::orderBy('created_at','DESC')->get()->take(10);
