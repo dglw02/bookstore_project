@@ -64,7 +64,7 @@ class BooksController extends Controller
         }
         return view('category.index',compact('category','books',));
     }
-    
+
 //new page
     function newestBook(){
         $books =Books::orderBy('created_at','DESC')->get()->take(10);
