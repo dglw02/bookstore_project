@@ -66,9 +66,8 @@ class LoginController extends Controller
             'user_city' => 'required',
             'phone' => 'required|numeric',
         ]);
-        Hash::$storeData('password') = $storeData('password');
+        $storeData ['password']= Hash::make( $storeData ['password']);
         $user = User::create($storeData);
-
         return redirect('/')->with('completed', '!! Account has created !!');
     }
 }

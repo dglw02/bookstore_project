@@ -25,7 +25,7 @@
             <div id="search-btn" class="fas fa-search"></div>
             <a href="#" class="fas fa-heart"></a>
             <a href="#" class="fas fa-shopping-cart"></a>
-            <div id="login-btn" class="fas fa-user"></div>
+            <a href="{{url('register')}}" class="fas fa-user"></a>
         </div>
 
     </div>

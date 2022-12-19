@@ -28,10 +28,7 @@ class BooksController extends Controller
     }
 
 
-    function allBooks(){
-        $data = Books::all();
-        return view('allbooks',['books'=>$data]);
-    }
+
 
 
     function showDetail($books_id){
@@ -46,15 +43,7 @@ class BooksController extends Controller
     }
 
 
-    function productsByCategory($category_name){
-        $category =Category::where('category_name',$category_name)->first();
-        if($category){
-            $books = $category->books()->get();
-            return view('category.index',compact('category','books',));
-        }else{
-            return redirect()->back();
-        }
-    }
+
 //new page
     function newestBook(){
         $books =Books::orderBy('created_at','DESC')->get()->take(10);

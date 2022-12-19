@@ -19,14 +19,14 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->unsignedInteger('user_city');
-            $table->string('phone');
+            $table->string('phone',11);
             $table->string('password');
 
 
 
 //Admin only
-            $table->boolean('isAdmin',false);
-            $table->integer('level');
+            $table->boolean('isAdmin')->default(false);
+            $table->integer('level')->default(0);
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
