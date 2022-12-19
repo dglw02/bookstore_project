@@ -16,7 +16,7 @@ class BooksController extends Controller
     //
     function showBooks(){
         $books = Books::all();
-        $author =Author::all();
+        $author = Author::all();
         $category =Category::all();
         $newbook =Books::orderBy('created_at','DESC')->get()->take(10);
         return view('home',compact('books','author','category','newbook'));
