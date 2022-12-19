@@ -5,6 +5,7 @@ use App\Http\Controllers\BooksController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Admin\AdminBooksController;
+use App\Http\Controllers\SortBooksController;
 use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminAuthorController;
 use App\Http\Controllers\Admin\AdminOrdersController;
@@ -97,7 +98,7 @@ Route::post('/logout',[LoginController::class,'logout']);
 
 //Books
 Route::get('/',[BooksController::class,'showBooks']);
-Route::get('/allbooks',[BooksController::class,'allBooks']);
+Route::get('/allbooks',[SortBooksController::class,'allBooks']);
 Route::get('/detail/{id}',[BooksController::class,'showDetail']);
 Route::post('/cart/{id}',[BooksController::class,'addCart']);
 Route::get('search',[BooksController::class,'search']);
@@ -105,4 +106,4 @@ Route::get('new',[BooksController::class,'newestBook']);
 
 //Category
 Route::get('/category',[BooksController::class,'allCategory']);
-Route::get('/category/{category_name}',[BooksController::class,'productsByCategory']);
+Route::get('/category/{category_name}',[SortBooksController::class,'productsByCategory']);
