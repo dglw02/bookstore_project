@@ -64,11 +64,11 @@ class LoginController extends Controller
             'address'=>'required|max:255',
             'password' => 'required',
             'user_city' => 'required',
-            'phone' => 'required|numeric|max:10',
+            'phone' => 'required|numeric',
         ]);
-        dd($storeData);
+        Hash::$storeData('password') = $storeData('password');
         $user = User::create($storeData);
-        //dd($user);
+
         return redirect('/')->with('completed', '!! Account has created !!');
     }
 }
