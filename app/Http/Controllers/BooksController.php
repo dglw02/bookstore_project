@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Books;
 use App\Models\Cart;
 use App\Models\User;
+use MongoDB\Driver\Session;
 
 class BooksController extends Controller
 {
@@ -70,6 +71,13 @@ class BooksController extends Controller
         {
             return redirect('login');
         }
+    }
+
+
+    function cartList(){
+        //$user_name=Session::get('user')['id'];
+        //$books = DB::table('cart')->join('books','books_name','=','books_name')->where('cart_name',$user_name)->select('books.*')->get();
+        return view('cartlist');
     }
 
 }
