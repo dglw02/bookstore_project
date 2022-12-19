@@ -74,7 +74,7 @@ class BooksController extends Controller
     function addCart(Request $request ,$books_id){
         if(Auth::id())
         {
-            ///
+            ///asd
             $user =auth()->user();
             $books=Books::find($books_id);
             $cart =new cart;
