@@ -52,8 +52,7 @@ class AdminController extends Controller
     }
 
     function viewAllOrders(){
-        $orders = DB::table('orders')->get();
-        return view('admin/order/all-orders', ['orders'=> $orders]);
+        return view('admin/order/all-orders');
     }
 
     function viewProfile(){
