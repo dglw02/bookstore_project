@@ -23,9 +23,10 @@
 
         <div class="icons">
             <div id="search-btn" class="fas fa-search"></div>
-            <a href="#" class="fas fa-heart"></a>
+            <a href="{{'/logout'}}" class="fas fa-heart"></a>
             <a href="{{url('cartlist')}}" class="fas fa-shopping-cart"></a>
-            <a href="{{url('register')}}" class="fas fa-user"></a>
+
+            <a href="{{url('login')}}" class="fas fa-user"></a>
         </div>
 
     </div>
