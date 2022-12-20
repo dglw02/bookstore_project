@@ -133,17 +133,6 @@
     <div class="credit"> <span>A room without books is like a body without a soul</span></div>
 
 </section>
-
-<!-- footer section ends -->
-
-<!-- loader  -->
-
-
-<!-- footer section ends -->
-
-
-
-
 <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 <script src="{{ asset('js/layout.js') }}"></script>
 @yield('scripts')
