@@ -84,7 +84,7 @@ Route::put("/admin/author/{author_id}/edit", [AdminAuthorController::class, 'upd
 Route::delete("/admin/author/{author_id}/delete", [AdminAuthorController::class, 'destroy']);
 
 //admin orders
-Route::get('/admin/order/{orders_id}/detail', [AdminOrdersController::class, 'detail']);
+Route::get('/admin/order/detail', [AdminOrdersController::class, 'detail']);
 Route::delete("/admin/order/{orders_id}/delete", [AdminOrdersController::class, 'destroy']);
 
 

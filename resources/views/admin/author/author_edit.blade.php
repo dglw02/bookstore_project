@@ -28,7 +28,7 @@
                 </div>
                 <div class="form-group">
                     <label for="author_description">Description</label> <br>
-                    <textarea name="author_description"> {{ $author->author_description }}</textarea>
+                    <textarea name="author_description"  cols="132"> {{ $author->author_description }}</textarea>
                 </div>
 
                 <button type="submit" class="btn btn-block btn-danger">Update Author</button>

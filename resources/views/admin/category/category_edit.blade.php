@@ -28,7 +28,7 @@
                 </div>
                 <div class="form-group">
                     <label for="category_description">Description</label> <br>
-                    <textarea name="category_description"> {{ $category->category_description }}</textarea>
+                    <textarea name="category_description" cols="132"> {{ $category->category_description }}</textarea>
                 </div>
 
                 <button type="submit" class="btn btn-block btn-danger">Update Category</button>

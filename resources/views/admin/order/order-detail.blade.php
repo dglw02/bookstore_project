@@ -4,11 +4,10 @@
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="container-fluid">
-                <h4 class="my-4 p-4 bg-light">Order Details of order no <b></b></h4>
 
                 <div class="card my-4">
                     <div class="card-header">
-                        <h4>Billing Address</h4>
+                        <h4>Customer Information</h4>
                     </div>
                     <div class="card-body">
                         <p><i class="fas fa-user"></i> <span class="mx-2"></span></p>
@@ -32,14 +31,14 @@
                         <tr>
                             <td></td>
                             <td></td>
-                            <td>TK</td>
-                            <td>TK</td>
+                            <td>$</td>
+                            <td>$</td>
                         </tr>
 
                         <tr>
                             <td colspan="2"></td>
                             <td><strong>Total</strong></td>
-                            <td><strong>TK</strong></td>
+                            <td><strong>$</strong></td>
                         </tr>
                         </tbody>
                     </table>
