@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SortBooksController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Admin\AdminBooksController;
+use App\Http\Controllers\Admin\AdminOrdersController;
 use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminAuthorController;
 use Illuminate\Support\Facades\Route;
@@ -81,6 +82,13 @@ Route::get("/admin/author/{author_id}/edit", [AdminAuthorController::class, 'edi
 Route::put("/admin/author/{author_id}/edit", [AdminAuthorController::class, 'update']);
 // Xoa 1 san pham
 Route::delete("/admin/author/{author_id}/delete", [AdminAuthorController::class, 'destroy']);
+
+//admin orders
+Route::get('/admin/order/{orders_id}/detail', [AdminOrdersController::class, 'detail']);
+Route::delete("/admin/order/{orders_id}/delete", [AdminOrdersController::class, 'destroy']);
+
+
+
 
 //register
 Route::get('/register', [LoginController::class, 'createUser']);
