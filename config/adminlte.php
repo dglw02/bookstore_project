@@ -311,12 +311,12 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
-        [
+        /*[
             'text'        => 'Home',
             'url'         => 'admin/home',
             'icon'        => 'fas fa-home text-success',
 
-        ],
+        ], */
 
         [
             'text'        => 'Dashboard',
@@ -367,7 +367,7 @@ return [
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-user',
         ],
-        [
+        /* [
             'text' => 'change_password',
             'url'  => 'admin/change_password',
             'icon' => 'fas fa-fw fa-lock',
@@ -409,8 +409,8 @@ return [
                     'url'  => '#',
                 ],
             ],
-        ],
-        ['header' => 'labels'],
+        ], */
+       /* ['header' => 'labels'],
         [
             'text'       => 'important',
             'icon_color' => 'red',
@@ -425,7 +425,7 @@ return [
             'text'       => 'information',
             'icon_color' => 'cyan',
             'url'        => '#',
-        ],
+        ], */
     ],
 
     /*

@@ -39,7 +39,7 @@
                 </div>
                 <div class="form-group">
                     <label for="books_description">Description</label><br>
-                    <textarea name="books_description" id="editor"> {{ $book->books_description }}</textarea>
+                    <textarea name="books_description" id="editor" cols="132"> {{ $book->books_description }}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="books_author">Author</label>
