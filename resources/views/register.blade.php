@@ -3,10 +3,20 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Register</title>
     <link href="{{ asset('css/register.css') }}" rel="stylesheet">
 </head>
 <body>
 <div class="card-body">
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div><br />
+    @endif
         <div class="form-container">
             <form method="POST" action="{{url('register')}}">
                 @csrf

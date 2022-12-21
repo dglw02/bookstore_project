@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Forest</title>
+    <link rel="icon" href="{{ url('asset/img/logo.png') }}">
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="{{ asset('css/layout.css') }}" rel="stylesheet">
@@ -98,9 +99,10 @@
         </div>
 
         <div class="box">
-            <h3>quick links</h3>
+            <h3>Menu</h3>
             <a href="{{url('/')}}"><i class="fas fa-arrow-right"></i>Home</a>
             <a href="{{URL::to('/new')}}"><i class="fas fa-arrow-right"></i>New</a>
+            <a href="{{URL::to('/category')}}"><i class="fas fa-arrow-right"></i>Category</a>
             <a href="{{URL::to('/topsellers')}}"><i class="fas fa-arrow-right"></i>Top Sellers</a>
             <a href="{{URL::to('/allbooks')}}"><i class="fas fa-arrow-right"></i>All</a>
         </div>
@@ -125,11 +127,11 @@
     </div>
 
     <div class="share">
-        <a href="#" class="fab fa-facebook-f"></a>
-        <a href="#" class="fab fa-twitter"></a>
-        <a href="#" class="fab fa-instagram"></a>
-        <a href="#" class="fab fa-linkedin"></a>
-        <a href="#" class="fab fa-pinterest"></a>
+        <a href="https://www.facebook.com" class="fab fa-facebook-f"></a>
+        <a href="https://twitter.com/?lang=vi" class="fab fa-twitter"></a>
+        <a href="https://www.instagram.com" class="fab fa-instagram"></a>
+        <a href="https://www.youtube.com" class="fab fa-youtube"></a>
+        <a href="https://www.tiktok.com/vi-VN/" class="fab fa-tiktok"></a>
     </div>
 
     <div class="credit"> <span>A room without books is like a body without a soul</span></div>
