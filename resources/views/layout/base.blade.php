@@ -24,7 +24,7 @@
         <div class="icons">
             <div id="search-btn" class="fas fa-search"></div>
             <a href="{{url('cartlist')}}" class="fas fa-shopping-cart"></a>
-                <a href="{{url('register')}}">{{Auth::user()->name}}</a>
+                <a href="{{url('register')}}">{{Auth::user()->name ?? 'None'}}</a>
                 <a href="{{url('register')}}">Register</a>
                 <a href="{{url('login')}}">Login</a>
 
