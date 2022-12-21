@@ -18,6 +18,8 @@ return new class extends Migration
             $table->unsignedInteger('id');
             $table->string('orders_payment');
             $table->double('orders_totalprice');
+            $table->string('orders_phone',11);
+            $table->string('orders_address');
             $table->integer('orders_status')->default(0);
 
             $table->foreign('id')->references('id')->on('users');

@@ -8,8 +8,26 @@ $(".product-quantity input").change(function () {
     updateQuantity(this);
 });
 
-$(".product-removal button").click(function () {
-    removeItem(this);
+$(".remove-product").click(function (e) {
+    e.preventDefault();
+
+    $.ajaxSetup({
+        headers:{
+            'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    var books_id = $(this).closest('.product').find('.books_id').val();
+    $.ajax({
+        method:'POST',
+        url:'remove-product',
+        data:{
+            'books_id':books_id,
+        },
+        success:function (){
+            window.location.reload();
+        }
+    })
 });
 
 /* Recalculate cart */

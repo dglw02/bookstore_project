@@ -58,12 +58,9 @@ class BooksController extends Controller
             $user =auth()->user();
             $books=Books::find($books_id);
             $cart =new cart;
-            $cart->cart_name=$user->name;
-            $cart->cart_phone=$user->phone;
-            $cart->cart_address=$user->address;
-            $cart->books_name=$books->books_name;
-            $cart->cart_price=$books->books_price;
-            $cart->cart_quantity=$request->books_quantity;
+            $cart->user_id=$user->id;
+            $cart->books_id=$books->books_id;
+            $cart->books_quantity=$request->books_quantity;
             $cart->save();
             return redirect()->back();
         }
@@ -75,9 +72,26 @@ class BooksController extends Controller
 
 
     function cartList(){
-        //$user_name=Session::get('user')['id'];
-        //$books = DB::table('cart')->join('books','books_name','=','books_name')->where('cart_name',$user_name)->select('books.*')->get();
-        return view('cartlist');
+        $cartitems = Cart::where('user_id',Auth::id())->get();
+        return view('cartlist',compact('cartitems'));
+    }
+
+    public function deleteCart(Request $request)
+    {
+        if(Auth::check())
+        {
+            $books_id = $request->input('books_id');
+            if(Cart::where('books_id',$books_id)->where('user_id',Auth::id())->exists())
+            {
+                $cartItem =where('books_id',$books_id)->where('user_id',Auth::id())->first();
+                $cartItem->delete();
+                return response()->json(['status'=>'Book deleted successfully']);
+            }
+        }
+        else
+        {
+            return response()->json(['status'=>'login continue']);
+        }
     }
 
 }

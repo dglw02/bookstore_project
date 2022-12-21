@@ -110,6 +110,7 @@ Route::get('new',[BooksController::class,'newestBook']);
 Route::get('/category',[BooksController::class,'allCategory']);
 Route::get('/category/{category_name}',[SortBooksController::class,'productsByCategory']);
 
-
+//cart
 Route::post('/cart/{id}',[BooksController::class,'addCart']);
 Route::get('/cartlist',[BooksController::class,'cartList']);
+Route::post('remove-product',[BooksController::class,'deleteCart']);

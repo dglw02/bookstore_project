@@ -11,6 +11,7 @@ use App\Models\Publisher;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -61,13 +62,11 @@ class LoginController extends Controller
         $storeData = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|email|unique:users',
-            'address'=>'required|max:255',
             'password' => 'required',
             'user_city' => 'required',
-            'phone' => 'required|numeric',
         ]);
-        $storeData ['password']= Hash::make( $storeData ['password']);
-        $user = User::create($storeData);
-        return redirect('/')->with('completed', '!! Account has created !!');
+            $storeData ['password'] = Hash::make($storeData ['password']);
+            $user = User::create($storeData);
+            return redirect('/')->with('completed', '!! Account has created !!');
     }
 }

@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link href="{{ asset('css/cart.css') }}" rel="stylesheet">
@@ -21,46 +20,26 @@
         <label class="product-removal">Remove</label>
         <label class="product-line-price">Total</label>
     </div>
-
+    @foreach($cartitems as $item)
     <div class="product">
         <div class="product-image">
-            <img src="https://s.cdpn.io/3/dingo-dog-bones.jpg">
+            <img src={{$item->books->books_image}}>
         </div>
         <div class="product-details">
-            <div class="product-title">Dingo Dog Bones</div>
-            <p class="product-description">The best dog bones of all time. Holy crap. Your dog will be begging for these things! I got curious once and ate one myself. I'm a fan.</p>
+            <div class="product-title">{{$item->books->books_name}}</div>
+            <p class="product-description">{{$item->books->books_description}}</p>
         </div>
-        <div class="product-price">12.99</div>
+        <div class="product-price">{{$item->books->books_price}}</div>
         <div class="product-quantity">
-            <input type="number" value="2" min="1">
+            <input type="hidden" class="books_id" value="{{$item->books_id}}">
+            <input type="number" value="{{$item->books_quantity}}" min="1">
         </div>
         <div class="product-removal">
-            <button class="remove-product">
-                Remove
-            </button>
+            <button class="remove-product">Remove</button>
         </div>
         <div class="product-line-price">25.98</div>
     </div>
-
-    <div class="product">
-        <div class="product-image">
-            <img src="https://s.cdpn.io/3/large-NutroNaturalChoiceAdultLambMealandRiceDryDogFood.png">
-        </div>
-        <div class="product-details">
-            <div class="product-title">Nutro™ Adult Lamb and Rice Dog Food</div>
-            <p class="product-description">Who doesn't like lamb and rice? We've all hit the halal cart at 3am while quasi-blackout after a night of binge drinking in Manhattan. Now it's your dog's turn!</p>
-        </div>
-        <div class="product-price">45.99</div>
-        <div class="product-quantity">
-            <input type="number" value="1" min="1">
-        </div>
-        <div class="product-removal">
-            <button class="remove-product">
-                Remove
-            </button>
-        </div>
-        <div class="product-line-price">45.99</div>
-    </div>
+    @endforeach
 
     <div class="totals">
         <div class="totals-item">

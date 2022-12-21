@@ -21,7 +21,6 @@ class UsersDatabase extends Seeder
                 'email' => 'admin1@gmail.com',
                 'isAdmin'=>true,
                 'level'=>0,
-                'phone'=>'0989296235',
                 'user_city'=>'1',
                 'password'=> Hash::make('admin123')
 
@@ -35,7 +34,6 @@ class UsersDatabase extends Seeder
                 'email' => 'user1@gmail.com',
                 'isAdmin'=>false,
                 'level'=>0,
-                'phone'=>'0123456789',
                 'user_city'=>'2',
                 'password'=> Hash::make('user123')
             ]
