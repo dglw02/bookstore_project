@@ -34,6 +34,12 @@
             <input type="hidden" class="books_id" value="{{$item->books_id}}">
             <input type="number" value="{{$item->books_quantity}}" min="1">
         </div>
+        <form method="POST" action="{{url('/cart/'.$item->id.'/delete')}}">
+            @csrf
+            @method('delete')
+            <button type="submit" onclick="return confirm('Book will move to trash! Are you sure to delete??')"
+                    class="btn btn-sm btn-danger">Remove</button>
+        </form>
         <div class="product-removal">
             <button class="remove-product">Remove</button>
         </div>

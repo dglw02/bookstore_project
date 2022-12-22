@@ -76,22 +76,13 @@ class BooksController extends Controller
         return view('cartlist',compact('cartitems'));
     }
 
-    public function deleteCart(Request $request)
+
+
+    public function deleteCart($cartitems)
     {
-        if(Auth::check())
-        {
-            $books_id = $request->input('books_id');
-            if(Cart::where('books_id',$books_id)->where('user_id',Auth::id())->exists())
-            {
-                $cartItem =where('books_id',$books_id)->where('user_id',Auth::id())->first();
-                $cartItem->delete();
-                return response()->json(['status'=>'Book deleted successfully']);
-            }
-        }
-        else
-        {
-            return response()->json(['status'=>'login continue']);
-        }
+        $cartitems = Cart::findOrFail($cartitems);
+        $cartitems->delete();
+        return redirect('/cartlist');
     }
 
 }

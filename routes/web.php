@@ -112,5 +112,5 @@ Route::get('/category/{category_name}',[SortBooksController::class,'productsByCa
 
 //cart
 Route::post('/cart/{id}',[BooksController::class,'addCart']);
+Route::delete("/cart/{id}/delete", [BooksController::class, 'deleteCart']);
 Route::get('/cartlist',[BooksController::class,'cartList']);
-Route::post('remove-product',[BooksController::class,'deleteCart']);
