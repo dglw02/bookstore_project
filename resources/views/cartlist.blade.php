@@ -40,9 +40,6 @@
             <button type="submit" onclick="return confirm('Book will move to trash! Are you sure to delete??')"
                     class="btn btn-sm btn-danger">Remove</button>
         </form>
-        <div class="product-removal">
-            <button class="remove-product">Remove</button>
-        </div>
         <div class="product-line-price">25.98</div>
     </div>
     @endforeach
