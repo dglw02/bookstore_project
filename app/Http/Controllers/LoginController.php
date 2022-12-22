@@ -62,7 +62,7 @@ class LoginController extends Controller
         $storeData = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|email|unique:users',
-            'password' => 'required',
+            'password' => 'required|confirmed|min:6',
             'user_city' => 'required',
         ]);
             $storeData ['password'] = Hash::make($storeData ['password']);

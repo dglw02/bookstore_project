@@ -96,7 +96,7 @@ Route::post('/register', [LoginController::class, 'storeUser']);
 //login
 Route::get('/login',[LoginController::class,'viewLogin']);
 Route::post('/login',[LoginController::class,'login']);
-Route::post('/logout',[LoginController::class,'logout']);
+Route::get('/logout',[LoginController::class,'logout']);
 
 
 //Books

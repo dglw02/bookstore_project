@@ -28,7 +28,10 @@
                         <option value="{{ $city->city_id }}">{{ $city->city_name }}</option>
                     @endforeach
                 </select>
-                <input type="password" name="password" placeholder="enter your password" required class="box">
+                <input type="password" name="password" placeholder="enter your password" required class="box"
+                       autocomplete="current-password">
+                <input type="password" name="password_confirmation" placeholder="confirm your password" required class="box"
+                       autocomplete="current-password">
                 <input type="submit" name="submit" value="register now" class="btn">
                 <p>already have an account? <a href="{{url('login')}}">login now</a></p>
             </form>
