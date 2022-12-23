@@ -95,7 +95,4 @@ class AdminBooksController extends Controller
         return redirect('/admin/products')->with('completed', 'Author has been deleted');
     }
 
-
-
-
 }
