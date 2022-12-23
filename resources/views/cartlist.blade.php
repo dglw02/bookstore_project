@@ -40,18 +40,18 @@
             <button type="submit" onclick="return confirm('Book will move to trash! Are you sure to delete??')"
                     class="btn btn-sm btn-danger">Remove</button>
         </form>
-        <div class="product-line-price">25.98</div>
+        <div class="product-line-price">{{$item->books->books_price}}</div>
     </div>
     @endforeach
 
     <div class="totals">
         <div class="totals-item">
             <label>Subtotal</label>
-            <div class="totals-value" id="cart-subtotal">71.97</div>
+            <div class="totals-value" id="cart-subtotal">{{$item->books->books_price}}</div>
         </div>
         <div class="totals-item">
             <label>Tax (5%)</label>
-            <div class="totals-value" id="cart-tax">3.60</div>
+            <div class="totals-value" id="cart-tax"></div>
         </div>
         <div class="totals-item">
             <label>Shipping</label>
