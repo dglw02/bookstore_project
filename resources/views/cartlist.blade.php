@@ -20,6 +20,28 @@
         <label class="product-removal">Remove</label>
         <label class="product-line-price">Total</label>
     </div>
+
+    <div class="product">
+        <div class="product-image">
+            <img src=>
+        </div>
+        <div class="product-details">
+            <div class="product-title">Shipping payment</div>
+            <p class="product-description">{{Auth::user()->name}}</p>
+        </div>
+        <div class="product-price">{{Auth::user()->city->areas->areas_price}}</div>
+        <div class="product-quantity">
+            <div class="product-price">{{Auth::user()->city->city_name}}</div>
+        </div>
+        <form method="" action="">
+            <button type="submit" onclick="return confirm('Book will move to trash! Are you sure to delete??')"
+                    class="product-removal">Remove</button>
+        </form>
+
+
+        <div class="product-line-price">{{Auth::user()->city->areas->areas_price}}</div>
+    </div>
+
     @foreach($cartitems as $item)
 
     <div class="product">
@@ -42,7 +64,6 @@
                     class="product-removal">Remove</button>
         </form>
         <div class="product-line-price">{{$item->books->books_price}}</div>
-
     </div>
     @endforeach
 
@@ -51,29 +72,17 @@
         <div class="totals-item">
             <label>Subtotal</label>
             <div class="totals-value" id="cart-subtotal">
-                @foreach($cartitems as $item)
-                {{$item->books_price}}
-                @endforeach
             </div>
         </div>
         <div class="totals-item">
             <label>Tax (10%)</label>
             <div class="totals-value" id="cart-tax"></div>
         </div>
-        <div class="totals-item">
-            <label>Shipping</label>
-            <div class="totals-value" id="cart-shipping">
-            </div>
-        </div>
-
-
 
         <div class="totals-item totals-item-total">
             <label>Grand Total</label>
             <div class="totals-value" id="cart-total">
-                @foreach($cartitems as $item)
-                    {{$item->books_price}}
-                @endforeach</div>
+            </div>
         </div>
 
     </div>
