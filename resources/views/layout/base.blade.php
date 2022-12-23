@@ -47,7 +47,6 @@
             <a href="{{url('/')}}">Home</a>
             <a href="{{URL::to('/new')}}">New</a>
             <a href="{{URL::to('/category')}}">Category</a>
-            <a href="{{URL::to('/topsellers')}}">Top Sellers</a>
             <a href="{{URL::to('/allbooks')}}">All</a>
         </nav>
     </div>

@@ -172,13 +172,18 @@
 
             <div class="swiper-wrapper">
                 @foreach($newbook as $book)
-                <a href="#" class="swiper-slide box">
+                <a href="detail/{{$book['books_id']}}" class="swiper-slide box">
                     <div class="image">
-                        <img src={{$book['books_image']}} alt="a">
+                        <img src={{$book['books_image']}}  alt="a" >
                     </div>
                     <div class="content">
                         <h3>{{$book['books_name']}}</h3>
                         <div class="price">${{$book['books_price']}}</div>
+                        <form action="{{url('cart',$book->books_id)}}" method="POST">
+                            @csrf
+                            <input type="hidden" name="books_id" value={{$book['books_id']}}>
+                            <button class="btn">Add to Cart</button>
+                        </form>
                     </div>
                 </a>
                 @endforeach
