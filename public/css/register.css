@@ -979,3 +979,9 @@ section{
     }
 
 }
+
+.alert alert-danger  {
+    color: #D8000C;
+    background-color: #FFBABA;
+}
+
