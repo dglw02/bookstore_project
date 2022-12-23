@@ -1,6 +1,6 @@
 /* Set rates + misc */
 var taxRate = 0.1;
-var shippingRate = 15.0;
+var shippingRate = 1.0;
 var fadeTime = 300;
 
 /* Assign actions */
@@ -8,27 +8,6 @@ $(".product-quantity input").change(function () {
     updateQuantity(this);
 });
 
-$(".remove-product").click(function (e) {
-    e.preventDefault();
-
-    $.ajaxSetup({
-        headers:{
-            'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
-        }
-    });
-
-    var books_id = $(this).closest('.product').find('.books_id').val();
-    $.ajax({
-        method:'POST',
-        url:'remove-product',
-        data:{
-            'books_id':books_id,
-        },
-        success:function (){
-            window.location.reload();
-        }
-    })
-});
 
 /* Recalculate cart */
 function recalculateCart() {
@@ -42,7 +21,7 @@ function recalculateCart() {
     /* Calculate totals */
     var tax = subtotal * taxRate;
     var shipping = subtotal > 0 ? shippingRate : 0;
-    var total = subtotal + tax + shipping;
+    var total = subtotal + tax ;
 
     /* Update totals display */
     $(".totals-value").fadeOut(fadeTime, function () {
@@ -77,12 +56,3 @@ function updateQuantity(quantityInput) {
     });
 }
 
-/* Remove item from cart */
-function removeItem(removeButton) {
-    /* Remove row from DOM and recalc cart total */
-    var productRow = $(removeButton).parent().parent();
-    productRow.slideUp(fadeTime, function () {
-        productRow.remove();
-        recalculateCart();
-    });
-}

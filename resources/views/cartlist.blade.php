@@ -21,9 +21,7 @@
         <label class="product-line-price">Total</label>
     </div>
     @foreach($cartitems as $item)
-        @if($item->books_id == 0)
 
-        @else
     <div class="product">
         <div class="product-image">
             <img src={{$item->books->books_image}}>
@@ -41,11 +39,11 @@
             @csrf
             @method('delete')
             <button type="submit" onclick="return confirm('Book will move to trash! Are you sure to delete??')"
-                    class="btn btn-sm btn-danger">Remove</button>
+                    class="product-removal">Remove</button>
         </form>
         <div class="product-line-price">{{$item->books->books_price}}</div>
+
     </div>
-        @endif
     @endforeach
 
     <div class="totals">
@@ -60,12 +58,16 @@
         </div>
         <div class="totals-item">
             <label>Tax (10%)</label>
-            <div class="totals-value" id="cart-tax">0</div>
+            <div class="totals-value" id="cart-tax"></div>
         </div>
         <div class="totals-item">
             <label>Shipping</label>
-            <div class="totals-value" id="cart-shipping">0</div>
+            <div class="totals-value" id="cart-shipping">
+            </div>
         </div>
+
+
+
         <div class="totals-item totals-item-total">
             <label>Grand Total</label>
             <div class="totals-value" id="cart-total">
@@ -77,7 +79,7 @@
     </div>
 
     <button class="checkout">Checkout</button>
-    <button class="checkout">Back to Shopping</button>
+    <a href="{{url('/')}}"><button type="submit" href="{{url("/")}}" class="checkout">Back to Shopping</button></a>
 
 </div>
 <script

@@ -26,12 +26,12 @@ class AreasDatabase extends Seeder
 
             [
                 'areas_name'=>'Area Center',
-                'areas_price'=>15000
+                'areas_price'=>10
             ],
 
             [
                 'areas_name'=>'Area South',
-                'areas_price'=>20000
+                'areas_price'=>20
             ]
 
         ]);
