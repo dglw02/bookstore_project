@@ -78,7 +78,7 @@
                     @if($books->books_quantity >0)
                     <div class="product-btn-group">
                         <div class="button buy-now"><i class='bx bxs-zap' ></i> Buy Now</div>
-                        <form action="/add_to_cart" method="POST">
+                        <form method="POST">
                             @csrf
                             <input type="hidden" name="books_id" value={{$books['books_id']}}>
                         <button class="button add-cart"><i class='bx bxs-cart' ></i> Add to Cart</button>

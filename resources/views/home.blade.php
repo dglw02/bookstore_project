@@ -90,7 +90,12 @@
                     <div class="content">
                         <h3>{{$book['books_name']}}</h3>
                         <div class="price">${{$book['books_price']}}</div>
-                        <a href="#" class="btn">add to cart</a>
+                        <form action="{{url('cart',$book->books_id)}}" method="POST">
+                            @csrf
+                            <input type="hidden" name="books_id" value={{$book['books_id']}}>
+                            <button class="btn">Add to Cart</button>
+                        </form>
+
                     </div>
                 </div>
                 @endforeach
