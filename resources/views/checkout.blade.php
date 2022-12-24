@@ -26,7 +26,7 @@
     <p>{{$item->books->books_name}}=<span>${{$item->books->books_price}}/x{{$item->books_quantity}}</span> </p>
         @php $total += $item->books_quantity * $item->books->books_price@endphp
     @endforeach
-
+    @php $total = $total +($total * 0.1)@endphp
     <div class="grand-total"> grand total : <span>${{$total}}</span> </div>
 
 </section>
