@@ -31,7 +31,7 @@
         </div>
         <div class="product-price">{{Auth::user()->city->areas->areas_price}}</div>
         <div class="product-quantity">
-            <div class="product-price">{{Auth::user()->city->city_name}}</div>
+            <p class="product-description">{{Auth::user()->city->city_name}}</p>
         </div>
         <form method="" action="">
             <button type="submit" onclick="return confirm('Book will move to trash! Are you sure to delete??')"
@@ -43,7 +43,7 @@
     </div>
 
     @foreach($cartitems as $item)
-
+        @php $total = 0; @endphp
     <div class="product">
         <div class="product-image">
             <img src={{$item->books->books_image}}>
@@ -63,7 +63,8 @@
             <button type="submit" onclick="return confirm('Book will move to trash! Are you sure to delete??')"
                     class="product-removal">Remove</button>
         </form>
-        <div class="product-line-price">{{$item->books->books_price}}</div>
+        @php $total += $item->books_quantity * $item->books->books_price@endphp
+        <div class="product-line-price">{{$total}}</div>
     </div>
     @endforeach
 
@@ -72,6 +73,7 @@
         <div class="totals-item">
             <label>Subtotal</label>
             <div class="totals-value" id="cart-subtotal">
+
             </div>
         </div>
         <div class="totals-item">
@@ -87,7 +89,7 @@
 
     </div>
 
-    <button class="checkout">Checkout</button>
+    <a href="{{url('checkout')}}"><button class="checkout">Checkout</button>
     <a href="{{url('/')}}"><button type="submit" href="{{url("/")}}" class="checkout">Back to Shopping</button></a>
 
 </div>

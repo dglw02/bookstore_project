@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BooksController;
+use App\Http\Controllers\CheckOutController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SortBooksController;
 use App\Http\Controllers\UserController;
@@ -114,3 +115,7 @@ Route::get('/category/{category_name}',[SortBooksController::class,'productsByCa
 Route::post('/cart/{id}',[BooksController::class,'addCart']);
 Route::delete("/cart/{id}/delete", [BooksController::class, 'deleteCart']);
 Route::get('/cartlist',[BooksController::class,'cartList']);
+
+
+//Checkout
+Route::get('checkout',[CheckOutController::class,'index']);
