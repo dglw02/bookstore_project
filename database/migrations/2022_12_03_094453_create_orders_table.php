@@ -15,15 +15,16 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('orders_id');
-            $table->unsignedInteger('id');
+            $table->string('user_id');
+            $table->string('orders_name');
+            $table->string('orders_email');
             $table->string('orders_payment');
-            $table->double('orders_totalprice');
-            $table->string('orders_phone',11);
             $table->string('orders_address');
+            $table->string('orders_phone',11);
+            $table->string('orders_city');
             $table->integer('orders_status')->default(0);
-
-            $table->foreign('id')->references('id')->on('users');
-
+            $table->string('orders_message')->nullable();
+            $table->string('order_tracking');
             $table->timestamps();
         });
     }

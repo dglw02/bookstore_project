@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->unsignedInteger('user_city');
             $table->string('password');
+            $table->string('phone',11);
+            $table->string('address');
 
 
 

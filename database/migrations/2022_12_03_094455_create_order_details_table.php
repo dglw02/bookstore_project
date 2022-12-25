@@ -17,12 +17,10 @@ return new class extends Migration
             $table->increments('order_detail_id');
             $table->unsignedInteger('orders_id');
             $table->unsignedInteger('books_id');
-            $table->double('books_price', 8, 2);
-            $table->integer('order_quantity');
+            $table->integer('quantity');
+            $table->double('price', 8, 2);
             $table->timestamps();
 
-            $table->foreign('orders_id')->references('orders_id')->on('orders');
-            $table->foreign('books_id')->references('books_id')->on('books');
         });
     }
 

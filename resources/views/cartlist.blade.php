@@ -41,7 +41,6 @@
 
         <div class="product-line-price">{{Auth::user()->city->areas->areas_price}}</div>
     </div>
-
     @foreach($cartitems as $item)
         @php $total = 0; @endphp
     <div class="product">
@@ -67,7 +66,6 @@
         <div class="product-line-price">{{$total}}</div>
     </div>
     @endforeach
-
     <div class="totals">
 
         <div class="totals-item">

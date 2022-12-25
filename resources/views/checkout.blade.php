@@ -20,66 +20,52 @@
 </div>
 
 <section class="display-order">
+    <div class="grand-total"> Order detail<span></span> </div>
     @php $total = 0;@endphp
     @foreach($cartitems as $item)
 
     <p>{{$item->books->books_name}}=<span>${{$item->books->books_price}}/x{{$item->books_quantity}}</span> </p>
         @php $total += $item->books_quantity * $item->books->books_price@endphp
     @endforeach
-    @php $total = $total +($total * 0.1)@endphp
-    <div class="grand-total"> grand total : <span>${{$total}}</span> </div>
+    @php $grandtotal = $total +($total * 0.1) + Auth::user()->city->areas->areas_price @endphp
+    <div class="grand-total"> Grand total : <span>${{$total}} + Tax 10% + Ship ${{Auth::user()->city->areas->areas_price}} = ${{$grandtotal}}</span> </div>
 
 </section>
 
 <section class="checkout">
 
-    <form action="" method="post">
+    <form action="{{url('place-order')}}" method="post">
+        @csrf
         <h3>place your order</h3>
         <div class="flex">
             <div class="inputBox">
                 <span>your name :</span>
-                <input type="text" name="name" required placeholder="enter your name">
+                <input type="text" value="{{Auth::user()->name}}" name="orders_name" required placeholder="enter your name">
             </div>
             <div class="inputBox">
                 <span>your number :</span>
-                <input type="number" name="number" required placeholder="enter your number">
+                <input type="number" value="{{Auth::user()->phone}}" name="orders_phone" required placeholder="enter your number">
             </div>
             <div class="inputBox">
                 <span>your email :</span>
-                <input type="email" name="email" required placeholder="enter your email">
+                <input type="email" value="{{Auth::user()->email}}" name="orders_email" required placeholder="enter your email">
             </div>
             <div class="inputBox">
                 <span>payment method :</span>
-                <select name="method">
+                <select name="orders_payment">
                     <option value="cash on delivery">cash on delivery</option>
-                    <option value="credit card">credit card</option>
-                    <option value="paypal">paypal</option>
-                    <option value="paytm">paytm</option>
+                    {{--<option value="credit card">credit card</option>--}}
+                    {{--<option value="paypal">paypal</option>--}}
+                    {{--<option value="paytm">paytm</option>--}}
                 </select>
             </div>
             <div class="inputBox">
                 <span>address line 01 :</span>
-                <input type="number" min="0" name="flat" required placeholder="e.g. flat no.">
-            </div>
-            <div class="inputBox">
-                <span>address line 01 :</span>
-                <input type="text" name="street" required placeholder="e.g. street name">
+                <input type="text" min="0" value="{{Auth::user()->address}}"  name="orders_address" required placeholder="e.g. flat no.">
             </div>
             <div class="inputBox">
                 <span>city :</span>
-                <input type="text" name="city" required placeholder="e.g. mumbai">
-            </div>
-            <div class="inputBox">
-                <span>state :</span>
-                <input type="text" name="state" required placeholder="e.g. maharashtra">
-            </div>
-            <div class="inputBox">
-                <span>country :</span>
-                <input type="text" name="country" required placeholder="e.g. india">
-            </div>
-            <div class="inputBox">
-                <span>pin code :</span>
-                <input type="number" min="0" name="pin_code" required placeholder="e.g. 123456">
+                <input type="text" value="{{Auth::user()->city->city_name}}" name="orders_city" required placeholder="e.g. mumbai">
             </div>
         </div>
         <input type="submit" value="order now" class="btn" name="order_btn">
