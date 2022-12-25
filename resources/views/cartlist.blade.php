@@ -87,7 +87,7 @@
 
     </div>
 
-    <a href="{{url('checkout')}}"><button class="checkout">Checkout</button>
+    <a href="{{url('checkout')}}"><button class="checkout">Checkout</button></a>
     <a href="{{url('/')}}"><button type="submit" href="{{url("/")}}" class="checkout">Back to Shopping</button></a>
 
 </div>

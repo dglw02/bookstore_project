@@ -25,7 +25,7 @@
                 <input type="email" name="email" placeholder="enter your email" required class="box">
                 <input type="text" name="address" placeholder="enter your address" required class="box">
                 <input type="number" name="phone" placeholder="enter your phone" required class="box">
-                <select class="form-control" name="user_city">
+                <select class="form-control" name="user_city" >
                     @foreach($cities as $city)
                         <option value="{{ $city->city_id }}">{{ $city->city_name }}</option>
                     @endforeach

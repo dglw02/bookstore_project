@@ -32,8 +32,11 @@
                         <tr>
                             <th>id</th>
                             <th>User</th>
+                            <th>Email</th>
                             <th>Payment</th>
-                            <th>Total Price</th>
+                            <th>Address</th>
+                            <th>Phone</th>
+                            <th>City</th>
                             <th>Order status</th>
                             <th>Details</th>
                             <th>Action</th>
@@ -43,8 +46,11 @@
                         <tr>
                             <th>id</th>
                             <th>User</th>
+                            <th>Email</th>
                             <th>Payment</th>
-                            <th>Total Price</th>
+                            <th>Address</th>
+                            <th>Phone</th>
+                            <th>City</th>
                             <th>Order status</th>
                             <th>Details</th>
                             <th>Action</th>
@@ -54,9 +60,12 @@
                         @foreach($orders as $order)
                         <tr>
                             <td>{{$order->orders_id}}</td>
-                            <td>{{$order->id}}</td>
+                            <td>{{$order->user_id}}</td>
+                            <td>{{$order->orders_email}}</td>
                             <td>{{$order->orders_payment}}</td>
-                            <td>{{$order->orders_totalprice}}</td>
+                            <td>{{$order->orders_address}}</td>
+                            <td>{{$order->orders_phone}}</td>
+                            <td>{{$order->orders_city}}</td>
                             <td>
                                 <input type="hidden" name="order_status" value="0">
                                 <button type="submit" class="btn btn-success btn-sm">Accepted</button>
