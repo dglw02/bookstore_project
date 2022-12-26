@@ -14,8 +14,9 @@
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-<form action="{{url('cart',$books->books_id)}}" method="POST">
+
 <div class="container">
+    <form action="{{url('cart',$books->books_id)}}" method="POST">
     <div class="single-product">
         <div class="row">
             <div class="col-6">
@@ -90,8 +91,9 @@
             </div>
         </div>
     </div>
-</div>
 </form>
+</div>
+
 
 
 <section class="featured" id="featured">

@@ -22,4 +22,12 @@ class Order extends Model
         'orders_message',
         'order_tracking',
     ];
+
+    public function ordersDetail(){
+        return $this->hasOne(OrderDetails::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

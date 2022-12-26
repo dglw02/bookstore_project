@@ -31,8 +31,7 @@
                         <thead>
                         <tr>
                             <th>id</th>
-                            <th>User</th>
-                            <th>Email</th>
+                            <th>Name</th>
                             <th>Payment</th>
                             <th>Address</th>
                             <th>Phone</th>
@@ -45,8 +44,7 @@
                         <tfoot>
                         <tr>
                             <th>id</th>
-                            <th>User</th>
-                            <th>Email</th>
+                            <th>Name</th>
                             <th>Payment</th>
                             <th>Address</th>
                             <th>Phone</th>
@@ -60,8 +58,7 @@
                         @foreach($orders as $order)
                         <tr>
                             <td>{{$order->orders_id}}</td>
-                            <td>{{$order->user_id}}</td>
-                            <td>{{$order->orders_email}}</td>
+                            <td>{{$order->orders_name}}</td>
                             <td>{{$order->orders_payment}}</td>
                             <td>{{$order->orders_address}}</td>
                             <td>{{$order->orders_phone}}</td>
