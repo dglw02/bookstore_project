@@ -32,7 +32,10 @@
                 <div class="dropdown">
                 {{Auth::user()->name ?? 'None'}}
                     <div class="dropdown-content">
-                        <a href="logout" class="delete-btn">logout</a>
+                        <form action="{{url('logout')}}" method="POST">
+                            @csrf
+                        <button class="btn btn-success">logout</button>
+                        </form>
                     </div>
                 </div>
 

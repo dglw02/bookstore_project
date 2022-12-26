@@ -16,7 +16,7 @@ class BooksController extends Controller
 {
     //
     function showBooks(){
-        $books = Books::all();
+        $books = Books::all()->random(10);
         $author =Author::all();
         $category =Category::all();
         $newbook =Books::orderBy('created_at','DESC')->get()->take(10);

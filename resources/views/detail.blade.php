@@ -17,6 +17,7 @@
 
 <div class="container">
     <form action="{{url('cart',$books->books_id)}}" method="POST">
+        @csrf
     <div class="single-product">
         <div class="row">
             <div class="col-6">
