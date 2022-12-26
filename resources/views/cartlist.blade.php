@@ -11,6 +11,19 @@
 <h1>Shopping Cart</h1>
 
 <div class="shopping-cart">
+    <div class="product">
+        <div class="product-image">
+            <img src=>
+        </div>
+        <div class="product-details">
+            <div class="product-title">Shipping payment</div>
+            <p class="product-description">{{Auth::user()->name}}</p>
+        </div>
+        <div class="product-quantity">
+            <p class="product-description">{{Auth::user()->city->city_name}}</p>
+        </div>
+        <div class="product-line-price">{{Auth::user()->city->areas->areas_price}}</div>
+    </div>
 
     <div class="column-labels">
         <label class="product-image">Image</label>
@@ -21,26 +34,6 @@
         <label class="product-line-price">Total</label>
     </div>
 
-    <div class="product">
-        <div class="product-image">
-            <img src=>
-        </div>
-        <div class="product-details">
-            <div class="product-title">Shipping payment</div>
-            <p class="product-description">{{Auth::user()->name}}</p>
-        </div>
-        <div class="product-price">{{Auth::user()->city->areas->areas_price}}</div>
-        <div class="product-quantity">
-            <p class="product-description">{{Auth::user()->city->city_name}}</p>
-        </div>
-        <form method="" action="">
-            <button type="submit" onclick="return confirm('Book will move to trash! Are you sure to delete??')"
-                    class="product-removal">Remove</button>
-        </form>
-
-
-        <div class="product-line-price">{{Auth::user()->city->areas->areas_price}}</div>
-    </div>
     @foreach($cartitems as $item)
         @php $total = 0; @endphp
     <div class="product">
