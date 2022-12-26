@@ -24,9 +24,8 @@
     @php $total = 0;@endphp
     @foreach($cartitems as $item)
 
-    <p>{{$item->books->books_name}}=<span>${{$item->books->books_price}}/x{{$item->books_quantity}}</span> </p>
+    <p>{{$item->books->books_name}}=<span>${{$item->books->books_price}}/x{{$item->books_quantity}} = ${{$item->books_quantity * $item->books->books_price}}</span> </p>
         @php $total += $item->books_quantity * $item->books->books_price@endphp
-        <p>{{$item->books_quantity * $item->books->books_price}}</p>
     @endforeach
     @php $grandtotal = $total +($total * 0.1) + Auth::user()->city->areas->areas_price @endphp
     <div class="grand-total"> Grand total : <span>${{$total}} + Tax 10% + Ship ${{Auth::user()->city->areas->areas_price}} = ${{$grandtotal}}</span> </div>
