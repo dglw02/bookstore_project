@@ -24,10 +24,6 @@ class Order extends Model
     ];
 
     public function ordersDetail(){
-        return $this->hasOne(OrderDetails::class);
-    }
-
-    public function user(){
-        return $this->belongsTo(User::class);
+        return $this->hasOne(OrderDetails::class,'orders_id','orders_id');
     }
 }

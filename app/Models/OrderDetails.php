@@ -20,8 +20,4 @@ class OrderDetails extends Model
     public function orders(){
         return $this->belongsTo(Order::class,'orders_id','orders_id');
     }
-
-    public function books(){
-        return $this->belongsTo(Books::class,'books_id','books_id');
-    }
 }
