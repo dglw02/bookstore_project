@@ -85,4 +85,11 @@ class BooksController extends Controller
         return redirect('/cartlist');
     }
 
+    public function deleteAllCart()
+    {
+        $cartitems = Cart::where('user_id',Auth::id())->get();
+        Cart::destroy($cartitems);
+        return redirect('/cartlist');
+    }
+    
 }

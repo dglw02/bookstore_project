@@ -68,19 +68,11 @@
                 <input type="text" value="{{Auth::user()->city->city_name}}" name="orders_city" required placeholder="e.g. mumbai">
             </div>
         </div>
+        <a href="{{url('cartlist')}}" class="btn">Back to cart</a>
         <input type="submit" value="order now" class="btn" name="order_btn">
     </form>
 
 </section>
-
-
-
-
-
-
-
-
-
 <script src="{{ asset('js/register.js') }}"></script>
 @yield('scripts')
 

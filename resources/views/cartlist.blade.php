@@ -5,85 +5,64 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link href="{{ asset('css/cart.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="{{ asset('css/register.css') }}" rel="stylesheet">
 </head>
 <body>
-<h1>Shopping Cart</h1>
+<div class="heading">
+    <h3>shopping cart</h3>
+    <p> <a href="{{url('/')}}">home</a>/ cart </p>
+</div>
+<section class="shopping-cart">
+    <h1 class="title">products added</h1>
 
-<div class="shopping-cart">
-    <div class="product">
-        <div class="product-image">
-            <img src=>
+    @php $total = 0; @endphp
+
+    <div class="box-container">
+        @foreach($cartitems as $item)
+        <div class="box">
+            <form method="POST" action="{{url('/cart/'.$item->id.'/delete')}}">
+                @csrf
+                @method('delete')
+            <button type="submit" class="fas fa-times" onclick="return confirm('Book will move to trash! Are you sure to delete??')"></button>
+            </form>
+            <img src={{$item->books->books_image}} alt="">
+            <div class="name">{{$item->books->books_name}}</div>
+            <div class="price">${{$item->books->books_price}}/-</div>
+            <form action="" method="post">
+                <input type="hidden" name="cart_id" value="{{$item->books_id}}">
+                <input type="number" min="1" name="cart_quantity" value="{{$item->books_quantity}}">
+                <input type="submit" name="update_cart" value="update" class="option-btn">
+            </form>
+            @php $total += $item->books_quantity * $item->books->books_price @endphp
+            <div class="sub-total"> sub total : <span>${{$item->books_quantity * $item->books->books_price}}/-</span> </div>
         </div>
-        <div class="product-details">
-            <div class="product-title">Shipping payment</div>
-            <p class="product-description">{{Auth::user()->name}}</p>
-        </div>
-        <div class="product-quantity">
-            <p class="product-description">{{Auth::user()->city->city_name}}</p>
-        </div>
-        <div class="product-line-price">{{Auth::user()->city->areas->areas_price}}</div>
+        @endforeach
     </div>
 
-    <div class="column-labels">
-        <label class="product-image">Image</label>
-        <label class="product-details">Product</label>
-        <label class="product-price">Price</label>
-        <label class="product-quantity">Quantity</label>
-        <label class="product-removal">Remove</label>
-        <label class="product-line-price">Total</label>
-    </div>
 
-    @foreach($cartitems as $item)
-        @php $total = 0; @endphp
-    <div class="product">
-        <div class="product-image">
-            <img src={{$item->books->books_image}}>
-        </div>
-        <div class="product-details">
-            <div class="product-title">{{$item->books->books_name}}</div>
-            <p class="product-description">{{$item->books->books_description}}</p>
-        </div>
-        <div class="product-price">{{$item->books->books_price}}</div>
-        <div class="product-quantity">
-            <input type="hidden" class="books_id" value="{{$item->books_id}}">
-            <input type="number" value="{{$item->books_quantity}}" min="1">
-        </div>
-        <form method="POST" action="{{url('/cart/'.$item->id.'/delete')}}">
+    <div style="margin-top: 2rem; text-align:center;">
+        <form method="POST" action="{{url('/cart/deleteall')}}">
             @csrf
             @method('delete')
-            <button type="submit" onclick="return confirm('Book will move to trash! Are you sure to delete??')"
-                    class="product-removal">Remove</button>
+            <button type="submit" class="delete-btn" onclick="return confirm('Delete all?')">delete all</button>
         </form>
-        @php $total += $item->books_quantity * $item->books->books_price@endphp
-        <div class="product-line-price">{{$total}}</div>
     </div>
-    @endforeach
-    <div class="totals">
-
-        <div class="totals-item">
-            <label>Subtotal</label>
-            <div class="totals-value" id="cart-subtotal">
-
-            </div>
+    <div class="cart-total">
+        @php $grandtotal = $total +($total * 0.1) + Auth::user()->city->areas->areas_price @endphp
+        <p>grand total : <span>${{$total}} + Tax10% ${{$total * 0.1}} + Ship ${{Auth::user()->city->areas->areas_price}} = ${{$grandtotal}}</span></p>
+        <div class="flex">
+            <a href="{{url('/')}}" class="option-btn">continue shopping</a>
+            <a href="{{url('checkout')}}" class="btn">proceed to checkout</a>
         </div>
-        <div class="totals-item">
-            <label>Tax (10%)</label>
-            <div class="totals-value" id="cart-tax"></div>
-        </div>
-
-        <div class="totals-item totals-item-total">
-            <label>Grand Total</label>
-            <div class="totals-value" id="cart-total">
-            </div>
-        </div>
-
     </div>
+</section>
 
-    <a href="{{url('checkout')}}"><button class="checkout">Checkout</button></a>
-    <a href="{{url('/')}}"><button type="submit" href="{{url("/")}}" class="checkout">Back to Shopping</button></a>
 
-</div>
+
+
+
+
 <script
     src="https://code.jquery.com/jquery-3.6.2.min.js"
     integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA="

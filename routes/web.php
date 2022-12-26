@@ -114,10 +114,10 @@ Route::get('/category/{category_name}',[SortBooksController::class,'productsByCa
 //cart
 Route::post('/cart/{id}',[BooksController::class,'addCart']);
 Route::delete("/cart/{id}/delete", [BooksController::class, 'deleteCart']);
+Route::delete("/cart/deleteall", [BooksController::class, 'deleteAllCart']);
 Route::get('/cartlist',[BooksController::class,'cartList']);
 
 
 //Checkout
 Route::get('checkout',[CheckOutController::class,'index']);
-
 Route::post('place-order',[CheckOutController::class,'placeorder']);
