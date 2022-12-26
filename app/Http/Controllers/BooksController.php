@@ -91,5 +91,5 @@ class BooksController extends Controller
         Cart::destroy($cartitems);
         return redirect('/cartlist');
     }
-    
+
 }

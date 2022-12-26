@@ -27,6 +27,16 @@ class CheckOutController extends Controller
         $order->orders_address = $request->input('orders_address');
         $order->orders_phone = $request->input('orders_phone');
         $order->orders_city = $request->input('orders_city');
+        $total = 0;
+
+        $cartitems_total = Cart::where('user_id',Auth::id())->get();
+        foreach ($cartitems_total as $item){
+            $total += $item->books->books_price * $item->books_quantity;
+        }
+        $grandtotal = $total +($total * 0.1) + Auth::user()->city->areas->areas_price;
+        $order->orders_price = $grandtotal;
+
+
         $order->order_tracking = 'tracking'.rand(1000,9999);
         $order->save();
 

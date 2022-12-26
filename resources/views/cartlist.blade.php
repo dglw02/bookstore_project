@@ -14,11 +14,10 @@
     <p> <a href="{{url('/')}}">home</a>/ cart </p>
 </div>
 <section class="shopping-cart">
+    @if($cartitems->count() > 0)
     <h1 class="title">products added</h1>
-
-    @php $total = 0; @endphp
-
     <div class="box-container">
+        @php $total = 0; @endphp
         @foreach($cartitems as $item)
         <div class="box">
             <form method="POST" action="{{url('/cart/'.$item->id.'/delete')}}">
@@ -39,8 +38,6 @@
         </div>
         @endforeach
     </div>
-
-
     <div style="margin-top: 2rem; text-align:center;">
         <form method="POST" action="{{url('/cart/deleteall')}}">
             @csrf
@@ -56,6 +53,12 @@
             <a href="{{url('checkout')}}" class="btn">proceed to checkout</a>
         </div>
     </div>
+    @else
+        <h1 class="title">Cart empty</h1>
+        <div class="cart-total">
+        <a href="{{url('/')}}" class="option-btn">continue shopping</a>
+        </div>
+    @endif
 </section>
 
 

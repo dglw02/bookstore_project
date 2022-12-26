@@ -20,20 +20,23 @@
 </div>
 
 <section class="display-order">
+    @if($cartitems->count() > 0)
     <div class="grand-total"> Order detail<span></span> </div>
     @php $total = 0;@endphp
     @foreach($cartitems as $item)
-
     <p>{{$item->books->books_name}}=<span>${{$item->books->books_price}}/x{{$item->books_quantity}} = ${{$item->books_quantity * $item->books->books_price}}</span> </p>
         @php $total += $item->books_quantity * $item->books->books_price@endphp
     @endforeach
     @php $grandtotal = $total +($total * 0.1) + Auth::user()->city->areas->areas_price @endphp
     <div class="grand-total"> Grand total : <span>${{$total}} + Tax 10% + Ship ${{Auth::user()->city->areas->areas_price}} = ${{$grandtotal}}</span> </div>
-
+    @else
+        <h3>There is no product in cart to check out</h3>
+    @endif
 </section>
 
-<section class="checkout">
 
+
+<section class="checkout">
     <form action="{{url('place-order')}}" method="post">
         @csrf
         <h3>place your order</h3>
@@ -68,8 +71,12 @@
                 <input type="text" value="{{Auth::user()->city->city_name}}" name="orders_city" required placeholder="e.g. mumbai">
             </div>
         </div>
+        @if($cartitems->count() > 0)
         <a href="{{url('cartlist')}}" class="btn">Back to cart</a>
         <input type="submit" value="order now" class="btn" name="order_btn">
+        @else
+            <a href="{{url('/')}}" class="btn">Back to Shopping</a>
+        @endif
     </form>
 
 </section>
