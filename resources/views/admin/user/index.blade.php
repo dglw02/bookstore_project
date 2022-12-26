@@ -32,6 +32,7 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Address</th>
+                            <th>Phone</th>
                             <th>Province</th>
                             <th>Role</th>
                             <th>Action</th>
@@ -42,6 +43,7 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Address</th>
+                            <th>Phone</th>
                             <th>Province</th>
                             <th>Role</th>
                             <th>Action</th>
@@ -52,7 +54,8 @@
                         <tr>
                             <td>{{$user->name}}</td>
                             <td>{{$user->email}}</td>
-                            <td></td>
+                            <td>{{$user->address}}</td>
+                            <td>{{$user->phone}}</td>
                             <td>{{$user->city_name}}</td>
                             <td>{{$user->level}}</td>
                             <td>

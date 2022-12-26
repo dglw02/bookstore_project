@@ -12,7 +12,7 @@
                     <div class="card-body">
                         <p><i class="fas fa-user"></i> <span class="mx-2">{{$order->user->name}}</span></p>
                         <p><i class="fas fa-phone"></i><span class="mx-2">{{$order->user->phone}}</span></p>
-                        <p><i class="fas fa-map-marked"></i> <span class="mx-2">{{$order->user->address}}</span></p>
+                        <p><i class="fas fa-map-marked"></i> <span class="mx-2">{{$order->user->address}}, {{$order->user->city->city_name}}</span></p>
                     </div>
                 </div>
                 <div class="order-product mb-4">
@@ -45,6 +45,19 @@
                         </tr>
                         </tbody>
                     </table>
+                </div>
+                <div class="form-group">
+                <label for="">Order Status</label> <br>
+                    <form method="POST" action="{{url('/admin/order/'.$order->orders_id.'/update')}}">
+                        @csrf
+                        @method('PUT')
+                <select class="form-select" name="orders_status">
+                    <option {{$order->orders_status == '0'? 'selected':''}} value="0">Pending</option>
+                    <option {{$order->orders_status == '1'? 'selected':''}} value="1">Approved</option>
+                    <option {{$order->orders_status == '2'? 'selected':''}} value="2">Completed</option>
+                </select> <br>
+                    <button type="submit" class="btn btn-block btn-success">Update status</button>
+                    </form>
                 </div>
             </div>
         </div>

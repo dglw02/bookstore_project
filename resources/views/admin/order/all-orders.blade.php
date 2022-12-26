@@ -54,23 +54,7 @@
                             <td>{{$order->orders_id}}</td>
                             <td>{{$order->orders_name}}</td>
                             <td>{{$order->orders_payment}}</td>
-                            <td>
-                                @if($order->orders_status == 1)
-                                    <form method="PATCH" action="{{url('/admin/order/'.$order->orders_id.'/update')}}">
-                                        @csrf
-                                        @method('patch')
-                                <input type="hidden" name="orders_status" value="0">
-                                <button type="submit" class="btn btn-success btn-sm">Accepted</button>
-                                    </form>
-                                @else
-                                    <form method="PATCH" action="{{url('/admin/order/'.$order->orders_id.'/update')}}">
-                                        @csrf
-                                        @method('patch')
-                                <input type="hidden" name="orders_status" value="1">
-                                <button type="submit" class="btn btn-warning btn-sm">Pending</button>
-                                    </form>
-                                @endif
-                            </td>
+                            <td>{{$order->orders_status == '0' ?'pending' : 'approved'}}</td>
                             <td><a href="{{url('/admin/order/'.$order->orders_id.'/detail')}}">Order Details</a></td>
                             <td>
                                 <div class="action d-flex flex-row">
