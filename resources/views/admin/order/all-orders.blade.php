@@ -33,9 +33,6 @@
                             <th>id</th>
                             <th>Name</th>
                             <th>Payment</th>
-                            <th>Address</th>
-                            <th>Phone</th>
-                            <th>City</th>
                             <th>Order status</th>
                             <th>Details</th>
                             <th>Action</th>
@@ -46,9 +43,6 @@
                             <th>id</th>
                             <th>Name</th>
                             <th>Payment</th>
-                            <th>Address</th>
-                            <th>Phone</th>
-                            <th>City</th>
                             <th>Order status</th>
                             <th>Details</th>
                             <th>Action</th>
@@ -60,18 +54,22 @@
                             <td>{{$order->orders_id}}</td>
                             <td>{{$order->orders_name}}</td>
                             <td>{{$order->orders_payment}}</td>
-                            <td>{{$order->orders_address}}</td>
-                            <td>{{$order->orders_phone}}</td>
-                            <td>{{$order->orders_city}}</td>
                             <td>
-                                <input type="hidden" name="order_status" value="0">
+                                @if($order->orders_status == 1)
+                                    <form method="PATCH" action="{{url('/admin/order/'.$order->orders_id.'/update')}}">
+                                        @csrf
+                                        @method('patch')
+                                <input type="hidden" name="orders_status" value="0">
                                 <button type="submit" class="btn btn-success btn-sm">Accepted</button>
-
-
-                                <input type="hidden" name="order_status" value="1">
+                                    </form>
+                                @else
+                                    <form method="PATCH" action="{{url('/admin/order/'.$order->orders_id.'/update')}}">
+                                        @csrf
+                                        @method('patch')
+                                <input type="hidden" name="orders_status" value="1">
                                 <button type="submit" class="btn btn-warning btn-sm">Pending</button>
-
-
+                                    </form>
+                                @endif
                             </td>
                             <td><a href="{{url('/admin/order/'.$order->orders_id.'/detail')}}">Order Details</a></td>
                             <td>

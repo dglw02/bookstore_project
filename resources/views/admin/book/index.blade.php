@@ -59,29 +59,32 @@
                         <tbody>
                         @foreach($books as $book)
 
-                        <tr>
-                            <td>{{$book->books_name}}
-                                <p></p>
-                                <img src="{{$book->books_image}}" width="150px"/></td>
-                            <td>{{$book->category_name}}</td>
-                            <td>{{$book->publisher_name}}</td>
-                            <td>{{$book->author_name}}</td>
-                            <td>{{$book->books_quantity}}</td>
-                            <td>{{$book->books_price}}</td>
-                            <td>{{$book->books_ISBN}}</td>
-                            <td>
-                                <div class="action d-flex flex-row">
-                                    <a href="{{url('/admin/products/'.$book->books_id.'/edit')}}" class="btn-primary btn btn-sm mr-2"><i class="fas fa-edit"></i></a>
-                                    <form method="POST" action="{{url('/admin/products/'.$book->books_id.'/delete')}}">
-                                        @csrf
-                                        @method('delete')
-                                        <button type="submit" onclick="return confirm('Book will move to trash! Are you sure to delete??')"
-                                                class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
-                                    </form>
-                                </div>
+                            <tr>
+                                <td>{{$book->books_name}}
+                                    <p></p>
+                                    <img src="{{$book->books_image}}" width="150px"/></td>
+                                <td>{{$book->category_name}}</td>
+                                <td>{{$book->publisher_name}}</td>
+                                <td>{{$book->author_name}}</td>
+                                <td>{{$book->books_quantity}}</td>
+                                <td>{{$book->books_price}}</td>
+                                <td>{{$book->books_ISBN}}</td>
+                                <td>
+                                    <div class="action d-flex flex-row">
+                                        <a href="{{url('/admin/products/'.$book->books_id.'/edit')}}"
+                                           class="btn-primary btn btn-sm mr-2"><i class="fas fa-edit"></i></a>
+                                        <form method="POST"
+                                              action="{{url('/admin/products/'.$book->books_id.'/delete')}}">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit"
+                                                    onclick="return confirm('Book will move to trash! Are you sure to delete??')"
+                                                    class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                        </form>
+                                    </div>
 
-                            </td>
-                        </tr>
+                                </td>
+                            </tr>
                         @endforeach
                         </tbody>
                     </table>
@@ -103,14 +106,14 @@
     <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.print.min.js"></script>
     <script>
-        $(document).ready(function() {
-            $('#dataTable').DataTable( {
+        $(document).ready(function () {
+            $('#dataTable').DataTable({
                 dom: 'Bfrtip',
                 buttons: [
                     'copy', 'csv', 'excel', 'pdf', 'print'
                 ]
-            } );
-        } );
+            });
+        });
     </script>
 @endpush
 

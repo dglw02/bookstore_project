@@ -86,6 +86,7 @@ Route::delete("/admin/author/{author_id}/delete", [AdminAuthorController::class,
 
 //admin orders
 Route::get('/admin/order/{orders_id}/detail', [AdminOrdersController::class, 'detail']);
+Route::get('/admin/order/{orders_id}/update', [AdminOrdersController::class, 'update']);
 Route::delete("/admin/order/{orders_id}/delete", [AdminOrdersController::class, 'destroy']);
 
 

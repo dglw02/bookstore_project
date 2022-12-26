@@ -16,6 +16,15 @@ class AdminOrdersController extends Controller
         return view('admin.order.order-detail', compact('order_details', 'order'));
     }
 
+    function update(Request $request,$orders_id)
+    {
+        $input = $request->all();
+        $order = Order::findOrFail($orders_id);
+        $order->update($input);
+
+        return redirect()->back();
+    }
+
     public function destroy($orders_id){
         $orders = Order::findOrFail($orders_id);
         $orders->delete();
