@@ -17,4 +17,9 @@ class UserController extends Controller
         $orders = Order::where('user_id',Auth::id())->get();
         return view('myorders',compact('orders'));
     }
+
+    public function view($orders_id){
+        $orders = Order::where('orders_id',$orders_id)->where('user_id',Auth::id())->get();
+        return view('vieworder',compact('orders'));
+    }
 }

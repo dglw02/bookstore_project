@@ -1,14 +1,13 @@
 <?php
 
 namespace App\Models;
-
+use App\Models\OrderDetails;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
     use HasFactory;
-    protected $primaryKey = 'orders_id';
     protected $table = 'orders';
     protected $fillable=[
         'user_id',
@@ -23,12 +22,11 @@ class Order extends Model
         'order_tracking',
     ];
 
+    public function orderdetails(){
+        return $this->hasMany(OrderDetails::class);
+    }
 
     public function user(){
         return $this->belongsTo(User::class);
-    }
-
-    public function orderdetail(){
-        return $this->hasMany(OrderDetails::class);
     }
 }

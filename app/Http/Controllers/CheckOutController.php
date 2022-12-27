@@ -18,6 +18,8 @@ class CheckOutController extends Controller
         return view('checkout',compact('cartitems'));
     }
 
+
+
     public  function placeorder(Request $request){
         $order = new Order();
         $order->user_id = Auth::id();

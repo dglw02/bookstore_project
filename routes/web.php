@@ -124,3 +124,4 @@ Route::get('/cartlist',[BooksController::class,'cartList']);
 Route::get('checkout',[CheckOutController::class,'index']);
 Route::post('place-order',[CheckOutController::class,'placeorder']);
 Route::get('my-order',[UserController::class,'index']);
+Route::get('vieworder',[UserController::class,'view']);
