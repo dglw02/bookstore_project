@@ -10,8 +10,8 @@
                 <div class="col-6">
                 </div>
                 <div class="col-6 text-right">
-                    <span class="mr-2"><a href="#">All orders</a> |</span>
-                    <span class="mr-2"><a href="#">Pending orders</a></span>
+                    <span class="mr-2"><a href="#">Pending orders</a> |</span>
+                    <span class="mr-2"><a href="#">Completed orders</a></span>
                 </div>
             </div>
         </div>
@@ -54,7 +54,15 @@
                             <td>{{$order->orders_id}}</td>
                             <td>{{$order->orders_name}}</td>
                             <td>{{$order->orders_payment}}</td>
-                            <td>{{$order->orders_status == '0' ?'pending' : 'approved'}}</td>
+                            <td>
+                                @if($order->orders_status == 0)
+                                    <p>Pending</p>
+                                @elseif($order->orders_status == 1)
+                                <p>Approved</p>
+                                    @else
+                                    <p>Completed</p>
+                                @endif
+                            </td>
                             <td><a href="{{url('/admin/order/'.$order->orders_id.'/detail')}}">Order Details</a></td>
                             <td>
                                 <div class="action d-flex flex-row">

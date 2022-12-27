@@ -45,6 +45,7 @@ Route::get('/admin/author',[AdminController::class,'viewAllAuthor']);
 Route::get('/admin/products',[AdminController::class,'viewAllProducts'])->name('admin.book');
 Route::get('/admin/user',[AdminController::class,'viewAllUsers']);
 Route::get('/admin/order',[AdminController::class,'viewAllOrders']);
+Route::get('/admin/completed-order',[AdminController::class,'viewAllOrders']);
 Route::get('/admin/dashboard',[AdminController::class,'viewDashboard']);
 Route::get('/admin/settings',[AdminController::class,'viewProfile']);
 
