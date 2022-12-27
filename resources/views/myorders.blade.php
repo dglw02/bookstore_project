@@ -51,7 +51,6 @@
             <p class="empty">no orders placed yet!</p>
         @endif
     </div>
-
 </section>
 <script src="{{ asset('js/register.js') }}"></script>
 @yield('scripts')
