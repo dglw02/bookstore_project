@@ -36,6 +36,7 @@
                             @csrf
                         <button class="btn btn-success">logout</button>
                         </form>
+                        <button href="" class="btn btn-success">Order</button>
                     </div>
                 </div>
 

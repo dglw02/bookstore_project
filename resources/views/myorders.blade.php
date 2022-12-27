@@ -8,14 +8,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <!-- custom css file link  -->
-    <link rel="stylesheet" href="css/style.css">
+    <link href="{{ asset('css/register.css') }}" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
 
 <div class="heading">
     <h3>your orders</h3>
-    <p> <a href="home.php">home</a> / orders </p>
+    <p> <a href="{{url('/')}}">home</a> / orders </p>
 </div>
 
 <section class="placed-orders">
@@ -28,15 +28,23 @@
         @if($orders->count() > 0)
         <div class="box">
             @foreach($orders as $items)
-            <p> placed on : <span><?php echo $fetch_orders['placed_on']; ?></span> </p>
-            <p> name : <span><?php echo $fetch_orders['name']; ?></span> </p>
-            <p> number : <span><?php echo $fetch_orders['number']; ?></span> </p>
-            <p> email : <span><?php echo $fetch_orders['email']; ?></span> </p>
-            <p> address : <span><?php echo $fetch_orders['address']; ?></span> </p>
-            <p> payment method : <span><?php echo $fetch_orders['method']; ?></span> </p>
-            <p> your orders : <span><?php echo $fetch_orders['total_products']; ?></span> </p>
-            <p> total price : <span>$<?php echo $fetch_orders['total_price']; ?>/-</span> </p>
-            <p> payment status : <span style="color:<?php if($fetch_orders['payment_status'] == 'pending'){ echo 'red'; }else{ echo 'green'; } ?>;"><?php echo $fetch_orders['payment_status']; ?></span> </p>
+            <p> placed on : <span>{{$items->created_at}}</span> </p>
+            <p> name : <span>{{$items->orders_name}}</span> </p>
+            <p> number : <span>{{$items->orders_phone}}</span> </p>
+            <p> email : <span>{{$items->orders_email}}</span> </p>
+            <p> address : <span>{{$items->orders_address}}</span> </p>
+            <p> payment method : <span>{{$items->orders_payment}}</span> </p>
+            <p> your orders : <span>{{$items->user->name}}</span> </p>
+            <p> total price : <span>${{$items->orders_price}}</span> </p>
+            <p> payment status :
+                @if($items->orders_status == 0)
+                    <span>Pending</span>
+                @elseif($items->orders_status == 1)
+                    <span>Approved</span>
+                @else
+                    <span>Completed</span>
+                    @endif
+                 </p>
             @endforeach
         </div>
         @else
@@ -45,6 +53,7 @@
     </div>
 
 </section>
-<script></script>
+<script src="{{ asset('js/register.js') }}"></script>
+@yield('scripts')
 </body>
 </html>
