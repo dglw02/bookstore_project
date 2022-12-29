@@ -343,32 +343,46 @@ section{
     margin-top: 0;
 }
 
-.home{
-    min-height: 70vh;
-    background:linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url(../images/home-bg.jpg) no-repeat;
-    background-size: cover;
-    background-position: center;
-    display: flex;
+.home .row{
+    display:flex;
     align-items: center;
-    justify-content: center;
+    flex-wrap: wrap;
+    gap:1.5rem;
 }
 
-.home .content{
+.home .row .content{
+    flex:1 1 42rem;
+}
+
+.home .row .books-slider{
+    flex:1 1 42rem;
     text-align: center;
-    width: 60rem;
+    margin-top: 2rem;
 }
 
-.home .content h3{
-    font-size: 5.5rem;
-    color:var(--white);
-    text-transform: uppercase;
+.home .row .books-slider a img{
+    height: 25rem;
 }
 
-.home .content p{
-    font-size:1.8rem;
-    color:var(--light-white);
+.home .row .books-slider a:hover img{
+    transform: scale(.9);
+}
+
+.home .row .books-slider .stand{
+    width:100%;
+    margin-top: -2rem;
+}
+
+.home .row .content h3{
+    color:var(--black);
+    font-size: 4.5rem;
+}
+
+.home .row .content p{
+    color:var(--light-color);
+    font-size: 1.4rem;
+    line-height: 2;
     padding:1rem 0;
-    line-height: 1.5;
 }
 
 .products .box-container{

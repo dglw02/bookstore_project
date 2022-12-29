@@ -36,7 +36,9 @@
                             @csrf
                         <button class="btn btn-success">logout</button>
                         </form>
-                        <a href="my-order" class="btn btn-success">Order</a>
+                        <form action = "my-order">
+                        <button class="btn btn-success">Order</button>
+                            </form>
                     </div>
                 </div>
 

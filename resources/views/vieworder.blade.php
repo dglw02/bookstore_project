@@ -58,8 +58,6 @@
         @endif
     </div>
 </section>
-<script src="{{ asset('js/register.js') }}"></script>
-@yield('scripts')
 </body>
 </html>
 @endsection
