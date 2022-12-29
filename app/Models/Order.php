@@ -23,8 +23,8 @@ class Order extends Model
         'order_tracking',
     ];
 
-    public function order(){
-        return $this->hasMany(OrderDetails::class);
+    public function orderdetail(){
+        return $this->hasMany(OrderDetails::class,'orders_id','orders_id');
     }
 
     public function user(){

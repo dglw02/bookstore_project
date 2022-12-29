@@ -237,7 +237,7 @@ section{
 }
 
 .header .header-2{
-    background-color: var(--white);
+    background-color: var(--green);
     box-shadow: var(--box-shadow);
 }
 

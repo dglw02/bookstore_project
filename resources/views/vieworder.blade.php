@@ -1,3 +1,5 @@
+@extends('layout.base')
+    @section('content')
 <!doctype html>
 <html lang="en">
 <head>
@@ -33,7 +35,13 @@
                     <p> email : <span>{{$orders->orders_email}}</span> </p>
                     <p> address : <span>{{$orders->orders_address}}</span> </p>
                     <p> payment method : <span>{{$orders->orders_payment}}</span> </p>
-                    <p> your orders : <span></span> </p>
+
+
+                    <p> your orders :
+                        @foreach($orders->orderdetail as $items)
+                            <span>({{$items->books->books_name}} / x {{$items->quantity}} )</span>
+                @endforeach
+                    </p>
                     <p> total price : <span>${{$orders->orders_price}}</span> </p>
                     <p> payment status :
                         @if($orders->orders_status == 0)
@@ -54,3 +62,4 @@
 @yield('scripts')
 </body>
 </html>
+@endsection
