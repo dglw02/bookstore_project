@@ -27,25 +27,23 @@
 
         @if($orders->count() > 0)
             <div class="box">
-                @foreach($orders as $items)
-                    <p> placed on : <span>{{$items->created_at}}</span> </p>
-                    <p> name : <span>{{$items->orders_name}}</span> </p>
-                    <p> number : <span>{{$items->orders_phone}}</span> </p>
-                    <p> email : <span>{{$items->orders_email}}</span> </p>
-                    <p> address : <span>{{$items->orders_address}}</span> </p>
-                    <p> payment method : <span>{{$items->orders_payment}}</span> </p>
+                    <p> placed on : <span>{{$orders->created_at}}</span> </p>
+                    <p> name : <span>{{$orders->orders_name}}</span> </p>
+                    <p> number : <span>{{$orders->orders_phone}}</span> </p>
+                    <p> email : <span>{{$orders->orders_email}}</span> </p>
+                    <p> address : <span>{{$orders->orders_address}}</span> </p>
+                    <p> payment method : <span>{{$orders->orders_payment}}</span> </p>
                     <p> your orders : <span></span> </p>
-                    <p> total price : <span>${{$items->orders_price}}</span> </p>
+                    <p> total price : <span>${{$orders->orders_price}}</span> </p>
                     <p> payment status :
-                        @if($items->orders_status == 0)
+                        @if($orders->orders_status == 0)
                             <span>Pending</span>
-                        @elseif($items->orders_status == 1)
+                        @elseif($orders->orders_status == 1)
                             <span>Approved</span>
                         @else
                             <span>Completed</span>
                         @endif
                     </p>
-                @endforeach
             </div>
         @else
             <p class="empty">no orders placed yet!</p>

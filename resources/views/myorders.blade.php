@@ -15,7 +15,7 @@
                         <div class="content">
                             <h3>{{$items->orders_name}}</h3>
                             <p>${{$items->orders_price}}</p>
-                            <a href={{url('/vieworder')}} class="btn">Order detail</a>
+                            <a href="{{url('vieworder/'.$items->orders_id)}}" class="btn">Order detail</a>
                         </div>
                     </div>
                 @endforeach

@@ -19,7 +19,7 @@ class UserController extends Controller
     }
 
     public function view($orders_id){
-        $orders = Order::where('orders_id',$orders_id)->where('user_id',Auth::id())->get();
-        return view('vieworder',compact('orders'));
+        $orders = Order::where('orders_id', $orders_id)->where('user_id',Auth::id())->first();
+        return view('vieworder', compact('orders'));
     }
 }
