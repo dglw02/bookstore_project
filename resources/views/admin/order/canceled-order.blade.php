@@ -4,7 +4,7 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">All orders</h1>
+        <h1 class="h3 mb-2 text-gray-800">Canceled orders</h1>
         <div class="my-2 px-1">
             <div class="row">
                 <div class="col-6">
@@ -54,34 +54,34 @@
                         </tfoot>
                         <tbody>
                         @foreach($orders as $order)
-                        <tr>
-                            <td>{{$order->orders_id}}</td>
-                            <td>{{$order->orders_name}}</td>
-                            <td>{{$order->orders_payment}}</td>
-                            <td>{{$order->orders_price}} $</td>
-                            <td>
-                                @if($order->orders_status == 0)
-                                    <p>Pending</p>
-                                @elseif($order->orders_status == 1)
-                                <p>Approved</p>
-                                @elseif($order->orders_status == 2)
-                                    <p>Completed</p>
-                                @else
-                                    <p>Canceled</p>
-                                @endif
-                            </td>
-                            <td><a href="{{url('/admin/order/'.$order->orders_id.'/detail')}}">Order Details</a></td>
-                            <td>
-                                <div class="action d-flex flex-row">
-                                    <form method="POST" action="{{url('/admin/order/'.$order->orders_id.'/delete')}}">
-                                        @csrf
-                                        @method('delete')
-                                        <button type="submit" onclick="return confirm('Order will move to trash! Are you sure to delete??')"
-                                                class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
-                                    </form>
-                                </div>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>{{$order->orders_id}}</td>
+                                <td>{{$order->orders_name}}</td>
+                                <td>{{$order->orders_payment}}</td>
+                                <td>{{$order->orders_price}} $</td>
+                                <td>
+                                    @if($order->orders_status == 0)
+                                        <p>Pending</p>
+                                    @elseif($order->orders_status == 1)
+                                        <p>Approved</p>
+                                    @elseif($order->orders_status == 2)
+                                        <p>Completed</p>
+                                    @else
+                                        <p>Canceled</p>
+                                    @endif
+                                </td>
+                                <td><a href="{{url('/admin/order/'.$order->orders_id.'/detail')}}">Order Details</a></td>
+                                <td>
+                                    <div class="action d-flex flex-row">
+                                        <form method="POST" action="{{url('/admin/order/'.$order->orders_id.'/delete')}}">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" onclick="return confirm('Order will move to trash! Are you sure to delete??')"
+                                                    class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
                         @endforeach
                         </tbody>
                     </table>

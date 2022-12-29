@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
@@ -52,7 +53,7 @@ class AdminController extends Controller
     }
 
     function viewAllOrders(){
-        $orders = DB::table('orders')->get();
+        $orders = Order::where('orders_status', '0')->get();
         return view('admin/order/all-orders', ['orders'=> $orders]);
     }
 

@@ -45,7 +45,6 @@ Route::get('/admin/author',[AdminController::class,'viewAllAuthor']);
 Route::get('/admin/products',[AdminController::class,'viewAllProducts'])->name('admin.book');
 Route::get('/admin/user',[AdminController::class,'viewAllUsers']);
 Route::get('/admin/order',[AdminController::class,'viewAllOrders']);
-Route::get('/admin/completed-order',[AdminController::class,'viewAllOrders']);
 Route::get('/admin/dashboard',[AdminController::class,'viewDashboard']);
 Route::get('/admin/settings',[AdminController::class,'viewProfile']);
 
@@ -89,6 +88,9 @@ Route::delete("/admin/author/{author_id}/delete", [AdminAuthorController::class,
 Route::get('/admin/order/{orders_id}/detail', [AdminOrdersController::class, 'detail']);
 Route::put('/admin/order/{orders_id}/update', [AdminOrdersController::class, 'update']);
 Route::delete("/admin/order/{orders_id}/delete", [AdminOrdersController::class, 'destroy']);
+Route::get('/admin/completed-order', [AdminOrdersController::class, 'completedOrder']);
+Route::get('/admin/approved-order', [AdminOrdersController::class, 'approvedOrder']);
+Route::get('/admin/canceled-order', [AdminOrdersController::class, 'canceledOrder']);
 
 
 

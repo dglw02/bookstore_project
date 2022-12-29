@@ -33,4 +33,19 @@ class AdminOrdersController extends Controller
         $orders->delete();
         return redirect('/admin/order')->with('completed', 'Order has been deleted');
     }
+
+    public function completedOrder(){
+        $orders = Order::where('orders_status', '2')->get();
+        return view('admin.order.all-orders', compact('orders'));
+    }
+
+    public function approvedOrder(){
+        $orders = Order::where('orders_status', '1')->get();
+        return view('admin.order.all-orders', compact('orders'));
+    }
+
+    public function canceledOrder(){
+        $orders = Order::where('orders_status', '3')->get();
+        return view('admin.order.all-orders', compact('orders'));
+    }
 }

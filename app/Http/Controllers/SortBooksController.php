@@ -28,7 +28,7 @@ class SortBooksController extends Controller
         $category =Category::where('category_name',$category_name)->first();
         $books = $category->books()->get();
         $category_id = $category->category_id;
-        
+
         if(Request::get('sort')=='price_asc'){
             $books = $category->books()->where('category_id',$category_id)->orderBy('books_price','ASC')->get();
         }

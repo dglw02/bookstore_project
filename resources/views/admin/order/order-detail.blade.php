@@ -55,6 +55,7 @@
                     <option {{$order->orders_status == '0'? 'selected':''}} value="0">Pending</option>
                     <option {{$order->orders_status == '1'? 'selected':''}} value="1">Approved</option>
                     <option {{$order->orders_status == '2'? 'selected':''}} value="2">Completed</option>
+                    <option {{$order->orders_status == '3'? 'selected':''}} value="3">Canceled</option>
                 </select> <br>
                     <button type="submit" class="btn btn-block btn-success">Update status</button>
                     </form>
