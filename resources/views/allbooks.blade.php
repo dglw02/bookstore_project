@@ -10,8 +10,9 @@
             <div class="box-container">
                 <div class="box">
                     <h3>Sort by:</h3>
-                    <a href="{{ URL::current()."?sort=price_asc"}}"value="low-to-high"><i class="fas fa-arrow-right" ></i>Price : Low to High</a>
-                    <a href="{{ URL::current()."?sort=price_desc"}}"value="high-to-low"><i class="fas fa-arrow-right"></i>Price : High to Low</a>
+
+                    <a href="{{ URL::current()."?sort=price_asc"}}"  value="low-to-high"><i class="fas fa-arrow-right" ></i>Price : Low to High</a>
+                    <a href="{{ URL::current()."?sort=price_desc"}}"  value="high-to-low"><i class="fas fa-arrow-right"></i>Price : High to Low</a>
                 </div>
             </div>
         </section>
