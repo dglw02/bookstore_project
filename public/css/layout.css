@@ -69,10 +69,7 @@ section{
 }
 
 .btn{
-    margin-top: 1rem;
-    display:inline-block;
-    padding:.9rem 3rem;
-    border-radius: .5rem;
+
     color:#fff;
     background:var(--green);
     font-size: 1.7rem;
@@ -1014,7 +1011,7 @@ section{
 
 .home .home-slider .slide .content h3 {
     font-size: 6rem;
-    color: #130f40;
+    color: #06f5b5;
     padding-top: .5rem;
 }
 
@@ -1095,12 +1092,12 @@ section{
 
 .banner-container .banner .content span {
     font-size: 2rem;
-    color: #666;
+    color: #ffffff;
 }
 
 .banner-container .banner .content h3 {
     font-size: 3.2rem;
-    color: #130f40;
+    color: #08ea94;
     padding-top: .5rem;
 }
 

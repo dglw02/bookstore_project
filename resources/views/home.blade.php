@@ -3,27 +3,28 @@
 @section('title','Danh mục sản phẩm')
 
 @section('content')
+    <head>
+        <link href="{{ asset('css/register.css') }}" rel="stylesheet">
+    </head>
+    <body>
 
     <section class="home" id="home">
 
-        <div class="row">
+        <div class="swiper home-slider">
 
-            <div class="content">
-                <h3>Welcome to the Book Forest</h3>
-                <h2>Where the most thrilling books you've ever laid eyes on!!</h2>
-                <a href="{{URL::to('/allbooks')}}" class="btn">shop now</a>
+            <div class="swiper-wrapper">
+                @foreach($category as $cate)
+                    <div class="swiper-slide slide" style="background:url({{$cate->category_image}}) no-repeat;background-size: cover;">
+                        <div class="content">
+                            <h3>{{$cate->category_name}}</h3>
+                            <a href={{url('/category/'.$cate->category_name)}} class="btn">shop now</a>
+                        </div>
+                    </div>
+                @endforeach
             </div>
-
-            <div class="swiper books-slider">
-                <div class="swiper-wrapper">
-                    @foreach($books as $book)
-                        <a href="detail/{{$book['books_id']}}" class="swiper-slide"><img src={{$book['books_image']}} alt=""></a>
-                    @endforeach
-                </div>
-            </div>
-
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
         </div>
-
     </section>
 
     <!-- home section ense  -->
@@ -111,33 +112,6 @@
     </section>
 
     <!-- featured section ends -->
-
-
-    <!-- home section starts  -->
-
-    <section class="home" id="home">
-
-        <div class="swiper home-slider">
-
-            <div class="swiper-wrapper">
-                @foreach($category as $cate)
-                <div class="swiper-slide slide" style="background:url({{$cate->category_image}}) no-repeat;background-size: cover;">
-                    <div class="content">
-                        <h3>{{$cate->category_name}}</h3>
-                        <a href={{url('/category/'.$cate->category_name)}} class="btn">shop now</a>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-        </div>
-    </section>
-
-    <!-- home section ends -->
-
-    <!-- banner section starts  -->
-
     <section class="banner-container">
 
         <div class="banner">
@@ -160,44 +134,37 @@
 
     </section>
 
-    <!-- banner section ends -->
+    <!-- home section starts  -->
 
 
-    <!-- arrivals section starts  -->
 
-    <section class="arrivals" id="arrivals">
+    <!-- home section ends -->
 
-        <h1 class="heading"> <span>new Books</span> </h1>
 
-        <div class="swiper arrivals-slider">
 
-            <div class="swiper-wrapper">
-                @foreach($newbook as $book)
-                <a href="detail/{{$book['books_id']}}" class="swiper-slide box">
-                    <div class="image">
-                        <img src={{$book['books_image']}}  alt="a" >
-                    </div>
-                    <div class="content">
-                        <h3>{{$book['books_name']}}</h3>
-                        <div class="price">${{$book['books_price']}}</div>
-                        <form action="{{url('cart',$book->books_id)}}" method="POST">
-                            @csrf
-                            <input type="hidden" name="books_id" value={{$book['books_id']}}>
-                            <input type="hidden" name="books_quantity" value="1">
-                            <button class="btn">Add to Cart</button>
-                        </form>
-                    </div>
-                </a>
-                @endforeach
-            </div>
+    <section class="products">
+
+        <h1 class="title">latest products</h1>
+
+        <div class="box-container">
+            @foreach($newbook as $book)
+            <form action="{{url('cart',$book->books_id)}}" method="POST" class="box">
+                @csrf
+                <input type="hidden" name="books_id" value={{$book['books_id']}}>
+                <img class="image" src="{{$book->books_image}}" alt="">
+                <div class="name">{{$book->books_name}}</div>
+                <div class="price">${{$book->books_price}}/-</div>
+                <input type="number" min="1" name="books_quantity" value="1" class="qty">
+                <input type="hidden" name="books_image" value="{{$book->books_name}}">
+                <input type="hidden" name="books_price" value="{{$book->books_price}}">
+                <input type="hidden" name="books_image" value="{{$book->books_image}}">
+                <input type="submit" value="add to cart" name="add_to_cart" class="btn">
+            </form>
+            @endforeach
         </div>
 
+
     </section>
-
-    <!-- arrivals section ends -->
-
-
-    <!-- reviews section starts  -->
 
     <section class="reviews" id="reviews">
 
@@ -216,5 +183,5 @@
             </div>
         </div>
     </section>
-
+    </body>
 @endsection
