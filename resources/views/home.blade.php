@@ -93,6 +93,7 @@
                         <form action="{{url('cart',$book->books_id)}}" method="POST">
                             @csrf
                             <input type="hidden" name="books_id" value={{$book['books_id']}}>
+                            <input type="hidden" name="books_quantity" value="1">
                             <button class="btn">Add to Cart</button>
                         </form>
 
@@ -182,6 +183,7 @@
                         <form action="{{url('cart',$book->books_id)}}" method="POST">
                             @csrf
                             <input type="hidden" name="books_id" value={{$book['books_id']}}>
+                            <input type="hidden" name="books_quantity" value="1">
                             <button class="btn">Add to Cart</button>
                         </form>
                     </div>
