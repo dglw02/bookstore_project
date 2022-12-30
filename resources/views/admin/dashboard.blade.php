@@ -21,7 +21,7 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Earning
                                 </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">&#8369;</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{$total_earning}} $</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-calculator fa-2x text-gray-300"></i>
@@ -73,7 +73,7 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pending Orders
                                 </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{$pending_orders->count()}}</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-shopping-basket fa-2x text-gray-300"></i>
