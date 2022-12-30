@@ -34,14 +34,15 @@
                 <div class="dropdown">
                     {{Auth::user()->name ?? 'None'}}
                     <div class="dropdown-content">
-
+                        <form action="{{url("/my-order")}}" >
+                            <button class="btn btn-success">Order</button>
+                        </form>
                         <form action="{{url('logout')}}" method="POST">
                             @csrf
                             <button class="btn btn-success">logout</button>
                         </form>
 
-                        <a class="btn btn-success" href="{{url("/my-order")}}">
-                            Order</a>
+
                     </div>
                 </div>
 

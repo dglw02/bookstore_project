@@ -5,7 +5,7 @@
 @section('content')
     <section class="blogs" id="blogs">
 
-        <h1 class="heading"> <span>our categories</span> </h1>
+        <h1 class="heading"> <span>your order</span> </h1>
 
         <div class="swiper blogs-slider">
 

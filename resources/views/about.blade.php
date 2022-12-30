@@ -18,11 +18,10 @@
 <body>
 <div class="heading">
     <h3>about us</h3>
-    <p> <a href="home.php">home</a> / about </p>
+    <p><a href="home.php">home</a> / about </p>
 </div>
 
 <section class="about">
-
     <div class="flex">
 
         <div class="image">
@@ -32,9 +31,9 @@
         <div class="content">
             <h3>why choose us?</h3>
             <p>Choosing Book Forest can allow you to purchase the best selling books which are being written by some of the most popular authors. Apart from the numerous advantages of choosing us, some of the most important ones are being mentioned below:</p>
-            <p>+ 100% original books</p>
+            <p>+ 100% original books & Secure and Safe Shopping</p>
             <p>+ Books available at affordable prices</p>
-            <p>+ 100% Secure and Safe Shopping</p>
+            <p>+ Cash on Delivery facility available</p>
             <a href="contact.php" class="btn">contact us</a>
         </div>
 
@@ -49,8 +48,21 @@
     <div class="box-container">
 
         <div class="box">
-            <img src="images/pic-1.png" alt="">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt ad, quo labore fugiat nam accusamus quia. Ducimus repudiandae dolore placeat.</p>
+            <img src="{{asset('/asset/img/client_1.jfif')}}" alt="">
+            <p>Excellent service, rapid delivery and well packed item. Arrived in good time and in perfect condition. Easily as good if not better than amazon, especially as the purchase benefits independent bookshops instead of a vast faceless corporation.</p>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <h3>Jason Ryder</h3>
+        </div>
+
+        <div class="box">
+            <img src="{{asset('/asset/img/PP4.2.jpg')}}" alt="">
+            <p>Excellent! Delivered the day after I ordered and right near Christmas with all the strikes etc. I didn't expect it to be there before so was a very pleasant surprise and my friend was very happy with their gift. Will absolutely order from here again.</p>
             <div class="stars">
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
@@ -58,22 +70,21 @@
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star-half-alt"></i>
             </div>
-            <h3>john deo</h3>
+            <h3>John Louis</h3>
         </div>
 
 
-
         <div class="box">
-            <img src="images/pic-6.png" alt="">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt ad, quo labore fugiat nam accusamus quia. Ducimus repudiandae dolore placeat.</p>
+            <img src="{{asset('/asset/img/client_2.jfif')}}" alt="">
+            <p>I had a panic that my order would be delayed because of everything going on in the weeks before Christmas but I was amazed by how quickly my books arrived. Incredible! I choose Bookshop as my first option when buying books now.Thank you</p>
             <div class="stars">
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
+                <i class="fas fa-star"></i>
             </div>
-            <h3>john deo</h3>
+            <h3>Ryan Sterling</h3>
         </div>
 
     </div>
@@ -82,7 +93,7 @@
 
 <section class="authors">
 
-    <h1 class="title">greate authors</h1>
+    <h1 class="title">create authors</h1>
 
     <div class="box-container">
 
@@ -94,7 +105,7 @@
                 <a href="#" class="fab fa-instagram"></a>
                 <a href="#" class="fab fa-linkedin"></a>
             </div>
-            <h3>john deo</h3>
+            <h3>Duong Luu</h3>
         </div>
 
         <div class="box">
@@ -105,51 +116,7 @@
                 <a href="#" class="fab fa-instagram"></a>
                 <a href="#" class="fab fa-linkedin"></a>
             </div>
-            <h3>john deo</h3>
-        </div>
-
-        <div class="box">
-            <img src="images/author-3.jpg" alt="">
-            <div class="share">
-                <a href="#" class="fab fa-facebook-f"></a>
-                <a href="#" class="fab fa-twitter"></a>
-                <a href="#" class="fab fa-instagram"></a>
-                <a href="#" class="fab fa-linkedin"></a>
-            </div>
-            <h3>john deo</h3>
-        </div>
-
-        <div class="box">
-            <img src="images/author-4.jpg" alt="">
-            <div class="share">
-                <a href="#" class="fab fa-facebook-f"></a>
-                <a href="#" class="fab fa-twitter"></a>
-                <a href="#" class="fab fa-instagram"></a>
-                <a href="#" class="fab fa-linkedin"></a>
-            </div>
-            <h3>john deo</h3>
-        </div>
-
-        <div class="box">
-            <img src="images/author-5.jpg" alt="">
-            <div class="share">
-                <a href="#" class="fab fa-facebook-f"></a>
-                <a href="#" class="fab fa-twitter"></a>
-                <a href="#" class="fab fa-instagram"></a>
-                <a href="#" class="fab fa-linkedin"></a>
-            </div>
-            <h3>john deo</h3>
-        </div>
-
-        <div class="box">
-            <img src="images/author-6.jpg" alt="">
-            <div class="share">
-                <a href="#" class="fab fa-facebook-f"></a>
-                <a href="#" class="fab fa-twitter"></a>
-                <a href="#" class="fab fa-instagram"></a>
-                <a href="#" class="fab fa-linkedin"></a>
-            </div>
-            <h3>john deo</h3>
+            <h3>Minh Dat</h3>
         </div>
 
     </div>
