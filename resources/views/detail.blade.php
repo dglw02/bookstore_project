@@ -86,7 +86,6 @@
                         <button class="button add-cart"><i class='bx bxs-cart' ></i> Add to Cart</button>
                         </form>
                         {{--<div class="button heart"><i class='bx bxs-heart' ></i> Add to Wishlist</div>--}}
-
                     </div>
                         @endif
                 </div>

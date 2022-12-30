@@ -123,6 +123,7 @@
             <a href="{{URL::to('/category')}}"><i class="fas fa-arrow-right"></i>Category</a>
             <a href="{{URL::to('/topsellers')}}"><i class="fas fa-arrow-right"></i>Top Sellers</a>
             <a href="{{URL::to('/allbooks')}}"><i class="fas fa-arrow-right"></i>All</a>
+            <a href="{{URL::to('/about')}}"><i class="fas fa-arrow-right"></i>About</a>
         </div>
 
         <div class="box">
