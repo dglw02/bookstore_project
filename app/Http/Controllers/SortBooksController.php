@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Books;
 use App\Models\Category;
 use Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class SortBooksController extends Controller
 {

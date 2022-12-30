@@ -12,6 +12,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class LoginController extends Controller
 {
@@ -45,6 +46,7 @@ class LoginController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+        toast('Logout','success');
         return redirect('/');
 
     }
@@ -69,6 +71,7 @@ class LoginController extends Controller
         ]);
             $storeData ['password'] = Hash::make($storeData ['password']);
             $user = User::create($storeData);
+            alert()->success('Register complete','Now you can go shopping.');
             return redirect('/')->with('completed', '!! Account has created !!');
     }
 }

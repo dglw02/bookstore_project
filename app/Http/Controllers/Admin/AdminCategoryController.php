@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminCategoryController extends Controller
 {

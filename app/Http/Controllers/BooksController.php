@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Books;
 use App\Models\Cart;
 use App\Models\User;
+use RealRashid\SweetAlert\Facades\Alert;
 use MongoDB\Driver\Session;
 
 class BooksController extends Controller
@@ -62,7 +63,9 @@ class BooksController extends Controller
             $cart->books_id=$books->books_id;
             $cart->books_quantity=$request->books_quantity;
             $cart->save();
+            Alert::success('Add cart Successfully','Thank for your purchasing.');
             return redirect()->back();
+
         }
         else
         {

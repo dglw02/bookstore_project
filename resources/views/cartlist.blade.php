@@ -28,7 +28,9 @@
             <img src={{$item->books->books_image}} alt="">
             <div class="name">{{$item->books->books_name}}</div>
             <div class="price">${{$item->books->books_price}}/-</div>
-            <form action="" method="post">
+            <form action="" method="put">
+                @csrf
+                @method('put')
                 <input type="hidden" name="cart_id" value="{{$item->books_id}}">
                 <input type="number" min="1" name="cart_quantity" value="{{$item->books_quantity}}">
                 <input type="submit" name="update_cart" value="update" class="option-btn">

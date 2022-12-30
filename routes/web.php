@@ -36,6 +36,9 @@ Route::get('/new', function () {
 Route::get('/allbooks', function () {
     return view('allbooks');
 });
+Route::get('/about', function () {
+    return view('about');
+});
 
 
 //Admin

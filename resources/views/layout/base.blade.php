@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,6 +55,7 @@
             <a href="{{URL::to('/new')}}">New</a>
             <a href="{{URL::to('/category')}}">Category</a>
             <a href="{{URL::to('/allbooks')}}">All</a>
+            <a href="{{URL::to('/about')}}">About</a>
         </nav>
     </div>
 </header>
@@ -66,6 +68,7 @@
     <a href="{{URL::to('/new')}}">New</a>
     <a href="{{URL::to('/topsellers')}}">Top Sellers</a>
     <a href="{{URL::to('/allbooks')}}">All</a>
+    <a href="{{URL::to('/about')}}">About</a>
 </nav>
 
 <!-- login form  -->
@@ -153,6 +156,8 @@
 </section>
 <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 <script src="{{ asset('js/layout.js') }}"></script>
+<script src="https://unpkg.com/sweetalert2@7.18.0/dist/sweetalert2.all.js"></script>
 @yield('scripts')
+@include('sweetalert::alert')
 </body>
 </html>
