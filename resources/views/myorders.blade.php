@@ -9,7 +9,6 @@
 
         <div class="swiper blogs-slider">
 
-
             @foreach($orders as $items)
                     <div class="swiper-slide box">
                         <div class="content">

@@ -110,7 +110,7 @@ Route::post('/logout',[LoginController::class,'logout']);
 //Books
 Route::get('/',[BooksController::class,'showBooks']);
 Route::get('/allbooks',[SortBooksController::class,'allBooks']);
-Route::get('/detail/{id}',[BooksController::class,'showDetail']);
+Route::get('/detail/{books_id}',[BooksController::class,'showDetail']);
 Route::get('search',[BooksController::class,'search']);
 Route::get('new',[BooksController::class,'newestBook']);
 

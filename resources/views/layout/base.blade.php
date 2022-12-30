@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Forest</title>
     <link rel="icon" href="{{ url('asset/img/logo.png') }}">
-    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="{{ asset('css/layout.css') }}" rel="stylesheet">
 </head>
@@ -16,7 +15,9 @@
 <header class="header">
 
     <div class="header-1">
-        <a href="{{url('/')}}" class="logo"> <img style="height:30px;width: 50px;border-radius: 950px;" src={{asset('/asset/img/logo.png')}} alt=""> Book Forest </a>
+        <a href="{{url('/')}}" class="logo">
+            <img style="height:30px;width: 50px;border-radius: 950px;" src={{asset('/asset/img/logo.png')}} alt=""> Book
+            Forest </a>
 
         <form action="/search" class="search-form">
             <input type="search" name="query" placeholder="search here..." id="search-box">
@@ -26,20 +27,21 @@
         <div class="icons">
             <div id="search-btn" class="fas fa-search"></div>
             @if(Auth::check() == false)
-            <a href="{{url('register')}}">Register</a>
+                <a href="{{url('register')}}">Register</a>
                 <a href="{{url('login')}}">Login</a>
             @else
                 <a href="{{url('cartlist')}}" class="fas fa-shopping-cart"></a>
                 <div class="dropdown">
-                {{Auth::user()->name ?? 'None'}}
+                    {{Auth::user()->name ?? 'None'}}
                     <div class="dropdown-content">
+
                         <form action="{{url('logout')}}" method="POST">
                             @csrf
-                        <button class="btn btn-success">logout</button>
+                            <button class="btn btn-success">logout</button>
                         </form>
-                        <form action = "my-order">
-                        <button class="btn btn-success">Order</button>
-                            </form>
+
+                        <a class="btn btn-success" href="{{url("/my-order")}}">
+                            Order</a>
                     </div>
                 </div>
 
@@ -91,7 +93,6 @@
 </div>
 
 <!-- home section starts  -->
-
 
 
 <!-- Content -->
@@ -151,7 +152,7 @@
         <a href="https://www.tiktok.com/vi-VN/" class="fab fa-tiktok"></a>
     </div>
 
-    <div class="credit"> <span>A room without books is like a body without a soul</span></div>
+    <div class="credit"><span>A room without books is like a body without a soul</span></div>
 
 </section>
 <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>

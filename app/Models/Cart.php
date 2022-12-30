@@ -15,6 +15,7 @@ class Cart extends Model
         'books_quantity',
     ];
     protected $table ='carts';
+
     public function books(){
         return $this->belongsTo(Books::class,'books_id','books_id');
     }
