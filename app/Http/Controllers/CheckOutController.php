@@ -69,6 +69,7 @@ class CheckOutController extends Controller
         }
         $cartitems = Cart::where('user_id',Auth::id())->get();
         Cart::destroy($cartitems);
+        alert()->success('We has taken your order','Please wait for order browsing');
         return redirect('/')->with('status','Order placed Successfully');
     }
 }

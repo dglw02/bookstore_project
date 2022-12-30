@@ -78,6 +78,7 @@
             <a href="{{url('/')}}" class="btn">Back to Shopping</a>
         @endif
     </form>
+    @include('sweetalert::alert')
 
 </section>
 <script src="{{ asset('js/register.js') }}"></script>

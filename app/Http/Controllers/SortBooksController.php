@@ -15,10 +15,12 @@ class SortBooksController extends Controller
 
         if(Request::get('sort')=='price_asc'){
             $data = Books::orderBy('books_price','ASC')->get();
+            toast('Sort by low to high','success');
         }
 
         elseif(Request::get('sort') =='price_desc'){
             $data = Books::orderBy('books_price','DESC')->get();
+            toast('Sort by high to low','success');
         }
 
         return view('allbooks',['books'=>$data]);

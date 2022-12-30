@@ -63,7 +63,7 @@
     @endif
 </section>
 
-
+@include('sweetalert::alert')
 
 
 
@@ -72,6 +72,7 @@
     src="https://code.jquery.com/jquery-3.6.2.min.js"
     integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA="
     crossorigin="anonymous"></script>
+
 @yield('scripts')
 </body>
 </html>

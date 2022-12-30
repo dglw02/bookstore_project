@@ -34,10 +34,12 @@ class LoginController extends Controller
                 return redirect('admin/dashboard');
             }
             else{
+                alert()->success('Login complete','Now you can go shopping.');
                 return redirect('/');
             }
         }
         else{
+            alert()->error('Password is incorrect','Please enter the correct password');
             return view('/login');
         }
     }

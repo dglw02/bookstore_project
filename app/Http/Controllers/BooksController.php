@@ -85,13 +85,16 @@ class BooksController extends Controller
     {
         $cartitems = Cart::findOrFail($cartitems);
         $cartitems->delete();
+        toast('This book has been deleted','warning');
         return redirect('/cartlist');
+
     }
 
     public function deleteAllCart()
     {
         $cartitems = Cart::where('user_id',Auth::id())->get();
         Cart::destroy($cartitems);
+        alert()->warning('All books has been deleted','there no book in cart');
         return redirect('/cartlist');
     }
 
