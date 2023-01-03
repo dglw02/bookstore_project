@@ -86,10 +86,9 @@
                         </tbody>
                     </table>
                 </div>
-
             </div>
         </div>
-
+        @include('sweetalert::alert')
     </div>
 @endsection
 

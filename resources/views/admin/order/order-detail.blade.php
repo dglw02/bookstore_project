@@ -12,7 +12,8 @@
                     <div class="card-body">
                         <p><i class="fas fa-user"></i> <span class="mx-2">{{$order->user->name}}</span></p>
                         <p><i class="fas fa-phone"></i><span class="mx-2">{{$order->user->phone}}</span></p>
-                        <p><i class="fas fa-map-marked"></i> <span class="mx-2">{{$order->user->address}}, {{$order->user->city->city_name}}</span></p>
+                        <p><i class="fas fa-map-marked"></i> <span
+                                class="mx-2">{{$order->user->address}}, {{$order->user->city->city_name}}</span></p>
                     </div>
                 </div>
                 <div class="order-product mb-4">
@@ -29,13 +30,13 @@
                         <tbody>
                         @php $total = 0;@endphp
                         @foreach($order_details as $ord)
-                        <tr>
-                            <td>{{$ord->books->books_name}}</td>
-                            <td>{{$ord->quantity}}</td>
-                            <td>{{$ord->price}}$</td>
-                            @php $total += $ord->quantity * $ord->price @endphp
-                            <td>{{$ord->quantity * $ord->price}}$</td>
-                        </tr>
+                            <tr>
+                                <td>{{$ord->books->books_name}}</td>
+                                <td>{{$ord->quantity}}</td>
+                                <td>{{$ord->price}}$</td>
+                                @php $total += $ord->quantity * $ord->price @endphp
+                                <td>{{$ord->quantity * $ord->price}}$</td>
+                            </tr>
                         @endforeach
                         @php $grandtotal = $total +($total * 0.1) + Auth::user()->city->areas->areas_price @endphp
                         <tr>
@@ -46,21 +47,27 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="form-group">
-                <label for="">Order Status</label> <br>
-                    <form method="POST" action="{{url('/admin/order/'.$order->orders_id.'/update')}}">
-                        @csrf
-                        @method('PUT')
-                <select class="form-select" name="orders_status">
-                    <option {{$order->orders_status == '0'? 'selected':''}} value="0">Pending</option>
-                    <option {{$order->orders_status == '1'? 'selected':''}} value="1">Approved</option>
-                    <option {{$order->orders_status == '2'? 'selected':''}} value="2">Completed</option>
-                    <option {{$order->orders_status == '3'? 'selected':''}} value="3">Canceled</option>
-                </select> <br>
-                    <button type="submit" class="btn btn-block btn-success">Update status</button>
-                    </form>
-                </div>
+                <form method="POST" action="{{url('/admin/order/'.$order->orders_id.'/update')}}">
+                    @csrf
+                    @method('PUT')
+                    <div class="card-header">
+                        <h4>Order status</h4>
+                    </div>
+                    <br>
+                    <div class="card my-4">
+                        <div class="card-body">
+                            <select class="form-control" name="orders_status">
+                                <option {{$order->orders_status == '0'? 'selected':''}} value="0">Pending</option>
+                                <option {{$order->orders_status == '1'? 'selected':''}} value="1">Approved</option>
+                                <option {{$order->orders_status == '2'? 'selected':''}} value="2">Completed</option>
+                                <option {{$order->orders_status == '3'? 'selected':''}} value="3">Canceled</option>
+                            </select> <br>
+                            <button type="submit" class="btn btn-block btn-success">Update status</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+    @include('sweetalert::alert')
 @endsection

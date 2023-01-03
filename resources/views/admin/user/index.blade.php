@@ -59,26 +59,26 @@
                             <td>{{$user->city_name}}</td>
                             <td>{{$user->level}}</td>
                             <td>
-
                                 <div class="action d-flex flex-row">
-                                    <a href="#" class="btn-primary btn btn-sm mr-2"><i class="fas fa-edit"></i></a>
+                                    <a href="{{url('/admin/user/'.$user->id.'/edit')}}" class="btn-primary btn btn-sm mr-2"><i class="fas fa-edit"></i></a>
 
-                                    <button type="submit"
-                                            onclick="return confirm('User will delete permanently! Are you sure to delete??')"
-                                            class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                    <form method="POST" action="{{url('/admin/user/'.$user->id.'/delete')}}">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" onclick="return confirm('User will move to trash! Are you sure to delete??')"
+                                                class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                    </form>
                                 </div>
-
                             </td>
                         </tr>
                         @endforeach
                         </tbody>
                     </table>
                 </div>
-
             </div>
         </div>
-
     </div>
+    @include('sweetalert::alert')
 @endsection
 
 @push('js')

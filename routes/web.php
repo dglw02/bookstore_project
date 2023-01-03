@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\AdminBooksController;
 use App\Http\Controllers\Admin\AdminOrdersController;
 use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminAuthorController;
+use App\Http\Controllers\Admin\AdminUsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -86,6 +87,13 @@ Route::get("/admin/author/{author_id}/edit", [AdminAuthorController::class, 'edi
 Route::put("/admin/author/{author_id}/edit", [AdminAuthorController::class, 'update']);
 // Xoa 1 san pham
 Route::delete("/admin/author/{author_id}/delete", [AdminAuthorController::class, 'destroy']);
+
+//admin user
+Route::get("/admin/user/{id}/edit", [AdminUsersController::class, 'edit']);
+// Cap nhat sp => ko co giao dien
+Route::put("/admin/user/{id}/edit", [AdminUsersController::class, 'update']);
+// Xoa 1 san pham
+Route::delete("/admin/user/{id}/delete", [AdminUsersController::class, 'destroy']);
 
 //admin orders
 Route::get('/admin/order/{orders_id}/detail', [AdminOrdersController::class, 'detail']);

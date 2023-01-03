@@ -27,7 +27,8 @@ class AdminAuthorController extends Controller
             'author_description' => 'required|max:2000',
         ]);
         $author = Author::create($storeData);
-        return redirect('/admin/author')->with('completed', 'Author has been saved!');
+        alert()->success('Success','Author have been created.');
+        return redirect('/admin/author');
     }
 
     /**
@@ -56,7 +57,8 @@ class AdminAuthorController extends Controller
             'author_description' => 'required|max:2000',
         ]);
         Author::where('author_id',"=",$author_id)->update($updateData);
-        return redirect('/admin/author')->with('completed', 'Author has been updated');
+        alert()->success('Success','Author have been updated.');
+        return redirect('/admin/author');
     }
     /**
      * Remove the specified resource from storage.
@@ -68,6 +70,7 @@ class AdminAuthorController extends Controller
     {
         $author = Author::findOrFail($author_id);
         $author->delete();
+        alert()->success('Success','Author have been deleted.');
         return redirect('/admin/author')->with('completed', 'Author has been deleted');
     }
 }

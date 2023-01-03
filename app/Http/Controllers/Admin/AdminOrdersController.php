@@ -25,6 +25,7 @@ class AdminOrdersController extends Controller
         $order = Order::findOrFail($orders_id);
         $order -> orders_status = $request->input('orders_status');
         $order->update();
+        alert()->success('Success','Order have been updated.');
         return redirect('/admin/order');
 
     }
@@ -32,7 +33,8 @@ class AdminOrdersController extends Controller
     public function destroy($orders_id){
         $orders = Order::findOrFail($orders_id);
         $orders->delete();
-        return redirect('/admin/order')->with('completed', 'Order has been deleted');
+        alert()->success('Success','Order have been deleted.');
+        return redirect('/admin/order');
     }
 
     public function completedOrder(){

@@ -86,11 +86,10 @@
                         </tbody>
                     </table>
                 </div>
-
             </div>
         </div>
-
     </div>
+    @include('sweetalert::alert')
 @endsection
 
 @push('js')

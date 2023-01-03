@@ -27,7 +27,8 @@ class AdminCategoryController extends Controller
             'category_description' => 'required|max:2000',
         ]);
         $category = Category::create($storeData);
-        return redirect('/admin/category')->with('completed', 'Category has been saved!');
+        alert()->success('Success','Category have been created.');
+        return redirect('/admin/category');
     }
 
     /**
@@ -56,7 +57,8 @@ class AdminCategoryController extends Controller
             'category_description' => 'required|max:2000',
         ]);
         Category::where('category_id',"=",$category_id)->update($updateData);
-        return redirect('/admin/category')->with('completed', 'Category has been updated');
+        alert()->success('Success','Category have been updated.');
+        return redirect('/admin/category');
     }
     /**
      * Remove the specified resource from storage.
@@ -68,7 +70,8 @@ class AdminCategoryController extends Controller
     {
         $category = Category::findOrFail($category_id);
         $category->delete();
-        return redirect('/admin/category')->with('completed', 'Category has been deleted');
+        alert()->success('Success','Category have been deleted.');
+        return redirect('/admin/category');
     }
 
 }
