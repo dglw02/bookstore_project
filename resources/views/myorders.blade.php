@@ -8,7 +8,7 @@
         <h1 class="heading"> <span>your order</span> </h1>
 
         <div class="swiper blogs-slider">
-
+            @if($orders->count() > 0)
             @foreach($orders as $items)
                     <div class="swiper-slide box">
                         <div class="content">
@@ -18,6 +18,9 @@
                         </div>
                     </div>
                 @endforeach
+            @else
+                <p class="empty">no orders placed yet!</p>
+            @endif
 
         </div>
     </section>

@@ -33,7 +33,7 @@
                     <p> name : <span>{{$orders->orders_name}}</span> </p>
                     <p> number : <span>{{$orders->orders_phone}}</span> </p>
                     <p> email : <span>{{$orders->orders_email}}</span> </p>
-                    <p> address : <span>{{$orders->orders_address}}</span> </p>
+                    <p> address : <span>{{$orders->orders_address}}, {{$orders->orders_city}} </span> </p>
                     <p> payment method : <span>{{$orders->orders_payment}}</span> </p>
 
 
@@ -46,8 +46,22 @@
                     <p> payment status :
                         @if($orders->orders_status == 0)
                             <span>Pending</span>
+                <div style="margin-top: 2rem; text-align:center;">
+                    <form method="POST" action="{{url('/vieworder/'.$orders->orders_id.'/delete-order')}}">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class="delete-btn" onclick="return confirm('Are you sure you want to cancelled your order?')">Cancelled order</button>
+                    </form>
+                </div>
                         @elseif($orders->orders_status == 1)
                             <span>Approved</span>
+                    <div style="margin-top: 2rem; text-align:center;">
+                        <form method="POST" action="{{url('/vieworder/'.$orders->orders_id.'/delete-order')}}">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="delete-btn" onclick="return confirm('Are you sure you want to cancelled your order?')">Cancelled order</button>
+                        </form>
+                    </div>
                         @else
                             <span>Completed</span>
                         @endif
