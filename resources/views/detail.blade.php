@@ -116,7 +116,7 @@
                     </div>
                     <div class="content">
                         <h3>{{$book->books_name}}</h3>
-                        <div class="price">${{$book->books_price}}</div>
+                        <div class="price">${{$book->books_price}}</div><br>
                         <a href="#" class="btn">add to cart</a>
                     </div>
                 </div>

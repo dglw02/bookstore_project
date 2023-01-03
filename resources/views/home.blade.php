@@ -118,7 +118,7 @@
             <img src={{asset('/asset/img/book_background1.jpg')}} alt="">
             <div class="content">
                 <span>special offer</span>
-                <h3>upto 50% off</h3>
+                <h3>upto 50% off</h3> <br>
                 <a href="#" class="btn">shop now</a>
             </div>
         </div>
@@ -127,7 +127,7 @@
             <img src={{asset('/asset/img/book_background2.jpg')}} alt="">
             <div class="content">
                 <span>special offer</span>
-                <h3>upto 50% off</h3>
+                <h3>upto 50% off</h3> <br>
                 <a href="#" class="btn">shop now</a>
             </div>
         </div>
