@@ -3,6 +3,9 @@
 @section('title','Danh mục sản phẩm')
 
 @section('content')
+    <head>
+        <link href="{{ asset('css/register.css') }}" rel="stylesheet">
+    </head>
     <section class="blogs" id="blogs">
 
         <h1 class="heading"> <span>your order</span> </h1>
@@ -12,7 +15,7 @@
             @foreach($orders as $items)
                     <div class="swiper-slide box">
                         <div class="content">
-                            <h3>{{$items->orders_name}}</h3>
+                            <h3>{{$items->orders_name}}-({{$items->created_at}})</h3>
                             <p>${{$items->orders_price}}</p>
                             <a href="{{url('vieworder/'.$items->orders_id)}}" class="btn">Order detail</a>
                         </div>

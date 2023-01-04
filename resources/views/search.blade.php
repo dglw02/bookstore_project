@@ -11,9 +11,6 @@
             @foreach($books as $book)
                 <div class="box" data-item="special">
                     <div class="icons">
-                        <a href="#" class="fas fa-shopping-cart"></a>
-                        <a href="#" class="fas fa-heart"></a>
-                        <a href="#" class="fas fa-search"></a>
                         <a href="/detail/{{$book['books_id']}}" class="fas fa-eye"></a>
                     </div>
                     <div class="image">
@@ -24,6 +21,12 @@
                         <div class="price">
                             <div class="amount">${{$book['books_price']}}</div>
                         </div>
+                        <form action="{{url('cart',$book->books_id)}}" method="POST">
+                            @csrf
+                            <input type="hidden" name="books_id" value={{$book['books_id']}}>
+                            <input type="hidden" name="books_quantity" value="1">
+                            <button class="btn">Add to Cart</button>
+                        </form>
                     </div>
                 </div>
             @endforeach

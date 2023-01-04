@@ -3,7 +3,9 @@
 @section('title','Allcategory')
 
 @section('content')
-
+    <head>
+        <link href="{{ asset('css/register.css') }}" rel="stylesheet">
+    </head>
     <section class="blogs" id="blogs">
 
         <h1 class="heading"> <span>our categories</span> </h1>

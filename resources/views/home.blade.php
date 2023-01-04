@@ -81,8 +81,6 @@
                 @foreach($books as $book)
                 <div class="swiper-slide box">
                     <div class="icons">
-                        <a href="#" class="fas fa-search"></a>
-                        <a href="#" class="fas fa-heart"></a>
                         <a href="detail/{{$book['books_id']}}" class="fas fa-eye"></a>
                     </div>
                     <div class="image">

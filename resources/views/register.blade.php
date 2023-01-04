@@ -36,6 +36,7 @@
                        autocomplete="current-password">
                 <input type="submit" name="submit" value="register now" class="btn">
                 <p>already have an account? <a href="{{url('login')}}">login now</a></p>
+
             </form>
 
         </div>

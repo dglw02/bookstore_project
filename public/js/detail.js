@@ -1,23 +1,19 @@
-const sliderMainImage = document.getElementById("product-main-image");
-const sliderImageList = document.getElementsByClassName("image-list");
-console.log(sliderImageList);
+const imgs = document.querySelectorAll('.img-select a');
+const imgBtns = [...imgs];
+let imgId = 1;
 
-sliderImageList[0].onclick = function(){
-    sliderMainImage.src = sliderImageList[0].src;
-    console.log(sliderMainImage.src);
-};
+imgBtns.forEach((imgItem) => {
+    imgItem.addEventListener('click', (event) => {
+        event.preventDefault();
+        imgId = imgItem.dataset.id;
+        slideImage();
+    });
+});
 
-sliderImageList[1].onclick = function(){
-    sliderMainImage.src = sliderImageList[1].src;
-    console.log(sliderMainImage.src);
-};
+function slideImage(){
+    const displayWidth = document.querySelector('.img-showcase img:first-child').clientWidth;
 
-sliderImageList[2].onclick = function(){
-    sliderMainImage.src = sliderImageList[2].src;
-    console.log(sliderMainImage.src);
-};
+    document.querySelector('.img-showcase').style.transform = `translateX(${- (imgId - 1) * displayWidth}px)`;
+}
 
-sliderImageList[3].onclick = function(){
-    sliderMainImage.src = sliderImageList[3].src;
-    console.log(sliderMainImage.src);
-};
+window.addEventListener('resize', slideImage);
