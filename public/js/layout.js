@@ -180,3 +180,18 @@ var swiper = new Swiper(".home-slider", {
         prevEl: ".swiper-button-prev",
     },
 });
+
+
+
+    function loadcart() {
+        $.ajax({
+            method: "GET",
+            url: "/load-cart_data",
+            success: function (response) {
+                $('.cart-count').html('');
+                $('.cart-count').html('response.count');
+            }
+        });
+    }
+
+

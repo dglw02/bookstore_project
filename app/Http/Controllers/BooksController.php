@@ -98,4 +98,9 @@ class BooksController extends Controller
         return redirect('/cartlist');
     }
 
+    function cartcount(){
+        $cartcount = Cart::where('user_id',Auth::id())->count();
+        return response()->json(['count'=>$cartcount]);
+    }
+
 }
