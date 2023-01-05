@@ -55,18 +55,23 @@ class BooksController extends Controller
     function addCart(Request $request ,$books_id){
         if(Auth::id())
         {
-
             $user =auth()->user();
             $books=Books::find($books_id);
-            $cart =new cart;
-            $cart->user_id=$user->id;
-            $cart->books_id=$books->books_id;
-            $cart->books_quantity=$request->books_quantity;
-            $cart->save();
-            Alert::success('Add cart Successfully','Thank for your purchasing.');
-            return redirect()->back();
+                $cart = new cart;
+                $cart->user_id = $user->id;
+                $cart->books_id = $books->books_id;
+                $cart->books_quantity = $request->books_quantity;
+                if($books->books_id == $cart->books_id > 0){
+                    Alert::success('Book is already in cart', 'Please choose another book.');
+                    return redirect()->back();
+                } else {
+                $cart->save();
+                Alert::success('Add cart Successfully', 'Thank for your purchasing.');
+                return redirect()->back();
+            }
+            }
 
-        }
+
         else
         {
             return redirect('login');
