@@ -131,7 +131,7 @@ Route::post('/cart/{id}',[BooksController::class,'addCart']);
 Route::delete("/cart/{id}/delete", [BooksController::class, 'deleteCart']);
 Route::delete("/cart/deleteall", [BooksController::class, 'deleteAllCart']);
 Route::get('/cartlist',[BooksController::class,'cartList']);
-Route::get("load-cart-data",[BooksController::class,'cartcount']);
+Route::put('/cartlist', [BooksController::class, 'updateCart']);
 
 
 //Checkout

@@ -61,14 +61,10 @@ class BooksController extends Controller
                 $cart->user_id = $user->id;
                 $cart->books_id = $books->books_id;
                 $cart->books_quantity = $request->books_quantity;
-                if($books->books_id == $cart->books_id > 0){
-                    Alert::success('Book is already in cart', 'Please choose another book.');
-                    return redirect()->back();
-                } else {
                 $cart->save();
                 Alert::success('Add cart Successfully', 'Thank for your purchasing.');
                 return redirect()->back();
-            }
+
             }
 
 
@@ -78,10 +74,16 @@ class BooksController extends Controller
         }
     }
 
+    function cartList()
+    {
+        $cartitems = Cart::where('user_id', Auth::id())->get();
+        return view('cartlist', compact('cartitems'));
+    }
 
-    function cartList(){
-        $cartitems = Cart::where('user_id',Auth::id())->get();
-        return view('cartlist',compact('cartitems'));
+    function updateCart(Request $request){
+        $id_cart = $request->get('id_cart');
+        $cart_quantity= $request->get('cart_quantity');
+        dd('id_cart', 'cart_quantity');
     }
 
 
