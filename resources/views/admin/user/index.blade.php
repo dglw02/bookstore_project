@@ -14,8 +14,16 @@
                         </a>
                     </div>
                 </div>
+                <div class="col-6 text-right">
+                    <div>
+                        <a href="#" class="btn-primary btn-sm">
+                           Employees list
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
+
 
 
         <!-- DataTales Example -->
@@ -34,7 +42,6 @@
                             <th>Address</th>
                             <th>Phone</th>
                             <th>Province</th>
-                            <th>Role</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -45,7 +52,6 @@
                             <th>Address</th>
                             <th>Phone</th>
                             <th>Province</th>
-                            <th>Role</th>
                             <th>Action</th>
                         </tr>
                         </tfoot>
@@ -57,7 +63,6 @@
                             <td>{{$user->address}}</td>
                             <td>{{$user->phone}}</td>
                             <td>{{$user->city_name}}</td>
-                            <td>{{$user->level}}</td>
                             <td>
                                 <div class="action d-flex flex-row">
                                     <a href="{{url('/admin/user/'.$user->id.'/edit')}}" class="btn-primary btn btn-sm mr-2"><i class="fas fa-edit"></i></a>

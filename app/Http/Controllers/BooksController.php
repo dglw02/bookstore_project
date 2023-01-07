@@ -89,8 +89,9 @@ class BooksController extends Controller
     function updateCart(Request $request){
         $id_cart = $request->get('id_cart');
         $cart_quantity= $request->get('cart_quantity');
-        dd('id_cart', 'cart_quantity');
+        dd($id_cart, $cart_quantity);
     }
+
 
 
 
