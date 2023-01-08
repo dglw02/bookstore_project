@@ -32,10 +32,24 @@ class UsersDatabase extends Seeder
 
         \App\Models\User::factory()->create(
             [
+                'name' => 'Editor1',
+                'email' => 'editor1@gmail.com',
+                'isAdmin'=>true,
+                'level'=>1,
+                'phone'=>'0387654198',
+                'address'=>'Hoan Kiem',
+                'user_city'=>'1',
+                'password'=> Hash::make('editor123')
+
+            ]
+        );
+
+        \App\Models\User::factory()->create(
+            [
                 'name' => 'User1',
                 'email' => 'user1@gmail.com',
                 'isAdmin'=>false,
-                'level'=>0,
+                'level'=>2,
                 'phone'=>'0123456789',
                 'address'=>'Ba Dinh',
                 'user_city'=>'2',

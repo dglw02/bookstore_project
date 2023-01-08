@@ -90,11 +90,11 @@ Route::put("/admin/author/{author_id}/edit", [AdminAuthorController::class, 'upd
 Route::delete("/admin/author/{author_id}/delete", [AdminAuthorController::class, 'destroy']);
 
 //admin user
-Route::get("/admin/user/{id}/edit", [AdminUsersController::class, 'edit']);
+Route::get("/admin/admin/{id}/edit", [AdminUsersController::class, 'edit']);
 // Cap nhat sp => ko co giao dien
-Route::put("/admin/user/{id}/edit", [AdminUsersController::class, 'update']);
+Route::put("/admin/admin/{id}/edit", [AdminUsersController::class, 'update']);
 // Xoa 1 san pham
-Route::delete("/admin/user/{id}/delete", [AdminUsersController::class, 'destroy']);
+Route::delete("/admin/admin/{id}/delete", [AdminUsersController::class, 'destroy']);
 
 //admin orders
 Route::get('/admin/order/{orders_id}/detail', [AdminOrdersController::class, 'detail']);

@@ -2,7 +2,7 @@
 @section('content')
     <div class="card push-top">
         <div class="card-header">
-            Edit & Update User
+            Edit & Update Admin
         </div>
         <div class="card-body">
             @if ($errors->any())
@@ -14,7 +14,7 @@
                     </ul>
                 </div><br />
             @endif
-            <form method="POST" action="{{url('/admin/user/'.$user->id.'/edit')}}">
+            <form method="POST" action="{{url('/admin/admin/'.$user->id.'/edit')}}">
                 @csrf
                 @method('put')
                 <div class="form-group">
@@ -33,7 +33,7 @@
                         @endforeach
                     </select>
                 </div>
-                <button type="submit" class="btn btn-block btn-danger">Update User</button>
+                <button type="submit" class="btn btn-block btn-danger">Update Admin</button>
             </form>
         </div>
     </div>

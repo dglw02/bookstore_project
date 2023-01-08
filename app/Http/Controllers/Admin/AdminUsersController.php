@@ -42,7 +42,7 @@ class AdminUsersController extends Controller
         ]);
         User::where('id',"=",$id)->update($updateData);
         alert()->success('Success','User have been updated.');
-        return redirect('/admin/user');
+        return redirect('/admin/admin');
     }
     /**
      * Remove the specified resource from storage.
@@ -55,6 +55,6 @@ class AdminUsersController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
         alert()->success('Success','User have been deleted.');
-        return redirect('/admin/user');
+        return redirect('/admin/admin');
     }
 }
