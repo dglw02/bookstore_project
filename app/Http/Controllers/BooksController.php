@@ -86,9 +86,11 @@ class BooksController extends Controller
         return view('cartlist', compact('cartitems'));
     }
 
-    function updateCart(Request $request){
+    function updateCart(Request $request, $id){
         $id_cart = $request->get('id_cart');
         $cart_quantity= $request->get('cart_quantity');
+        $user = User::where('id', $id)->first();
+        Cart::update($id_cart, $cart_quantity);
         dd($id_cart, $cart_quantity);
     }
 
