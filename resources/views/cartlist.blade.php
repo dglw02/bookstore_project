@@ -34,6 +34,7 @@
 
                     <form action="{{url('/cart/'.$item->id.'/update')}}" method="post">
                         @csrf
+
                         <input type="hidden" name="id_cart" value="{{$item->id}}">
                         <input type="number"  name="cart_quantity" value="{{$item->books_quantity}}">
                         <input type="submit" name="update_cart" value="update" class="option-btn">
