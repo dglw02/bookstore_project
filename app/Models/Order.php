@@ -4,6 +4,7 @@ namespace App\Models;
 use App\Models\OrderDetails;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Order extends Model
 {
@@ -29,5 +30,14 @@ class Order extends Model
 
     public function user(){
         return $this->belongsTo(User::class);
+    }
+
+    public function delete()
+    {
+        DB::transaction(function()
+        {
+            $this->orderdetail()->delete();
+            parent::delete();
+        });
     }
 }

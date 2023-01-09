@@ -39,7 +39,7 @@
 
                     <p> your orders :
                         @foreach($orders->orderdetail as $items)
-                            <span>({{$items->books->books_name}} / x {{$items->quantity}} )</span>
+                            <span>({{$items->books->books_name}} / x {{$items->quantity}} ), </span>
                 @endforeach
                     </p>
                     <p> total price : <span>${{$orders->orders_price}}</span> </p>
@@ -65,7 +65,6 @@
                         @else
                             <span>Completed</span>
                         @endif
-                    </p>
             </div>
         @else
             <p class="empty">no orders placed yet!</p>

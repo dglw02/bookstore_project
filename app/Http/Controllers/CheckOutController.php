@@ -56,7 +56,6 @@ class CheckOutController extends Controller
             $book->books_quantity = $book->books_quantity -$item->books_quantity;
             $book->update();
         }
-
         if(Auth::user()->address==null){
             $user = User::where('id',Auth::id())->first();
             $user->orders_name = $request->input('orders_name');
