@@ -132,8 +132,7 @@ Route::post('/cart/{id}',[BooksController::class,'addCart']);
 Route::delete("/cart/{id}/delete", [BooksController::class, 'deleteCart']);
 Route::delete("/cart/deleteall", [BooksController::class, 'deleteAllCart']);
 Route::get('/cartlist',[BooksController::class,'cartList']);
-Route::put('/cartlist/{id}', [BooksController::class, 'updateCart']);
-
+Route::post('/cart/{id}/update', [BooksController::class, 'updateCart']);
 
 //Checkout
 Route::get('checkout',[CheckOutController::class,'index']);

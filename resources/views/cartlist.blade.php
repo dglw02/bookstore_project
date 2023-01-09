@@ -30,13 +30,16 @@
                     <img src={{$item->books->books_image}} alt="">
                     <div class="name">{{$item->books->books_name}}</div>
                     <div class="price">${{$item->books->books_price}}/-</div>
-                    <form action="" method="post">
+
+
+                    <form action="{{url('/cart/'.$item->id.'/update')}}" method="post">
                         @csrf
-                        @method('put')
                         <input type="hidden" name="id_cart" value="{{$item->id}}">
                         <input type="number"  name="cart_quantity" value="{{$item->books_quantity}}">
                         <input type="submit" name="update_cart" value="update" class="option-btn">
                     </form>
+
+
                     @php $total += $item->books_quantity * $item->books->books_price @endphp
                     <div class="sub-total"> sub total :
                         <span>${{$item->books_quantity * $item->books->books_price}}/-</span></div>
@@ -70,10 +73,10 @@
 @include('sweetalert::alert')
 
 
-<script
-    src="https://code.jquery.com/jquery-3.6.2.min.js"
-    integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA="
-    crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+</script>
+
 
 @yield('scripts')
 </body>

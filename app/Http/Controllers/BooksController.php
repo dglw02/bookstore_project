@@ -86,12 +86,11 @@ class BooksController extends Controller
         return view('cartlist', compact('cartitems'));
     }
 
-    function updateCart(Request $request, $id){
-        $id_cart = $request->get('id_cart');
-        $cart_quantity= $request->get('cart_quantity');
-        $user = User::where('id', $id)->first();
-        Cart::update($id_cart, $cart_quantity);
-        return Redirect::to('/cartlist/'.$id)->with('user', $user);
+    function updateCart(Request $request,$cartitems){
+        $cartitems = Cart::findOrFail($cartitems);
+        $cartitems->increment('books_quantity',4);
+        toast('Update completed','success');
+        return redirect('/cartlist/');
     }
 
 
