@@ -33,7 +33,7 @@
                     <form action="" method="post">
                         @csrf
                         @method('put')
-                        <input type="text" name="id_cart" value="{{$item->id}}">
+                        <input type="hidden" name="id_cart" value="{{$item->id}}">
                         <input type="number"  name="cart_quantity" value="{{$item->books_quantity}}">
                         <input type="submit" name="update_cart" value="update" class="option-btn">
                     </form>

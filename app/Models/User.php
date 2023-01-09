@@ -11,6 +11,7 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+    protected $primaryKey = 'id';
     public function city(){
         return $this->belongsTo(City::class,'user_city','city_id');
     }
@@ -19,7 +20,6 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $primaryKey = 'id';
     protected $fillable = [
         'name',
         'email',

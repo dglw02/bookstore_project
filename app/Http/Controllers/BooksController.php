@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Books;
 use App\Models\Cart;
 use App\Models\User;
+use Illuminate\Support\Facades\Redirect;
 use RealRashid\SweetAlert\Facades\Alert;
 use MongoDB\Driver\Session;
 
@@ -91,7 +92,7 @@ class BooksController extends Controller
         $cart_quantity= $request->get('cart_quantity');
         $user = User::where('id', $id)->first();
         Cart::update($id_cart, $cart_quantity);
-        dd($id_cart, $cart_quantity);
+        return Redirect::to('/cartlist/'.$id)->with('user', $user);
     }
 
 
