@@ -22,6 +22,7 @@
                         <thead>
                         <tr>
                             <th scope="col">Book Name</th>
+                            <th scope="col">Image</th>
                             <th scope="col">Quantity</th>
                             <th scope="col">Price</th>
                             <th scope="col">Total price</th>
@@ -32,6 +33,7 @@
                         @foreach($order_details as $ord)
                             <tr>
                                 <td>{{$ord->books->books_name}}</td>
+                                <td><img src={{$ord->books->books_image}} width="150px" alt="a"></td>
                                 <td>{{$ord->quantity}}</td>
                                 <td>{{$ord->price}}$</td>
                                 @php $total += $ord->quantity * $ord->price @endphp
@@ -41,6 +43,7 @@
                         @php $grandtotal = $total +($total * 0.1) + Auth::user()->city->areas->areas_price @endphp
                         <tr>
                             <td colspan="2"></td>
+                            <td colspan="1"></td>
                             <td><strong>Total</strong></td>
                             <td><strong>{{$grandtotal}}$</strong></td>
                         </tr>
