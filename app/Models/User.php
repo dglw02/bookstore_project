@@ -15,6 +15,10 @@ class User extends Authenticatable
     public function city(){
         return $this->belongsTo(City::class,'user_city','city_id');
     }
+
+    public function cart(){
+        return $this->hasMany(Cart::class);
+    }
     /**
      * The attributes that are mass assignable.
      *

@@ -149,7 +149,7 @@
             <form action="{{url('cart',$book->books_id)}}" method="POST" class="box">
                 @csrf
                 <input type="hidden" name="books_id" value={{$book['books_id']}}>
-                <img class="image" src="{{$book->books_image}}" alt="">
+                <a href="detail/{{$book['books_id']}}"><img class="image" src="{{$book->books_image}}" alt=""></a>
                 <div class="name">{{$book->books_name}}</div>
                 <div class="price">${{$book->books_price}}/-</div>
                 <input type="number" min="1" name="books_quantity" value="1" class="qty">
