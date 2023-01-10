@@ -26,10 +26,11 @@ class UserController extends Controller
         return view('vieworder', compact('orders'));
     }
 
-    public function deleteOrders($orders)
+    public function deleteOrders(Request $request, $orders)
     {
         $orders = Order::findOrFail($orders);
-        $orders->delete();
+        $orders -> orders_status = '3';
+        $orders->update();
         toast('This order has been cancelled','warning');
         return redirect('/my-order');
 

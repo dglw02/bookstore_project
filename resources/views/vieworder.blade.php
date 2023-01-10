@@ -49,8 +49,8 @@
                 <div style="margin-top: 2rem; text-align:center;">
                     <form method="POST" action="{{url('/vieworder/'.$orders->orders_id.'/delete-order')}}">
                         @csrf
-                        @method('delete')
-                        <button type="submit" class="delete-btn" onclick="return confirm('Are you sure you want to cancelled your order?')">Cancelled order</button>
+                        @method('put')
+                        <button type="submit" class="delete-btn" onclick="return confirm('Are you sure you want to cancelled your order?')" >Cancelled order</button>
                     </form>
                 </div>
                         @elseif($orders->orders_status == 1)
@@ -58,12 +58,14 @@
                     <div style="margin-top: 2rem; text-align:center;">
                         <form method="POST" action="{{url('/vieworder/'.$orders->orders_id.'/delete-order')}}">
                             @csrf
-                            @method('delete')
+                            @method('put')
                             <button type="submit" class="delete-btn" onclick="return confirm('Are you sure you want to cancelled your order?')">Cancelled order</button>
                         </form>
                     </div>
+                @elseif($orders->orders_status == 2)
+                    <span>Completed</span>
                         @else
-                            <span>Completed</span>
+                            <span>Canceled</span>
                         @endif
             </div>
         @else
