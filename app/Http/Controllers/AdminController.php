@@ -7,15 +7,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Books;
+use App\Models\OrderDetails;
 use RealRashid\SweetAlert\Facades\Alert;
 class AdminController extends Controller
 {
     public function __construct(){
         $this->middleware('is_Admin');
-    }
-
-    function viewHome(){
-        return view('admin/home');
     }
 
     function viewDashboard(){
@@ -24,8 +21,18 @@ class AdminController extends Controller
             $books_quantity = Books::sum('books_quantity');
             $pending_orders = Order::where('orders_status', '0')->get();
 
+            $top = OrderDetails::with('books')
+                ->join('orders', 'orders.orders_id', '=', 'order_details.orders_id')
+                ->select('books_id', DB::raw('SUM(quantity) as count'))
+                ->where('orders.orders_status', '2')
+        ->groupBy('books_id')
+            ->orderBy("count", 'desc')
+            ->take(3)
+            ->get();
+
+
         return view('admin/dashboard', compact('users', 'books_quantity',
-            'total_earning', 'pending_orders'));
+            'total_earning', 'pending_orders', 'top'));
     }
 
     function viewAllCategory(){
