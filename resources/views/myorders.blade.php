@@ -15,7 +15,7 @@
             @foreach($orders as $items)
                     <div class="swiper-slide box">
                         <div class="content">
-                            <h3>{{$items->orders_name}}-({{$items->created_at}})-@if($items->orders_status = 0)
+                            <h3>{{$items->orders_name}}-({{$items->created_at}})-@if($items->orders_status == 0)
                                     Pending
                                 @elseif($items->orders_status == 1)
                                     Approved
