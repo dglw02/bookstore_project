@@ -16,8 +16,9 @@
                                 class="mx-2">{{$order->user->address}}, {{$order->user->city->city_name}}</span></p>
                     </div>
                 </div>
-                <div class="order-product mb-4">
-                    <h4 class="my-4 p-4 bg-light">Order information</h4>
+
+                <div class="card my-4">
+                    <h4 class="p-4">Order information</h4>
                     <table class="table">
                         <thead>
                         <tr>
@@ -50,6 +51,9 @@
                         </tbody>
                     </table>
                 </div>
+
+                @if($order->orders_status == 0)
+                <div class="card my-4">
                 <form method="POST" action="{{url('/admin/order/'.$order->orders_id.'/update')}}">
                     @csrf
                     @method('PUT')
@@ -57,7 +61,6 @@
                         <h4>Order status</h4>
                     </div>
                     <br>
-                    <div class="card my-4">
                         <div class="card-body">
                             <select class="form-control" name="orders_status">
                                 <option {{$order->orders_status == '0'? 'selected':''}} value="0">Pending</option>
@@ -67,8 +70,33 @@
                             </select> <br>
                             <button type="submit" class="btn btn-block btn-success">Update status</button>
                         </div>
-                    </div>
                 </form>
+                </div>
+                @elseif($order->orders_status == 1)
+                    <div class="card my-4">
+                        <form method="POST" action="{{url('/admin/order/'.$order->orders_id.'/update')}}">
+                            @csrf
+                            @method('PUT')
+                            <div class="card-header">
+                                <h4>Order status</h4>
+                            </div>
+                            <br>
+                            <div class="card-body">
+                                <select class="form-control" name="orders_status">
+                                    <option {{$order->orders_status == '0'? 'selected':''}} value="0">Pending</option>
+                                    <option {{$order->orders_status == '1'? 'selected':''}} value="1">Approved</option>
+                                    <option {{$order->orders_status == '2'? 'selected':''}} value="2">Completed</option>
+                                    <option {{$order->orders_status == '3'? 'selected':''}} value="3">Canceled</option>
+                                </select> <br>
+                                <button type="submit" class="btn btn-block btn-success">Update status</button>
+                            </div>
+                        </form>
+                    </div>
+                @elseif($order->orders_status == 2)
+                <p></p>
+                @else
+                <p></p>
+                @endif
             </div>
         </div>
     </div>
