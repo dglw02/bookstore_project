@@ -11,4 +11,6 @@ use RealRashid\SweetAlert\Facades\Alert;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+
 }
