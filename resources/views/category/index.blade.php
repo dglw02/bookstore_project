@@ -3,6 +3,12 @@
 @section('title','Danh mục sản phẩm')
 
 @section('content')
+
+    <head>
+        <link href="{{ asset('css/register.css') }}" rel="stylesheet">
+    </head>
+    <body>
+
     <section class="products" id="products">
 
         <h1  class="heading"> <span >{{$category->category_name}}</span> </h1>
@@ -18,12 +24,10 @@
                         @csrf
                         <input type="hidden" name="books_id" value={{$book['books_id']}}>
                         <input type="hidden" name="books_quantity" value="1">
-                        <a class="fas fa-shopping-cart"></a>
                     </form>
 
 
-                    <a href="#" class="fas fa-heart"></a>
-                    <a href="#" class="fas fa-search"></a>
+
                     <a href="/detail/{{$book['books_id']}}" class="fas fa-eye"></a>
                 </div>
                 <div class="image">
@@ -37,6 +41,14 @@
                     </div>
                     <div class="stars">
                         <span>{{$category->category_name}}</span>
+                    </div> <br>
+                    <div style="text-align: center;">
+                    <form action="{{url('cart',$book->books_id)}}" method="POST">
+                        @csrf
+                        <input type="hidden" name="books_id" value={{$book['books_id']}}>
+                        <input type="hidden" name="books_quantity" value="1">
+                        <button class="btn">Add to Cart</button>
+                    </form>
                     </div>
                 </div>
             </div>

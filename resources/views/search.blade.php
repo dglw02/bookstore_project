@@ -3,6 +3,11 @@
 @section('title','Danh mục sản phẩm')
 
 @section('content')
+    <head>
+        <link href="{{ asset('css/register.css') }}" rel="stylesheet">
+    </head>
+    <body>
+
     <section class="products" id="products">
 
         <h1  class="heading"> <span >Our products</span> </h1>

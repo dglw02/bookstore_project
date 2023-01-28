@@ -133,7 +133,7 @@ section{
 }
 
 .heading{
-    min-height: 20vh;
+    min-height: 3vh;
     display: flex;
     flex-flow: column;
     align-items: center;

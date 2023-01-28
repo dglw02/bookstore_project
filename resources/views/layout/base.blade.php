@@ -20,12 +20,13 @@
             Forest </a>
 
         <form action="/search" class="search-form">
+            @csrf
             <input type="search" name="query" placeholder="search here..." id="search-box">
             <label for="search-box" class="fas fa-search"></label>
+            <button id="search-btn" class="fas fa-search"></button>
         </form>
 
         <div class="icons">
-            <div id="search-btn" class="fas fa-search"></div>
             @if(Auth::check() == false)
                 <a href="{{url('register')}}">Register</a>
                 <a href="{{url('login')}}">Login</a>

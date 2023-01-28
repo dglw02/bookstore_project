@@ -16,7 +16,7 @@
 <body>
 
 <div class="heading">
-    <h3>{{$books->category->category_name}}</h3>
+    <h3>{{$books->category->category_name}}</h3> <br>
     <p><a href="/">home</a>/<a href={{url('/category/'.$books->category->category_name)}}>{{$books->category->category_name}}</a></p>
 </div>
 
@@ -45,7 +45,7 @@
                         <form method="POST">
                             @csrf
                             <input type="hidden" name="books_id" value={{$books['books_id']}}>
-                            <input type="number" min="1" name="books_quantity" value="1">
+                            <input type="number" min="1" max="{{$books->books_quantity}}" name="books_quantity" value="1">
                             <button class="option-btn add-cart"> Add to Cart</button>
                         </form>
                         <div class="sub-total"> ISBN :
@@ -92,8 +92,6 @@
     @foreach($books->category->books as $book)
         <div class="swiper-slide box">
             <div class="icons">
-                <a href="#" class="fas fa-search"></a>
-                <a href="#" class="fas fa-heart"></a>
                 <a href="/detail/{{$book->books_id}}" class="fas fa-eye"></a>
             </div>
             <div class="image">
