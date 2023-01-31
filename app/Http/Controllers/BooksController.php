@@ -49,7 +49,7 @@ class BooksController extends Controller
 
 //new page
     function newestBook(){
-        $books =Books::orderBy('created_at','DESC')->get()->take(10);
+        $books =Books::orderBy('created_at','DESC')->get()->take(12);
         return view('new',compact('books',));
     }
 
