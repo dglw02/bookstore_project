@@ -22,8 +22,8 @@ class BooksController extends Controller
         $author =Author::all();
         $category =Category::all();
         $newbook =Books::orderBy('created_at','DESC')->get()->take(9);
-        $cart = Cart::where('user_id',Auth::id())->get();
-        return view('home',compact('books','author','category','newbook', 'cart'));
+
+        return view('home',compact('books','author','category','newbook'));
     }
 
     function allCategory(){
@@ -44,6 +44,7 @@ class BooksController extends Controller
     function search(Request $req){
         $data = Books::where('books_name','like', '%'.$req->input('query').'%')->get();
         return view('search',['books'=>$data]);
+
     }
 
 
@@ -72,9 +73,7 @@ class BooksController extends Controller
                 Alert::success('Add cart Successfully', 'Thank for your purchasing.');
                 return redirect()->back();
             }
-
             }
-
         else
         {
             return redirect('login');
