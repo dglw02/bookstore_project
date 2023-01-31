@@ -42,6 +42,8 @@ Route::get('/about', function () {
 });
 
 
+
+
 //Admin
 Route::get('/admin/home',[AdminController::class,'viewHome']);
 Route::get('/admin/category',[AdminController::class,'viewAllCategory']);
@@ -140,3 +142,5 @@ Route::post('place-order',[CheckOutController::class,'placeorder']);
 Route::get('my-order',[UserController::class,'index']);
 Route::get('vieworder/{orders_id}',[UserController::class,'view']);
 Route::put("/vieworder/{orders_id}/delete-order", [UserController::class, 'deleteOrders']);
+
+

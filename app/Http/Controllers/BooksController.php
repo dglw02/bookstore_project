@@ -22,7 +22,8 @@ class BooksController extends Controller
         $author =Author::all();
         $category =Category::all();
         $newbook =Books::orderBy('created_at','DESC')->get()->take(9);
-        return view('home',compact('books','author','category','newbook'));
+        $cart = Cart::where('user_id',Auth::id())->get();
+        return view('home',compact('books','author','category','newbook', 'cart'));
     }
 
     function allCategory(){
@@ -117,9 +118,5 @@ class BooksController extends Controller
         return redirect('/cartlist');
     }
 
-    function cartcount(){
-        $cartcount = Cart::where('user_id',Auth::id())->count();
-        return response()->json(['count'=>$cartcount]);
-    }
 
 }

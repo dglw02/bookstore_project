@@ -31,7 +31,7 @@
                 <a href="{{url('register')}}">Register</a>
                 <a href="{{url('login')}}">Login</a>
             @else
-                <a href="{{url('cartlist')}}" class="fas fa-shopping-cart"><span class="badge badge-pill bg-success cart-count">0</span></a>
+                <a href="{{url('cartlist')}}" class="fas fa-shopping-cart"><span class="badge badge-pill bg-success cart-count">{{$cart->count()}}</span></a>
                 <div class="dropdown">
                     {{Auth::user()->name ?? 'None'}}
                     <div class="dropdown-content">
