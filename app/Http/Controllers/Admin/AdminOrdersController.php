@@ -39,16 +39,16 @@ class AdminOrdersController extends Controller
 
     public function completedOrder(){
         $orders = Order::where('orders_status', '2')->get();
-        return view('admin.order.completed-orders', compact('orders'));
+        return view('admin.order.all-orders', compact('orders'));
     }
 
     public function approvedOrder(){
         $orders = Order::where('orders_status', '1')->get();
-        return view('admin.order.approved-orders', compact('orders'));
+        return view('admin.order.all-orders', compact('orders'));
     }
 
     public function canceledOrder(){
         $orders = Order::where('orders_status', '3')->get();
-        return view('admin.order.canceled-order', compact('orders'));
+        return view('admin.order.all-orders', compact('orders'));
     }
 }

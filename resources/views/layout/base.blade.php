@@ -22,8 +22,8 @@
         <form action="/search" class="search-form">
             @csrf
             <input type="search" name="query" placeholder="search here..." id="search-box">
-            <button><label for="search-box" class="fas fa-search"></label></button>
-
+            <label for="search-box" class="fas fa-search"></label>
+            <button id="search-btn" class="fas fa-search"></button>
         </form>
 
         <div class="icons">
@@ -123,7 +123,7 @@
             <h3>contact info</h3>
             <a href="#"> <i class="fas fa-phone"></i> +123-456-7890 </a>
             <a href="#"> <i class="fas fa-phone"></i> +111-222-3333 </a>
-            <a href="#"> <i class="fas fa-envelope"></i> bookforest@gmail.com </a>
+            <a href="#"> <i class="fas fa-envelope"></i> asdfghj@gmail.com </a>
             <img src="image/worldmap.png" class="map" alt="">
         </div>
 
