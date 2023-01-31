@@ -18,7 +18,7 @@ class AdminController extends Controller
     function viewDashboard(){
             $users = User::all();
             $total_earning = Order::where('orders_status', '2')->sum('orders_price');
-            $books_quantity = Books::sum('books_quantity');
+            $completed_orders = Order::where('orders_status', '2')->get();
             $pending_orders = Order::where('orders_status', '0')->get();
 
             $top = OrderDetails::with('books')
@@ -31,7 +31,7 @@ class AdminController extends Controller
             ->get();
 
 
-        return view('admin/dashboard', compact('users', 'books_quantity',
+        return view('admin/dashboard', compact('users', 'completed_orders',
             'total_earning', 'pending_orders', 'top'));
     }
 
