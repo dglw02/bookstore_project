@@ -89,7 +89,7 @@ class BooksController extends Controller
     function updateCart(Request $request,$id){
 
         $updateData = $request->validate([
-            'books_quantity' => 'required|numeric|max:20',
+            'books_quantity' => 'required|numeric',
         ]);
         Cart::where('id',"=",$id)->update($updateData);
 
