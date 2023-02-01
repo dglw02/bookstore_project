@@ -37,8 +37,8 @@
                             <th>Payment</th>
                             <th>Price</th>
                             <th>Order status</th>
+                            <th>Order tracking</th>
                             <th>Details</th>
-                            <th>Action</th>
                         </tr>
                         </thead>
                         <tfoot>
@@ -48,8 +48,8 @@
                             <th>Payment</th>
                             <th>Price</th>
                             <th>Order status</th>
+                            <th>Order tracking</th>
                             <th>Details</th>
-                            <th>Action</th>
                         </tr>
                         </tfoot>
                         <tbody>
@@ -70,17 +70,8 @@
                                         <p>Canceled</p>
                                     @endif
                                 </td>
+                                <td>{{$order->order_tracking}} </td>
                                 <td><a href="{{url('/admin/order/'.$order->orders_id.'/detail')}}">Order Details</a></td>
-                                <td>
-                                    <div class="action d-flex flex-row">
-                                        <form method="POST" action="{{url('/admin/order/'.$order->orders_id.'/delete')}}">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="submit" onclick="return confirm('Order will move to trash! Are you sure to delete??')"
-                                                    class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
-                                        </form>
-                                    </div>
-                                </td>
                             </tr>
                         @endforeach
                         </tbody>

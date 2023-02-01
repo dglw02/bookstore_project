@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('order_tracking');
             $table->string('orders_price');
             $table->timestamps();
+
         });
     }
 

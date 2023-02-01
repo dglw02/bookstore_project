@@ -37,6 +37,7 @@
                             <th>Payment</th>
                             <th>Price</th>
                             <th>Order status</th>
+                            <th>Order tracking</th>
                             <th>Details</th>
                             <th>Action</th>
                         </tr>
@@ -48,6 +49,7 @@
                             <th>Payment</th>
                             <th>Price</th>
                             <th>Order status</th>
+                            <th>Order tracking</th>
                             <th>Details</th>
                             <th>Action</th>
                         </tr>
@@ -70,6 +72,7 @@
                                         <p>Canceled</p>
                                     @endif
                                 </td>
+                                <td>{{$order->order_tracking}} </td>
                                 <td><a href="{{url('/admin/order/'.$order->orders_id.'/detail')}}">Order Details</a></td>
                                 <td>
                                     <div class="action d-flex flex-row">

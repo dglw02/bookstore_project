@@ -152,7 +152,7 @@
                 <a href="detail/{{$book['books_id']}}"><img class="image" src="{{$book->books_image}}" alt=""></a>
                 <div class="name">{{$book->books_name}}</div>
                 <div class="price">${{$book->books_price}}</div>
-                <input type="number" min="1" name="books_quantity" value="1" class="qty">
+                <input type="number" min="1" max="{{$book->books_quantity}}" name="books_quantity" value="1" class="qty">
                 <input type="hidden" name="books_image" value="{{$book->books_name}}">
                 <input type="hidden" name="books_price" value="{{$book->books_price}}">
                 <input type="hidden" name="books_image" value="{{$book->books_image}}">
