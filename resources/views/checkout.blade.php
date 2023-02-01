@@ -57,7 +57,7 @@
                 <span>payment method :</span>
                 <select name="orders_payment">
                     <option value="cash on delivery">cash on delivery</option>
-                    {{--<option value="credit card">credit card</option>--}}
+                    <option value="credit card">credit card</option>
                     {{--<option value="paypal">paypal</option>--}}
                     {{--<option value="paytm">paytm</option>--}}
                 </select>

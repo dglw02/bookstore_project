@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Books;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\OrderDetails;
@@ -28,6 +29,7 @@ class UserController extends Controller
 
     public function deleteOrders(Request $request, $orders)
     {
+
         $orders = Order::findOrFail($orders);
         $orders -> orders_status = '3';
         $orders->update();
