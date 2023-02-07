@@ -13,7 +13,7 @@
                         <p><i class="fas fa-user"></i> <span class="mx-2">{{$order->user->name}}</span></p>
                         <p><i class="fas fa-phone"></i><span class="mx-2">{{$order->user->phone}}</span></p>
                         <p><i class="fas fa-map-marked"></i> <span
-                                class="mx-2">{{$order->user->address}}, {{$order->user->city->city_name}}</span></p>
+                                class="mx-2">{{$order->orders_address}}, {{$order->orders_city}}</span></p>
                     </div>
                 </div>
 
