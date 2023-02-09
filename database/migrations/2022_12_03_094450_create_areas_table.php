@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('areas_name');
             $table->double('areas_price', 8, 2);
             $table->timestamps();
+
         });
     }
 

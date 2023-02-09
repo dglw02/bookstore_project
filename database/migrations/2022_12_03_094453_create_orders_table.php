@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('orders_id');
-            $table->string('user_id');
+            $table->unsignedInteger('user_id');
             $table->string('orders_name');
             $table->string('orders_email');
             $table->string('orders_payment');
@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('order_tracking');
             $table->string('orders_price');
             $table->timestamps();
-
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

@@ -17,8 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('user_id')->nullable();
             $table->string('books_quantity')->nullable();
-            $table->string('books_id')->nullable();
+            $table->unsignedInteger('books_id')->nullable();
             $table->timestamps();
+            $table->foreign('books_id')->references('books_id')->on('books');
         });
     }
 
