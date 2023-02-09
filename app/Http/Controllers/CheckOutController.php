@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Books;
 use App\Models\Cart;
+use App\Models\City;
 use App\Models\Order;
 use App\Models\OrderDetails;
 use App\Models\User;
@@ -16,7 +17,8 @@ class CheckOutController extends Controller
     //
     public function index(){
         $cartitems = Cart::where('user_id',Auth::id())->get();
-        return view('checkout',compact('cartitems'));
+        $cities = City::get();
+        return view('checkout',compact('cartitems','cities'));
     }
 
 

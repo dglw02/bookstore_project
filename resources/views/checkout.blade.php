@@ -68,7 +68,11 @@
             </div>
             <div class="inputBox">
                 <span>city :</span>
-                <input type="text" value="{{Auth::user()->city->city_name}}" name="orders_city" required placeholder="e.g. mumbai">
+                <select class="form-control" name="orders_city" >
+                    @foreach($cities as $city)
+                        <option value="{{ $city->city_id }}"{{ old('city_id', Auth::user()->city->city_id) == $city->city_id ? 'selected' : '' }}>{{ $city->city_name }}</option>
+                    @endforeach
+                </select>
             </div>
         </div>
         @if($cartitems->count() > 0)
