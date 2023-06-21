@@ -33,7 +33,7 @@
                     <p> name : <span>{{$orders->orders_name}}</span> </p>
                     <p> number : <span>{{$orders->orders_phone}}</span> </p>
                     <p> email : <span>{{$orders->orders_email}}</span> </p>
-                    <p> address : <span>{{$orders->orders_address}}, {{$orders->orders_city}} </span> </p>
+                    <p> address : <span>{{$orders->orders_address}}, {{$orders->city->city_name}} </span> </p>
                     <p> payment method : <span>{{$orders->orders_payment}}</span> </p>
 
 

@@ -32,6 +32,10 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function city(){
+        return $this->belongsTo(City::class,'orders_city','city_id');
+    }
+
     public function delete()
     {
         DB::transaction(function()
