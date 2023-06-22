@@ -302,7 +302,7 @@ class BooksDatabase extends Seeder
                     'books_description'=>'InuYasha is the story of a dog half-demon who is constantly after a jewel of immense power, the Shikon jewel, also no as the Shikon no tama. He lives in the forest near the village where the jewel is protected by a priestess named Kikyo.',
                     'books_author'=>'16',
                     'books_quantity'=>'200',
-                    'books_image'=>'https://upload.wikimedia.org/wikipedia/en/2/2a/InuYasha1.jpg',
+                    'books_image'=>'https://cdn-amz.woka.io/images/I/61664dSN-EL.jpg',
                     'books_price'=>'30',
                     'books_ISBN'=>'434931571',
                 ],
