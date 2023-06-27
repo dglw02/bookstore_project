@@ -175,7 +175,7 @@
                         <th>Name</th>
                         <th>Image</th>
                         <th>Have sell</th>
-                        <th>Price</th>
+                        <th>Date</th>
                     </tr>
                     </thead>
                     <tfoot>
@@ -183,7 +183,7 @@
                         <th>Name</th>
                         <th>Image</th>
                         <th>Have sell</th>
-                        <th>Price</th>
+                        <th>Date</th>
                     </tr>
                     </tfoot>
                     <tbody>
@@ -193,7 +193,7 @@
                             <td>{{$items->books->books_name}}</td>
                             <td><img src="{{$items->books->books_image}}" width="150px"/></td>
                             <td>{{$items->count}}</td>
-                            <td>{{$items->books->books_price}}</td>
+                            <td>{{$items->books->updated_at}}</td>
                         </tr>
                     @endforeach
                     </tbody>

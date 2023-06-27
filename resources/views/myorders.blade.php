@@ -15,17 +15,17 @@
             @foreach($orders as $items)
                     <div class="swiper-slide box">
                         <div class="content">
-                            <h3>{{$items->orders_name}}-({{$items->created_at}})-@if($items->orders_status == 0)
-                                    Pending
+                            <h3><a style="color:blue">{{$items->orders_name}}</a> / {{$items->orders_address}}  / {{$items->created_at}} / @if($items->orders_status == 0)
+                                    <a style="color:blue">Pending</a>
                                 @elseif($items->orders_status == 1)
-                                    Approved
+                                <a style="color:blue">Approved</a>
                                 @elseif($items->orders_status == 2)
-                                    Completed
+                                <a style="color:Green">Completed</a>
                                 @else
-                                    Cancel
+                                <a style="color:red">Cancel</a>
                                 @endif
                             </h3>
-                            <p>${{$items->orders_price}}</p>
+                            <p><a style="color:green">${{$items->orders_price}}</a></p>
                             <a href="{{url('vieworder/'.$items->orders_id)}}" class="btn">Order detail</a>
                         </div>
                     </div>
