@@ -104,6 +104,7 @@ Route::put('/admin/order/{orders_id}/update', [AdminOrdersController::class, 'up
 Route::delete("/admin/order/{orders_id}/delete", [AdminOrdersController::class, 'destroy']);
 Route::get('/admin/completed-order', [AdminOrdersController::class, 'completedOrder']);
 Route::get('/admin/approved-order', [AdminOrdersController::class, 'approvedOrder']);
+Route::get('/admin/transported-order', [AdminOrdersController::class, 'transportedOrder']);
 Route::get('/admin/canceled-order', [AdminOrdersController::class, 'canceledOrder']);
 
 

@@ -11,9 +11,10 @@
                 </div>
                 <div class="col-6 text-right">
                     <span class="mr-2"><a href="{{url('/admin/order/')}}">Pending orders</a> |</span>
-                    <span class="mr-2"><a href="{{url('/admin/approved-order/')}}">Approved orders</a> |</span>
-                    <span class="mr-2"><a href="{{url('/admin/completed-order/')}}">Completed orders</a> |</span>
-                    <span class="mr-2"><a href="{{url('/admin/canceled-order/')}}">Canceled orders</a></span>
+                    <span class="mr-2"><a style="color:#ffd200" href="{{url('/admin/approved-order/')}}">Approved orders</a> |</span>
+                    <span class="mr-2"><a style="color:#a1ffb9" href="{{url('/admin/transported-order/')}}">Transported orders</a> |</span>
+                    <span class="mr-2"><a style="color:#51ED08" href="{{url('/admin/completed-order/')}}">Completed orders</a> |</span>
+                    <span class="mr-2"><a style="color:red" href="{{url('/admin/canceled-order/')}}">Canceled orders</a></span>
                 </div>
             </div>
         </div>
@@ -58,20 +59,23 @@
                                 <td>{{$order->orders_id}}</td>
                                 <td>{{$order->orders_name}}</td>
                                 <td>{{$order->orders_payment}}</td>
-                                <td>{{$order->orders_price}} $</td>
+                                <td>${{$order->orders_price}}</td>
                                 <td>
                                     @if($order->orders_status == 0)
                                         <p>Pending</p>
                                     @elseif($order->orders_status == 1)
                                         <p>Approved</p>
                                     @elseif($order->orders_status == 2)
+                                        <p>Transported</p>
+                                    @elseif($order->orders_status == 3)
                                         <p>Completed</p>
                                     @else
                                         <p>Canceled</p>
                                     @endif
                                 </td>
                                 <td>{{$order->order_tracking}} </td>
-                                <td><a href="{{url('/admin/order/'.$order->orders_id.'/detail')}}">Order Details</a></td>
+                                <td> <a href="{{url('/admin/order/'.$order->orders_id.'/detail')}}"
+                                        class="btn-primary btn btn-sm mr-2"><i class="fas fa-edit"></i></a></td>
                             </tr>
                         @endforeach
                         </tbody>

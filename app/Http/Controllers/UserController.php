@@ -31,7 +31,7 @@ class UserController extends Controller
     {
 
         $orders = Order::findOrFail($orders);
-        $orders -> orders_status = '3';
+        $orders -> orders_status = '4';
         $orders->update();
         toast('This order has been cancelled','warning');
         return redirect('/my-order');

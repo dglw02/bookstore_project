@@ -63,6 +63,8 @@
                         </form>
                     </div>
                 @elseif($orders->orders_status == 2)
+                    <span>Transported</span>
+                @elseif($orders->orders_status == 3)
                     <span>Completed</span>
                         @else
                             <span>Canceled</span>
