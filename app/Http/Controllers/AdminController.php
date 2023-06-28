@@ -20,8 +20,8 @@ class AdminController extends Controller
     function viewDashboard()
     {
         $users = User::all();
-        $total_earning = Order::where('orders_status', '2')->sum('orders_price');
-        $completed_orders = Order::where('orders_status', '2')->get();
+        $total_earning = Order::where('orders_status', '3')->sum('orders_price');
+        $completed_orders = Order::where('orders_status', '3')->get();
         $pending_orders = Order::where('orders_status', '0')->get();
 
         $top = OrderDetails::with('books')
