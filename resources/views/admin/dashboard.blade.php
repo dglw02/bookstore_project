@@ -147,7 +147,7 @@
                                     <tr>
                                         <td>{{$order->orders_id}}</td>
                                         <td>{{$order->orders_name}}</td>
-                                        <td>{{$order->orders_price}} $</td>
+                                        <td>${{$order->orders_price}}</td>
                                         <td>{{$order->created_at}}</td>
                                     </tr>
                                 @endforeach

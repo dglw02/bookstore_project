@@ -45,8 +45,8 @@
                         <form method="POST">
                             @csrf
                             <input type="hidden" name="books_id" value={{$books['books_id']}}>
-                            <input type="number" min="1" max="{{$books->books_quantity}}" name="books_quantity" value="1">
-                            <button class="option-btn add-cart"> Add to Cart</button>
+                            <input type="number" min="1" max="{{$books->books_quantity}}" name="books_quantity" value="1"><br>
+                            <button style="height:40px" class="option-btn add-cart"> Add to Cart</button>
                         </form>
                         <div class="sub-total"> ISBN :
                             <span>{{$books->books_ISBN}}</span></div>

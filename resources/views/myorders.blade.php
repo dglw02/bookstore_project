@@ -20,7 +20,9 @@
                                 @elseif($items->orders_status == 1)
                                 <a style="color:blue">Approved</a>
                                 @elseif($items->orders_status == 2)
-                                <a style="color:Green">Completed</a>
+                                <a style="color:Green">Transported</a>
+                                @elseif($items->orders_status == 3)
+                                    <a style="color:Green">Completed</a>
                                 @else
                                 <a style="color:red">Cancel</a>
                                 @endif

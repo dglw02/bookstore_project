@@ -10,10 +10,10 @@
                         <h4>Customer Information</h4>
                     </div>
                     <div class="card-body">
-                        <p><i class="fas fa-user"></i> <span class="mx-2">{{$order->user->name}}</span></p>
-                        <p><i class="fas fa-phone"></i><span class="mx-2">{{$order->user->phone}}</span></p>
+                        <p><i class="fas fa-user"></i> <span class="mx-2">User: {{$order->user->name}}</span></p>
+                        <p><i class="fas fa-phone"></i><span class="mx-2">Phone: {{$order->user->phone}}</span></p>
                         <p><i class="fas fa-map-marked"></i> <span
-                                class="mx-2">{{$order->orders_address}}, {{$order->orders_city}}</span></p>
+                                class="mx-2">Adress: {{$order->orders_address}}, {{$order->city->city_name}}</span></p>
                     </div>
                 </div>
 
@@ -65,8 +65,9 @@
                             <select class="form-control" name="orders_status">
                                 <option {{$order->orders_status == '0'? 'selected':''}} value="0">Pending</option>
                                 <option {{$order->orders_status == '1'? 'selected':''}} value="1">Approved</option>
-                                <option {{$order->orders_status == '2'? 'selected':''}} value="2">Completed</option>
-                                <option {{$order->orders_status == '3'? 'selected':''}} value="3">Canceled</option>
+                                <option {{$order->orders_status == '2'? 'selected':''}} value="2">Transported</option>
+                                <option {{$order->orders_status == '3'? 'selected':''}} value="2">Completed</option>
+                                <option {{$order->orders_status == '4'? 'selected':''}} value="3">Canceled</option>
                             </select> <br>
                             <button type="submit" class="btn btn-block btn-success">Update status</button>
                         </div>
@@ -85,15 +86,37 @@
                                 <select class="form-control" name="orders_status">
                                     <option {{$order->orders_status == '0'? 'selected':''}} value="0">Pending</option>
                                     <option {{$order->orders_status == '1'? 'selected':''}} value="1">Approved</option>
-                                    <option {{$order->orders_status == '2'? 'selected':''}} value="2">Completed</option>
-                                    <option {{$order->orders_status == '3'? 'selected':''}} value="3">Canceled</option>
+                                    <option {{$order->orders_status == '2'? 'selected':''}} value="2">Transported</option>
+                                    <option {{$order->orders_status == '3'? 'selected':''}} value="2">Completed</option>
+                                    <option {{$order->orders_status == '4'? 'selected':''}} value="3">Canceled</option>
                                 </select> <br>
                                 <button type="submit" class="btn btn-block btn-success">Update status</button>
                             </div>
                         </form>
                     </div>
                 @elseif($order->orders_status == 2)
-                <p></p>
+                    <div class="card my-4">
+                        <form method="POST" action="{{url('/admin/order/'.$order->orders_id.'/update')}}">
+                            @csrf
+                            @method('PUT')
+                            <div class="card-header">
+                                <h4>Order status</h4>
+                            </div>
+                            <br>
+                            <div class="card-body">
+                                <select class="form-control" name="orders_status">
+                                    <option {{$order->orders_status == '0'? 'selected':''}} value="0">Pending</option>
+                                    <option {{$order->orders_status == '1'? 'selected':''}} value="1">Approved</option>
+                                    <option {{$order->orders_status == '2'? 'selected':''}} value="2">Transported</option>
+                                    <option {{$order->orders_status == '3'? 'selected':''}} value="2">Completed</option>
+                                    <option {{$order->orders_status == '4'? 'selected':''}} value="3">Canceled</option>
+                                </select> <br>
+                                <button type="submit" class="btn btn-block btn-success">Update status</button>
+                            </div>
+                        </form>
+                    </div>
+                @elseif($order->orders_status == 3)
+                    <p></p>
                 @else
                 <p></p>
                 @endif

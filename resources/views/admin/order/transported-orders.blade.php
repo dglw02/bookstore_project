@@ -4,7 +4,7 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Pending orders</h1>
+        <h1 class="h3 mb-2 text-gray-800">Transported orders</h1>
         <div class="my-2 px-1">
             <div class="row">
                 <div class="col-6">
@@ -55,28 +55,28 @@
                         </tfoot>
                         <tbody>
                         @foreach($orders as $order)
-                        <tr>
-                            <td>{{$order->orders_id}}</td>
-                            <td>{{$order->orders_name}}</td>
-                            <td>{{$order->orders_payment}}</td>
-                            <td>${{$order->orders_price}}</td>
-                            <td>
-                                @if($order->orders_status == 0)
-                                    <p>Pending</p>
-                                @elseif($order->orders_status == 1)
-                                <p>Approved</p>
-                                @elseif($order->orders_status == 2)
-                                    <p>Transported</p>
-                                @elseif($order->orders_status == 3)
-                                    <p>Completed</p>
-                                @else
-                                    <p>Canceled</p>
-                                @endif
-                            </td>
-                            <td>{{$order->order_tracking}} </td>
-                            <td> <a href="{{url('/admin/order/'.$order->orders_id.'/detail')}}"
-                                           class="btn-primary btn btn-sm mr-2"><i class="fas fa-edit"></i></a></td>
-                        </tr>
+                            <tr>
+                                <td>{{$order->orders_id}}</td>
+                                <td>{{$order->orders_name}}</td>
+                                <td>{{$order->orders_payment}}</td>
+                                <td>${{$order->orders_price}}</td>
+                                <td>
+                                    @if($order->orders_status == 0)
+                                        <p>Pending</p>
+                                    @elseif($order->orders_status == 1)
+                                        <p>Approved</p>
+                                    @elseif($order->orders_status == 2)
+                                        <p>Transported</p>
+                                    @elseif($order->orders_status == 3)
+                                        <p>Completed</p>
+                                    @else
+                                        <p>Canceled</p>
+                                    @endif
+                                </td>
+                                <td>{{$order->order_tracking}} </td>
+                                <td> <a href="{{url('/admin/order/'.$order->orders_id.'/detail')}}"
+                                        class="btn-primary btn btn-sm mr-2"><i class="fas fa-edit"></i></a></td>
+                            </tr>
                         @endforeach
                         </tbody>
                     </table>
