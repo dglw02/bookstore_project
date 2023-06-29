@@ -13,6 +13,7 @@
         <h1  class="heading"> <span >Our products</span> </h1>
 
         <div class="box-container">
+            @if($books->count() > 0)
             @foreach($books as $book)
                 <div class="box" data-item="special">
                     <div class="icons">
@@ -35,6 +36,9 @@
                     </div>
                 </div>
             @endforeach
+            @else
+                <p class="empty">There is no products with the name that you searched</p>
+            @endif
         </div>
     </section>
 

@@ -36,8 +36,8 @@
                         @csrf
 
                         <input type="hidden" name="id_cart" value="{{$item->id}}">
-                        <input type="number"  min="1" max="{{$item->books->books_quantity}}" name="books_quantity" value="{{$item->books_quantity}}">
-                        <input type="submit" name="update_cart" value="update" class="option-btn">
+                        <input type="number"  min="1" max="{{$item->books->books_quantity}}" name="books_quantity" value="{{$item->books_quantity}}"> <br>
+                        <input style="height:40px" type="submit" name="update_cart" value="update" class="option-btn">
                     </form>
 
 
