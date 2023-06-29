@@ -326,6 +326,25 @@ return [
         ],
 
         [
+            'text'    => 'Revenue Chart',
+            'icon'    => 'far fa-chart-bar text-success',
+            'submenu' => [
+                [
+                    'text' => 'Day Revenue',
+                    'url'  => '#',
+                ],
+                [
+                    'text'    => 'Month Revenue',
+                    'url'     => '#',
+                ],
+                [
+                    'text' => 'Year Revenue',
+                    'url'  => '#',
+                ],
+            ],
+        ],
+
+        [
             'text'        => 'Category',
             'url'         => 'admin/category',
             'icon'        => 'fas fa-list text-success',
@@ -343,6 +362,13 @@ return [
             'text'        => 'Books',
             'url'         => 'admin/products',
             'icon'        => 'fas fa-book text-success',
+
+        ],
+
+        [
+            'text'        => 'Invoice',
+            'url'         => 'admin/dashboard',
+            'icon'        => 'fas fa-receipt text-success',
 
         ],
 
