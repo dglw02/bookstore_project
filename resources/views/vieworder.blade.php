@@ -13,6 +13,69 @@
     <link href="{{ asset('css/register.css') }}" rel="stylesheet">
     <title>Document</title>
 </head>
+<style>
+    .container-fluid{
+    width: 100%;
+    padding-right: 7.5px;
+    padding-left: 7.5px;
+    margin-right: auto;
+    margin-left: auto;
+}
+    .p-4 {
+    padding: 1.5rem!important;
+}
+.card {
+    box-shadow: 0 0 1px rgba(0,0,0,.125), 0 1px 3px rgba(0,0,0,.2);
+    margin-bottom: 1rem;
+}
+.table:not(.table-dark) {
+    color: inherit;
+}
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+    background-color: transparent;
+}
+
+table {
+    border-collapse: collapse;
+}
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.table td, .table th {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+th {
+    text-align: inherit;
+    text-align: -webkit-match-parent;
+}
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+.h4, h4 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.2;
+    color: inherit;
+    display: block;
+    margin-block-start: 1.33em;
+    margin-block-end: 1.33em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+</style>
 <body>
 
 <div class="heading">
@@ -21,12 +84,9 @@
 </div>
 
 <section class="placed-orders">
-
     <h1 class="title">placed orders</h1>
 
     <div class="box-container">
-
-
         @if($orders->count() > 0)
             <div class="box">
                     <p> placed on : <span>{{$orders->created_at}}</span> </p>
@@ -40,7 +100,7 @@
                     <p> your orders :
                         @foreach($orders->orderdetail as $items)
                             <span>({{$items->books->books_name}} / x {{$items->quantity}} ), </span>
-                @endforeach
+                    @endforeach
                     </p>
                     <p> total price : <span>${{$orders->orders_price}}</span> </p>
                     <p> payment status :
@@ -74,6 +134,54 @@
             <p class="empty">no orders placed yet!</p>
         @endif
     </div>
+
+
+
+<!-- BẢNG TẠO THÀNH CỘT, CẦN SỬA CSS CỦA CÁI NÀY -->
+    <div class="box-container">
+    @if($orders->count() > 0)
+        
+            <div class="container-fluid">
+                <div class="card my-4">
+                    <h4 class="p-4">Order information</h4>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Book Name</th>
+                            <th scope="col">Image</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Total price</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @php $total = 0;@endphp
+                        @foreach($orders->orderdetail as $ord)
+                            <tr>
+                                <td>{{$ord->books->books_name}}</td>
+                                <td><img src={{$ord->books->books_image}} width="150px" alt="a"></td>
+                                <td>{{$ord->quantity}}</td>
+                                <td>{{$ord->price}}$</td>
+                                @php $total += $ord->quantity * $ord->price @endphp
+                                <td>{{$ord->quantity * $ord->price}}$</td>
+                            </tr>
+                        @endforeach
+                        @php $grandtotal = $total +($total * 0.1) + Auth::user()->city->areas->areas_price @endphp
+                        <tr>
+                            <td colspan="2"></td>
+                            <td colspan="1"></td>
+                            <td><strong>Total</strong></td>
+                            <td><strong>{{$grandtotal}}$</strong></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+    @endif
+    </div>
+
+
 </section>
 </body>
 </html>
