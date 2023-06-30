@@ -42,14 +42,16 @@ table {
     border-collapse: collapse;
 }
 .table thead th {
-    vertical-align: bottom;
+    text-align: center;
     border-bottom: 2px solid #dee2e6;
 }
 
 .table td, .table th {
-    padding: 0.75rem;
-    vertical-align: top;
-    border-top: 1px solid #dee2e6;
+    font-size: 20px;
+    padding: 1.5rem;
+    border-style: groove;
+    text-align: center;
+    border-color: green;
 }
 th {
     text-align: inherit;
@@ -61,7 +63,7 @@ tr {
     border-color: inherit;
 }
 .h4, h4 {
-    font-size: 1.5rem;
+    font-size: 2rem;
     margin-bottom: 0.5rem;
     font-family: inherit;
     font-weight: 500;
@@ -137,7 +139,6 @@ tr {
 
 
 
-<!-- BẢNG TẠO THÀNH CỘT, CẦN SỬA CSS CỦA CÁI NÀY -->
     <div class="box-container">
     @if($orders->count() > 0)
         
@@ -161,17 +162,17 @@ tr {
                                 <td>{{$ord->books->books_name}}</td>
                                 <td><img src={{$ord->books->books_image}} width="150px" alt="a"></td>
                                 <td>{{$ord->quantity}}</td>
-                                <td>{{$ord->price}}$</td>
+                                <td>${{$ord->price}}</td>
                                 @php $total += $ord->quantity * $ord->price @endphp
-                                <td>{{$ord->quantity * $ord->price}}$</td>
+                                <td>${{$ord->quantity * $ord->price}}</td>
                             </tr>
                         @endforeach
                         @php $grandtotal = $total +($total * 0.1) + Auth::user()->city->areas->areas_price @endphp
                         <tr>
-                            <td colspan="2"></td>
-                            <td colspan="1"></td>
-                            <td><strong>Total</strong></td>
-                            <td><strong>{{$grandtotal}}$</strong></td>
+                            <td colspan="3"></td>
+                    
+                            <td><strong>Total(Tax10%)</strong></td>
+                            <td><strong>${{$grandtotal}}</strong></td>
                         </tr>
                         </tbody>
                     </table>
