@@ -54,6 +54,7 @@ Route::get('/admin/admin',[AdminController::class,'viewAllAdmin']);
 Route::get('/admin/order',[AdminController::class,'viewAllOrders']);
 Route::get('/admin/dashboard',[AdminController::class,'viewDashboard']);
 Route::get('/admin/settings',[AdminController::class,'viewProfile']);
+Route::get('/admin/invoice',[AdminController::class,'viewAllInvoice']);
 
 //admin san pham
 // Them 1 san pham: view

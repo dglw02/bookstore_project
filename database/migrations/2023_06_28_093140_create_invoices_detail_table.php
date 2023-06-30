@@ -17,6 +17,8 @@ return new class extends Migration
             $table->increments('invoices_detail_id');
             $table->unsignedInteger('invoices_id');
             $table->unsignedInteger('books_id');
+            $table->integer('quantity');
+            $table->double('price', 8, 2);
             $table->timestamps();
             $table->foreign('invoices_id')->references('invoices_id')->on('invoices');
             $table->foreign('books_id')->references('books_id')->on('books');

@@ -52,6 +52,12 @@ class AdminController extends Controller
         return view('admin/author/index', ['authors' => $authors]);
     }
 
+    function viewAllInvoice()
+    {
+        $orders = Order::where('orders_status', '0')->get();
+        return view('admin/invoice/all-invoice', ['orders' => $orders]);
+    }
+
     function viewAllProducts()
     {
         $books = DB::table('books')

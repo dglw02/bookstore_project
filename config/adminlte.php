@@ -367,7 +367,7 @@ return [
 
         [
             'text'        => 'Invoice',
-            'url'         => 'admin/dashboard',
+            'url'         => 'admin/invoice',
             'icon'        => 'fas fa-receipt text-success',
 
         ],

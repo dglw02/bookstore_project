@@ -15,7 +15,12 @@ return new class extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->increments('invoices_id');
+            $table->string('invoices_name');
+            $table->string('invoices_description');
             $table->string('invoices_price');
+            $table->string('invoices_phone');
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
