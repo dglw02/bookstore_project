@@ -171,9 +171,21 @@ tr {
                         <tr>
                             <td colspan="3"></td>
                     
-                            <td><strong>Total(Tax10%)</strong></td>
+                            <td><strong>Total</strong></td>
+                            <td><strong>${{$total}}</strong></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3"></td>
+                    
+                            <td><strong>Tax(10%)</strong></td>
+                            <td><strong>${{$total * 0.1}}</strong></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3"></td>
+                            <td><strong>Grand Total</strong></td>
                             <td><strong>${{$grandtotal}}</strong></td>
                         </tr>
+                        
                         </tbody>
                     </table>
                 </div>
