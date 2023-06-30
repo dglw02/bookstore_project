@@ -15,6 +15,9 @@
     var d = new Date();
 
     Highcharts.chart('container', {
+        chart: {
+            type: 'column'
+        },
         title: {
             text: 'Order, 2022'
         },
@@ -22,7 +25,6 @@
             text: 'Source: itsolutionstuff.com.com'
         },
         xAxis: {
-
             categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
         },
         yAxis: {

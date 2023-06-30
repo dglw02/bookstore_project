@@ -15,7 +15,7 @@ class AdminChartController extends Controller
             ->groupBy(DB::raw("Month(created_at)"))
             ->pluck('orders_price');
 
-        return view('admin.chart.day_revenue', compact('orders'));
-        
+        return view('admin.chart.month_revenue', compact('orders'));
+
     }
 }

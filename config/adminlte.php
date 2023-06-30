@@ -335,7 +335,7 @@ return [
                 ],
                 [
                     'text'    => 'Month Revenue',
-                    'url'     => '#',
+                    'url'     => 'admin/month_revenue',
                 ],
                 [
                     'text' => 'Year Revenue',
