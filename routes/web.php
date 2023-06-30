@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminChartController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\CheckOutController;
@@ -107,6 +108,9 @@ Route::get('/admin/completed-order', [AdminOrdersController::class, 'completedOr
 Route::get('/admin/approved-order', [AdminOrdersController::class, 'approvedOrder']);
 Route::get('/admin/transported-order', [AdminOrdersController::class, 'transportedOrder']);
 Route::get('/admin/canceled-order', [AdminOrdersController::class, 'canceledOrder']);
+
+//admin chart
+Route::get('/admin/day_revenue', [AdminChartController::class, 'index']);
 
 
 

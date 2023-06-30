@@ -12,6 +12,8 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
     protected $primaryKey = 'id';
+
+
     public function city(){
         return $this->belongsTo(City::class,'user_city','city_id');
     }

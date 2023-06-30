@@ -331,7 +331,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Day Revenue',
-                    'url'  => '#',
+                    'url'  => 'admin/day_revenue',
                 ],
                 [
                     'text'    => 'Month Revenue',
