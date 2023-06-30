@@ -10,18 +10,12 @@ use Illuminate\Support\Facades\DB;
 class AdminChartController extends Controller
 {
     public function index(){
-        $year = [0,0,0,0,0,0,0,0,0,0,0,0];
-        $orders=DB::table('orders')
-            ->select(DB::raw("sum(orders_price) as orders_price"),
-                DB::raw('MONTH(created_at) as month'))
-            ->groupBy('month')
-            ->get();
+        $orders = Order::where('orders_status', '3')->select(DB::raw("sum(orders_price) as orders_price"))
+            ->whereYear('created_at', date('Y'))
+            ->groupBy(DB::raw("Month(created_at)"))
+            ->pluck('orders_price');
 
-        foreach($orders as $key){
-            $year[$key->month-1] = $key->count;
-
-            return view('admin.chart.day_revenue', compact('orders'));
-
-        }
+        return view('admin.chart.day_revenue', compact('orders'));
+        
     }
 }

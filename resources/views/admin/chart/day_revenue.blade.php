@@ -11,7 +11,7 @@
 @push('js')
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script type="text/javascript">
-    var orders =  <?php echo json_encode($orders)?>;
+    var orders =  {{ Js::from($orders) }};
     var d = new Date();
 
     Highcharts.chart('container', {
