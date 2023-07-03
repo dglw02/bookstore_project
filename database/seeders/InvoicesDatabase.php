@@ -19,7 +19,19 @@ class InvoicesDatabase extends Seeder
         DB::table('Invoices')->insert(
             [
                 [
-                    
+                    'invoices_name'=>'day 1',
+                    'invoices_description'=>'from Oxford',
+                    'user_id'=>'1'
+                ],
+                [
+                    'invoices_name'=>'day 1',
+                    'invoices_description'=>'from MacMillian',
+                    'user_id'=>'1'
+                ],
+                [
+                    'invoices_name'=>'day 1',
+                    'invoices_description'=>'from Jameson',
+                    'user_id'=>'1'
                 ],
             ]);
     }
