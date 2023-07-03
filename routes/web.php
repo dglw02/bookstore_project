@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\AdminOrdersController;
 use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminAuthorController;
 use App\Http\Controllers\Admin\AdminUsersController;
+use App\Http\Controllers\Admin\AdminInvoicesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -112,8 +113,17 @@ Route::get('/admin/canceled-order', [AdminOrdersController::class, 'canceledOrde
 //admin chart
 Route::get('/admin/month_revenue', [AdminChartController::class, 'index']);
 
+//admin invoices
+Route::get('/admin/invoices/create', [AdminInvoicesController::class, 'create']);
+Route::get('/admin/invoice/{orders_id}/detail', [AdminInvoicesController::class, 'detail']);
 
-
+Route::post("/admin/invoices/create", [AdminInvoicesController::class, 'store']);
+// Sua 1 san pham: view
+Route::get("/admin/invoices/{books_id}/edit", [AdminInvoicesController::class, 'edit']);
+// Cap nhat sp => ko co giao dien
+Route::put("/admin/invoices/{books_id}/edit", [AdminInvoicesController::class, 'update']);
+// Xoa 1 san pham
+Route::delete("/admin/invoices/{book}/delete", [AdminInvoicesController::class, 'destroy']);
 
 //register
 Route::get('/register', [LoginController::class, 'createUser']);
