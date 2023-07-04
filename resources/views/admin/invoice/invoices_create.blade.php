@@ -39,8 +39,8 @@
                     <option value="{{ $book->books_id }}">{{ $book->books_name}}</option>
                     @endforeach
             </td>
-            <td><input name="invoices_detail_quantity[]" type="text" class="form-control" placeholder="Quantity"></td>
-            <td><input name="invoices_detail_price[]" type="number" class="form-control" placeholder="Price"></td>
+            <td><input name="invoices_detail_quantity[]" min="1" type="number" class="form-control" placeholder="Quantity"></td>
+            <td><input name="invoices_detail_price[]" min="1" type="number" class="form-control" placeholder="Price"></td>
         </tr>
     </table>
     <br>
