@@ -14,56 +14,50 @@
                     </ul>
                 </div><br />
             @endif
-            <form method="POST" action="{{url('admin/products/create')}}">
+            <form method="POST" action="{{url('admin/invoices/create')}}">
                 @csrf
                 <div class="form-group">
                     <label for="books_name">Name</label>
-                    <input type="text" class="form-control" name="books_name" placeholder="Please enter book name"/>
-                </div>
-                <div class="form-group">
-                    <label for="category_id">Category</label>
-                    <select class="form-control" name="category_id">
-                        @foreach($categories as $cate)
-                            <option value="{{ $cate->category_id }}">{{ $cate->category_name }}</option>
-                    @endforeach
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="publisher_id">Publisher</label>
-                    <select class="form-control" name="publisher_id">
-                        @foreach($publishers as $pub)
-                            <option value="{{ $pub->publisher_id }}">{{ $pub->publisher_name }}</option>
-                        @endforeach
-                    </select>
+                    <input type="text" class="form-control" name="books_name" placeholder="Please enter "/>
                 </div>
                 <div class="form-group">
                     <label for="books_description">Description</label><br>
                     <textarea name="books_description" id="editor" cols="132"> </textarea>
                 </div>
-                <div class="form-group">
-                    <label for="books_author">Author</label>
-                    <select class="form-control" name="books_author">
-                        @foreach($authors as $aut)
-                            <option value="{{ $aut->author_id }}">{{ $aut->author_name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="books_quantity">Quantity</label>
-                    <input type="number" class="form-control" name="books_quantity" placeholder="Please enter book quantity"/>
-                </div>
-                <div class="form-group">
-                    <label for="books_image">Image</label>
-                    <input type="text" class="form-control" name="books_image" />
-                </div>
-                <div class="form-group">
-                    <label for="books_price">Price</label>
-                    <input type="number" class="form-control" name="books_price" placeholder="book price" placeholder="Please enter book price"/>
-                </div>
-                <div class="form-group">
-                    <label for="books_ISBN">ISBN</label>
-                    <input type="number" class="form-control" name="books_ISBN" placeholder="book ISBN" placeholder="Please enter book ISBN"/>
-                </div>
+                <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Book Name</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Total price</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{-- @php $total = 0;@endphp --}}
+                
+                            <tr>
+                                <td><select class="form-control" name="category_id">
+                    @foreach($books as $book)
+                            <option value="{{ $book->book_id }}">{{ $book->books_name }}</option>
+                    @endforeach
+                    </select></td>
+                                <td><input type="number" class="form-control" name="books_quantity" placeholder="Please enter book quantity"/></td>
+                                <td><input type="number" class="form-control" name="books_price" placeholder="book price" placeholder="Please enter book price"/></td>
+                                {{-- @php $total += books_quantity * books_price @endphp --}}
+                                <td>$Total price</td>
+                            </tr>
+                        
+                            {{--  @php $grandtotal = $total +($total * 0.1) + Auth::user()->city->areas->areas_price @endphp --}}
+                        <tr>
+                            <td colspan="1"></td>
+                            <td><strong>Total Quantity</strong></td>
+                            <td><strong>Total</strong></td>
+                            <td><strong>$Grand Price</strong></td>
+                        </tr>
+                        
+                        </tbody>
+                    </table>
                 <button type="submit" class="btn btn-block btn-danger">Create Book</button>
             </form>
         </div>

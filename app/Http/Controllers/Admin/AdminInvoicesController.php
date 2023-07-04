@@ -16,7 +16,7 @@ use App\Models\Publisher;
 use App\Models\City;
 use App\Models\Order;
 use App\Models\OrderDetails;
-
+use App\Models\Invoice;
 
 
 
@@ -33,7 +33,8 @@ class AdminInvoicesController extends Controller
         $categories = Category::get();
         $publishers = Publisher::get();
         $authors = Author::get();
-        return view('admin.invoice.invoices_create', ['categories' => $categories, 'publishers' => $publishers, 'authors' => $authors]);
+        $books = Books::get();
+        return view('admin.invoice.invoices_create', ['categories' => $categories, 'publishers' => $publishers, 'authors' => $authors,'books' => $books]);
     }
     /**
      * Store a newly created resource in storage.
@@ -56,18 +57,15 @@ class AdminInvoicesController extends Controller
     {
         $storeData = $request->validate([
             'books_name' => 'required|max:255',
-            'category_id' => 'required',
-            'publisher_id' => 'required',
+            'books_name' => 'required|max:255',
             'books_description' => 'required|max:5000',
-            'books_author' => 'required',
             'books_quantity' => 'required|numeric',
-            'books_image' => 'required|max:500',
             'books_price' => 'required|numeric',
-            'books_ISBN' => 'required|numeric',
+            
         ]);
-        $book = Books::create($storeData);
-        alert()->success('Success','Book have been created.');
-        return redirect('/admin/products');
+        $invoice = Invoice::create($storeData);
+        alert()->success('Success','Invoice have been created.');
+        return redirect('/admin/invoice/all-invoice');
     }
 
     /**

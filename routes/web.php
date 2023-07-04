@@ -115,6 +115,7 @@ Route::get('/admin/month_revenue', [AdminChartController::class, 'index']);
 
 //admin invoices
 Route::get('/admin/invoices/create', [AdminInvoicesController::class, 'create']);
+Route::post("/admin/invoices/create", [AdminInvoicesController::class, 'store']);
 Route::get('/admin/invoice/{orders_id}/detail', [AdminInvoicesController::class, 'detail']);
 
 Route::post("/admin/invoices/create", [AdminInvoicesController::class, 'store']);

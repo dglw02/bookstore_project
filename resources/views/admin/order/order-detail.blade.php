@@ -38,7 +38,7 @@
                                 <td>{{$ord->quantity}}</td>
                                 <td>{{$ord->price}}$</td>
                                 @php $total += $ord->quantity * $ord->price @endphp
-                                <td>{{$ord->quantity * $ord->price}}$</td>
+                                <td>${{$ord->quantity * $ord->price}}</td>
                             </tr>
                         @endforeach
                         @php $grandtotal = $total +($total * 0.1) + Auth::user()->city->areas->areas_price @endphp
