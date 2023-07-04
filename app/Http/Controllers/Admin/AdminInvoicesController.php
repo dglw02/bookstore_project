@@ -17,6 +17,7 @@ use App\Models\City;
 use App\Models\Order;
 use App\Models\OrderDetails;
 use App\Models\Invoice;
+use App\Models\InvoiceDetails;
 
 
 
@@ -53,20 +54,37 @@ class AdminInvoicesController extends Controller
 
 
 
-    public function store(Request $request)
-    {
-        $storeData = $request->validate([
-            'books_name' => 'required|max:255',
-            'books_name' => 'required|max:255',
-            'books_description' => 'required|max:5000',
-            'books_quantity' => 'required|numeric',
-            'books_price' => 'required|numeric',
-            
-        ]);
-        $invoice = Invoice::create($storeData);
-        alert()->success('Success','Invoice have been created.');
-        return redirect('/admin/invoice/all-invoice');
-    }
+     public function store(Request $request)
+     {
+         $invoices_name = $request->get('invoices_name');
+         $invoices_description = $request->get('invoices_description');
+         $books_id = $request->input('books_id');
+         $invoices_detail_quantity = $request->get('invoices_detail_quantity');
+         $invoices_detail_price = $request->get('invoices_detail_price');
+         $count = count($books_id);
+         $total = 0;
+         for ($i = 0; $i < $count; $i++) {
+             $total = $total + ($invoices_detail_price[$i] * $invoices_detail_quantity[$i]);
+         }
+         DB::table('Invoices')->insert(
+             ['invoices_total' => $total]
+         );
+         $Invoices = DB::table('Invoices')
+             ->select('Invoices.*')
+             ->where('Invoices.invoices_total', $total)
+             ->get();
+         foreach ($Invoices as $Invoice) {
+             for ($i = 0; $i < $count; $i++) {
+                 DB::table('InvoiceDetails')->insert(
+                     [
+                         'invoices_id' => $Invoice->invoices_id, 'books_id' => $books_id[$i], 'invoices_detail_quantity' => $invoices_detail_quantity[$i],
+                         'invoices_detail_price' => $invoices_detail_price[$i], 
+                     ]
+                 );
+             }
+         }
+         return redirect('admin/invoice/all-invoice');
+     }
 
     /**
      * Show the form for editing the specified resource.

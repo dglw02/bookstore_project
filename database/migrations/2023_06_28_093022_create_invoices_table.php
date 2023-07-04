@@ -19,7 +19,7 @@ return new class extends Migration
 
             $table->string('invoices_name');
             $table->string('invoices_description');
-
+            $table->string('invoices_total');
 
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');

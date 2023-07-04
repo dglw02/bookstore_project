@@ -19,8 +19,8 @@ return new class extends Migration
             $table->unsignedInteger('books_id');
 
 
-            $table->integer('quantity');
-            $table->double('price', 8, 2);
+            $table->integer('invoices_detail_quantity');
+            $table->double('invoices_detail_price', 8, 2);
 
             
             $table->timestamps();
