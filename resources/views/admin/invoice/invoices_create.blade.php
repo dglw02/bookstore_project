@@ -1,5 +1,10 @@
 @extends('layouts.admin_base')
 @section('content')
+<?php
+$products = Illuminate\Support\Facades\DB::table('books')
+    ->select('books.*')
+    ->get();
+?>
     <div class="card push-top">
         <div class="card-header">
             <h1>Invoices</h1>
@@ -16,13 +21,27 @@
             @endif
             <form method="POST" action="{{url('admin/invoices/create')}}">
                 @csrf
+                <br>
+    <label for="user_id">Người nhập:</label>
+    <br>
+    <?php
+    $users = Illuminate\Support\Facades\DB::table('Users')
+        ->select('Users.*')->where('Users.isAdmin', '=', 1)
+        ->get();
+    ?>
+    <select class="form-control" id="" name="user_id" required>
+        @foreach($users as $user)
+        <option value="{{ $user->id }}"> {{ $user->name }}</option>
+        @endforeach
+    </select>
                 <div class="form-group">
                     <label for="invoices_name">Name</label>
                     <input type="text" class="form-control" name="invoices_name" placeholder="Please enter "/>
                 </div>
+
                 <div class="form-group">
-                    <label for="invoices_description">Description</label><br>
-                    <textarea name="invoices_description" id="editor" cols="132"> </textarea>
+                    <label for="invoices_description">Description</label>
+                    <input type="text" class="form-control" name="invoices_description" placeholder="Please enter "/>
                 </div>
     <table id="mytable">
         <tr>
@@ -34,7 +53,7 @@
         <tr>
             <td style="text-align:center;"><input type="checkbox"></td>
             <td>
-                <select class="form-control" id="" name="productId[]" required>
+                <select class="form-control" id="" name="books_id[]" required>
                     @foreach($books as $book)
                     <option value="{{ $book->books_id }}">{{ $book->books_name}}</option>
                     @endforeach
@@ -55,20 +74,8 @@
 @endsection
 
 @section('js')
-    @parent
-    <script>
-        ClassicEditor
-            .create( document.querySelector( '#editor' ) )
-            .then( editor => {
-                console.log( editor );
-            } )
-            .catch( error => {
-                console.error( error );
-            } );
-    </script>
-@endsection
-@section('js')
 @parent
+
 <script>
     ClassicEditor
         .create(document.querySelector('#editor'))
@@ -93,7 +100,7 @@
         
 
         var checkbox = document.createElement("input");
-        var productName = document.createElement("select");
+        var bookName = document.createElement("select");
         var quantity = document.createElement("input");
         var price = document.createElement("input");
         
@@ -103,12 +110,12 @@
         price.type = "number";
         
 
-        productName.className = "form-control";
+        bookName.className = "form-control";
         quantity.className = "form-control";
         price.className = "form-control";
        
 
-        productName.innerHTML = `
+        bookName.innerHTML = `
             @foreach($books as $book)
             <option value="{{ $book->books_name }}">{{ $book->books_name }}</option>
             @endforeach
@@ -117,13 +124,13 @@
         r.className = "new-row";
         c1.style.textAlign = "center";
 
-        productName.name = "productName[]";
-        quantity.name = "quantity[]";
-        price.name = "price[]";
+        bookName.name = "bookName[]";
+        quantity.name = "invoices_detail_quantity[]";
+        price.name = "invoices_detail_price[]";
         
 
         c1.appendChild(checkbox);
-        c2.appendChild(productName);
+        c2.appendChild(bookName);
         c3.appendChild(quantity);
         c4.appendChild(price);
     
@@ -147,16 +154,14 @@
 
         for (var i = 1; i < rows; i++) {
             var row = mytable.rows[i];
-            var productName = row.cells[1].getElementsByTagName("select")[0].value;
+            var bookName = row.cells[1].getElementsByTagName("select")[0].value;
             var quantity = row.cells[2].getElementsByTagName("input")[0].value;
             var price = row.cells[3].getElementsByTagName("input")[0].value;
-            var expiryDate = row.cells[4].getElementsByTagName("input")[0].value;
 
             var data = {
-                productName: productName,
+                bookName: bookName,
                 quantity: quantity,
                 price: price,
-                expiryDate: expiryDate
             };
 
             formData.push(data);

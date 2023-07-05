@@ -31,11 +31,10 @@ class AdminInvoicesController extends Controller
     //
     public function create()
     {
-        $categories = Category::get();
-        $publishers = Publisher::get();
-        $authors = Author::get();
+        
         $books = Books::get();
-        return view('admin.invoice.invoices_create', ['categories' => $categories, 'publishers' => $publishers, 'authors' => $authors,'books' => $books]);
+        $invoices = Invoice::get();
+        return view('admin.invoice.invoices_create', ['books' => $books,'invoices'=>$invoices]);
     }
     /**
      * Store a newly created resource in storage.
@@ -44,18 +43,22 @@ class AdminInvoicesController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     function detail($orders_id)
-     {
-         $order = Order::findOrFail($orders_id);
-         $order_details = OrderDetails::where('orders_id', $orders_id)->get();
-         $cities = City::get();
-         return view('admin.invoice.invoices_detail', compact('order_details', 'order'), ['cities' => $cities]);
-     }
+     function index()
+    {
+        $invoices = DB::table('invoices')
+            ->join('Users', 'invoices.user_id', '=', 'Users.id')
+            ->select('invoices.*', 'Users.name')->orderByDesc('invoices.invoices_id')
+            ->orderByDesc('invoices.invoices_id')
+            ->get();
+        return view('admin/invoice/all-invoice', ['invoices' => $invoices]);
+    }
 
 
 
      public function store(Request $request)
      {
+        
+         $user_id = $request->get('user_id');
          $invoices_name = $request->get('invoices_name');
          $invoices_description = $request->get('invoices_description');
          $books_id = $request->input('books_id');
@@ -67,15 +70,18 @@ class AdminInvoicesController extends Controller
              $total = $total + ($invoices_detail_price[$i] * $invoices_detail_quantity[$i]);
          }
          DB::table('Invoices')->insert(
-             ['invoices_total' => $total]
+            ['invoices_name' => $invoices_name,'user_id' => $user_id,'invoices_description' => $invoices_description,'invoices_total' => $total]
          );
          $Invoices = DB::table('Invoices')
              ->select('Invoices.*')
              ->where('Invoices.invoices_total', $total)
+             ->where('Invoices.invoices_name', $invoices_name)
+             ->where('Invoices.user_id', $user_id)
+             ->where('Invoices.invoices_description', $invoices_description)
              ->get();
          foreach ($Invoices as $Invoice) {
              for ($i = 0; $i < $count; $i++) {
-                 DB::table('InvoiceDetails')->insert(
+                 DB::table('Invoices_Detail')->insert(
                      [
                          'invoices_id' => $Invoice->invoices_id, 'books_id' => $books_id[$i], 'invoices_detail_quantity' => $invoices_detail_quantity[$i],
                          'invoices_detail_price' => $invoices_detail_price[$i], 
@@ -83,8 +89,12 @@ class AdminInvoicesController extends Controller
                  );
              }
          }
-         return redirect('admin/invoice/all-invoice');
+         return redirect('admin/invoice');
      }
+
+
+
+
 
     /**
      * Show the form for editing the specified resource.

@@ -1,6 +1,11 @@
 @extends('layouts.admin_base')
 
 @section('content')
+<?php
+$products = Illuminate\Support\Facades\DB::table('invoices')
+    ->select('invoices.*')
+    ->get();
+?>
     <div class="container-fluid">
 
         <!-- Page Heading -->
@@ -55,15 +60,15 @@
                         </tr>
                         </tfoot>
                         <tbody>
-                        @foreach($orders as $order)
+                        @foreach($invoices as $invoice)
                         <tr>
-                            <td>{{$order->orders_id}}</td>
-                            <td>Day 1</td>
-                            <td>From Oxford</td>
-                            <td>${{$order->orders_price}}</td>
-                            <td>500</td>
-                            <td>{{$order->created_at}}</td>
-                            <td> <a href="{{url('/admin/invoice/'.$order->orders_id.'/detail')}}"
+                            <td>{{$invoice->invoices_id}}</td>
+                            <td>{{$invoice->invoices_name}}</td>
+                            <td>{{$invoice->invoices_description}}</td>
+                            <td>{{$invoice->invoices_total}}</td>
+                            <td>{{$invoice->invoices_total}}</td>
+                            <td>{{$invoice->created_at}}</td>
+                            <td> <a href="{{url('/admin/invoice/'.$invoice->invoices_id.'/detail')}}"
                                            class="btn-primary btn btn-sm mr-2"><i class="fas fa-edit"></i></a></td>
                         </tr>
                         @endforeach
