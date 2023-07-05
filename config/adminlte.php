@@ -326,6 +326,13 @@ return [
         ],
 
         [
+            'text'        => 'Revenue Chart',
+            'url'         => 'admin/month_revenue',
+            'icon'        => 'far fa-chart-bar text-success',
+
+        ],
+
+        /*[
             'text'    => 'Revenue Chart',
             'icon'    => 'far fa-chart-bar text-success',
             'submenu' => [
@@ -342,7 +349,7 @@ return [
                     'url'  => '#',
                 ],
             ],
-        ],
+        ],*/
 
         [
             'text'        => 'Category',
