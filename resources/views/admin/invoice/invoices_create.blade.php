@@ -43,6 +43,11 @@ $products = Illuminate\Support\Facades\DB::table('books')
                     <label for="invoices_description">Description</label>
                     <input type="text" class="form-control" name="invoices_description" placeholder="Please enter "/>
                 </div>
+
+                <div class="form-group">
+                <label for="invoices_date">Date</label>
+                    <input name="invoices_date" type="date" class="form-control" placeholder="Please enter ">
+                </div>
     <table id="mytable">
         <tr>
             <th></th>

@@ -20,9 +20,7 @@ use App\Models\Invoice;
 use App\Models\InvoiceDetails;
 
 
-
-
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -59,6 +57,7 @@ class AdminInvoicesController extends Controller
      {
         
          $user_id = $request->get('user_id');
+         $invoices_date = $request->get('invoices_date');
          $invoices_name = $request->get('invoices_name');
          $invoices_description = $request->get('invoices_description');
          $books_id = $request->input('books_id');
@@ -70,7 +69,7 @@ class AdminInvoicesController extends Controller
              $total = $total + ($invoices_detail_price[$i] * $invoices_detail_quantity[$i]);
          }
          DB::table('Invoices')->insert(
-            ['invoices_name' => $invoices_name,'user_id' => $user_id,'invoices_description' => $invoices_description,'invoices_total' => $total]
+            ['invoices_name' => $invoices_name,'user_id' => $user_id,'invoices_description' => $invoices_description,'invoices_total' => $total,'invoices_date'=>$invoices_date]
          );
          $Invoices = DB::table('Invoices')
              ->select('Invoices.*')
@@ -78,6 +77,7 @@ class AdminInvoicesController extends Controller
              ->where('Invoices.invoices_name', $invoices_name)
              ->where('Invoices.user_id', $user_id)
              ->where('Invoices.invoices_description', $invoices_description)
+             ->where('Invoices.invoices_date', $invoices_date)
              ->get();
          foreach ($Invoices as $Invoice) {
              for ($i = 0; $i < $count; $i++) {
@@ -94,24 +94,54 @@ class AdminInvoicesController extends Controller
 
 
 
-
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $books_id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($books_id)
+    public function edit($invoices_id)
     {
-        $book = Books::findOrFail($books_id);
-        $categories = Category::get();
-        $publishers = Publisher::get();
-        $authors = Author::get();
-        return view('admin.book.book_edit', compact('book'), [
-            'categories' => $categories, 'publishers' => $publishers, 'authors' => $authors
-        ]);
+        $user = Auth::user();
+        if ($user->isAdmin == 1 ) {
+            $invoice = Invoice::findOrFail($invoices_id);
+            $invoice = DB::table('Invoices')
+                ->join('Users', 'Invoices.user_id', '=', 'Users.id')
+                ->select('Invoices.*','Users.name')
+                ->where('Invoices.invoices_id', $invoice->invoices_id)
+                ->get();
+            $invoiceDetails = DB::table('Invoices_Detail')
+                ->select('Invoices_Detail.*')
+                ->where('Invoices_Detail.invoices_id', $invoice->invoices_id)
+                ->get();
+            return view('admin/invoice/invoices_edit', ['invoices' => $invoice], ['invoices_detail' => $invoiceDetails]);
+        } else {
+            return view('common/error');
+        }
     }
+
+
+
+    function edits($imp_id)
+    {
+        $user = Auth::user();
+        if ($user->pos_id == 2 || $user->pos_id == 3) {
+            $importInvoice = Importinvoice::findOrFail($imp_id);
+            if ($importInvoice == null) {
+                return redirect()->route('error');
+            }
+            $importInvoices = DB::table('ImportInvoices')
+                ->join('SupplyUnits', 'ImportInvoices.unit_id', '=', 'SupplyUnits.unit_id')
+                ->join('Users', 'ImportInvoices.use_id', '=', 'Users.id')
+                ->select('ImportInvoices.*', 'SupplyUnits.unit_name', 'Users.name', 'Users.use_lastName')
+                ->where('ImportInvoices.imp_id', $importInvoice->imp_id)
+                ->get();
+            $importInvoiceDetails = DB::table('ImportInvoiceDetails')
+                ->select('ImportInvoiceDetails.*')
+                ->where('ImportInvoiceDetails.imp_id', $importInvoice->imp_id)
+                ->get();
+            return view('admin/importInvoice.edit', ['importInvoices' => $importInvoices], ['importInvoiceDetails' => $importInvoiceDetails]);
+        } else {
+            return view('error/khong-co-quyen-admin');
+        }
+    }
+
+
+
     /**
      * Update the specified resource in storage.
      *

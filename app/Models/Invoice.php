@@ -9,13 +9,8 @@ use Illuminate\Support\Facades\DB;
 class Invoice extends Model
 {
     use HasFactory;
-    public $timestamps = true;
-    protected $fillable = [
-        'invoices_name',
-        'invoices_description',
-        'invoices_total',
-        'created_at'
-        ];
+    protected $primaryKey = 'invoices_id';
+
     public function invoicedetail(){
         return $this->hasMany(InvoiceDetails::class,'invoices_id','invoices_id');
     }

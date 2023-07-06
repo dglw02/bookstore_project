@@ -117,6 +117,8 @@ Route::get('/admin/month_revenue', [AdminChartController::class, 'index']);
 Route::get('/admin/invoice', [AdminInvoicesController::class, 'index']);
 Route::get('/admin/invoices/create', [AdminInvoicesController::class, 'create']);
 Route::post("/admin/invoices/create", [AdminInvoicesController::class, 'store']);
+Route::post("/admin/invoices/{id}/edit", [AdminInvoicesController::class, 'edit']);
+
 Route::get('/admin/invoice/{orders_id}/detail', [AdminInvoicesController::class, 'detail']);
 
 Route::post("/admin/invoices/create", [AdminInvoicesController::class, 'store']);
