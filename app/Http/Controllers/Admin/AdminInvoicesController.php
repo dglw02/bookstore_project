@@ -114,69 +114,47 @@ class AdminInvoicesController extends Controller
         }
     }
 
-
-
-    function edits($imp_id)
+    function update(Request $request, $imp_id)
     {
-        $user = Auth::user();
-        if ($user->pos_id == 2 || $user->pos_id == 3) {
-            $importInvoice = Importinvoice::findOrFail($imp_id);
-            if ($importInvoice == null) {
-                return redirect()->route('error');
-            }
-            $importInvoices = DB::table('ImportInvoices')
-                ->join('SupplyUnits', 'ImportInvoices.unit_id', '=', 'SupplyUnits.unit_id')
-                ->join('Users', 'ImportInvoices.use_id', '=', 'Users.id')
-                ->select('ImportInvoices.*', 'SupplyUnits.unit_name', 'Users.name', 'Users.use_lastName')
-                ->where('ImportInvoices.imp_id', $importInvoice->imp_id)
-                ->get();
-            $importInvoiceDetails = DB::table('ImportInvoiceDetails')
-                ->select('ImportInvoiceDetails.*')
-                ->where('ImportInvoiceDetails.imp_id', $importInvoice->imp_id)
-                ->get();
-            return view('admin/importInvoice.edit', ['importInvoices' => $importInvoices], ['importInvoiceDetails' => $importInvoiceDetails]);
-        } else {
-            return view('error/khong-co-quyen-admin');
+         $user_id = $request->get('user_id');
+         $invoices_date = $request->get('invoices_date');
+         $invoices_name = $request->get('invoices_name');
+         $invoices_description = $request->get('invoices_description');
+         $books_id = $request->input('books_id');
+         $invoices_detail_quantity = $request->get('invoices_detail_quantity');
+         $invoices_detail_price = $request->get('invoices_detail_price');
+         $count = count($books_id);
+         $total = 0;
+         for ($i = 0; $i < $count; $i++) {
+             $total = $total + ($invoices_detail_price[$i] * $invoices_detail_quantity[$i]);
+         }
+
+        DB::table('Invoices')->where('invoices_id', $invoices_id)
+            ->update(['user_id' => $user_id, 'invoices_date' => $invoices_date, 'invoices_total' => $total]);
+        $invoiceDetails = DB::table('InvoiceDetails')
+            ->select('InvoiceDetails.*')
+            ->where('InvoiceDetails.invoices_id', $invoices_id)
+            ->get();
+        $i = 0;
+        foreach ($invoiceDetails as $invoiceDetail) {
+            DB::table('Invoices_Detail')->where('id', $invoiceDetail->invoices_detail_id)
+                ->update([
+                    'books_id' => $books_id[$i], 'invoices_detail_quantity' => $invoices_detail_quantity[$i],
+                    'invoices_detail_price' => $invoices_detail_price[$i]
+                ]);
+            $i++;
         }
+        if ($count > $i) {
+            for ($t = $i; $t < $count; $t++) {
+                DB::table('Invoices_Detail')->insert(
+                    [
+                        'invoices_id' => $invoices_id, 'books_id' => $books_id[$t], 'invoices_detail_quantity' => $invoices_detail_quantity[$t],
+                        'invoices_detail_price' => $invoices_detail_price[$t]
+                    ]
+                );
+            }
+        }
+        return redirect('admin/invoice/invoices_edit');
     }
 
-
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $books_id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $books_id)
-    {
-        $updateData = $request->validate([
-            'books_name' => 'required|max:255',
-            'category_id' => 'required',
-            'publisher_id' => 'required',
-            'books_description' => 'required|max:5000',
-            'books_author' => 'required',
-            'books_quantity' => 'required|numeric',
-            'books_image' => 'required|max:500',
-            'books_price' => 'required|numeric',
-            'books_ISBN' => 'required|numeric',
-        ]);
-        Books::where('books_id',"=",$books_id)->update($updateData);
-        alert()->success('Success','Book have been updated.');
-        return redirect('/admin/products');
-    }
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $books_id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($books_id)
-    {
-        $book = Books::findOrFail($books_id);
-        $book->delete();
-        alert()->success('Success','Book have been deleted.');
-        return redirect('/admin/products');
-    }
 }

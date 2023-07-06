@@ -68,7 +68,7 @@ $products = Illuminate\Support\Facades\DB::table('invoices')
                             <td>{{$invoice->invoices_total}}</td>
                             <td>{{$invoice->invoices_total}}</td>
                             <td>{{$invoice->invoices_date}}</td>
-                            <td> <a href="{{url('/admin/invoices/'.$invoice->invoices_id.'/edit')}}"
+                            <td> <a href="{{url('/admin/invoice/'.$invoice->invoices_id.'/edit')}}"
                                            class="btn-primary btn btn-sm mr-2"><i class="fas fa-edit"></i></a></td>
                         </tr>
                         @endforeach

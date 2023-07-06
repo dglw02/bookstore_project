@@ -32,10 +32,10 @@ $products = Illuminate\Support\Facades\DB::table('books')
     <br>
     <?php
     $count = 0;
-    foreach ($invoiceDetails as $invoiceDetail) {
-        $books_id[$count] = $invoiceDetail->books_id;
-        $invoices_detail_quantity[$count] = $invoiceDetail->invoices_detail_quantity;
-        $invoices_detail_price[$count] = $invoiceDetail->invoices_detail_quantity;
+    foreach ($invoiceDetail as $invoiceDetails) {
+        $books_id[$count] = $invoiceDetails->books_id;
+        $invoices_detail_quantity[$count] = $invoiceDetails->invoices_detail_quantity;
+        $invoices_detail_price[$count] = $invoiceDetails->invoices_detail_quantity;
         $count++;
     }
     ?>
