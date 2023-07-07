@@ -58,7 +58,7 @@ Route::get('/admin/dashboard',[AdminController::class,'viewDashboard']);
 Route::get('/admin/settings',[AdminController::class,'viewProfile']);
 Route::get('/admin/invoice',[AdminController::class,'viewAllInvoice']);
 
-//admin san pham
+//Admin Books
 // Them 1 san pham: view
 Route::get('/admin/products/create', [AdminBooksController::class, 'create']);
 // Them sp: xu ly => ko co giao dien
@@ -70,7 +70,7 @@ Route::put("/admin/products/{books_id}/edit", [AdminBooksController::class, 'upd
 // Xoa 1 san pham
 Route::delete("/admin/products/{book}/delete", [AdminBooksController::class, 'destroy']);
 
-//admin category
+//Admin Category
 // Them 1 san pham: view
 Route::get('/admin/category/create', [AdminCategoryController::class, 'create']);
 // Them sp: xu ly => ko co giao dien
@@ -82,7 +82,7 @@ Route::put("/admin/category/{category_id}/edit", [AdminCategoryController::class
 // Xoa 1 san pham
 Route::delete("/admin/category/{category_id}/delete", [AdminCategoryController::class, 'destroy']);
 
-//admin author
+//Admin Author
 // Them 1 san pham: view
 Route::get('/admin/author/create', [AdminAuthorController::class, 'create']);
 // Them sp: xu ly => ko co giao dien
@@ -94,14 +94,14 @@ Route::put("/admin/author/{author_id}/edit", [AdminAuthorController::class, 'upd
 // Xoa 1 san pham
 Route::delete("/admin/author/{author_id}/delete", [AdminAuthorController::class, 'destroy']);
 
-//admin user
+//Admin User
 Route::get("/admin/admin/{id}/edit", [AdminUsersController::class, 'edit']);
 // Cap nhat sp => ko co giao dien
 Route::put("/admin/admin/{id}/edit", [AdminUsersController::class, 'update']);
 // Xoa 1 san pham
-Route::delete("/admin/admin/{id}/delete", [AdminUsersController::class, 'destroy']);
+Route::delete("/admin/admin/{id}/delete", [AdminUsersController::class, 'destroy']);//DELETE
 
-//admin orders
+//Admin Orders
 Route::get('/admin/order/{orders_id}/detail', [AdminOrdersController::class, 'detail']);
 Route::put('/admin/order/{orders_id}/update', [AdminOrdersController::class, 'update']);
 Route::delete("/admin/order/{orders_id}/delete", [AdminOrdersController::class, 'destroy']);
@@ -110,24 +110,16 @@ Route::get('/admin/approved-order', [AdminOrdersController::class, 'approvedOrde
 Route::get('/admin/transported-order', [AdminOrdersController::class, 'transportedOrder']);
 Route::get('/admin/canceled-order', [AdminOrdersController::class, 'canceledOrder']);
 
-//admin chart
+//Admin Chart
 Route::get('/admin/month_revenue', [AdminChartController::class, 'index']);
 
-//admin invoices
+//Admin Invoices
 Route::get('/admin/invoice', [AdminInvoicesController::class, 'index']);
 Route::get('/admin/invoices/create', [AdminInvoicesController::class, 'create']);
+Route::get('/admin/invoice/{id}/detail', [AdminInvoicesController::class, 'show']);
 Route::post("/admin/invoices/create", [AdminInvoicesController::class, 'store']);
+
 Route::get("/admin/invoice/{id}/edit", [AdminInvoicesController::class, 'update']);
-
-Route::get('/admin/invoice/{orders_id}/detail', [AdminInvoicesController::class, 'detail']);
-
-Route::post("/admin/invoices/create", [AdminInvoicesController::class, 'store']);
-// Sua 1 san pham: view
-Route::get("/admin/invoices/{books_id}/edit", [AdminInvoicesController::class, 'edit']);
-// Cap nhat sp => ko co giao dien
-Route::put("/admin/invoices/{books_id}/edit", [AdminInvoicesController::class, 'update']);
-// Xoa 1 san pham
-Route::delete("/admin/invoices/{book}/delete", [AdminInvoicesController::class, 'destroy']);
 
 //register
 Route::get('/register', [LoginController::class, 'createUser']);

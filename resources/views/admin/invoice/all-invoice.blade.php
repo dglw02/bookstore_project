@@ -2,7 +2,7 @@
 
 @section('content')
 <?php
-$products = Illuminate\Support\Facades\DB::table('invoices')
+$invoices = Illuminate\Support\Facades\DB::table('invoices')
     ->select('invoices.*')
     ->get();
 ?>
@@ -40,10 +40,11 @@ $products = Illuminate\Support\Facades\DB::table('invoices')
                         <thead>
                         <tr>
                             <th>ID</th>
+
                             <th>Name</th>
-                            <th>Description</th>
+
                             <th>Total Price</th>
-                            <th>Total Quantity</th>
+
                             <th>Date</th>
                             <th>Details</th>
                         </tr>
@@ -51,10 +52,11 @@ $products = Illuminate\Support\Facades\DB::table('invoices')
                         <tfoot>
                         <tr>
                             <th>ID</th>
+
                             <th>Name</th>
-                            <th>Description</th>
+
                             <th>Total Price</th>
-                            <th>Total Quantity</th>
+
                             <th>Date</th>
                             <th>Details</th>
                         </tr>
@@ -64,12 +66,14 @@ $products = Illuminate\Support\Facades\DB::table('invoices')
                         <tr>
                             <td>{{$invoice->invoices_id}}</td>
                             <td>{{$invoice->invoices_name}}</td>
-                            <td>{{$invoice->invoices_description}}</td>
-                            <td>{{$invoice->invoices_total}}</td>
-                            <td>{{$invoice->invoices_total}}</td>
+                            <td>${{$invoice->invoices_total}}</td>
+
                             <td>{{$invoice->invoices_date}}</td>
                             <td> <a href="{{url('/admin/invoice/'.$invoice->invoices_id.'/edit')}}"
-                                           class="btn-primary btn btn-sm mr-2"><i class="fas fa-edit"></i></a></td>
+                                           class="btn-primary btn btn-sm mr-2"><i class="fas fa-edit"></i></a>
+                                <a href="{{url('/admin/invoice/'.$invoice->invoices_id.'/detail')}}"
+                                   class="btn-primary btn btn-sm mr-2"><i class="fas fa-receipt"></i></a>
+                            </td>
                         </tr>
                         @endforeach
                         </tbody>

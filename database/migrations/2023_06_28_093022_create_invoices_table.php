@@ -18,7 +18,6 @@ return new class extends Migration
 
 
             $table->string('invoices_name');
-            $table->string('invoices_description');
             $table->string('invoices_total');
             $table->string('invoices_date');
 
