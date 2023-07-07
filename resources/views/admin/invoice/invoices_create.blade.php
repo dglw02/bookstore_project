@@ -1,7 +1,7 @@
 @extends('layouts.admin_base')
 @section('content')
     <?php
-    $products = Illuminate\Support\Facades\DB::table('books')
+    $books = Illuminate\Support\Facades\DB::table('books')
         ->select('books.*')
         ->get();
     ?>
@@ -19,9 +19,12 @@
                     </ul>
                 </div><br/>
             @endif
+
+
+
             <form method="POST" action="{{url('admin/invoices/create')}}">@csrf
                 <br>
-                <label for="user_id">Người nhập:</label>
+                <label for="user_id">User:</label>
                 <br>
                 <?php
                 $users = Illuminate\Support\Facades\DB::table('Users')
@@ -43,7 +46,7 @@
                     <input name="invoices_date" type="date" class="form-control" placeholder="Please enter ">
                 </div>
 
-                <table id="mytable">
+                <table id="table">
                     <tr>
                         <th></th>
                         <th>Books name</th>
@@ -92,9 +95,9 @@
 
     <script>
         function row() {
-            var mytable = document.getElementById("mytable");
-            var rows = mytable.rows.length;
-            var r = mytable.insertRow(rows);
+            var table = document.getElementById("table");
+            var rows = table.rows.length;
+            var r = table.insertRow(rows);
 
             var c1 = r.insertCell(0);
             var c2 = r.insertCell(1);
@@ -118,18 +121,19 @@
             invoices_detail_price.className = "form-control";
 
 
-            books_name.innerHTML = `
-            @foreach($books as $book)
-            <option value="{{ $book->books_name }}">{{ $book->books_name }}</option>
-            @endforeach
+            books_name.innerHTML =
+                `
+                @foreach($books as $book)
+                <option value="{{ $book->books_name }}">{{ $book->books_name }}</option>
+                @endforeach
             `;
 
             r.className = "new-row";
             c1.style.textAlign = "center";
 
-            books_name.name = "books_name[]";
-            invoices_detail_quantity.name = "quantity[]";
-            invoices_detail_price.name = "price[]";
+            books_name.name = "books_id[]";
+            invoices_detail_quantity.name = "invoices_detail_quantity[]";
+            invoices_detail_price.name = "invoices_detail_price[]";
 
             c1.appendChild(checkbox);
             c2.appendChild(books_name);
@@ -139,29 +143,29 @@
         }
 
         function del() {
-            var mytable = document.getElementById("mytable");
-            var rows = mytable.rows.length;
+            var table = document.getElementById("table");
+            var rows = table.rows.length;
 
             for (var i = rows - 1; i > 0; i--) {
-                if (mytable.rows[i].cells[0].children[0].checked) {
-                    mytable.deleteRow(i);
+                if (table.rows[i].cells[0].children[0].checked) {
+                    table.deleteRow(i);
                 }
             }
         }
 
         function processForm() {
             var formData = [];
-            var mytable = document.getElementById("mytable");
-            var rows = mytable.rows.length;
+            var table = document.getElementById("table");
+            var rows = table.rows.length;
 
             for (var i = 1; i < rows; i++) {
-                var row = mytable.rows[i];
-                var books_name = row.cells[1].getElementsByTagName("select")[0].value;
+                var row = table.rows[i];
+                var books_id = row.cells[1].getElementsByTagName("select")[0].value;
                 var invoices_detail_quantity = row.cells[2].getElementsByTagName("input")[0].value;
                 var invoices_detail_price = row.cells[3].getElementsByTagName("input")[0].value;
 
                 var data = {
-                    books_name: books_name,
+                    books_id: books_id,
                     invoices_detail_quantity: invoices_detail_quantity,
                     invoices_detail_price: invoices_detail_price
                 };

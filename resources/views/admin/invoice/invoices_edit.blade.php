@@ -24,12 +24,13 @@
             <br>
             <input value="{{$invoice->invoices_date}}" name="importDate" type="date" class="form-control" placeholder="Ngày nhập">
             <br>
+
                 <?php
                 $count = 0;
                 foreach ($invoiceDetails as $invoiceDetail) {
-                    $prdID[$count] = $importInvoiceDetail->prd_id;
-                    $impQuantity[$count] = $importInvoiceDetail->imp_quantity;
-                    $impPrice[$count] = $importInvoiceDetail->imp_price;
+                    $prdID[$count] = $invoiceDetail->books_id;
+                    $impQuantity[$count] = $invoiceDetail->invoices_detail_quantity;
+                    $impPrice[$count] = $invoiceDetail->invoices_detail_price;
                     $count++;
                 }
                 ?>
@@ -47,7 +48,6 @@
                 <tr>
                     <td style="text-align:center;"><input type="checkbox"></td>
                     <td>
-                        <!-- <input name="productId[]" type="text" class="form-control" placeholder="Mã sản phẩm" value="{{$prdID[$i]}}"> -->
                             <?php
                             $productPre = App\Models\Product::findOrFail($prdID[$i]);
                             ?>

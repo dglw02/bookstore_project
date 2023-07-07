@@ -8,30 +8,23 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Books;
 use App\Models\Invoice;
-use App\Models\InvoiceDetails;
+
 
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminInvoicesController extends Controller
 {
-    //
-    public function create()
+    function create()
     {
-
-        $books = Books::get();
-        $invoices = Invoice::get();
-        return view('admin.invoice.invoices_create', ['books' => $books, 'invoices' => $invoices]);
+        $user = Auth::user();
+        if ($user->isAdmin == 1) {
+            return view('admin/invoice/invoices_create');
+        } else {
+            return view('admin/invoice');
+        }
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
 
     function index()
     {
@@ -92,9 +85,9 @@ class AdminInvoicesController extends Controller
                 ->select('Invoices.*', 'Users.name')
                 ->where('Invoices.invoices_id', $invoice->invoices_id)
                 ->get();
+
             $invoiceDetails = DB::table('Invoices_Detail')
                 ->select('Invoices_Detail.*')
-                ->where('Invoices_Detail.invoices_id', $invoice->invoices_id)
                 ->get();
             return view('admin/invoice/invoices_edit', ['invoices' => $invoice], ['invoices_detail' => $invoiceDetails]);
         } else {
