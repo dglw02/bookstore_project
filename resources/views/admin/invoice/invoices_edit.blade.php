@@ -11,36 +11,34 @@
         <form action="{{url('/admin/invoice/'.$invoice->invoices_id.'/edit')}}" method="POST">
             @csrf
             @method('put')
+            <div class="form-group">
+                <label for="invoices_name">Name</label>
+                <input {{$invoice->invoices_name}} type="text" class="form-control" name="invoices_name" placeholder="Please enter "/>
+            </div>
+            <label for="invoices_date">Date</label>
             <br>
-            <label for="userId">Tên người nhập:</label>
-            <br>
-                <?php
-                $users = Illuminate\Support\Facades\DB::table('Users')
-                    ->select('Users.*')->where('Users.isAdmin', '=', 1)
-                    ->get();
-                ?>
-            <br>
-            <label for="importDate">Ngày nhập:</label>
-            <br>
-            <input value="{{$invoice->invoices_date}}" name="importDate" type="date" class="form-control" placeholder="Ngày nhập">
+            <input value="{{$invoice->invoices_date}}" name="invoices_date" type="date" class="form-control" placeholder="Ngày nhập">
             <br>
 
                 <?php
                 $count = 0;
+                $invoiceDetails = DB::table('Invoices_Detail')
+                    ->select('Invoices_Detail.*')
+                    ->get();
                 foreach ($invoiceDetails as $invoiceDetail) {
-                    $prdID[$count] = $invoiceDetail->books_id;
-                    $impQuantity[$count] = $invoiceDetail->invoices_detail_quantity;
-                    $impPrice[$count] = $invoiceDetail->invoices_detail_price;
+                    $books_id[$count] = $invoiceDetail->books_id;
+                    $invoices_detail_quantity[$count] = $invoiceDetail->invoices_detail_quantity;
+                    $invoices_detail_price[$count] = $invoiceDetail->invoices_detail_quantity;
                     $count++;
                 }
                 ?>
-            <h5>Danh sách sản phẩm trong hóa đơn:</h5>
+            <h5>Product List</h5>
             <table id="mytable">
                 <tr>
                     <th></th>
-                    <th>Tên sản phẩm</th>
-                    <th>Số lượng</th>
-                    <th>Giá sản phẩm</th>
+                    <th>Book Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
                 </tr>
                     <?php
                 for ($i = 0; $i < $count; $i++) {
@@ -49,27 +47,25 @@
                     <td style="text-align:center;"><input type="checkbox"></td>
                     <td>
                             <?php
-                            $productPre = App\Models\Product::findOrFail($prdID[$i]);
+                            $book = App\Models\Books::findOrFail($books_id[$i]);
                             ?>
-                        <select class="form-control" id="" name="productId[]" required>
-                            <option value="{{$prdID[$i]}}" selected="selected">----{{$productPre->prd_name}}----</option>
-                            @foreach($products as $product)
-                                <option value="{{ $product->prd_id }}">{{ $product->prd_name}}</option>
+                        <select class="form-control" id="" name="books_id[]" required>
+                            <option value="{{$books_id[$i]}}" selected="selected">----{{$book->books_name}}----</option>
+                            @foreach($books as $boook)
+                                <option value="{{ $boook->books_id }}">{{ $boook->books_name}}</option>
                         @endforeach
                     </td>
-                    <td><input name="quantity[]" type="text" class="form-control" placeholder="Số lượng" value="{{$impQuantity[$i]}}"></td>
-                    <td><input name="price[]" type="number" class="form-control" placeholder="Giá sản phẩm" value="{{$impPrice[$i]}}"></td>
+                    <td><input name="quantity[]" type="text" class="form-control" placeholder="Quantity" value="{{$invoices_detail_quantity[$i]}}"></td>
+                    <td><input name="price[]" type="number" class="form-control" placeholder="Price" value="{{$invoices_detail_price[$i]}}"></td>
                 </tr>
                 <?php } ?>
             </table>
             <br>
-            <input type="button" class="btn btn-success" value="Thêm sản phẩm" onclick="row()">
-            <input type="button" class="btn btn-danger" value="Xóa" onclick="del()">
-            <br><br>
-            <button type="submit" class="btn btn-primary" onclick="processForm()">Thêm mới</button>
-        </form>
+            <input type="button" class="btn btn-success" value="Add" onclick="row()">
+            <input type="button" class="btn btn-danger" value="Delete" onclick="del()">
+            <br>
         <br>
-        <button type="submit" class="btn btn-primary">Cập nhật</button>
+        <button type="submit" class="btn btn-primary" onclick="processForm()">Update</button>
         </form>
     @endforeach
 @endsection
@@ -88,109 +84,87 @@
     </script>
 
     <script>
-        ClassicEditor
-            .create(document.querySelector('#editor'))
-            .then(editor => {
-                console.log(editor);
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    </script>
-    <script>
         function row() {
-            var mytable = document.getElementById("mytable");
-            var rows = mytable.rows.length;
-            var r = mytable.insertRow(rows);
+            var table = document.getElementById("table");
+            var rows = table.rows.length;
+            var r = table.insertRow(rows);
 
             var c1 = r.insertCell(0);
             var c2 = r.insertCell(1);
             var c3 = r.insertCell(2);
             var c4 = r.insertCell(3);
-            var c5 = r.insertCell(4);
+
 
             var checkbox = document.createElement("input");
-            var maSP = document.createElement("input");
-            var quantity = document.createElement("input");
-            var price = document.createElement("input");
-            var hsd = document.createElement("input");
+            var books_name = document.createElement("select");
+            var invoices_detail_quantity = document.createElement("input");
+            var invoices_detail_price = document.createElement("input");
+
 
             checkbox.type = "checkbox";
-            maSP.type = "text";
-            quantity.type = "number";
-            price.type = "number";
-            hsd.type = "date";
+            invoices_detail_quantity.type = "number";
+            invoices_detail_price.type = "number";
 
-            maSP.class = "form-control";
-            quantity.class = "form-control";
-            price.class = "form-control";
-            hsd.class = "form-control";
 
-            maSP.placeholder = "Mã sản phẩm";
-            quantity.placeholder = "Số lượng";
-            price.placeholder = "Giá sản phẩm";
-            hsd.placeholder = "Ngày hết hạn";
+            books_name.className = "form-control";
+            invoices_detail_quantity.className = "form-control";
+            invoices_detail_price.className = "form-control";
 
-            r.className = "new-row"; // Add a CSS class to the row
+
+            books_name.innerHTML =
+                `
+                @foreach($books as $book)
+                <option value="{{ $book->books_id }}">{{ $book->books_name }}</option>
+                @endforeach
+                `;
+
+            r.className = "new-row";
             c1.style.textAlign = "center";
 
-            maSP.name = "productId[]";
-            quantity.name = "quantity[]";
-            price.name = "price[]";
-            hsd.name = "expiryDate[]";
+            books_name.name = "books_id[]";
+            invoices_detail_quantity.name = "invoices_detail_quantity[]";
+            invoices_detail_price.name = "invoices_detail_price[]";
 
             c1.appendChild(checkbox);
-            c2.appendChild(maSP);
-            c3.appendChild(quantity);
-            c4.appendChild(price);
-            c5.appendChild(hsd);
+            c2.appendChild(books_name);
+            c3.appendChild(invoices_detail_quantity);
+            c4.appendChild(invoices_detail_price);
+
         }
 
         function del() {
-            var mytable = document.getElementById("mytable");
-            var rows = mytable.rows.length;
+            var table = document.getElementById("table");
+            var rows = table.rows.length;
 
             for (var i = rows - 1; i > 0; i--) {
-                if (mytable.rows[i].cells[0].children[0].checked) {
-                    mytable.deleteRow(i);
+                if (table.rows[i].cells[0].children[0].checked) {
+                    table.deleteRow(i);
                 }
             }
         }
 
         function processForm() {
             var formData = [];
-            var mytable = document.getElementById("mytable");
-            var rows = mytable.rows.length;
+            var table = document.getElementById("table");
+            var rows = table.rows.length;
 
             for (var i = 1; i < rows; i++) {
-                var row = mytable.rows[i];
-                var productId = row.cells[1].getElementsByTagName("input")[0].value;
-                var quantity = row.cells[2].getElementsByTagName("input")[0].value;
-                var price = row.cells[3].getElementsByTagName("input")[0].value;
-                var expiryDate = row.cells[4].getElementsByTagName("input")[0].value;
+                var row = table.rows[i];
+                var books_id = row.cells[1].getElementsByTagName("select")[0].value;
+                var invoices_detail_quantity = row.cells[2].getElementsByTagName("input")[0].value;
+                var invoices_detail_price = row.cells[3].getElementsByTagName("input")[0].value;
 
                 var data = {
-                    productId: productId,
-                    quantity: quantity,
-                    price: price,
-                    expiryDate: expiryDate
+                    books_id: books_id,
+                    invoices_detail_quantity: invoices_detail_quantity,
+                    invoices_detail_price: invoices_detail_price
                 };
 
                 formData.push(data);
             }
-
-            // Process the form data
             console.log(formData);
         }
 
-        function del() {
-            var mytable = document.getElementById("mytable");
-            var rows = mytable.rows.length;
-            for (var i = rows - 1; i > 0; i--) {
-                if (mytable.rows[i].cells[0].children[0].checked) {
-                    mytable.deleteRow(i);
-                }
-            }
-        }
+
     </script>
 @endsection

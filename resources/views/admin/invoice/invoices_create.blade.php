@@ -24,18 +24,6 @@
 
             <form method="POST" action="{{url('admin/invoices/create')}}">@csrf
                 <br>
-                <label for="user_id">User:</label>
-                <br>
-                <?php
-                $users = Illuminate\Support\Facades\DB::table('Users')
-                    ->select('Users.*')->where('Users.isAdmin', '=', 1)
-                    ->get();
-                ?>
-                <select class="form-control" id="" name="user_id" required>
-                    @foreach($users as $user)
-                        <option value="{{ $user->id }}"> {{ $user->name }}</option>
-                    @endforeach
-                </select>
                 <div class="form-group">
                     <label for="invoices_name">Name</label>
                     <input type="text" class="form-control" name="invoices_name" placeholder="Please enter "/>

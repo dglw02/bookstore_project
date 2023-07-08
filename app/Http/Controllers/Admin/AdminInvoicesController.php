@@ -29,8 +29,6 @@ class AdminInvoicesController extends Controller
     function index()
     {
         $invoices = DB::table('invoices')
-            ->join('Users', 'invoices.user_id', '=', 'Users.id')
-            ->select('invoices.*', 'Users.name')->orderByDesc('invoices.invoices_id')
             ->orderByDesc('invoices.invoices_id')
             ->get();
         return view('admin/invoice/all-invoice', ['invoices' => $invoices]);
@@ -40,7 +38,7 @@ class AdminInvoicesController extends Controller
     public function store(Request $request)
     {
 
-        $user_id = $request->get('user_id');
+
         $invoices_date = $request->get('invoices_date');
         $invoices_name = $request->get('invoices_name');
         $books_id = $request->input('books_id');
@@ -52,13 +50,12 @@ class AdminInvoicesController extends Controller
             $total = $total + ($invoices_detail_price[$i] * $invoices_detail_quantity[$i]);
         }
         DB::table('Invoices')->insert(
-            ['invoices_name' => $invoices_name, 'user_id' => $user_id, 'invoices_total' => $total, 'invoices_date' => $invoices_date]
+            ['invoices_name' => $invoices_name, 'invoices_total' => $total, 'invoices_date' => $invoices_date]
         );
         $Invoices = DB::table('Invoices')
             ->select('Invoices.*')
             ->where('Invoices.invoices_total', $total)
             ->where('Invoices.invoices_name', $invoices_name)
-            ->where('Invoices.user_id', $user_id)
             ->where('Invoices.invoices_date', $invoices_date)
             ->get();
         foreach ($Invoices as $Invoice) {
@@ -81,15 +78,14 @@ class AdminInvoicesController extends Controller
         if ($user->isAdmin == 1) {
             $invoice = Invoice::findOrFail($invoices_id);
             $invoice = DB::table('Invoices')
-                ->join('Users', 'Invoices.user_id', '=', 'Users.id')
-                ->select('Invoices.*', 'Users.name')
                 ->where('Invoices.invoices_id', $invoice->invoices_id)
                 ->get();
 
             $invoiceDetails = DB::table('Invoices_Detail')
                 ->select('Invoices_Detail.*')
                 ->get();
-            return view('admin/invoice/invoices_edit', ['invoices' => $invoice], ['invoices_detail' => $invoiceDetails]);
+//            dd($invoiceDetails);
+            return view('admin/invoice/invoices_edit', ['invoices' => $invoice], ['invoiceDetails' => $invoiceDetails]);
         } else {
             return view('common/error');
         }
@@ -97,7 +93,7 @@ class AdminInvoicesController extends Controller
 
     function update(Request $request, $invoices_id)
     {
-        $user_id = $request->get('user_id');
+
         $invoices_date = $request->get('invoices_date');
         $invoices_name = $request->get('invoices_name');
         $books_id = $request->input('books_id');
@@ -109,7 +105,7 @@ class AdminInvoicesController extends Controller
             $total = $total + ($invoices_detail_price[$i] * $invoices_detail_quantity[$i]);
         }
         DB::table('Invoices')->where('invoices_id',$invoices_id)
-            ->update(['user_id' => $user_id, 'invoices_date' => $invoices_date, 'invoices_total' => $total, 'invoices_name' => $invoices_name]);
+            ->update(['invoices_date' => $invoices_date, 'invoices_total' => $total, 'invoices_name' => $invoices_name]);
         $invoiceDetails = DB::table('InvoiceDetails')
             ->select('InvoiceDetails.*')
             ->where('InvoiceDetails.invoices_id')

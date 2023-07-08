@@ -119,7 +119,7 @@ Route::get('/admin/invoices/create', [AdminInvoicesController::class, 'create'])
 Route::get('/admin/invoice/{id}/detail', [AdminInvoicesController::class, 'show']);
 Route::post("/admin/invoices/create", [AdminInvoicesController::class, 'store']);
 Route::get("/admin/invoice/{id}/edit", [AdminInvoicesController::class, 'edit']);
-//Route::get("/admin/invoice/{id}/edit", [AdminInvoicesController::class, 'update']);
+Route::put("/admin/invoice/{id}/edit", [AdminInvoicesController::class, 'update']);
 
 //register
 Route::get('/register', [LoginController::class, 'createUser']);
