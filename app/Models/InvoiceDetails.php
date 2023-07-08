@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class InvoiceDetails extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'invoices_detail_id';
     public $timestamps = true;
-    
+
     public function invoices(){
         return $this->belongsTo(Invoice::class,'invoices_id','invoices_id');
     }

@@ -27,7 +27,7 @@ class AdminController extends Controller
         $top = OrderDetails::with('books')
             ->join('orders', 'orders.orders_id', '=', 'order_details.orders_id')
             ->select('books_id', DB::raw('SUM(quantity) as count'))
-            ->where('orders.orders_status', '2')
+            ->where('orders.orders_status', '3')
             ->groupBy('books_id')
             ->orderBy("count", 'desc')
             ->take(3)

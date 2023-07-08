@@ -124,7 +124,7 @@
             books_name.innerHTML =
                 `
                 @foreach($books as $book)
-                <option value="{{ $book->books_name }}">{{ $book->books_name }}</option>
+                <option value="{{ $book->books_id }}">{{ $book->books_name }}</option>
                 @endforeach
             `;
 
