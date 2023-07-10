@@ -21,7 +21,9 @@ return new class extends Migration
             $table->string('orders_payment');
             $table->string('orders_address');
             $table->string('orders_phone',11);
-            $table->string('orders_city');
+            $table->string('orders_province');
+            $table->string('orders_district');
+            $table->string('orders_wards');
             $table->integer('orders_status')->default(0);
             $table->string('orders_message')->nullable();
             $table->string('order_tracking');

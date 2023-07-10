@@ -27,9 +27,9 @@
                 </div>
                 <div class="form-group">
                     <label for="user_city">City</label>
-                    <select class="form-control" name="user_city">
-                        @foreach($cities as $city)
-                            <option value="{{ $city->city_id }}">{{ $city->city_name }}</option>
+                    <select class="form-control" name="user_province">
+                        @foreach($provinces as $province)
+                            <option value="{{ $province->province_id }}">{{ $province->province_name }}</option>
                         @endforeach
                     </select>
                 </div>

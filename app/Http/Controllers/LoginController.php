@@ -7,6 +7,7 @@ use App\Models\Author;
 use App\Models\Books;
 use App\Models\Category;
 use App\Models\City;
+use App\Models\Province;
 use App\Models\Publisher;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -55,8 +56,8 @@ class LoginController extends Controller
 
     public function createUser()
     {
-        $cities = City::get();
-        return view('register', ['cities' => $cities]);
+        $province = Province::get();
+        return view('register', ['province' => $province]);
     }
 
 
@@ -68,7 +69,7 @@ class LoginController extends Controller
             'email' => 'required|email|unique:users',
             'address' => 'required|max:255',
             'phone' => 'required',
-            'user_city' => 'required',
+            'user_province' => 'required',
             'password' => 'required|confirmed|min:6',
         ]);
             $storeData ['password'] = Hash::make($storeData ['password']);

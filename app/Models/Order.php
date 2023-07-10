@@ -18,7 +18,7 @@ class Order extends Model
         'orders_payment',
         'orders_address',
         'orders_phone',
-        'orders_city',
+        'orders_province',
         'orders_status',
         'orders_message',
         'order_tracking',
@@ -32,8 +32,16 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function city(){
-        return $this->belongsTo(City::class,'orders_city','city_id');
+    public function province(){
+        return $this->belongsTo(Province::class,'orders_province','province_id');
+    }
+
+    public function district(){
+        return $this->belongsTo(District::class,'orders_district','district_id');
+    }
+
+    public function wards(){
+        return $this->belongsTo(Wards::class,'orders_wards','wards_id');
     }
 
     public function delete()

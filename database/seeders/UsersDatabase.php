@@ -23,7 +23,7 @@ class UsersDatabase extends Seeder
                 'level'=>0,
                 'phone'=>'0123456789',
                 'address'=>'Cau Giay',
-                'user_city'=>'1',
+                'user_province'=>'1',
                 'password'=> Hash::make('admin123')
 
             ]
@@ -38,7 +38,7 @@ class UsersDatabase extends Seeder
                 'level'=>1,
                 'phone'=>'0387654198',
                 'address'=>'Hoan Kiem',
-                'user_city'=>'1',
+                'user_province'=>'2',
                 'password'=> Hash::make('editor123')
 
             ]
@@ -52,7 +52,7 @@ class UsersDatabase extends Seeder
                 'level'=>2,
                 'phone'=>'0123456789',
                 'address'=>'Ba Dinh',
-                'user_city'=>'2',
+                'user_province'=>'1',
                 'password'=> Hash::make('user123')
             ]
         );

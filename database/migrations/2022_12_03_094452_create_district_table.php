@@ -13,12 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('areas', function (Blueprint $table) {
-            $table->increments('areas_id');
-            $table->string('areas_name');
-            $table->double('areas_price', 8, 2);
+        Schema::create('district', function (Blueprint $table) {
+            $table->increments('district_id');
+            $table->unsignedInteger('province_id');
+            $table->string('district_name');
             $table->timestamps();
 
+            $table->foreign('province_id')->references('province_id')->on('province');
         });
     }
 
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('areas');
+        Schema::dropIfExists('district');
     }
 };

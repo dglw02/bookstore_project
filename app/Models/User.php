@@ -14,8 +14,8 @@ class User extends Authenticatable
     protected $primaryKey = 'id';
 
 
-    public function city(){
-        return $this->belongsTo(City::class,'user_city','city_id');
+    public function province(){
+        return $this->belongsTo(Province::class,'user_province','province_id');
     }
 
     public function cart(){
@@ -30,7 +30,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'user_city',
+        'user_province',
         'phone',
         'address'
         ];

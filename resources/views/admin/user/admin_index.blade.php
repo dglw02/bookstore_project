@@ -55,7 +55,7 @@
                                 <td>{{$user->email}}</td>
                                 <td>{{$user->address}}</td>
                                 <td>{{$user->phone}}</td>
-                                <td>{{$user->city_name}}</td>
+                                <td>{{$user->province_name}}</td>
                                 <td>
                                     <div class="action d-flex flex-row">
                                         <a href="{{url('/admin/admin/'.$user->id.'/edit')}}"

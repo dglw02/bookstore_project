@@ -72,16 +72,16 @@ class AdminController extends Controller
     function viewAllUsers()
     {
         $users = DB::table('users')->where('isAdmin', '0')
-            ->join('cities', 'users.user_city', '=', 'cities.city_id')
-            ->select('users.*', 'cities.city_name')->get();
+            ->join('province', 'users.user_province', '=', 'province.province_id')
+            ->select('users.*', 'province.province_name')->get();
         return view('admin/user/index', ['users' => $users]);
     }
 
     function viewAllAdmin()
     {
         $users = DB::table('users')->where('isAdmin', '1')
-            ->join('cities', 'users.user_city', '=', 'cities.city_id')
-            ->select('users.*', 'cities.city_name')->get();
+            ->join('province', 'users.user_province', '=', 'province.province_id')
+            ->select('users.*', 'province.province_name')->get();
         return view('admin/user/admin_index', ['users' => $users]);
     }
 

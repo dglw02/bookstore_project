@@ -13,7 +13,10 @@
                         <p><i class="fas fa-user"></i> <span class="mx-2">User: {{$order->user->name}}</span></p>
                         <p><i class="fas fa-phone"></i><span class="mx-2">Phone: {{$order->user->phone}}</span></p>
                         <p><i class="fas fa-map-marked"></i> <span
-                                class="mx-2">Adress: {{$order->orders_address}}, {{$order->city->city_name}}</span></p>
+                                class="mx-2">Adress: {{$order->orders_address}}</span></p>
+                        <p><i class="fas fa-map-marked"></i> <span class="mx-2">Province: {{$order->province->province_name}}</span></p>
+                        <p><i class="fas fa-map-marked"></i> <span class="mx-2">District: {{$order->district->district_name}}</span></p>
+                        <p><i class="fas fa-map-marked"></i> <span class="mx-2">Wards: {{$order->wards->wards_name}}</span></p>
                     </div>
                 </div>
 
@@ -41,7 +44,7 @@
                                 <td>${{$ord->quantity * $ord->price}}</td>
                             </tr>
                         @endforeach
-                        @php $grandtotal = $total +($total * 0.1) + Auth::user()->city->areas->areas_price @endphp
+                        @php $grandtotal = $total +($total * 0.1) + Auth::user()->province->area->area_price @endphp
                         <tr>
                             <td colspan="2"></td>
                             <td colspan="1"></td>

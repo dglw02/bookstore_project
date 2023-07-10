@@ -55,12 +55,12 @@
             </form>
         </div>
         <div class="cart-total">
-            @php $grandtotal = $total +($total * 0.1) + Auth::user()->city->areas->areas_price @endphp
+            @php $grandtotal = $total +($total * 0.1) + Auth::user()->province->area->area_price @endphp
             <p>TOTAL : <span>${{$total}}</span>
             </p>
             <p>TAX(10%) : <span>${{$total * 0.1}}</span>
             </p>
-            <p>SHIPPING : <span>${{Auth::user()->city->areas->areas_price}}</span>
+            <p>SHIPPING : <span>${{Auth::user()->province->area->area_price}}</span>
             </p>
             <p>--------------------------------------------</p>
             <p>GRAND TOTAL : <span>${{$grandtotal}}</span>

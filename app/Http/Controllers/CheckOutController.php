@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Books;
 use App\Models\Cart;
 use App\Models\City;
+use App\Models\District;
 use App\Models\Order;
 use App\Models\OrderDetails;
+use App\Models\Province;
 use App\Models\User;
+use App\Models\Wards;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use PHPMailer\PHPMailer\PHPMailer;
@@ -20,8 +23,21 @@ class CheckOutController extends Controller
     //
     public function index(){
         $cartitems = Cart::where('user_id',Auth::id())->get();
-        $cities = City::get();
-        return view('checkout',compact('cartitems','cities'));
+        $province = Province::get();
+        return view('checkout',compact('cartitems', 'province'));
+    }
+
+    public function getDistrict(Request $request)
+    {
+        $data['district'] = District::where("province_id",$request->province_id)
+            ->get(["district_name","district_id"]);
+        return response()->json($data);
+    }
+    public function getWards(Request $request)
+    {
+        $data['wards'] = Wards::where("district_id",$request->district_id)
+            ->get(["wards_name","wards_id"]);
+        return response()->json($data);
     }
 
     public function composeEmail(Request $request) {
@@ -70,14 +86,16 @@ class CheckOutController extends Controller
         $order->orders_payment = $request->input('orders_payment');
         $order->orders_address = $request->input('orders_address');
         $order->orders_phone = $request->input('orders_phone');
-        $order->orders_city = $request->input('orders_city');
+        $order->orders_province = $request->input('orders_province');
+        $order->orders_district = $request->input('orders_district');
+        $order->orders_wards = $request->input('orders_wards');
         $total = 0;
 
         $cartitems_total = Cart::where('user_id',Auth::id())->get();
         foreach ($cartitems_total as $item){
             $total += $item->books->books_price * $item->books_quantity;
         }
-        $grandtotal = $total +($total * 0.1) + Auth::user()->city->areas->areas_price;
+        $grandtotal = $total +($total * 0.1) + Auth::user()->province->area->area_price;
         $order->orders_price = $grandtotal;
 
 

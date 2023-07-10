@@ -27,8 +27,8 @@
     <p>{{$item->books->books_name}}=<span>${{$item->books->books_price}}/x{{$item->books_quantity}} = ${{$item->books_quantity * $item->books->books_price}}</span> </p>
         @php $total += $item->books_quantity * $item->books->books_price@endphp
     @endforeach
-    @php $grandtotal = $total +($total * 0.1) + Auth::user()->city->areas->areas_price @endphp
-    <div class="grand-total"> Grand total : <span>${{$total}} + Tax 10% + Ship ${{Auth::user()->city->areas->areas_price}} = ${{$grandtotal}}</span> </div>
+    @php $grandtotal = $total +($total * 0.1) + Auth::user()->province->area->area_price @endphp
+    <div class="grand-total"> Grand total : <span>${{$total}} + Tax 10% + Ship ${{Auth::user()->province->area->area_price}} = ${{$grandtotal}}</span> </div>
     @else
         <h3>There is no product in cart to check out</h3>
     @endif
@@ -68,10 +68,22 @@
             </div>
             <div class="inputBox">
                 <span>city :</span>
-                <select class="form-control" name="orders_city" >
-                    @foreach($cities as $city)
-                        <option value="{{ $city->city_id }}"{{ old('city_id', Auth::user()->city->city_id) == $city->city_id ? 'selected' : '' }}>{{ $city->city_name }}</option>
+                <select class="form-control" name="orders_province"  id="country-dropdown" onchange="selectProvince()">
+                    @foreach($province as $provinces)
+                        <option value="{{ $provinces->province_id }}"{{ old('province_id', Auth::user()->province->province_id) == $provinces->province_id ? 'selected' : '' }}>{{ $provinces->province_name }}</option>
                     @endforeach
+                </select>
+            </div>
+            <div class="inputBox">
+                <label for="district">district :</label>
+                <select class="form-control" name="orders_district" id="state_dropdown" onchange="selectStreet()">
+                        <option value=""> </option>
+                </select>
+            </div>
+            <div class="inputBox">
+                <label for="wards">wards :</label>
+                <select class="form-control" name="orders_wards" id="city-dropdown">
+                        <option value=""> </option>
                 </select>
             </div>
         </div>
@@ -87,6 +99,117 @@
 </section>
 <script src="{{ asset('js/register.js') }}"></script>
 @yield('scripts')
+<script async='async' src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    {{--$(document).ready(function() {--}}
+    {{--    $('#country-dropdown').on('change', function() {--}}
+    {{--        // var country_id = this.value; //id cua tinh--}}
+    {{--        console.log(1);--}}
+    {{--        $("#state-dropdown").html('');--}}
+    {{--        $.ajax({--}}
+    {{--            url:"{{url('get-states-by-country')}}",--}}
+    {{--            type: "POST",--}}
+    {{--            data: {--}}
+    {{--                city_id: country_id,--}}
+    {{--                _token: '{{csrf_token()}}'--}}
+    {{--            },--}}
+    {{--            dataType : 'json',--}}
+    {{--            success: function(result){--}}
+    {{--                $.each(result.city_details,function(key,value){--}}
+    {{--                    $("#state-dropdown").append('<option value="'+value.id+'">'+value.name+'</option>');--}}
+    {{--                });--}}
+    {{--                $('#city-dropdown').html('<option value="">Select State First</option>');--}}
+    {{--            }--}}
+    {{--        });--}}
+    {{--    });--}}
+    {{--    $('#state-dropdown').on('change', function() {--}}
+    {{--        var state_id = this.value;--}}
+    {{--        $("#city-dropdown").html('');--}}
+    {{--        $.ajax({--}}
+    {{--            url:"{{url('get-cities-by-state')}}",--}}
+    {{--            type: "POST",--}}
+    {{--            data: {--}}
+    {{--                city_detailsId: state_id,--}}
+    {{--                _token: '{{csrf_token()}}'--}}
+    {{--            },--}}
+    {{--            dataType : 'json',--}}
+    {{--            success: function(result){--}}
+    {{--                $.each(result.streets,function(key,value){--}}
+    {{--                    $("#city-dropdown").append('<option value="'+value.id+'">'+value.name+'</option>');--}}
+    {{--                });--}}
+    {{--            }--}}
+    {{--        });--}}
+    {{--    });--}}
+    {{--});--}}
+    function selectProvince() {
+        let country_id = $("#country-dropdown").val();
+        $.ajax({
+            url:"{{url('get-states-by-countryx')}}",
+            type: "POST",
+            data: {
+                province_id: country_id,
+                _token: '{{csrf_token()}}'
+            },
+            dataType : 'json',
+            success: function(result){
+                $('#state_dropdown').html('<option value="">Nhập quận huyện</option>');
+                let html = '';
+                let districts = result.district;
+                for(let i = 0; i < districts.length; i++) {
+                    let item = districts[i];
+                    let name = item['district_name'];
+                    let id = item['district_id']
+                    html += '<option value='+id+'>'+name+ '</option>';
+                }
+                $('#state_dropdown').append(html);
+                $('#state_dropdown').niceSelect("update")
+
+                // $('#state_dropdown').append($('<option>', {
+                //     value: 1,
+                //     text: 'My option'
+                // }));
+                // $.each(districts,function(key,value){
+                //     $("#state-dropdown").append('<option value="'+value.id+'">'+value.name+'</option>');
+                // });
+
+            }
+        });
+    }
+    function selectStreet() {
+        let state_id = $("#state_dropdown").val();
+        $.ajax({
+            url:"{{url('get-cities-by-statex')}}",
+            type: "POST",
+            data: {
+                district_id: state_id,
+                _token: '{{csrf_token()}}'
+            },
+            dataType : 'json',
+            success: function(result){
+                let html = '';
+                let districts = result.wards;
+                for(let i = 0; i < districts.length; i++) {
+                    let item = districts[i];
+                    let name = item['wards_name'];
+                    let id = item['wards_id']
+                    html += '<option value='+id+'>'+name+ '</option>';
+                }
+                $('#city-dropdown').html('<option value="">Nhập đường,xá</option>');
+                $('#city-dropdown').append(html);
+                $('#city-dropdown').niceSelect("update")
+
+                // $('#state_dropdown').append($('<option>', {
+                //     value: 1,
+                //     text: 'My option'
+                // }));
+                // $.each(districts,function(key,value){
+                //     $("#state-dropdown").append('<option value="'+value.id+'">'+value.name+'</option>');
+                // });
+
+            }
+        });
+    }
+</script>
 
 </body>
 </html>
