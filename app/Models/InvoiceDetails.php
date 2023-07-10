@@ -9,8 +9,7 @@ class InvoiceDetails extends Model
 {
     use HasFactory;
     protected $primaryKey = 'invoices_detail_id';
-    public $timestamps = true;
-
+    protected $table ='invoices_detail';
     public function invoices(){
         return $this->belongsTo(Invoice::class,'invoices_id','invoices_id');
     }

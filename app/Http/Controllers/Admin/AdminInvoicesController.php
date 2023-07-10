@@ -37,8 +37,6 @@ class AdminInvoicesController extends Controller
 
     public function store(Request $request)
     {
-
-
         $invoices_date = $request->get('invoices_date');
         $invoices_name = $request->get('invoices_name');
         $books_id = $request->input('books_id');

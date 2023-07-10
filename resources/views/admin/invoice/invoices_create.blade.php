@@ -20,18 +20,16 @@
                 </div><br/>
             @endif
 
-
-
             <form method="POST" action="{{url('admin/invoices/create')}}">@csrf
                 <br>
                 <div class="form-group">
                     <label for="invoices_name">Name</label>
-                    <input type="text" class="form-control" name="invoices_name" placeholder="Please enter "/>
+                    <input type="text" class="form-control" name="invoices_name" placeholder="Please enter " required>
                 </div>
 
                 <div class="form-group">
                     <label for="invoices_date">Date</label>
-                    <input name="invoices_date" type="date" class="form-control" placeholder="Please enter ">
+                    <input name="invoices_date" type="date" class="form-control" placeholder="Please enter " required>
                 </div>
 
                 <table id="table">
@@ -49,10 +47,10 @@
                                     <option value="{{ $book->books_id }}">{{ $book->books_name}}</option>
                             @endforeach
                         </td>
-                        <td><input name="invoices_detail_quantity[]" min="1" type="number" class="form-control"
-                                   placeholder="Quantity"></td>
+                        <td><input name="invoices_detail_quantity[]" min="1" type="number" class="form-control "
+                                   placeholder="Quantity" required></td>
                         <td><input name="invoices_detail_price[]" min="1" type="number" class="form-control"
-                                   placeholder="Price"></td>
+                                   placeholder="Price" required></td>
                     </tr>
 
                 </table>

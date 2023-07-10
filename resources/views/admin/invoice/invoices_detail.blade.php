@@ -4,12 +4,12 @@
 @section('content')
     <br>
     <h3>Invoice ID : {{$invoice->invoices_id}}</h3>
-
     <br><br>
     <table class="table">
         <tr>
             <th>ISBN</th>
             <th>BOOK NAME</th>
+            <th>IMAGE</th>
             <th>QUANTITY</th>
             <th>PRICE</th>
         </tr>
@@ -22,8 +22,10 @@
                     <p>{{$invoiceDetail->books_name}}</p>
                 </td>
                 <td>
+                    <p>{{$invoiceDetail->books->books_image}}</p>
+                </td>
+                <td>
                     <p>{{$invoiceDetail->invoices_detail_quantity}}</p>
-
                 </td>
                 <td>
                     <p>{{' $'.number_format($invoiceDetail->invoices_detail_price)}}</p>

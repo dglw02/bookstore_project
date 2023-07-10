@@ -15,11 +15,12 @@ return new class extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id')->nullable();
+            $table->unsignedInteger('user_id');
             $table->string('books_quantity')->nullable();
             $table->unsignedInteger('books_id')->nullable();
             $table->timestamps();
             $table->foreign('books_id')->references('books_id')->on('books');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

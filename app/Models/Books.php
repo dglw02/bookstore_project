@@ -32,5 +32,6 @@ class Books extends Model
     public function publisher(){
         return $this->belongsTo(Publisher::class,'publisher_id','publisher_id');
     }
+
 }
 
