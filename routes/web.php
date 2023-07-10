@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\CheckOutController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MailerController;
 use App\Http\Controllers\SortBooksController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Admin\AdminBooksController;
@@ -158,4 +159,10 @@ Route::get('my-order',[UserController::class,'index']);
 Route::get('vieworder/{orders_id}',[UserController::class,'view']);
 Route::put("/vieworder/{orders_id}/delete-order", [UserController::class, 'deleteOrders']);
 Route::post('/momo_payment',[CheckOutController::class,'momo']);
+
+//Mailer
+Route::get("email", [MailerController::class, "email"])->name("email");
+Route::post("send-email", [MailerController::class, "composeEmail"])->name("send-email");
+
+
 

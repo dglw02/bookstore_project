@@ -3,9 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Areas;
-use App\Models\Author;
-use App\Models\Books;
-use App\Models\Category;
 use App\Models\City;
 use App\Models\Province;
 use App\Models\Publisher;
