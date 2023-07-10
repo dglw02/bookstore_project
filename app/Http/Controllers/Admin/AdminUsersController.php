@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Models\City;
+use App\Models\Province;
 use App\Models\User;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -23,8 +24,8 @@ class AdminUsersController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
-        $cities = City::get();
-        return view('admin.user.user_edit', compact('user'), ['cities' => $cities]);
+        $provinces = Province::get();
+        return view('admin.user.user_edit', compact('user'), ['province' => $provinces]);
     }
     /**
      * Update the specified resource in storage.
@@ -38,7 +39,7 @@ class AdminUsersController extends Controller
         $updateData = $request->validate([
             'name' => 'required|max:255',
             'address' => 'required|max:255',
-            'user_city' => 'required',
+            'user_province' => 'required',
         ]);
         User::where('id',"=",$id)->update($updateData);
         alert()->success('Success','User have been updated.');

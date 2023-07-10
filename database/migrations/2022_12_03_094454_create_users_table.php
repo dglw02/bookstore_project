@@ -17,7 +17,7 @@ return new class extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
-            $table->unsignedInteger('user_city');
+            $table->unsignedInteger('user_province');
             $table->string('password');
             $table->string('phone',11);
             $table->string('address');
@@ -30,7 +30,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
-            $table->foreign('user_city')->references('city_id')->on('cities');
+            $table->foreign('user_province')->references('province_id')->on('province');
         });
     }
 
