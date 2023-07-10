@@ -140,29 +140,29 @@ class CheckOutController extends Controller
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';             //  smtp host
             $mail->SMTPAuth = true;
-            $mail->Username = 'luuhaiduong101@gmail.com';   //  sender username
+            $mail->Username = 'luuhaiduong101@gmail.com';   //  teen chủ shop
             $mail->Password = 'mnawgrukhpcpwslj';       // sender password
             $mail->SMTPSecure = 'tls';                  // encryption - ssl/tls
             $mail->Port = 587;                          // port - 587/465
 
             $mail->setFrom('luuhaiduong101@gmail.com', 'duong');
-            $mail->addAddress(Auth::user()->email);
-            $mail->addCC('admin1@gmail.com');
+            $mail->addAddress(Auth::user()->email); // người nhận mail
+            $mail->addCC('admin1@gmail.com');// người admin
 //            $mail->addBCC($request->emailBcc);
 
             $mail->addReplyTo('sender@example.com', 'SenderReplyName');
 
             if(isset($_FILES['emailAttachments'])) {
                 for ($i=0; $i < count($_FILES['emailAttachments']['tmp_name']); $i++) {
-                    $mail->addAttachment($_FILES['emailAttachments']['tmp_name'][$i], $_FILES['emailAttachments']['name'][$i]);
+                    $mail->addAttachment($_FILES['emailAttachments']['tmp_name'][$i], $_FILES['emailAttachments']['name'][$i]);// file đính kềm
                 }
             }
 
 
             $mail->isHTML(true);                // Set email content format to HTML
 
-            $mail->Subject = 'Book Forest';
-            $mail->Body    = 'Thank you for purchasing from our store';
+            $mail->Subject = 'Book Forest'; // tiều đề
+            $mail->Body    = 'Thank you for purchasing from our store';// nội dung
 
 
             if( !$mail->send() ) {
