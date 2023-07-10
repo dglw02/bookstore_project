@@ -98,12 +98,8 @@ class CheckOutController extends Controller
         }
         $grandtotal = $total +($total * 0.1) + Auth::user()->province->area->area_price;
         $order->orders_price = $grandtotal;
-
-
         $order->order_tracking = 'tracking' . rand(1000, 9999);
         $order->save();
-
-
         $cartitems = Cart::where('user_id', Auth::id())->get();
         foreach ($cartitems as $item) {
             OrderDetails::create([
@@ -115,16 +111,6 @@ class CheckOutController extends Controller
             $book = Books::where('books_id', $item->books_id)->first();
             $book->books_quantity = $book->books_quantity - $item->books_quantity;
             $book->update();
-        }
-        if (Auth::user()->address == null) {
-            $user = User::where('id', Auth::id())->first();
-            $user->orders_name = $request->input('orders_name');
-            $user->orders_email = $request->input('orders_email');
-            $user->orders_payment = $request->input('orders_payment');
-            $user->orders_address = $request->input('orders_address');
-            $user->orders_phone = $request->input('orders_phone');
-            $user->orders_city = $request->input('orders_city');
-            $user->update();
         }
         $cartitems = Cart::where('user_id', Auth::id())->get();
         Cart::destroy($cartitems);
@@ -191,16 +177,49 @@ class CheckOutController extends Controller
 
     public function momo(Request $request)
     {
-        $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
+        $order = new Order();
+        $order->user_id = Auth::id();
+        $order->orders_name = $request->input('orders_name');
+        $order->orders_email = $request->input('orders_email');
+        $order->orders_payment = $request->input('orders_payment');
+        $order->orders_address = $request->input('orders_address');
+        $order->orders_phone = $request->input('orders_phone');
+        $order->orders_province = $request->input('orders_province');
+        $order->orders_district = $request->input('orders_district');
+        $order->orders_wards = $request->input('orders_wards');
+        $total = 0;
 
+        $cartitems_total = Cart::where('user_id', Auth::id())->get();
+        foreach ($cartitems_total as $item) {
+            $total += $item->books->books_price * $item->books_quantity;
+        }
+        $grandtotal = $total +($total * 0.1) + Auth::user()->province->area->area_price;
+        $order->orders_price = $grandtotal;
+        $order->order_tracking = 'tracking' . rand(1000, 9999);
+        $order->save();
+        $cartitems = Cart::where('user_id', Auth::id())->get();
+        foreach ($cartitems as $item) {
+            OrderDetails::create([
+                'orders_id' => $order->orders_id,
+                'books_id' => $item->books_id,
+                'quantity' => $item->books_quantity,
+                'price' => $item->books->books_price,
+            ]);
+            $book = Books::where('books_id', $item->books_id)->first();
+            $book->books_quantity = $book->books_quantity - $item->books_quantity;
+            $book->update();
+        }
+        $cartitems = Cart::where('user_id', Auth::id())->get();
+        Cart::destroy($cartitems);
+        $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
         $partnerCode = 'MOMOBKUN20180529';
         $accessKey = 'klm05TvNBzhg7h7j';
         $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
         $orderInfo = "Thanh toán qua ATM MoMo";
         $amount = $_POST['total'];
         $orderId = time() . "";
-        $redirectUrl = "http://127.0.0.1:8000/checkout";
-        $ipnUrl = "http://127.0.0.1:8000/checkout";
+        $redirectUrl = "http://127.0.0.1:8000";
+        $ipnUrl = "http://127.0.0.1:8000";
         $extraData = "";
             $requestId = time() . "";
             $requestType = "payWithATM";

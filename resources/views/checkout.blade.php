@@ -37,6 +37,8 @@
 
 
 <section class="checkout">
+    <form action="{{url('/momo_payment')}}" method="POST">
+        @csrf
     <form action="{{url('place-order')}}" method="post">
         @csrf
         <h3>place your order</h3>
@@ -94,12 +96,10 @@
         @else
             <a href="{{url('/')}}" class="btn">Back to Shopping</a>
         @endif
-    </form>
 
-    <form action="{{url('/momo_payment')}}" method="POST">
-        @csrf
         <input type="hidden" name="total" value="{{$grandtotal}}">
         <button type="submit" class="btn btn-default" name="payUrl">Momo</button>
+    </form>
     </form>
     @include('sweetalert::alert')
 
