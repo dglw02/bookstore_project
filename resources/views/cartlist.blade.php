@@ -29,7 +29,7 @@
                     </form>
                     <img src={{$item->books->books_image}} alt="">
                     <div class="name">{{$item->books->books_name}}</div>
-                    <div class="price">${{$item->books->books_price}}</div>
+                    <div class="price">{{$item->books->books_price}} VND</div>
 
 
                     <form action="{{url('/cart/'.$item->id.'/update')}}" method="post">
@@ -43,7 +43,7 @@
 
                     @php $total += $item->books_quantity * $item->books->books_price @endphp
                     <div class="sub-total"> SUB TOTAL :
-                        <span>${{$item->books_quantity * $item->books->books_price}}</span></div>
+                        <span>{{$item->books_quantity * $item->books->books_price}} VND</span></div>
                 </div>
             @endforeach
         </div>
@@ -56,14 +56,14 @@
         </div>
         <div class="cart-total">
             @php $grandtotal = $total +($total * 0.1) + Auth::user()->city->areas->areas_price @endphp
-            <p>TOTAL : <span>${{$total}}</span>
+            <p>TOTAL : <span>{{$total}} VND</span>
             </p>
-            <p>TAX(10%) : <span>${{$total * 0.1}}</span>
+            <p>TAX(10%) : <span>{{$total * 0.1}} VND</span>
             </p>
-            <p>SHIPPING : <span>${{Auth::user()->city->areas->areas_price}}</span>
+            <p>SHIPPING : <span>{{Auth::user()->city->areas->areas_price}} VND</span>
             </p>
             <p>--------------------------------------------</p>
-            <p>GRAND TOTAL : <span>${{$grandtotal}}</span>
+            <p>GRAND TOTAL : <span>{{$grandtotal}} VND</span>
             </p>
             <div class="flex">
                 <a href="{{url('/')}}" class="option-btn">continue shopping</a>

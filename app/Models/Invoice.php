@@ -11,8 +11,9 @@ class Invoice extends Model
     use HasFactory;
     protected $primaryKey = 'invoices_id';
 
-    public function invoicedetails(){
-        return $this->hasMany(InvoiceDetails::class,'invoices_id','invoices_id');
+
+    public function invoicesdetail(){
+        return $this->hasMany(InvoiceDetails::class);
     }
 
     public function user(){

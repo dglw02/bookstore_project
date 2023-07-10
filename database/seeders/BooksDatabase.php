@@ -27,7 +27,7 @@ class BooksDatabase extends Seeder
                     'books_author'=>'1',
                     'books_quantity'=>'40',
                     'books_image'=>'https://upload.wikimedia.org/wikipedia/en/5/57/The_Adventures_of_Tintin_-_05_-_The_Blue_Lotus.jpg',
-                    'books_price'=>'40',
+                    'books_price'=>'40000',
                     'books_ISBN'=>'627234724',
                 ],
 
@@ -39,7 +39,7 @@ class BooksDatabase extends Seeder
                     'books_author'=>'5',
                     'books_quantity'=>'200',
                     'books_image'=>'https://upload.wikimedia.org/wikipedia/commons/7/7a/The_Great_Gatsby_Cover_1925_Retouched.jpg',
-                    'books_price'=>'50',
+                    'books_price'=>'50000',
                     'books_ISBN'=>'267248951',
                 ],
 
@@ -51,7 +51,7 @@ class BooksDatabase extends Seeder
                     'books_author'=>'4',
                     'books_quantity'=>'170',
                     'books_image'=>'https://m.media-amazon.com/images/I/41VWMa8-aeS._AC_SY780_.jpg',
-                    'books_price'=>'30',
+                    'books_price'=>'30000',
                     'books_ISBN'=>'543175208',
                 ],
 
@@ -63,7 +63,7 @@ class BooksDatabase extends Seeder
                     'books_author'=>'3',
                     'books_quantity'=>'490',
                     'books_image'=>'https://m.media-amazon.com/images/I/51ajznr23jL.jpg',
-                    'books_price'=>'38',
+                    'books_price'=>'38000',
                     'books_ISBN'=>'854433785',
                 ],
 
@@ -75,7 +75,7 @@ class BooksDatabase extends Seeder
                     'books_author'=>'2',
                     'books_quantity'=>'700',
                     'books_image'=>'https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781982127794/it-9781982127794_hr.jpg',
-                    'books_price'=>'50',
+                    'books_price'=>'50000',
                     'books_ISBN'=>'95009838',
                 ],
 
@@ -87,7 +87,7 @@ class BooksDatabase extends Seeder
                     'books_author'=>'2',
                     'books_quantity'=>'300',
                     'books_image'=>'http://prodimage.images-bn.com/pimages/9780345806789_p0_v2_s1200x630.jpg',
-                    'books_price'=>'65',
+                    'books_price'=>'65000',
                     'books_ISBN'=>'285405104',
                 ],
 
@@ -99,7 +99,7 @@ class BooksDatabase extends Seeder
                     'books_author'=>'2',
                     'books_quantity'=>'840',
                     'books_image'=>'https://upload.wikimedia.org/wikipedia/en/5/52/StephenKingPetSematary.jpg',
-                    'books_price'=>'54',
+                    'books_price'=>'54000',
                     'books_ISBN'=>'477397104',
                 ],
 
@@ -111,7 +111,7 @@ class BooksDatabase extends Seeder
                     'books_author'=>'1',
                     'books_quantity'=>'600',
                     'books_image'=>'http://prodimage.images-bn.com/pimages/9780545139700_p0_v5_s1200x630.jpg',
-                    'books_price'=>'80',
+                    'books_price'=>'80000',
                     'books_ISBN'=>'199170471',
                 ],
                 /*Non-fiction books*/
@@ -123,7 +123,7 @@ class BooksDatabase extends Seeder
                     'books_author'=>'8',
                     'books_quantity'=>'50',
                     'books_image'=>'https://upload.wikimedia.org/wikipedia/commons/a/ab/JoyceUlysses2.jpg',
-                    'books_price'=>'30',
+                    'books_price'=>'30000',
                     'books_ISBN'=>'329283442',
                 ],
 
@@ -135,7 +135,7 @@ class BooksDatabase extends Seeder
                     'books_author'=>'7',
                     'books_quantity'=>'312',
                     'books_image'=>'https://m.media-amazon.com/images/I/41cZKBgxCiL.jpg',
-                    'books_price'=>'45',
+                    'books_price'=>'45000',
                     'books_ISBN'=>'871411668',
                 ],
 
@@ -147,7 +147,7 @@ class BooksDatabase extends Seeder
                     'books_author'=>'6',
                     'books_quantity'=>'20',
                     'books_image'=>'https://m.media-amazon.com/images/I/51J1nb00FLL._AC_SY780_.jpg',
-                    'books_price'=>'40',
+                    'books_price'=>'40000',
                     'books_ISBN'=>'164240435',
                 ],
 
@@ -159,7 +159,7 @@ class BooksDatabase extends Seeder
                     'books_author'=>'1',
                     'books_quantity'=>'20',
                     'books_image'=>'https://m.media-amazon.com/images/I/41Ifywm+YzL._AC_SY780_.jpg',
-                    'books_price'=>'20',
+                    'books_price'=>'20000',
                     'books_ISBN'=>'475362919',
                 ],
 
@@ -171,7 +171,7 @@ class BooksDatabase extends Seeder
                     'books_author'=>'1',
                     'books_quantity'=>'37',
                     'books_image'=>'https://m.media-amazon.com/images/I/41c0V+fE0rL._AC_SY780_.jpg',
-                    'books_price'=>'86',
+                    'books_price'=>'86000',
                     'books_ISBN'=>'960797994',
                 ],
 
@@ -183,7 +183,7 @@ class BooksDatabase extends Seeder
                     'books_author'=>'1',
                     'books_quantity'=>'40',
                     'books_image'=>'https://m.media-amazon.com/images/I/51boRaa39PL._AC_SY780_.jpg',
-                    'books_price'=>'40',
+                    'books_price'=>'40000',
                     'books_ISBN'=>'898922731',
                 ],
 
@@ -195,7 +195,7 @@ class BooksDatabase extends Seeder
                     'books_author'=>'1',
                     'books_quantity'=>'140',
                     'books_image'=>'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1348169754i/410810.jpg',
-                    'books_price'=>'60',
+                    'books_price'=>'60000',
                     'books_ISBN'=>'803009494',
                 ],
 
@@ -207,7 +207,7 @@ class BooksDatabase extends Seeder
                     'books_author'=>'1',
                     'books_quantity'=>'510',
                     'books_image'=>'https://m.media-amazon.com/images/I/51AyqonNA3L._AC_SY780_.jpg',
-                    'books_price'=>'36',
+                    'books_price'=>'36000',
                     'books_ISBN'=>'632115547',
                 ],
                 /*Manga book*/
@@ -219,7 +219,7 @@ class BooksDatabase extends Seeder
                     'books_author'=>'9',
                     'books_quantity'=>'51',
                     'books_image'=>'https://upload.wikimedia.org/wikipedia/en/thumb/9/90/One_Piece%2C_Volume_61_Cover_%28Japanese%29.jpg/220px-One_Piece%2C_Volume_61_Cover_%28Japanese%29.jpg',
-                    'books_price'=>'35',
+                    'books_price'=>'35000',
                     'books_ISBN'=>'168743475',
                 ],
 
@@ -231,7 +231,7 @@ class BooksDatabase extends Seeder
                     'books_author'=>'10',
                     'books_quantity'=>'86',
                     'books_image'=>'https://m.media-amazon.com/images/I/61UPAMOtEWL.jpg',
-                    'books_price'=>'50',
+                    'books_price'=>'50000',
                     'books_ISBN'=>'539224614',
                 ],
 
@@ -243,7 +243,7 @@ class BooksDatabase extends Seeder
                     'books_author'=>'11',
                     'books_quantity'=>'60',
                     'books_image'=>'https://upload.wikimedia.org/wikipedia/en/c/c9/DB_Tank%C5%8Dbon.png',
-                    'books_price'=>'65',
+                    'books_price'=>'65000',
                     'books_ISBN'=>'270902143',
                 ],
 
@@ -255,7 +255,7 @@ class BooksDatabase extends Seeder
                     'books_author'=>'12',
                     'books_quantity'=>'120',
                     'books_image'=>'https://upload.wikimedia.org/wikipedia/en/thumb/4/42/Steel_Ball_issue.jpg/220px-Steel_Ball_issue.jpg',
-                    'books_price'=>'80',
+                    'books_price'=>'80000',
                     'books_ISBN'=>'515186345',
                 ],
 
@@ -267,7 +267,7 @@ class BooksDatabase extends Seeder
                     'books_author'=>'13',
                     'books_quantity'=>'250',
                     'books_image'=>'https://comicvine.gamespot.com/a/uploads/scale_small/6/67663/5971806-29.jpg',
-                    'books_price'=>'78',
+                    'books_price'=>'78000',
                     'books_ISBN'=>'297090834',
                 ],
 
@@ -279,7 +279,7 @@ class BooksDatabase extends Seeder
                     'books_author'=>'14',
                     'books_quantity'=>'300',
                     'books_image'=>'https://m.media-amazon.com/images/I/51hzsc9HiUL.jpg',
-                    'books_price'=>'83',
+                    'books_price'=>'83000',
                     'books_ISBN'=>'598684470',
                 ],
 
@@ -291,7 +291,7 @@ class BooksDatabase extends Seeder
                     'books_author'=>'15',
                     'books_quantity'=>'400',
                     'books_image'=>'https://upload.wikimedia.org/wikipedia/en/9/94/NarutoCoverTankobon1.jpg',
-                    'books_price'=>'64',
+                    'books_price'=>'64000',
                     'books_ISBN'=>'512851639',
                 ],
 
@@ -303,7 +303,7 @@ class BooksDatabase extends Seeder
                     'books_author'=>'16',
                     'books_quantity'=>'200',
                     'books_image'=>'https://cdn-amz.woka.io/images/I/61664dSN-EL.jpg',
-                    'books_price'=>'30',
+                    'books_price'=>'30000',
                     'books_ISBN'=>'434931571',
                 ],
             ]);

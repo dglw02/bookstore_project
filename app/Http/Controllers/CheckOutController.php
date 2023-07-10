@@ -18,13 +18,15 @@ use RealRashid\SweetAlert\Facades\Alert;
 class CheckOutController extends Controller
 {
     //
-    public function index(){
-        $cartitems = Cart::where('user_id',Auth::id())->get();
+    public function index()
+    {
+        $cartitems = Cart::where('user_id', Auth::id())->get();
         $cities = City::get();
-        return view('checkout',compact('cartitems','cities'));
+        return view('checkout', compact('cartitems', 'cities'));
     }
 
-    public function composeEmail(Request $request) {
+    public function composeEmail(Request $request)
+    {
         require base_path("vendor/autoload.php");
         $mail = new PHPMailer(true);     // Passing `true` enables exceptions
 
@@ -61,8 +63,8 @@ class CheckOutController extends Controller
     }
 
 
-
-    public  function placeorder(Request $request){
+    public function placeorder(Request $request)
+    {
         $order = new Order();
         $order->user_id = Auth::id();
         $order->orders_name = $request->input('orders_name');
@@ -73,32 +75,32 @@ class CheckOutController extends Controller
         $order->orders_city = $request->input('orders_city');
         $total = 0;
 
-        $cartitems_total = Cart::where('user_id',Auth::id())->get();
-        foreach ($cartitems_total as $item){
+        $cartitems_total = Cart::where('user_id', Auth::id())->get();
+        foreach ($cartitems_total as $item) {
             $total += $item->books->books_price * $item->books_quantity;
         }
-        $grandtotal = $total +($total * 0.1) + Auth::user()->city->areas->areas_price;
+        $grandtotal = $total + ($total * 0.1) + Auth::user()->city->areas->areas_price;
         $order->orders_price = $grandtotal;
 
 
-        $order->order_tracking = 'tracking'.rand(1000,9999);
+        $order->order_tracking = 'tracking' . rand(1000, 9999);
         $order->save();
 
 
-        $cartitems = Cart::where('user_id',Auth::id())->get();
-        foreach ($cartitems as $item){
+        $cartitems = Cart::where('user_id', Auth::id())->get();
+        foreach ($cartitems as $item) {
             OrderDetails::create([
-                'orders_id'=>$order->orders_id,
-                'books_id'=>$item->books_id,
-                'quantity'=>$item->books_quantity,
-                'price'=>$item->books->books_price,
+                'orders_id' => $order->orders_id,
+                'books_id' => $item->books_id,
+                'quantity' => $item->books_quantity,
+                'price' => $item->books->books_price,
             ]);
-            $book = Books::where('books_id',$item->books_id)->first();
-            $book->books_quantity = $book->books_quantity -$item->books_quantity;
+            $book = Books::where('books_id', $item->books_id)->first();
+            $book->books_quantity = $book->books_quantity - $item->books_quantity;
             $book->update();
         }
-        if(Auth::user()->address==null){
-            $user = User::where('id',Auth::id())->first();
+        if (Auth::user()->address == null) {
+            $user = User::where('id', Auth::id())->first();
             $user->orders_name = $request->input('orders_name');
             $user->orders_email = $request->input('orders_email');
             $user->orders_payment = $request->input('orders_payment');
@@ -107,9 +109,68 @@ class CheckOutController extends Controller
             $user->orders_city = $request->input('orders_city');
             $user->update();
         }
-        $cartitems = Cart::where('user_id',Auth::id())->get();
+        $cartitems = Cart::where('user_id', Auth::id())->get();
         Cart::destroy($cartitems);
-        alert()->success('We has taken your order','Please wait for 48 hours for order browsing');
-        return redirect('/')->with('status','Order placed Successfully');
+        alert()->success('We has taken your order', 'Please wait for 48 hours for order browsing');
+        return redirect('/')->with('status', 'Order placed Successfully');
+    }
+
+
+
+
+    public function momo(Request $request)
+    {
+        $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
+
+        $partnerCode = 'MOMOBKUN20180529';
+        $accessKey = 'klm05TvNBzhg7h7j';
+        $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
+        $orderInfo = "Thanh toán qua ATM MoMo";
+        $amount = $_POST['total'];
+        $orderId = time() . "";
+        $redirectUrl = "http://127.0.0.1:8000/checkout";
+        $ipnUrl = "http://127.0.0.1:8000/checkout";
+        $extraData = "";
+            $requestId = time() . "";
+            $requestType = "payWithATM";
+            $rawHash = "accessKey=" . $accessKey . "&amount=" . $amount . "&extraData=" . $extraData . "&ipnUrl=" . $ipnUrl . "&orderId=" . $orderId . "&orderInfo=" . $orderInfo . "&partnerCode=" . $partnerCode . "&redirectUrl=" . $redirectUrl . "&requestId=" . $requestId . "&requestType=" . $requestType;
+            $signature = hash_hmac("sha256", $rawHash, $secretKey);
+            $data = array('partnerCode' => $partnerCode,
+                'partnerName' => "Test",
+                "storeId" => "MomoTestStore",
+                'requestId' => $requestId,
+                'amount' => $amount,
+                'orderId' => $orderId,
+                'orderInfo' => $orderInfo,
+                'redirectUrl' => $redirectUrl,
+                'ipnUrl' => $ipnUrl,
+                'lang' => 'vi',
+                'extraData' => $extraData,
+                'requestType' => $requestType,
+                'signature' => $signature);
+
+            $result = $this->execPostRequest($endpoint, json_encode($data));
+            $jsonResult = json_decode($result, true);  // decode json
+            return redirect()->to($jsonResult['payUrl']);
+        }
+
+
+    function execPostRequest($url, $data)
+    {
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+                'Content-Type: application/json',
+                'Content-Length: ' . strlen($data))
+        );
+        curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+        //execute post
+        $result = curl_exec($ch);
+        //close connection
+        curl_close($ch);
+        return $result;
     }
 }

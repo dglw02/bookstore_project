@@ -24,11 +24,11 @@
     <div class="grand-total"> Order detail<span></span> </div>
     @php $total = 0;@endphp
     @foreach($cartitems as $item)
-    <p>{{$item->books->books_name}}=<span>${{$item->books->books_price}}/x{{$item->books_quantity}} = ${{$item->books_quantity * $item->books->books_price}}</span> </p>
+    <p>{{$item->books->books_name}}=<span>{{$item->books->books_price}}  VND/x{{$item->books_quantity}} = {{$item->books_quantity * $item->books->books_price}} VND</span> </p>
         @php $total += $item->books_quantity * $item->books->books_price@endphp
     @endforeach
     @php $grandtotal = $total +($total * 0.1) + Auth::user()->city->areas->areas_price @endphp
-    <div class="grand-total"> Grand total : <span>${{$total}} + Tax 10% + Ship ${{Auth::user()->city->areas->areas_price}} = ${{$grandtotal}}</span> </div>
+    <div class="grand-total"> Grand total : <span>{{$total}}  VND + Tax 10% + Ship {{Auth::user()->city->areas->areas_price}} VND = {{$grandtotal}} VND</span> </div>
     @else
         <h3>There is no product in cart to check out</h3>
     @endif
@@ -58,7 +58,7 @@
                 <select name="orders_payment">
                     <option value="cash on delivery">cash on delivery</option>
                     <option value="credit card">credit card</option>
-                    {{--<option value="paypal">paypal</option>--}}
+                    <option value="Momo">Momo</option>
                     {{--<option value="paytm">paytm</option>--}}
                 </select>
             </div>
@@ -78,9 +78,16 @@
         @if($cartitems->count() > 0)
         <a href="{{url('cartlist')}}" class="btn">Back to cart</a>
         <input type="submit" value="order now" class="btn" name="order_btn">
+
         @else
             <a href="{{url('/')}}" class="btn">Back to Shopping</a>
         @endif
+    </form>
+
+    <form action="{{url('/momo_payment')}}" method="POST">
+        @csrf
+        <input type="hidden" name="total" value="{{$grandtotal}}">
+        <button type="submit" class="btn btn-default" name="payUrl">Momo</button>
     </form>
     @include('sweetalert::alert')
 

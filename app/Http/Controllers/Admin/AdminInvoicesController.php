@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\InvoiceDetails;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -75,15 +76,14 @@ class AdminInvoicesController extends Controller
         $user = Auth::user();
         if ($user->isAdmin == 1) {
             $invoice = Invoice::findOrFail($invoices_id);
-            $invoice = DB::table('Invoices')
+            $invoices = DB::table('Invoices')
                 ->where('Invoices.invoices_id', $invoice->invoices_id)
                 ->get();
-
             $invoiceDetails = DB::table('Invoices_Detail')
                 ->select('Invoices_Detail.*')
+                ->where('Invoices_Detail.invoices_Id', $invoice->invoices_id)
                 ->get();
-//            dd($invoiceDetails);
-            return view('admin/invoice/invoices_edit', ['invoices' => $invoice], ['invoiceDetails' => $invoiceDetails]);
+            return view('admin/invoice/invoices_edit', ['invoiceDetails' => $invoiceDetails], ['invoice' => $invoices]);
         } else {
             return view('common/error');
         }
@@ -118,7 +118,6 @@ class AdminInvoicesController extends Controller
             $i++;
         }
         if ($count > $i) {
-
                 for ($t = $i; $t < $count; $t++) {
                     DB::table('Invoices_Detail')->insert(
                         [
@@ -139,11 +138,21 @@ class AdminInvoicesController extends Controller
         $invoice = Invoice::findOrFail($invoices_id);
         $invoiceDetails = DB::table('invoices_detail')
             ->join('Books', 'invoices_detail.books_id', '=', 'Books.books_id')
-            ->select('invoices_detail.*', 'Books.books_name', 'Books.books_ISBN')
+            ->select('invoices_detail.*', 'Books.books_name', 'Books.books_ISBN','Books.books_image')
             ->where('invoices_detail.invoices_id', $invoices_id)->orderByDesc('invoices_detail.invoices_detail_id')
             ->get();
 
         return view('admin/invoice/invoices_detail', ['invoiceDetails' => $invoiceDetails], ['invoice' => $invoice]);
+    }
+
+
+    public function destroy($invoices_id)
+    {
+        $invoices = Invoice::findOrFail($invoices_id);
+        $invoices->delete();
+        $invoices->invoicesdetail->delete();
+        alert()->success('Success','Invoice have been deleted.');
+        return redirect('/admin/invoice');
     }
     }
 

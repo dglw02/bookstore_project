@@ -73,6 +73,14 @@ $invoices = Illuminate\Support\Facades\DB::table('invoices')
                                            class="btn-primary btn btn-sm mr-2"><i class="fas fa-edit"></i></a>
                                 <a href="{{url('/admin/invoice/'.$invoice->invoices_id.'/detail')}}"
                                    class="btn-primary btn btn-sm mr-2"><i class="fas fa-receipt"></i></a>
+                                <form method="POST"
+                                      action="{{url('/admin/invoice/'.$invoice->invoices_id.'/delete')}}">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit"
+                                            onclick="return confirm('Invoice will move to trash! Are you sure to delete??')"
+                                            class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                </form>
                             </td>
                         </tr>
                         @endforeach

@@ -120,6 +120,7 @@ Route::get('/admin/invoice/{id}/detail', [AdminInvoicesController::class, 'show'
 Route::post("/admin/invoices/create", [AdminInvoicesController::class, 'store']);
 Route::get("/admin/invoice/{id}/edit", [AdminInvoicesController::class, 'edit']);
 Route::put("/admin/invoice/{id}/edit", [AdminInvoicesController::class, 'update']);
+Route::delete("/admin/invoice/{id}/delete", [AdminInvoicesController::class, 'destroy']);
 
 //register
 Route::get('/register', [LoginController::class, 'createUser']);
@@ -154,5 +155,5 @@ Route::post('place-order',[CheckOutController::class,'placeorder']);
 Route::get('my-order',[UserController::class,'index']);
 Route::get('vieworder/{orders_id}',[UserController::class,'view']);
 Route::put("/vieworder/{orders_id}/delete-order", [UserController::class, 'deleteOrders']);
-
+Route::post('/momo_payment',[CheckOutController::class,'momo']);
 

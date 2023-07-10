@@ -22,9 +22,9 @@ return new class extends Migration
             $table->integer('invoices_detail_quantity');
             $table->double('invoices_detail_price', 8, 2);
 
-            
+
             $table->timestamps();
-            $table->foreign('invoices_id')->references('invoices_id')->on('invoices');
+            $table->foreign('invoices_id')->references('invoices_id')->on('invoices')->onDelete('cascade');
             $table->foreign('books_id')->references('books_id')->on('books');
         });
     }

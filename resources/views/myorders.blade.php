@@ -27,7 +27,7 @@
                                 <a style="color:red">Cancel</a>
                                 @endif
                             </h3>
-                            <p><a style="color:green">${{$items->orders_price}}</a></p>
+                            <p><a style="color:green">{{$items->orders_price}} VND</a></p>
                             <a href="{{url('vieworder/'.$items->orders_id)}}" class="btn">Order detail</a>
                         </div>
                     </div>

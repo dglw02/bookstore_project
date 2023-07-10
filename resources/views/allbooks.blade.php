@@ -31,7 +31,7 @@
                     <div class="content">
                         <h3>{{$book['books_name']}}</h3>
                         <div class="price">
-                            <div class="amount">${{$book['books_price']}}</div>
+                            <div class="amount">{{$book['books_price']}} VND</div>
                         </div>
                         <form action="{{url('cart',$book->books_id)}}" method="POST">
                             @csrf

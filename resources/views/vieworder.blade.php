@@ -141,7 +141,7 @@ tr {
 
     <div class="box-container">
     @if($orders->count() > 0)
-        
+
             <div class="container-fluid">
                 <div class="card my-4">
                     <h4 class="p-4">Order information</h4>
@@ -162,30 +162,30 @@ tr {
                                 <td>{{$ord->books->books_name}}</td>
                                 <td><img src={{$ord->books->books_image}} width="150px" alt="a"></td>
                                 <td>{{$ord->quantity}}</td>
-                                <td>${{$ord->price}}</td>
+                                <td>{{$ord->price}}VND</td>
                                 @php $total += $ord->quantity * $ord->price @endphp
-                                <td>${{$ord->quantity * $ord->price}}</td>
+                                <td>{{$ord->quantity * $ord->price}}VND</td>
                             </tr>
                         @endforeach
                         @php $grandtotal = $total +($total * 0.1) + Auth::user()->city->areas->areas_price @endphp
                         <tr>
                             <td colspan="3"></td>
-                    
+
                             <td><strong>Total</strong></td>
-                            <td><strong>${{$total}}</strong></td>
+                            <td><strong>{{$total}}VND</strong></td>
                         </tr>
                         <tr>
                             <td colspan="3"></td>
-                    
+
                             <td><strong>Tax(10%)</strong></td>
-                            <td><strong>${{$total * 0.1}}</strong></td>
+                            <td><strong>{{$total * 0.1}}VND</strong></td>
                         </tr>
                         <tr>
                             <td colspan="3"></td>
                             <td><strong>Grand Total</strong></td>
-                            <td><strong>${{$grandtotal}}</strong></td>
+                            <td><strong>{{$grandtotal}}VND</strong></td>
                         </tr>
-                        
+
                         </tbody>
                     </table>
                 </div>

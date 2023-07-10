@@ -3,23 +3,21 @@
 @section('content')
     <h1 class="text-center">Cập nhật hóa đơn nhập</h1>
     <?php
-    $books = Illuminate\Support\Facades\DB::table('books')
-        ->select('books.*')
+    $books = Illuminate\Support\Facades\DB::table('Books')
+        ->select('Books.*')
         ->get();
     ?>
-    @foreach($invoices as $invoice)
-        <form action="{{url('/admin/invoice/'.$invoice->invoices_id.'/edit')}}" method="POST">
+
+
+    @foreach($invoice as $invoices)
+        <form action="{{url('/admin/invoice/'.$invoices->invoices_id.'/edit')}}" method="POST">
             @csrf
             @method('put')
-            <div class="form-group">
-                <label for="invoices_name">Name</label>
-                <input {{$invoice->invoices_name}} type="text" class="form-control" name="invoices_name" placeholder="Please enter "/>
-            </div>
-            <label for="invoices_date">Date</label>
             <br>
-            <input value="{{$invoice->invoices_date}}" name="invoices_date" type="date" class="form-control" placeholder="Ngày nhập">
+            <label for="importDate">Ngày nhập:</label>
             <br>
-
+            <input value="{{$invoices->invoices_date}}" name="importDate" type="date" class="form-control" placeholder="Ngày nhập">
+            <br>
                 <?php
                 $count = 0;
                 $invoiceDetails = DB::table('Invoices_Detail')
@@ -32,13 +30,13 @@
                     $count++;
                 }
                 ?>
-            <h5>Product List</h5>
+            <h5>Danh sách sản phẩm trong hóa đơn:</h5>
             <table id="mytable">
                 <tr>
                     <th></th>
-                    <th>Book Name</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Số lượng</th>
+                    <th>Giá sản phẩm</th>
                 </tr>
                     <?php
                 for ($i = 0; $i < $count; $i++) {
@@ -47,16 +45,16 @@
                     <td style="text-align:center;"><input type="checkbox"></td>
                     <td>
                             <?php
-                            $book = App\Models\Books::findOrFail($books_id[$i]);
+                            $bookPre = App\Models\Books::findOrFail($books_id[$i]);
                             ?>
                         <select class="form-control" id="" name="books_id[]" required>
-                            <option value="{{$books_id[$i]}}" selected="selected">----{{$book->books_name}}----</option>
-                            @foreach($books as $boook)
-                                <option value="{{ $boook->books_id }}">{{ $boook->books_name}}</option>
+                            <option value="{{$books_id[$i]}}" selected="selected">----{{$bookPre->books_name}}----</option>
+                            @foreach($books as $book)
+                                <option value="{{ $book->books_id }}">{{ $book->books_name}}</option>
                         @endforeach
                     </td>
-                    <td><input name="quantity[]" type="text" class="form-control" placeholder="Quantity" value="{{$invoices_detail_quantity[$i]}}"></td>
-                    <td><input name="price[]" type="number" class="form-control" placeholder="Price" value="{{$invoices_detail_price[$i]}}"></td>
+                    <td><input name="invoices_detail_quantity[]" type="text" class="form-control" placeholder="invoices_detail_quantity" value="{{$invoices_detail_quantity[$i]}}"></td>
+                    <td><input name="invoices_detail_quantity[]" type="number" class="form-control" placeholder="invoices_detail_quantity" value="{{$invoices_detail_price[$i]}}"></td>
                 </tr>
                 <?php } ?>
             </table>
@@ -65,7 +63,7 @@
             <input type="button" class="btn btn-danger" value="Delete" onclick="del()">
             <br>
         <br>
-        <button type="submit" class="btn btn-primary" onclick="processForm()">Update</button>
+        <button type="submit" class="btn btn-primary" onclick="processForm()">Cập nhật</button>
         </form>
     @endforeach
 @endsection
@@ -133,38 +131,39 @@
         }
 
         function del() {
-            var table = document.getElementById("table");
-            var rows = table.rows.length;
+            var mytable = document.getElementById("mytable");
+            var rows = mytable.rows.length;
 
             for (var i = rows - 1; i > 0; i--) {
-                if (table.rows[i].cells[0].children[0].checked) {
-                    table.deleteRow(i);
+                if (mytable.rows[i].cells[0].children[0].checked) {
+                    mytable.deleteRow(i);
                 }
             }
         }
 
         function processForm() {
             var formData = [];
-            var table = document.getElementById("table");
-            var rows = table.rows.length;
+            var mytable = document.getElementById("mytable");
+            var rows = mytable.rows.length;
 
             for (var i = 1; i < rows; i++) {
-                var row = table.rows[i];
-                var books_id = row.cells[1].getElementsByTagName("select")[0].value;
+                var row = mytable.rows[i];
+                var books_id = row.cells[1].getElementsByTagName("input")[0].value;
                 var invoices_detail_quantity = row.cells[2].getElementsByTagName("input")[0].value;
                 var invoices_detail_price = row.cells[3].getElementsByTagName("input")[0].value;
+
 
                 var data = {
                     books_id: books_id,
                     invoices_detail_quantity: invoices_detail_quantity,
-                    invoices_detail_price: invoices_detail_price
+                    invoices_detail_price: invoices_detail_price,
+
                 };
 
                 formData.push(data);
             }
             console.log(formData);
         }
-
 
     </script>
 @endsection

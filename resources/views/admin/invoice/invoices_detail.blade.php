@@ -1,5 +1,5 @@
 @extends('layouts.admin_base')
-@section('title','Chi tiết hóa đơn')
+@section('title','Invoices Detail')
 
 @section('content')
     <br>
@@ -22,7 +22,7 @@
                     <p>{{$invoiceDetail->books_name}}</p>
                 </td>
                 <td>
-                    <p>{{$invoiceDetail->books->books_image}}</p>
+                    <p><img src={{$invoiceDetail->books_image}} width="100px" alt="a"></p>
                 </td>
                 <td>
                     <p>{{$invoiceDetail->invoices_detail_quantity}}</p>
