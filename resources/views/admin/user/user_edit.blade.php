@@ -28,8 +28,8 @@
                 <div class="form-group">
                     <label for="user_city">City</label>
                     <select class="form-control" name="user_province">
-                        @foreach($provinces as $province)
-                            <option value="{{ $province->province_id }}">{{ $province->province_name }}</option>
+                        @foreach($province as $provinces)
+                            <option value="{{ $provinces->province_id }}">{{ $provinces->province_name }}</option>
                         @endforeach
                     </select>
                 </div>

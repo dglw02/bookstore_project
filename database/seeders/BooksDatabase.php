@@ -254,7 +254,7 @@ class BooksDatabase extends Seeder
                     'books_description'=>'The story of the Joestar family, who are possessed with intense psychic strength, and the adventures each member encounters throughout their lives. Chronicles the struggles of the cursed Joestar bloodline against the forces of evil.',
                     'books_author'=>'12',
                     'books_quantity'=>'120',
-                    'books_image'=>'https://upload.wikimedia.org/wikipedia/en/thumb/4/42/Steel_Ball_issue.jpg/220px-Steel_Ball_issue.jpg',
+                    'books_image'=>'https://upload.wikimedia.org/wikipedia/en/f/f7/JoJo_no_Kimyou_na_Bouken_cover_-_vol1.jpg',
                     'books_price'=>'80000',
                     'books_ISBN'=>'515186345',
                 ],

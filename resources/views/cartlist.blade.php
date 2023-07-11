@@ -56,18 +56,19 @@
         </div>
         <div class="cart-total">
             @php $grandtotal = $total +($total * 0.1) + Auth::user()->province->area->area_price @endphp
-            <p>TOTAL : <span>${{$total}}</span>
+            <p>TOTAL : <span>{{$total}} VND</span>
             </p>
             <p>TAX(10%) : <span>{{$total * 0.1}} VND</span>
             </p>
-            <p>SHIPPING : <span>${{Auth::user()->province->area->area_price}}</span>
+            <p>SHIPPING : <span>{{Auth::user()->province->area->area_price}} VND</span>
             </p>
             <p>--------------------------------------------</p>
             <p>GRAND TOTAL : <span>{{$grandtotal}} VND</span>
             </p>
             <div class="flex">
                 <a href="{{url('/')}}" class="option-btn">continue shopping</a>
-                <a href="{{url('checkout')}}" class="btn">proceed to checkout</a>
+                <a href="{{url('checkout')}}" class="btn">COD (Cash on Delivery</a>
+                <a href="{{url('checkoutonline')}}" class="btn">MOMO (Online) </a>
             </div>
         </div>
     @else

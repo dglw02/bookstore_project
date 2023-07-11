@@ -27,6 +27,12 @@ class CheckOutController extends Controller
         return view('checkout',compact('cartitems', 'province'));
     }
 
+    public function index2(){
+        $cartitems = Cart::where('user_id',Auth::id())->get();
+        $province = Province::get();
+        return view('checkoutonline',compact('cartitems', 'province'));
+    }
+
     public function getDistrict(Request $request)
     {
         $data['district'] = District::where("province_id",$request->province_id)

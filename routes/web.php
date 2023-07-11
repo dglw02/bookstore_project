@@ -152,6 +152,7 @@ Route::post('/cart/{id}/update', [BooksController::class, 'updateCart']);
 
 //Checkout
 Route::get('checkout',[CheckOutController::class,'index']);
+Route::get('checkoutonline',[CheckOutController::class,'index2']);
 Route::post('get-states-by-countryx',[CheckOutController::class,'getDistrict']); //quan huyen
 Route::post('get-cities-by-statex',[CheckOutController::class,'getWards']); //xa phuong
 Route::post('place-order',[CheckOutController::class,'placeorder']);

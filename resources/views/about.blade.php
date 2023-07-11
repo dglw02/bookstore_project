@@ -34,7 +34,7 @@
             <p>+ 100% original books & Secure and Safe Shopping</p>
             <p>+ Books available at affordable prices</p>
             <p>+ Cash on Delivery facility available</p>
-            <a href="contact.php" class="btn">contact us</a>
+
         </div>
 
     </div>
@@ -98,7 +98,7 @@
     <div class="box-container">
 
         <div class="box">
-            <img src="https://pbs.twimg.com/profile_images/1362306425389608961/tzUgIdqN_400x400.jpg" alt="">
+            <img src="" alt="">
             <div class="share">
                 <a href="#" class="fab fa-facebook-f"></a>
                 <a href="#" class="fab fa-twitter"></a>

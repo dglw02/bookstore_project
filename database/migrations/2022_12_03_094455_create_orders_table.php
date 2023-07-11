@@ -25,7 +25,6 @@ return new class extends Migration
             $table->string('orders_district');
             $table->string('orders_wards');
             $table->integer('orders_status')->default(0);
-            $table->string('orders_message')->nullable();
             $table->string('order_tracking');
             $table->string('orders_price');
             $table->timestamps();

@@ -21,14 +21,14 @@
 
 <section class="display-order">
     @if($cartitems->count() > 0)
-    <div class="grand-total"> Order detail<span></span> </div>
-    @php $total = 0;@endphp
-    @foreach($cartitems as $item)
-    <p>{{$item->books->books_name}}=<span>{{$item->books->books_price}}  VND/x{{$item->books_quantity}} = {{$item->books_quantity * $item->books->books_price}} VND</span> </p>
-        @php $total += $item->books_quantity * $item->books->books_price@endphp
-    @endforeach
-    @php $grandtotal = $total +($total * 0.1) + Auth::user()->province->area->area_price @endphp
-    <div class="grand-total"> Grand total : <span>${{$total}} + Tax 10% + Ship ${{Auth::user()->province->area->area_price}} = ${{$grandtotal}}</span> </div>
+        <div class="grand-total"> Order detail<span></span> </div>
+        @php $total = 0;@endphp
+        @foreach($cartitems as $item)
+            <p>{{$item->books->books_name}}=<span>{{$item->books->books_price}} x {{$item->books_quantity}} = {{$item->books_quantity * $item->books->books_price}} VND</span> </p>
+            @php $total += $item->books_quantity * $item->books->books_price@endphp
+        @endforeach
+        @php $grandtotal = $total +($total * 0.1) + Auth::user()->province->area->area_price @endphp
+        <div class="grand-total"> Grand total : <span>{{$total}} + Tax 10% + Ship {{Auth::user()->province->area->area_price}} = {{$grandtotal}} VND</span> </div>
     @else
         <h3>There is no product in cart to check out</h3>
     @endif
@@ -38,7 +38,7 @@
 
 <section class="checkout">
 
-    <form action="{{url('place-order')}}" method="post">
+    <form action="{{url('/momo_payment')}}" method="POST">
         @csrf
         <h3>place your order</h3>
         <div class="flex">
@@ -57,7 +57,7 @@
             <div class="inputBox">
                 <span>payment method :</span>
                 <select name="orders_payment">
-                    <option value="cash on delivery">cash on delivery</option>
+                    <option value="Momo">Momo</option>
                 </select>
             </div>
             <div class="inputBox">
@@ -75,19 +75,20 @@
             <div class="inputBox">
                 <label for="district">district :</label>
                 <select class="form-control" name="orders_district" id="state_dropdown" onchange="selectStreet()" required>
-                        <option value=""> </option>
+                    <option value=""> </option>
                 </select>
             </div>
             <div class="inputBox">
                 <label for="wards">wards :</label>
                 <select class="form-control" name="orders_wards" id="city-dropdown" required>
-                        <option value=""> </option>
+                    <option value=""> </option>
                 </select>
             </div>
         </div>
         @if($cartitems->count() > 0)
-        <a href="{{url('cartlist')}}" class="btn">Back to cart</a>
-        <input type="submit" value="order now" class="btn" name="order_btn">
+            <a href="{{url('cartlist')}}" class="btn">Back to cart</a>
+            <input type="hidden" name="total" value="{{$grandtotal}}">
+            <button type="submit" class="btn btn-default" name="payUrl">Check out</button>
 
         @else
             <a href="{{url('/')}}" class="btn">Back to Shopping</a>
