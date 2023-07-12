@@ -61,7 +61,7 @@
                                 <td>{{$order->orders_id}}</td>
                                 <td>{{$order->orders_name}}</td>
                                 <td>{{$order->orders_payment}}</td>
-                                <td>{{$order->orders_price}} VND</td>
+                                <td>{{number_format($order->orders_price)}} VND</td>
                                 <td>
                                     @if($order->orders_status == 0)
                                         <p>Pending</p>

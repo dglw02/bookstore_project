@@ -39,9 +39,9 @@
                                 <td>{{$ord->books->books_name}}</td>
                                 <td><img src={{$ord->books->books_image}} width="150px" alt="a"></td>
                                 <td>{{$ord->quantity}}</td>
-                                <td>{{$ord->price}} VND</td>
+                                <td>{{number_format($ord->price)}} VND</td>
                                 @php $total += $ord->quantity * $ord->price @endphp
-                                <td>{{$ord->quantity * $ord->price}} VND</td>
+                                <td>{{number_format($ord->quantity * $ord->price)}} VND</td>
                             </tr>
                         @endforeach
                         @php $grandtotal = $total +($total * 0.1) + Auth::user()->province->area->area_price @endphp
@@ -49,7 +49,7 @@
                             <td colspan="2"></td>
                             <td colspan="1"></td>
                             <td><strong>Total</strong></td>
-                            <td><strong>{{$grandtotal}} VND</strong></td>
+                            <td><strong>{{number_format($grandtotal)}} VND</strong></td>
                         </tr>
                         </tbody>
                     </table>
