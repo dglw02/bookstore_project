@@ -88,7 +88,7 @@
                     </div>
                     <div class="content">
                         <h3>{{$book['books_name']}}</h3>
-                        <div class="price">{{$book['books_price']}} VND</div>
+                        <div class="price">{{number_format($book['books_price'])}} VND</div>
                         <form action="{{url('cart',$book->books_id)}}" method="POST">
                             @csrf
                             <input type="hidden" name="books_id" value={{$book['books_id']}}>
@@ -151,10 +151,10 @@
                 <input type="hidden" name="books_id" value={{$book['books_id']}}>
                 <a href="detail/{{$book['books_id']}}"><img class="image" src="{{$book->books_image}}" alt=""></a>
                 <div class="name">{{$book->books_name}}</div>
-                <div class="price">{{$book->books_price}} VND</div>
+                <div class="price">{{number_format($book->books_price)}} VND</div>
                 <input type="number" min="1" max="{{$book->books_quantity}}" name="books_quantity" value="1" class="qty">
                 <input type="hidden" name="books_image" value="{{$book->books_name}}">
-                <input type="hidden" name="books_price" value="{{$book->books_price}}">
+                <input type="hidden" name="books_price" value="{{number_format($book->books_price)}}">
                 <input type="hidden" name="books_image" value="{{$book->books_image}}">
                 <input type="submit" value="add to cart" name="add_to_cart" class="btn">
             </form>

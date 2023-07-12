@@ -115,7 +115,7 @@
                         <span>({{$items->books->books_name}} / x {{$items->quantity}} ), </span>
                     @endforeach
                 </p>
-                <p> total price : <span>${{$orders->orders_price}}</span></p>
+                <p> total price : <span>{{number_format($orders->orders_price)}} VND</span></p>
                 <p> payment status :
                     @if($orders->orders_status == 0)
                         <span>Pending</span>
@@ -178,9 +178,9 @@
                                 <td>{{$ord->books->books_name}}</td>
                                 <td><img src={{$ord->books->books_image}} width="150px" alt="a"></td>
                                 <td>{{$ord->quantity}}</td>
-                                <td>{{$ord->price}}VND</td>
+                                <td>{{number_format($ord->price)}} VND</td>
                                 @php $total += $ord->quantity * $ord->price @endphp
-                                <td>{{$ord->quantity * $ord->price}}VND</td>
+                                <td>{{number_format($ord->quantity * $ord->price)}} VND</td>
                             </tr>
                         @endforeach
                         @php $grandtotal = $total +($total * 0.1) + Auth::user()->province->area->area_price @endphp
@@ -188,18 +188,18 @@
                             <td colspan="3"></td>
 
                             <td><strong>Total</strong></td>
-                            <td><strong>{{$total}}VND</strong></td>
+                            <td><strong>{{number_format($total)}} VND</strong></td>
                         </tr>
                         <tr>
                             <td colspan="3"></td>
 
                             <td><strong>Tax(10%)</strong></td>
-                            <td><strong>{{$total * 0.1}}VND</strong></td>
+                            <td><strong>{{number_format($total * 0.1)}} VND</strong></td>
                         </tr>
                         <tr>
                             <td colspan="3"></td>
                             <td><strong>Grand Total</strong></td>
-                            <td><strong>{{$grandtotal}}VND</strong></td>
+                            <td><strong>{{number_format($grandtotal)}} VND</strong></td>
                         </tr>
 
                         </tbody>

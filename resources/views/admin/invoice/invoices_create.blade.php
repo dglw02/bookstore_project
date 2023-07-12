@@ -49,7 +49,7 @@
                         </td>
                         <td><input name="invoices_detail_quantity[]" min="1" type="number" class="form-control "
                                    placeholder="Quantity" required></td>
-                        <td><input name="invoices_detail_price[]" min="1" type="number" class="form-control"
+                        <td><input name="invoices_detail_price[]" min="1000" type="number" class="form-control"
                                    placeholder="Price" required></td>
                     </tr>
 

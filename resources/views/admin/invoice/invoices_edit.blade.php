@@ -8,35 +8,38 @@
         ->get();
     ?>
 
-
     @foreach($invoice as $invoices)
         <form action="{{url('/admin/invoice/'.$invoices->invoices_id.'/edit')}}" method="POST">
             @csrf
             @method('put')
             <br>
-            <label for="importDate">Ngày nhập:</label>
+            <label for="importDate">Name:</label>
             <br>
-            <input value="{{$invoices->invoices_date}}" name="importDate" type="date" class="form-control" placeholder="Ngày nhập">
+            <input value="{{$invoices->invoices_name}}" name="invoices_name" type="text" class="form-control" placeholder="Name">
+            <br>
+            <label for="importDate">Date:</label>
+            <br>
+            <input value="{{$invoices->invoices_date}}" name="invoices_date" type="date" class="form-control" placeholder="Date">
             <br>
                 <?php
                 $count = 0;
                 $invoiceDetails = DB::table('Invoices_Detail')
                     ->select('Invoices_Detail.*')
+                    ->where('Invoices_Detail.invoices_Id', $invoices->invoices_id)
                     ->get();
                 foreach ($invoiceDetails as $invoiceDetail) {
                     $books_id[$count] = $invoiceDetail->books_id;
                     $invoices_detail_quantity[$count] = $invoiceDetail->invoices_detail_quantity;
-                    $invoices_detail_price[$count] = $invoiceDetail->invoices_detail_quantity;
+                    $invoices_detail_price[$count] = $invoiceDetail->invoices_detail_price;
                     $count++;
-                }
-                ?>
-            <h5>Danh sách sản phẩm trong hóa đơn:</h5>
-            <table id="mytable">
+                } ?>
+            <h5>Book List:</h5>
+            <table id="table">
                 <tr>
                     <th></th>
-                    <th>Tên sản phẩm</th>
-                    <th>Số lượng</th>
-                    <th>Giá sản phẩm</th>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
                 </tr>
                     <?php
                 for ($i = 0; $i < $count; $i++) {
@@ -47,14 +50,15 @@
                             <?php
                             $bookPre = App\Models\Books::findOrFail($books_id[$i]);
                             ?>
+
                         <select class="form-control" id="" name="books_id[]" required>
-                            <option value="{{$books_id[$i]}}" selected="selected">----{{$bookPre->books_name}}----</option>
+                            <option value="{{$books_id[$i]}}" selected="selected">{{$bookPre->books_name}}</option>
                             @foreach($books as $book)
                                 <option value="{{ $book->books_id }}">{{ $book->books_name}}</option>
-                        @endforeach
+                            @endforeach
                     </td>
-                    <td><input name="invoices_detail_quantity[]" type="text" class="form-control" placeholder="invoices_detail_quantity" value="{{$invoices_detail_quantity[$i]}}"></td>
-                    <td><input name="invoices_detail_quantity[]" type="number" class="form-control" placeholder="invoices_detail_quantity" value="{{$invoices_detail_price[$i]}}"></td>
+                    <td><input name="invoices_detail_quantity[]" min="1" type="number" class="form-control" placeholder="Quantity" value="{{$invoices_detail_quantity[$i]}}"></td>
+                    <td><input name="invoices_detail_price[]" min="1000" type="number" class="form-control" placeholder="Price" value="{{$invoices_detail_price[$i]}}"></td>
                 </tr>
                 <?php } ?>
             </table>
@@ -63,7 +67,7 @@
             <input type="button" class="btn btn-danger" value="Delete" onclick="del()">
             <br>
         <br>
-        <button type="submit" class="btn btn-primary" onclick="processForm()">Cập nhật</button>
+        <button type="submit" class="btn btn-primary" onclick="processForm()">Update</button>
         </form>
     @endforeach
 @endsection
@@ -131,7 +135,7 @@
         }
 
         function del() {
-            var mytable = document.getElementById("mytable");
+            var mytable = document.getElementById("table");
             var rows = mytable.rows.length;
 
             for (var i = rows - 1; i > 0; i--) {
@@ -143,7 +147,7 @@
 
         function processForm() {
             var formData = [];
-            var mytable = document.getElementById("mytable");
+            var mytable = document.getElementById("table");
             var rows = mytable.rows.length;
 
             for (var i = 1; i < rows; i++) {
@@ -157,7 +161,6 @@
                     books_id: books_id,
                     invoices_detail_quantity: invoices_detail_quantity,
                     invoices_detail_price: invoices_detail_price,
-
                 };
 
                 formData.push(data);

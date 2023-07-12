@@ -41,7 +41,7 @@
                     <div class="box">
                         @if(($books->books_quantity >0))
                         <div class="name">IN STOCK</div>
-                            <div class="price">{{$books->books_price}} VND</div>
+                            <div class="price">{{number_format($books->books_price)}} VND</div>
                         <form method="POST">
                             @csrf
                             <input type="hidden" name="books_id" value={{$books['books_id']}}>
@@ -99,7 +99,7 @@
             </div>
             <div class="content">
                 <h3>{{$book->books_name}}</h3>
-                <div class="price">{{$book->books_price}} VND</div><br>
+                <div class="price">{{number_format($book->books_price)}} VND</div><br>
                 <a href="#" class="btn">add to cart</a>
             </div>
         </div>

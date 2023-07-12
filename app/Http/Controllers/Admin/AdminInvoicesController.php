@@ -104,19 +104,21 @@ class AdminInvoicesController extends Controller
         }
         DB::table('Invoices')->where('invoices_id',$invoices_id)
             ->update(['invoices_date' => $invoices_date, 'invoices_total' => $total, 'invoices_name' => $invoices_name]);
-        $invoiceDetails = DB::table('InvoiceDetails')
-            ->select('InvoiceDetails.*')
-            ->where('InvoiceDetails.invoices_id')
+        $invoiceDetails = DB::table('Invoices_Detail')
+            ->select('Invoices_Detail.*')
+            ->where('Invoices_Detail.invoices_id',$invoices_id)
             ->get();
         $i = 0;
+
         foreach ($invoiceDetails as $invoiceDetail) {
-            DB::table('Invoices_Detail')->where('id', $invoiceDetail->invoices_detail_id)
+            DB::table('Invoices_Detail')->where('invoices_detail_id', $invoiceDetail->invoices_detail_id)
                 ->update([
                     'books_id' => $books_id[$i], 'invoices_detail_quantity' => $invoices_detail_quantity[$i],
                     'invoices_detail_price' => $invoices_detail_price[$i]
                 ]);
             $i++;
         }
+
         if ($count > $i) {
                 for ($t = $i; $t < $count; $t++) {
                     DB::table('Invoices_Detail')->insert(
@@ -127,7 +129,8 @@ class AdminInvoicesController extends Controller
                     );
                 }
             }
-        return redirect('admin/invoice/invoices_edit');
+
+        return redirect('admin/invoice');
         }
 
 
@@ -150,7 +153,6 @@ class AdminInvoicesController extends Controller
     {
         $invoices = Invoice::findOrFail($invoices_id);
         $invoices->delete();
-        $invoices->invoicesdetail->delete();
         alert()->success('Success','Invoice have been deleted.');
         return redirect('/admin/invoice');
     }

@@ -19,7 +19,7 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Earning
                                 </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{$total_earning}} $</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{number_format($total_earning)}} VND</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-calculator fa-2x text-gray-300"></i>
@@ -147,7 +147,7 @@
                                     <tr>
                                         <td>{{$order->orders_id}}</td>
                                         <td>{{$order->orders_name}}</td>
-                                        <td>${{$order->orders_price}}</td>
+                                        <td>${{number_format($order->orders_price)}} VND</td>
                                         <td>{{$order->created_at}}</td>
                                     </tr>
                                 @endforeach

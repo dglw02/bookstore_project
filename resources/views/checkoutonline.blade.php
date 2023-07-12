@@ -24,11 +24,11 @@
         <div class="grand-total"> Order detail<span></span> </div>
         @php $total = 0;@endphp
         @foreach($cartitems as $item)
-            <p>{{$item->books->books_name}}=<span>{{$item->books->books_price}} x {{$item->books_quantity}} = {{$item->books_quantity * $item->books->books_price}} VND</span> </p>
+            <p>{{$item->books->books_name}}=<span>{{number_format($item->books->books_price)}} x {{$item->books_quantity}} = {{number_format($item->books_quantity * $item->books->books_price)}} VND</span> </p>
             @php $total += $item->books_quantity * $item->books->books_price@endphp
         @endforeach
         @php $grandtotal = $total +($total * 0.1) + Auth::user()->province->area->area_price @endphp
-        <div class="grand-total"> Grand total : <span>{{$total}} + Tax 10% + Ship {{Auth::user()->province->area->area_price}} = {{$grandtotal}} VND</span> </div>
+        <div class="grand-total"> Grand total : <span>{{number_format($total)}} + Tax 10% + Ship {{Auth::user()->province->area->area_price}} = {{number_format($grandtotal)}} VND</span> </div>
     @else
         <h3>There is no product in cart to check out</h3>
     @endif

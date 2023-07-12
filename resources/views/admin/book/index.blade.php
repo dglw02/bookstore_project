@@ -67,7 +67,7 @@
                                 <td>{{$book->publisher_name}}</td>
                                 <td>{{$book->author_name}}</td>
                                 <td>{{$book->books_quantity}}</td>
-                                <td>{{$book->books_price}}</td>
+                                <td>{{number_format($book->books_price)}} VND</td>
                                 <td>{{$book->books_ISBN}}</td>
                                 <td>
                                     <div class="action d-flex flex-row">

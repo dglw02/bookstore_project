@@ -28,7 +28,7 @@
                     <p>{{$invoiceDetail->invoices_detail_quantity}}</p>
                 </td>
                 <td>
-                    <p>{{' $'.number_format($invoiceDetail->invoices_detail_price)}}</p>
+                    <p>{{''.number_format($invoiceDetail->invoices_detail_price)}} VND</p>
                 </td>
 
             </tr>
