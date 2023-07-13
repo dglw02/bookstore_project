@@ -107,21 +107,7 @@
         <option value="2039">2039</option>
         <option value="2040">2040</option>
     </select>
-    <select class="form-select" id="month" name="month">
-        <option value="">month</option>
-        <option value="01">January</option>
-        <option value="02">February</option>
-        <option value="03">March</option>
-        <option value="04">April</option>
-        <option value="05">May</option>
-        <option value="06">June</option>
-        <option value="07">July</option>
-        <option value="08">August</option>
-        <option value="09">September</option>
-        <option value="10">October</option>
-        <option value="11">November</option>
-        <option value="12">December</option>
-    </select>
+
     <a href=""
        class="btn-primary btn btn-sm mr-2"><i class="fas fa-edit"></i></a>
     <canvas id="myChart" height="100px"></canvas>
