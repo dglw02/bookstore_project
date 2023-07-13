@@ -22,4 +22,18 @@ class AdminChartController extends Controller
         return view('admin.chart.month_revenue', compact('labels', 'data'));
 
     }
+
+    public function index2(){
+        $orders = Order::where('orders_status', '3')->select(DB::raw('DAYNAME(created_at) as day_name'))
+            ->whereYear('created_at', date('Y'))
+            ->groupBy(DB::raw("day_name"))
+            ->get();
+
+
+        $labels = $orders->keys();
+        $data = $orders->values();
+
+        return view('admin.chart.day_revenue', compact('labels', 'data'));
+
+    }
 }
