@@ -325,21 +325,14 @@ return [
 
         ],
 
-
         [
-            'text'    => 'Revenue Chart',
-            'icon'    => 'far fa-chart-bar text-success',
-            'submenu' => [
-                [
-                    'text'    => 'Month Revenue',
-                    'url'     => 'admin/day_revenue',
-                ],
-                [
-                    'text' => 'Year Revenue',
-                    'url'  => 'admin/month_revenue',
-                ],
-            ],
+            'text'        => 'Revenue Chart',
+            'url'         => 'admin/day_revenue',
+            'icon'        => 'far fa-chart-bar text-success',
+
         ],
+
+
 
         [
             'text'        => 'Category',

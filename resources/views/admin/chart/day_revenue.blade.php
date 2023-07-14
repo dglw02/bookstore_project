@@ -1,101 +1,176 @@
 @extends('layouts.admin_base')
 
 @section('content')
+<?php
+$username = "root";
+$password = "";
+$database = "bookshop";
 
-    <h1 class="text-center">This Month Revenue</h1>
-        <input name="day_date" type="date" class="" placeholder="Please enter " required>
-    <a href=""
-       class="btn-primary btn btn-sm mr-2"><i class="fas fa-edit"></i></a>
-    <canvas id="myChart" height="100px"></canvas>
-@endsection
-
-@section('js')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <script type="text/javascript">
-
-        var labels = {{ Js::from($labels) }};
-        var orders = {{ Js::from($data) }};
-
-        <?php
-        for ($i = 0; $i < 31; $i++) {
-            if ($i < 9) {
-                $day = '0' . $i + 1;
-            } else {
-                $day = $i + 1;
-            }
-            $orders = Illuminate\Support\Facades\DB::table('orders')
-                ->where('orders.orders_status', '<', 4)
-                ->where('orders.orders_status', '>', 0)
-                ->where('orders.created_at', 'like', '%' . '-' . '%' . '-' .$day )
-                ->select('orders.*')
-                ->get();
-
-            $sales[$i] = 0;
-            foreach ($orders as $order) {
-                $sales[$i] = $sales[$i] + ($order->orders_price);
-            }
-
-            $invoice = Illuminate\Support\Facades\DB::table('invoices')
-                ->where('invoices.invoices_date', 'like', '%' . '-' . '%' . '-' . $day)
-                ->select('invoices.*')
-                ->get();
-
-            $sale[$i] = 0;
-            foreach ($invoice as $invoices) {
-                $sale[$i] = $sale[$i] + ($invoices->invoices_total);
-            }
-
+try {
+    $pdo = new PDO("mysql:host=localhost;database=$database", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die ("ERROR : Could not connect." . $e->getMessage());
+}
+?>
+    <!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
         }
-        ?>
+
+        .chartMenu {
+            width: 100vw;
+            height: 40px;
+            background: #1A1A1A;
+            color: rgba(54, 162, 235, 1);
+        }
+
+        .chartMenu p {
+            padding: 10px;
+            font-size: 20px;
+        }
+
+        .chartCard {
+            width: 90vw;
+            height: calc(100vh - 40px);
+            background: rgba(54, 162, 235, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chartBox {
+            width: 1500px;
+            padding: 20px;
+            border-radius: 20px;
+            border: solid 3px rgba(54, 162, 235, 1);
+            background: white;
+        }
+    </style>
+</head>
+<body>
+<div class="chartCard">
+    <div class="chartBox">
+        <input type="date" onchange="startDateFilter(this)" value="2023-07-01" min="2000-01-01" max="2100-12-31">
+        <input type="date" onchange="endDateFilter(this)" value="2023-07-30" min="2000-01-01" max="2100-12-31">
+        <canvas id="myChart"></canvas>
+    </div>
+</div>
+
+<?php
+try
+{
+    $sql ="SELECT * FROM bookshop.invoices";
+    $result = $pdo->query($sql);
+
+    if($result->rowCount() > 0)
+    {
+        while ($row = $result->fetch())
+        {
+            $dateArray[] = $row["invoices_date"];
+            $priceArray[] = $row["invoices_total"];
+        }
+        unset($result);
+    }else
+    {
+        echo 'No result in database';
+    }
+}catch (PDOException $e)
+    {
+    die("Error");
+    }
+unset($pdo);
+
+?>
 
 
-        const data = {
-            labels: ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th', '10th', '11th', '12th','13th','14th','15th','16th','17th','18th','19th','20th','21st','22nd','23rd','24th','25th','26th','27th','28th','29th','30th','31st'],
-            datasets: [{
-                label: 'Total sold',
-                backgroundColor: 'rgb(44, 71, 247)',
-                borderColor: 'rgb(44, 71, 247)',
-                data: [<?php echo $sales[0] ?>, <?php echo $sales[1] ?>, <?php echo $sales[2] ?>, <?php echo $sales[3] ?>, <?php echo $sales[4] ?>, <?php echo $sales[5] ?>,
-                    <?php echo $sales[6] ?>, <?php echo $sales[7] ?>, <?php echo $sales[8] ?>, <?php echo $sales[9] ?>, <?php echo $sales[10] ?>, <?php echo $sales[11] ?>,
-                    <?php echo $sales[12] ?>,<?php echo $sales[13] ?>,<?php echo $sales[14] ?>,<?php echo $sales[15] ?>,<?php echo $sales[16] ?>,<?php echo $sales[17] ?>,
-                    <?php echo $sales[18] ?>,<?php echo $sales[19] ?>,<?php echo $sales[20] ?>,<?php echo $sales[21] ?>,<?php echo $sales[22] ?>,<?php echo $sales[23] ?>,
-                    <?php echo $sales[24] ?>,<?php echo $sales[25] ?>,<?php echo $sales[26] ?>,<?php echo $sales[27] ?>,<?php echo $sales[28] ?>,<?php echo $sales[29] ?>,
-                    <?php echo $sales[30] ?>
-                ]
-            },
-                {
-                    label: 'Total Invoice',
-                    backgroundColor: 'rgb(255, 99, 132)',
-                    borderColor: 'rgb(255, 99, 132)',
-                    data: [<?php echo $sale[0] ?>, <?php echo $sale[1] ?>, <?php echo $sale[2] ?>, <?php echo $sale[3] ?>, <?php echo $sale[4] ?>, <?php echo $sale[5] ?>,
-                        <?php echo $sale[6] ?>, <?php echo $sale[7] ?>, <?php echo $sale[8] ?>, <?php echo $sale[9] ?>, <?php echo $sale[10] ?>, <?php echo $sale[11] ?>,
-                        <?php echo $sale[12] ?>,<?php echo $sale[13] ?>,<?php echo $sale[14] ?>,<?php echo $sale[15] ?>,<?php echo $sale[16] ?>,<?php echo $sale[17] ?>,
-                        <?php echo $sale[18] ?>,<?php echo $sale[19] ?>,<?php echo $sale[20] ?>,<?php echo $sale[21] ?>,<?php echo $sale[22] ?>,<?php echo $sale[23] ?>,
-                        <?php echo $sale[24] ?>,<?php echo $sale[25] ?>,<?php echo $sale[26] ?>,<?php echo $sale[27] ?>,<?php echo $sale[28] ?>,<?php echo $sale[29] ?>,
-                        <?php echo $sale[30] ?>
-                    ]
-                }
-            ]
-        };
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 
-        const config = {
-            type: 'bar',
-            data: data,
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
+<script>
+    const dateArrayJS = <?php echo json_encode($dateArray); ?>;
+    const dateChartJS = dateArrayJS.map((day,index)=>{
+        let dayjs = new Date(day);
+        return dayjs.setHours(0,0,0,0)
+    });
+
+
+
+    // setup
+    const data = {
+        labels: dateChartJS,
+        datasets: [{
+            label: 'Invoices',
+            data: <?php echo json_encode($priceArray); ?>,
+            backgroundColor: [
+                'rgba(255, 26, 104, 0.2)',
+            ],
+            borderColor: [
+                'rgba(255, 26, 104, 1)',
+
+            ],
+            borderWidth: 1
+        }]
+    };
+
+    // config
+    const config = {
+        type: 'bar',
+        data,
+        options: {
+            scales: {
+                x:{
+                    min: '2000-01-01',
+                    max: '2100-12-31',
+                    type:'time',
+                    time: {
+                        unit: 'day'
                     }
+                },
+                y: {
+                    beginAtZero: true
                 }
             }
-        };
+        }
+    };
 
-        const myChart = new Chart(
-            document.getElementById('myChart'),
-            config
-        );
+    // render init block
+    const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
 
-    </script>
+
+
+
+
+
+    function startDateFilter(date){
+        const startDate = new Date(date.value);
+        console.log(startDate.setHours(0,0,0,0));
+        myChart.config.options.scales.x.min = startDate.setHours(0,0,0,0);
+        myChart.update()
+    }
+
+    function endDateFilter(date){
+        const endDate = new Date(date.value);
+        console.log(endDate.setHours(0,0,0,0));
+        myChart.config.options.scales.x.max = endDate.setHours(0,0,0,0);
+        myChart.update()
+    }
+
+    // Instantly assign Chart.js version
+    const chartVersion = document.getElementById('chartVersion');
+    chartVersion.innerText = Chart.version;
+</script>
+
+</body>
+</html>
 @endsection
