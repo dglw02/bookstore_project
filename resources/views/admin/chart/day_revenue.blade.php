@@ -68,7 +68,9 @@ try {
 try
 {
     $sql ="SELECT * FROM bookshop.invoices";
+    $sql2 ="SELECT * FROM bookshop.orders";
     $result = $pdo->query($sql);
+    $result2 = $pdo->query($sql2);
 
     if($result->rowCount() > 0)
     {
@@ -78,6 +80,19 @@ try
             $priceArray[] = $row["invoices_total"];
         }
         unset($result);
+    }else
+    {
+        echo 'No result in database';
+    }
+
+    if($result2->rowCount() > 0)
+    {
+        while ($row2 = $result2->fetch())
+        {
+            $dateArray2[] = $row2["created_at"];
+            $priceArray2[] = $row2["orders_price"];
+        }
+        unset($result2);
     }else
     {
         echo 'No result in database';
@@ -96,12 +111,14 @@ unset($pdo);
 
 <script>
     const dateArrayJS = <?php echo json_encode($dateArray); ?>;
+    const dateArrayJS2 = <?php echo json_encode($dateArray2); ?>;
+    console.log(dateArrayJS);
+    console.log(dateArrayJS2);
+    // ERROR
     const dateChartJS = dateArrayJS.map((day,index)=>{
         let dayjs = new Date(day);
         return dayjs.setHours(0,0,0,0)
     });
-
-
 
     // setup
     const data = {
@@ -114,11 +131,23 @@ unset($pdo);
             ],
             borderColor: [
                 'rgba(255, 26, 104, 1)',
-
             ],
             borderWidth: 1
-        }]
+        },
+            {
+                label: 'Orders',
+                data: <?php echo json_encode($priceArray2); ?>,
+                backgroundColor: [
+                    'rgba(0, 0, 255, 0.2)',
+                ],
+                borderColor: [
+                    'rgba(0, 0, 255, 1)',
+                ],
+                borderWidth: 1
+            }
+        ]
     };
+
 
     // config
     const config = {
@@ -167,8 +196,8 @@ unset($pdo);
     }
 
     // Instantly assign Chart.js version
-    const chartVersion = document.getElementById('chartVersion');
-    chartVersion.innerText = Chart.version;
+    // const chartVersion = document.getElementById('chartVersion');
+    // chartVersion.innerText = Chart.version;
 </script>
 
 </body>
