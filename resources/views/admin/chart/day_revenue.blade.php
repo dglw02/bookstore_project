@@ -43,6 +43,7 @@
                 ->where('orders.created_at', 'like', '%' . '-' . '%' . '-' .'%'.$day )
                 ->select('orders.*')
                 ->get();
+
             $sales[$i] = 0;
             foreach ($orders as $order) {
                 $sales[$i] = $sales[$i] + ($order->orders_price);
@@ -52,10 +53,12 @@
                 ->where('invoices.invoices_date', 'like', '%' . '-' . '%' . '-' . $day)
                 ->select('invoices.*')
                 ->get();
+
             $sale[$i] = 0;
             foreach ($invoice as $invoices) {
                 $sale[$i] = $sale[$i] + ($invoices->invoices_total);
             }
+
         }
         ?>
 
