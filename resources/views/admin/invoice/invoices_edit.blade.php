@@ -64,7 +64,6 @@
             </table>
             <br>
             <input type="button" class="btn btn-success" value="Add" onclick="row()">
-            <input type="button" class="btn btn-danger" value="Delete" onclick="del()">
             <br>
         <br>
         <button type="submit" class="btn btn-primary" onclick="processForm()">Update</button>
@@ -137,7 +136,6 @@
         function del() {
             var mytable = document.getElementById("table");
             var rows = mytable.rows.length;
-
             for (var i = rows - 1; i > 0; i--) {
                 if (mytable.rows[i].cells[0].children[0].checked) {
                     mytable.deleteRow(i);
