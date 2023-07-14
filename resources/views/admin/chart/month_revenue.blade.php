@@ -3,9 +3,8 @@
 @section('content')
 
     <h1 class="text-center">This Year Revenue</h1>
-    <input name="date" type="month_date" class="" placeholder="Please enter " required>
-    <a href=""
-       class="btn-primary btn btn-sm mr-2"><i class="fas fa-edit"></i></a>
+    <input name="month_date" type="date" class="" placeholder="Please enter " required>
+    <a href="" class="btn-primary btn btn-sm mr-2"><i class="fas fa-edit"></i></a>
     <canvas id="myChart" height="100px"></canvas>
 @endsection
 
