@@ -112,13 +112,21 @@ unset($pdo);
 <script>
     const dateArrayJS = <?php echo json_encode($dateArray); ?>;
     const dateArrayJS2 = <?php echo json_encode($dateArray2); ?>;
-    console.log(dateArrayJS);
-    console.log(dateArrayJS2);
+
     // ERROR
     const dateChartJS = dateArrayJS.map((day,index)=>{
         let dayjs = new Date(day);
         return dayjs.setHours(0,0,0,0)
     });
+
+    const dateChartJS2 = dateArrayJS2.map((day,index)=>{
+        let dayjs = new Date(day);
+        return dayjs.setHours(0,0,0,0)
+    });
+
+
+
+
 
     // setup
     const data = {
@@ -133,19 +141,22 @@ unset($pdo);
                 'rgba(255, 26, 104, 1)',
             ],
             borderWidth: 1
-        },
-            {
-                label: 'Orders',
-                data: <?php echo json_encode($priceArray2); ?>,
-                backgroundColor: [
-                    'rgba(0, 0, 255, 0.2)',
-                ],
-                borderColor: [
-                    'rgba(0, 0, 255, 1)',
-                ],
-                borderWidth: 1
-            }
-        ]
+        }],
+
+
+        {{--labels: dateChartJS2,--}}
+        {{--datasets: [{--}}
+        {{--        label: 'Orders',--}}
+        {{--        data: <?php echo json_encode($priceArray2); ?>,--}}
+        {{--        backgroundColor: [--}}
+        {{--            'rgba(0, 0, 255, 0.2)',--}}
+        {{--        ],--}}
+        {{--        borderColor: [--}}
+        {{--            'rgba(0, 0, 255, 1)',--}}
+        {{--        ],--}}
+        {{--        borderWidth: 1--}}
+        {{--    }--}}
+        {{--],--}}
     };
 
 
