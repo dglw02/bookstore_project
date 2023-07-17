@@ -67,23 +67,11 @@ try {
 <?php
 try
 {
-    $sql ="SELECT * FROM bookshop.invoices";
-    $sql2 ="SELECT * FROM bookshop.orders";
-    $result = $pdo->query($sql);
+
+    $sql2 ="SELECT * FROM bookshop.orders WHERE orders_status=3";
     $result2 = $pdo->query($sql2);
 
-    if($result->rowCount() > 0)
-    {
-        while ($row = $result->fetch())
-        {
-            $dateArray[] = $row["invoices_date"];
-            $priceArray[] = $row["invoices_total"];
-        }
-        unset($result);
-    }else
-    {
-        echo 'No result in database';
-    }
+
 
     if($result2->rowCount() > 0)
     {
@@ -98,9 +86,9 @@ try
         echo 'No result in database';
     }
 }catch (PDOException $e)
-    {
+{
     die("Error");
-    }
+}
 unset($pdo);
 
 ?>
@@ -110,14 +98,9 @@ unset($pdo);
 <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 
 <script>
-    const dateArrayJS = <?php echo json_encode($dateArray); ?>;
+
     const dateArrayJS2 = <?php echo json_encode($dateArray2); ?>;
 
-    // ERROR
-    const dateChartJS = dateArrayJS.map((day,index)=>{
-        let dayjs = new Date(day);
-        return dayjs.setHours(0,0,0,0)
-    });
 
     const dateChartJS2 = dateArrayJS2.map((day,index)=>{
         let dayjs = new Date(day);
@@ -130,34 +113,21 @@ unset($pdo);
 
     // setup
     const data = {
-        labels: dateChartJS,
-        datasets: [{
-            label: 'Invoices',
-            data: <?php echo json_encode($priceArray); ?>,
-            backgroundColor: [
-                'rgba(255, 26, 104, 0.2)',
-            ],
-            borderColor: [
-                'rgba(255, 26, 104, 1)',
-            ],
-            borderWidth: 1
-        }],
-
-
-        {{--labels: dateChartJS2,--}}
-        {{--datasets: [{--}}
-        {{--        label: 'Orders',--}}
-        {{--        data: <?php echo json_encode($priceArray2); ?>,--}}
-        {{--        backgroundColor: [--}}
-        {{--            'rgba(0, 0, 255, 0.2)',--}}
-        {{--        ],--}}
-        {{--        borderColor: [--}}
-        {{--            'rgba(0, 0, 255, 1)',--}}
-        {{--        ],--}}
-        {{--        borderWidth: 1--}}
-        {{--    }--}}
-        {{--],--}}
+        labels: dateChartJS2,
+        datasets: [
+            {
+                label: 'Orders',
+                data: <?php echo json_encode($priceArray2); ?>,
+                backgroundColor: [
+                    'rgba(0, 0, 255, 0.2)',
+                ],
+                borderColor: [
+                    'rgba(0, 0, 255, 1)',
+                ],
+                borderWidth: 1
+            }],
     };
+
 
 
     // config

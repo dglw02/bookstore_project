@@ -19,7 +19,7 @@ class AdminChartController extends Controller
         $labels = $orders->keys();
         $data = $orders->values();
 
-        return view('admin.chart.month_revenue', compact('labels', 'data'));
+        return view('admin.chart.orders_revenue', compact('labels', 'data'));
 
     }
 
@@ -33,7 +33,7 @@ class AdminChartController extends Controller
         $labels = $orders->keys();
         $data = $orders->values();
 
-        return view('admin.chart.day_revenue', compact('labels', 'data'));
+        return view('admin.chart.invoices_revenue', compact('labels', 'data'));
 
     }
 }

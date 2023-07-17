@@ -112,7 +112,7 @@ Route::get('/admin/transported-order', [AdminOrdersController::class, 'transport
 Route::get('/admin/canceled-order', [AdminOrdersController::class, 'canceledOrder']);
 
 //Admin Chart
-Route::get('/admin/month_revenue', [AdminChartController::class, 'index']);
+Route::get('/admin/orders_revenue', [AdminChartController::class, 'index']);
 Route::get('/admin/day_revenue', [AdminChartController::class, 'index2']);
 
 //Admin Invoices

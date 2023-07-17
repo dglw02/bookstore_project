@@ -326,13 +326,18 @@ return [
         ],
 
         [
-            'text'        => 'Revenue Chart',
+            'text'        => 'Invoices Chart',
             'url'         => 'admin/day_revenue',
             'icon'        => 'far fa-chart-bar text-success',
 
         ],
 
+        [
+            'text'        => 'Orders Chart',
+            'url'         => 'admin/orders_revenue',
+            'icon'        => 'far fa-chart-bar text-success',
 
+        ],
 
         [
             'text'        => 'Category',
