@@ -101,12 +101,12 @@ class InvoicesDatabase extends Seeder
                 [
                     'invoices_name'=>'James',
                     'invoices_total'=>'280000',
-                    'invoices_date'=>'2023-04-17',
+                    'invoices_date'=>'2021-04-17',
                 ],
                 [
                     'invoices_name'=>'James',
                     'invoices_total'=>'220000',
-                    'invoices_date'=>'2023-05-18',
+                    'invoices_date'=>'2021-05-18',
                 ],
                 [
                     'invoices_name'=>'James',
@@ -121,12 +121,12 @@ class InvoicesDatabase extends Seeder
                 [
                     'invoices_name'=>'James',
                     'invoices_total'=>'160000',
-                    'invoices_date'=>'2023-07-21',
+                    'invoices_date'=>'2021-07-21',
                 ],
                 [
                     'invoices_name'=>'James',
                     'invoices_total'=>'360000',
-                    'invoices_date'=>'2023-08-22',
+                    'invoices_date'=>'2021-08-22',
                 ],
 
             ]);

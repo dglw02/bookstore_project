@@ -5,7 +5,7 @@
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+            <h1 class="h6 mb-0 text-gray-800"><i class="fas fa-chart-line fa-2x text-gray-300">Dashboard</i></h1>
         </div>
 
         <!-- Content Row -->
@@ -22,12 +22,33 @@
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">{{number_format($total_earning)}} VND</div>
                             </div>
                             <div class="col-auto">
-                                <i class="fas fa-calculator fa-2x text-gray-300"></i>
+                                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-red text-uppercase mb-1">Total Import
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{number_format($total_import)}} VND</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-percentage fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
 
             <!-- Users Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
@@ -35,7 +56,7 @@
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <a href = "{{url('/admin/user')}}"><div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total Users</div></a>
+                                <a href = "{{url('/admin/user')}}"><div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total Customers</div></a>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">{{$users->count()}}</div>
                             </div>
                             <div class="col-auto">
@@ -45,6 +66,43 @@
                     </div>
                 </div>
             </div>
+
+        </div>
+        <div class="row">
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">This Year Earning
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{number_format($earning_year)}} VND</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-red text-uppercase mb-1">This Year Import
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{number_format($import_year)}} VND</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-percentage fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
 
             <!-- Pending Orders Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
@@ -63,7 +121,41 @@
                     </div>
                 </div>
             </div>
+            </div>
+        <div class="row">
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">This Month Earning
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{number_format($earning_month)}} VND</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-red text-uppercase mb-1">This Month Import
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{number_format($import_month)}} VND</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-percentage fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="col-xl-3 col-md-6 mb-4">
                 <div class="card border-left-info shadow h-100 py-2">
@@ -82,56 +174,56 @@
             </div>
         </div>
 
+
+
         <!-- Content Row -->
 
         <div class="row">
-            <h1 class="text-center">All Time Revenue</h1>
+            <h6 style="text-align:center" class="text-center"><i class="fas fa-chart-bar fa-2x text-gray-300"> All Time Revenue</i></h6>
             <canvas id="myChart" height="100px"></canvas>
             </div>
 
-            <!-- Pie Chart -->
-            <div class="col-xl-4 col-lg-5">
-                <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <a href = "{{url('/admin/order')}}"> <h6 class="m-0 font-weight-bold text-primary">Latest orders</h6></a>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
-                                <thead>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Name</th>
-                                    <th>Price</th>
-                                    <th>Time</th>
-                                </tr>
-                                </thead>
-                                <tfoot>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Name</th>
-                                    <th>Price</th>
-                                    <th>Time</th>
-                                </tr>
-                                </tfoot>
-                                <tbody>
-                                @foreach($orders as $order)
 
-                                    <tr>
-                                        <td>{{$order->orders_id}}</td>
-                                        <td>{{$order->orders_name}}</td>
-                                        <td>${{number_format($order->orders_price)}} VND</td>
-                                        <td>{{$order->created_at}}</td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </div>
 
-                    </div>
-                </div>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <a href = "{{url('/admin/order')}}"> <h6 class="m-0 font-weight-bold text-primary">Latest orders</h6></a>
+        </div>
+        <div class="card-body">
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Date</th>
+                    </tr>
+                    </thead>
+                    <tfoot>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Date</th>
+                    </tr>
+                    </tfoot>
+                    <tbody>
+                    @foreach($orders as $order)
+
+                        <tr>
+                            <td>{{$order->orders_id}}</td>
+                            <td>{{$order->orders_name}}</td>
+                            <td>${{number_format($order->orders_price)}} VND</td>
+                            <td>{{$order->created_at}}</td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
+    </div>
 
 
     <!-- DataTales Example -->

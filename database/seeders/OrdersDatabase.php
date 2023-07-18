@@ -346,7 +346,7 @@ class OrdersDatabase extends Seeder
                     'orders_status'=>'3',
                     'order_tracking'=>'tracking1234',
                     'orders_price'=>'1293000',
-                    'created_at'=>'2023-10-13'
+                    'created_at'=>'2021-10-13'
                 ],
                 [
                     'orders_name'=>'James',
@@ -361,7 +361,7 @@ class OrdersDatabase extends Seeder
                     'orders_status'=>'3',
                     'order_tracking'=>'tracking1234',
                     'orders_price'=>'1273000',
-                    'created_at'=>'2023-11-13'
+                    'created_at'=>'2021-11-13'
                 ],
                 [
                     'orders_name'=>'James',
@@ -376,7 +376,7 @@ class OrdersDatabase extends Seeder
                     'orders_status'=>'3',
                     'order_tracking'=>'tracking1234',
                     'orders_price'=>'1243000',
-                    'created_at'=>'2023-12-13'
+                    'created_at'=>'2021-12-13'
                 ],
                 [
                     'orders_name'=>'James',
@@ -391,7 +391,7 @@ class OrdersDatabase extends Seeder
                     'orders_status'=>'3',
                     'order_tracking'=>'tracking1234',
                     'orders_price'=>'1213000',
-                    'created_at'=>'2023-01-13'
+                    'created_at'=>'2021-01-13'
                 ],
             ]);
     }
