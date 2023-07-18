@@ -25,5 +25,7 @@ class DatabaseSeeder extends Seeder
         $this->call((AuthorDatabase::class));
         $this->call((BooksDatabase::class));
         $this->call((InvoicesDatabase::class));
+        $this->call((OrdersDatabase::class));
+        $this->call((AreasDatabase::class));
     }
 }

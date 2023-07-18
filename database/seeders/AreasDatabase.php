@@ -17,21 +17,21 @@ class AreasDatabase extends Seeder
     {
 
 
-        DB::table('areas')->insert(
+        DB::table('area')->insert(
             [
             [
-                'areas_name'=>'Area North',
-                'areas_price'=>0
+                'area_name'=>'Area North',
+                'area_price'=>0
             ],
 
             [
-                'areas_name'=>'Area Center',
-                'areas_price'=>10000
+                'area_name'=>'Area Center',
+                'area_price'=>10000
             ],
 
             [
-                'areas_name'=>'Area South',
-                'areas_price'=>20000
+                'area_name'=>'Area South',
+                'area_price'=>20000
             ]
 
         ]);

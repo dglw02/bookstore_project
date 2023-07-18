@@ -85,45 +85,8 @@
         <!-- Content Row -->
 
         <div class="row">
-
-            <!-- Area Chart -->
-            <div class="col-xl-8 col-lg-7">
-                <div class="card shadow mb-4">
-                    <!-- Card Header - Dropdown -->
-                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
-                        <div class="dropdown no-arrow">
-                            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                 aria-labelledby="dropdownMenuLink">
-                                <div class="dropdown-header">Dropdown Header:</div>
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Card Body -->
-                    <div class="card-body">
-                        <div class="chart-area">
-
-
-
-
-
-                            <canvas id="myAreaChart"></canvas>
-
-
-
-
-
-                        </div>
-                    </div>
-                </div>
+            <h1 class="text-center">All Time Revenue</h1>
+            <canvas id="myChart" height="100px"></canvas>
             </div>
 
             <!-- Pie Chart -->
@@ -216,9 +179,95 @@
 @endsection
 
 @section('js')
-    <script src="{{asset('admin/vendor/chart.js/Chart.min.js')}}"></script>
-    <script src="{{asset('admin/js/demo/chart-area-demo.js')}}"></script>
-    <script src="{{asset('admin/js/demo/chart-pie-demo.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script type="text/javascript">
+        <?php
+        $orders = Illuminate\Support\Facades\DB::table('orders')
+            ->select(DB::raw("sum(orders_price) as orders_price"), DB::raw("MONTHNAME(created_at) as month_name"))
+            ->whereYear('created_at', date('Y'))
+            ->groupBy(DB::raw("month_name"))
+            ->orderBy('orders_id','ASC')
+            ->pluck('orders_price', 'month_name');
+
+
+        $labels = $orders->keys();
+        $data = $orders->values();
+        ?>
+
+        var labels = {{ Js::from($labels) }};
+        var orders = {{ Js::from($data) }};
+
+        <?php
+        for ($i = 0; $i < 12; $i++) {
+            if ($i < 9) {
+                $month = '0' . $i + 1;
+            } else {
+                $month = $i + 1;
+            }
+            $orders = Illuminate\Support\Facades\DB::table('orders')
+                ->where('orders.orders_status', '<', 4)
+                ->where('orders.orders_status', '>', 0)
+                ->where('orders.created_at', 'like', '%' . '-' . $month . '-' . '%')
+                ->select('orders.*')
+                ->get();
+            $sales[$i] = 0;
+            foreach ($orders as $order) {
+                $sales[$i] = $sales[$i] + ($order->orders_price);
+            }
+
+            $invoice = Illuminate\Support\Facades\DB::table('invoices')
+                ->where('invoices.invoices_date', 'like', '%' . '-' . $month . '-' . '%')
+                ->select('invoices.*')
+                ->get();
+            $sale[$i] = 0;
+            foreach ($invoice as $invoices) {
+                $sale[$i] = $sale[$i] + ($invoices->invoices_total);
+            }
+        }
+        ?>
+
+
+        const data = {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+            datasets: [{
+                label: 'Total sold',
+                backgroundColor: 'rgb(44, 71, 247)',
+                borderColor: 'rgb(44, 71, 247)',
+                data: [<?php echo $sales[0] ?>, <?php echo $sales[1] ?>, <?php echo $sales[2] ?>, <?php echo $sales[3] ?>, <?php echo $sales[4] ?>, <?php echo $sales[5] ?>,
+                    <?php echo $sales[6] ?>, <?php echo $sales[7] ?>, <?php echo $sales[8] ?>, <?php echo $sales[9] ?>, <?php echo $sales[10] ?>, <?php echo $sales[11] ?>
+                ]
+            },
+                {
+                    label: 'Total Invoice',
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: [<?php echo $sale[0] ?>, <?php echo $sale[1] ?>, <?php echo $sale[2] ?>, <?php echo $sale[3] ?>, <?php echo $sale[4] ?>, <?php echo $sale[5] ?>,
+                        <?php echo $sale[6] ?>, <?php echo $sale[7] ?>, <?php echo $sale[8] ?>, <?php echo $sale[9] ?>, <?php echo $sale[10] ?>, <?php echo $sale[11] ?>
+                    ]
+                }
+            ]
+        };
+
+        const config = {
+            type: 'bar',
+            data: data,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        };
+
+        const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+
+    </script>
 @endsection
 
 @push('js')
