@@ -55,7 +55,7 @@ class AdminController extends Controller
                     ->where('orders.orders_status', '3')
                     ->groupBy('books_id')
                     ->orderBy("count", 'desc')
-                    ->take(3)
+                    ->take(5)
                     ->get();
 
                 $orders = Order::where('orders_status', '0')->get();

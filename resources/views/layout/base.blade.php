@@ -57,6 +57,7 @@
         <nav class="navbar">
             <a href="{{url('/')}}">Home</a>
             <a href="{{URL::to('/new')}}">New</a>
+            <a href="{{URL::to('/bestseller')}}">Best Seller</a>
             <a href="{{URL::to('/category')}}">Category</a>
             <a href="{{URL::to('/allbooks')}}">All</a>
             <a href="{{URL::to('/about')}}">About</a>
@@ -110,6 +111,7 @@
             <h3>Menu</h3>
             <a href="{{url('/')}}"><i class="fas fa-arrow-right"></i>Home</a>
             <a href="{{URL::to('/new')}}"><i class="fas fa-arrow-right"></i>New</a>
+            <a href="{{URL::to('/bestseller')}}"><i class="fas fa-arrow-right"></i>Best Seller</a>
             <a href="{{URL::to('/category')}}"><i class="fas fa-arrow-right"></i>Category</a>
             <a href="{{URL::to('/allbooks')}}"><i class="fas fa-arrow-right"></i>All</a>
             <a href="{{URL::to('/about')}}"><i class="fas fa-arrow-right"></i>About</a>

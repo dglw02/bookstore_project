@@ -139,7 +139,7 @@ Route::get('/allbooks',[SortBooksController::class,'allBooks']);
 Route::get('/detail/{books_id}',[BooksController::class,'showDetail']);
 Route::get('search',[BooksController::class,'search']);
 Route::get('new',[BooksController::class,'newestBook']);
-
+Route::get('bestseller',[BooksController::class,'bestSeller']);
 //Category
 Route::get('/category',[BooksController::class,'allCategory']);
 Route::get('/category/{category_name}',[SortBooksController::class,'productsByCategory']);
