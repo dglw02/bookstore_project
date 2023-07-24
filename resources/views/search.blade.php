@@ -10,7 +10,7 @@
 
     <section class="products" id="products">
 
-        <h1  class="heading"> <span >Our products</span> </h1>
+        <h1  class="heading"> <span >Searh results</span> </h1>
 
         <div class="box-container">
             @if($books->count() > 0)

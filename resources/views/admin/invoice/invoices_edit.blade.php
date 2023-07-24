@@ -1,7 +1,7 @@
 @extends('layouts.admin_base')
 
 @section('content')
-    <h1 class="text-center">Cập nhật hóa đơn nhập</h1>
+    <h1 class="text-center">Update Invoice</h1>
     <?php
     $books = Illuminate\Support\Facades\DB::table('Books')
         ->select('Books.*')

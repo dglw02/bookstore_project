@@ -37,7 +37,7 @@ class LoginController extends Controller
             }
         }
         else{
-            alert()->error('Password is incorrect','Please enter the correct password');
+            alert()->error('Email or Password is incorrect','Please enter again');
             return view('/login');
         }
     }
@@ -72,7 +72,7 @@ class LoginController extends Controller
             $storeData ['password'] = Hash::make($storeData ['password']);
             //dd($storeData);
             User::create($storeData);
-            alert()->success('Register complete','Now you can go shopping.');
+            alert()->success('Register complete','Please login again to go shopping.');
             return redirect('/');
     }
 }

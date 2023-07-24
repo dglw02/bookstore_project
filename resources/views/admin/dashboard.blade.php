@@ -159,7 +159,7 @@
             </div>
     </div>
 
-        
+
 
 
 
@@ -226,7 +226,7 @@
                     <tr>
                         <th>Name</th>
                         <th>Image</th>
-                        <th>Have sell</th>
+                        <th>Sell amount</th>
                         <th>Date</th>
                     </tr>
                     </thead>
@@ -234,7 +234,7 @@
                     <tr>
                         <th>Name</th>
                         <th>Image</th>
-                        <th>Have sell</th>
+                        <th>Sell amount</th>
                         <th>Date</th>
                     </tr>
                     </tfoot>

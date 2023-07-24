@@ -16,19 +16,19 @@
 
 <div class="heading">
     <h3>checkout</h3>
-    <p> <a href="{{url('/')}}">home</a> / checkout </p>
+    <p> <a href="{{url('/')}}">Home</a> / Checkout </p>
 </div>
 
 <section class="display-order">
     @if($cartitems->count() > 0)
-    <div class="grand-total"> Order detail<span></span> </div>
+    <div class="grand-total"> Order Detail<span></span> </div>
     @php $total = 0;@endphp
     @foreach($cartitems as $item)
     <p>{{$item->books->books_name}}=<span>{{number_format($item->books->books_price)}}  VND/x{{$item->books_quantity}} = {{number_format($item->books_quantity * $item->books->books_price)}} VND</span> </p>
         @php $total += $item->books_quantity * $item->books->books_price@endphp
     @endforeach
     @php $grandtotal = $total +($total * 0.1) + Auth::user()->province->area->area_price @endphp
-    <div class="grand-total"> Grand total : <span>{{number_format($total)}} VND + Tax 10% + Ship{{Auth::user()->province->area->area_price}} = {{number_format($grandtotal)}} VND</span> </div>
+    <div class="grand-total"> Grand Total : <span>{{number_format($total)}} VND + Tax 10% + Ship {{Auth::user()->province->area->area_price}} VND = {{number_format($grandtotal)}} VND</span> </div>
     @else
         <h3>There is no product in cart to check out</h3>
     @endif
@@ -43,29 +43,29 @@
         <h3>place your order</h3>
         <div class="flex">
             <div class="inputBox">
-                <span>your name :</span>
+                <span>Your Name :</span>
                 <input type="text" value="{{Auth::user()->name}}" name="orders_name" required placeholder="enter your name" required>
             </div>
             <div class="inputBox">
-                <span>your number :</span>
+                <span>Your Number :</span>
                 <input type="number" value="{{Auth::user()->phone}}" name="orders_phone" required placeholder="enter your number" required>
             </div>
             <div class="inputBox">
-                <span>your email :</span>
+                <span>Your Email :</span>
                 <input type="email" value="{{Auth::user()->email}}" name="orders_email" required placeholder="enter your email" required>
             </div>
             <div class="inputBox">
-                <span>payment method :</span>
+                <span>Payment Method :</span>
                 <select name="orders_payment">
-                    <option value="cash on delivery">cash on delivery</option>
+                    <option value="cash on delivery">Cash On Delivery</option>
                 </select>
             </div>
             <div class="inputBox">
-                <span>address line :</span>
-                <input type="text" min="0" value=""  name="orders_address" required placeholder="House number..." required>
+                <span>Address Line :</span>
+                <input type="text" min="0" value="{{Auth::user()->address}}"  name="orders_address" required placeholder="House number..." required>
             </div>
             <div class="inputBox">
-                <span>city :</span>
+                <span>Province :</span>
                 <select class="form-control" name="orders_province"  id="country-dropdown" onchange="selectProvince()" required>
                     @foreach($province as $provinces)
                         <option value="{{ $provinces->province_id }}"{{ old('province_id', Auth::user()->province->province_id) == $provinces->province_id ? 'selected' : '' }}>{{ $provinces->province_name }}</option>
@@ -73,13 +73,13 @@
                 </select>
             </div>
             <div class="inputBox">
-                <span><label for="district">district :</label></span>
+                <span><label for="district">District :</label></span>
                 <select class="form-control" name="orders_district" id="state_dropdown" onchange="selectStreet()" required>
                         <option value=""> </option>
                 </select>
             </div>
             <div class="inputBox">
-                <span><label for="wards">wards :</label></span>
+                <span><label for="wards">Wards :</label></span>
                 <select class="form-control" name="orders_wards" id="city-dropdown" required>
                         <option value=""> </option>
                 </select>
@@ -154,7 +154,7 @@
             },
             dataType : 'json',
             success: function(result){
-                $('#state_dropdown').html('<option value="">Nhập quận huyện</option>');
+                $('#state_dropdown').html('<option value="">---Enter district---</option>');
                 let html = '';
                 let districts = result.district;
                 for(let i = 0; i < districts.length; i++) {
@@ -196,7 +196,7 @@
                     let id = item['wards_id']
                     html += '<option value='+id+'>'+name+ '</option>';
                 }
-                $('#city-dropdown').html('<option value="">Nhập đường,xá</option>');
+                $('#city-dropdown').html('<option value="">---Enter wards---</option>');
                 $('#city-dropdown').append(html);
                 $('#city-dropdown').niceSelect("update")
 

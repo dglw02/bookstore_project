@@ -105,7 +105,6 @@ class CheckOutController extends Controller
         $grandtotal = $total +($total * 0.1) + Auth::user()->province->area->area_price;
         $order->orders_price = $grandtotal;
         $order->order_tracking = 'tracking' . rand(1000, 9999);
-        //dd($order);
         $order->save();
         $cartitems = Cart::where('user_id', Auth::id())->get();
         foreach ($cartitems as $item) {
@@ -117,7 +116,7 @@ class CheckOutController extends Controller
             ]);
             $book = Books::where('books_id', $item->books_id)->first();
             $book->books_quantity = $book->books_quantity - $item->books_quantity;
-            dd($book);
+            //dd($book);
             $book->update();
         }
         $cartitems = Cart::where('user_id', Auth::id())->get();

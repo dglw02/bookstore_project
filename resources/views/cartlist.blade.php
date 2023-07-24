@@ -12,11 +12,11 @@
 <body>
 <div class="heading">
     <h3>shopping cart</h3>
-    <p><a href="{{url('/')}}">home</a>/ cart </p>
+    <p><a href="{{url('/')}}">Home</a>/ Cart </p>
 </div>
 <section class="shopping-cart">
     @if($cartitems->count() > 0)
-        <h1 class="title">products added</h1>
+        <h1 class="title">Products Added</h1>
         <div class="box-container">
             @php $total = 0; @endphp
             @foreach($cartitems as $item)

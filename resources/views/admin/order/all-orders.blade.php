@@ -4,20 +4,20 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Pending orders</h1>
+        <h1 class="h3 mb-2 text-gray-800">Pending orders</h1> <br>
         <div class="my-2 px-1">
             <div class="row">
-                <div class="col-6">
+                <div class="col-6"> </div>
+                <div class="col-6" style="text-align: right;">
+                    <span class="mr-1"><a href="{{url('/admin/order/')}}">Pending orders</a> |</span>
+                    <span class="mr-1"><a style="color:#ffd200" href="{{url('/admin/approved-order/')}}">Approved orders</a> |</span>
+                    <span class="mr-1"><a style="color:#a1ffb9" href="{{url('/admin/transported-order/')}}">Transported orders</a> |</span>
+                    <span class="mr-1"><a style="color:#51ED08" href="{{url('/admin/completed-order/')}}">Completed orders</a> |</span>
+                    <span class="mr-1"><a style="color:red" href="{{url('/admin/canceled-order/')}}">Canceled orders</a></span>
                 </div>
-                <div class="col-6 text-right">
-                    <span class="mr-2"><a href="{{url('/admin/order/')}}">Pending orders</a> |</span>
-                    <span class="mr-2"><a style="color:#ffd200" href="{{url('/admin/approved-order/')}}">Approved orders</a> |</span>
-                    <span class="mr-2"><a style="color:#a1ffb9" href="{{url('/admin/transported-order/')}}">Transported orders</a> |</span>
-                    <span class="mr-2"><a style="color:#51ED08" href="{{url('/admin/completed-order/')}}">Completed orders</a> |</span>
-                    <span class="mr-2"><a style="color:red" href="{{url('/admin/canceled-order/')}}">Canceled orders</a></span>
-                </div>
+
             </div>
-        </div>
+
 
         {{--Flash Message--}}
 

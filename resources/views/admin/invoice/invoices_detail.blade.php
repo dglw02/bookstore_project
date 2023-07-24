@@ -3,7 +3,7 @@
 
 @section('content')
     <br>
-    <h3>Invoice ID : {{$invoice->invoices_id}}</h3>
+    <h1 class="text-center">Invoice Detail</h1>
     <br><br>
     <table class="table">
         <tr>
@@ -34,7 +34,7 @@
             </tr>
         @empty
             <tr>
-                <td colspan="6">Danh sach rong</td>
+                <td colspan="6" class="text-center">Empty list</td>
             </tr>
         @endforelse
     </table>

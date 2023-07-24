@@ -90,13 +90,19 @@
     <div class="box-container">
 
         <div class="box">
+            <h3>Book Forest</h3>
+            <p> 74 Xa Dan, Dong Da, Ha Noi, Viet Nam <br>
+                Book Publishing Joint Stock Company - Book Forest</p>
+            <p> Book Forest accepts online orders and has home delivery.</p>
+
+        </div>
+
+        <div class="box">
             <h3>our locations</h3>
-            <a href="#"> <i class="fas fa-map-marker-alt"></i> india </a>
-            <a href="#"> <i class="fas fa-map-marker-alt"></i> USA </a>
-            <a href="#"> <i class="fas fa-map-marker-alt"></i> russia </a>
-            <a href="#"> <i class="fas fa-map-marker-alt"></i> france </a>
-            <a href="#"> <i class="fas fa-map-marker-alt"></i> japan </a>
-            <a href="#"> <i class="fas fa-map-marker-alt"></i> africa </a>
+            <a><i class="fas fa-map-marker-alt"></i> 74 Xa Dan, Dong Da, Ha Noi </a>
+            <a><i class="fas fa-map-marker-alt"></i> 20 Hang Dao, Hoan Kiem, Ha Noi </a>
+            <a> <i class="fas fa-map-marker-alt"></i> 74 Kim Ma, Ba Dinh, Ha Noi </a>
+            <a><i class="fas fa-map-marker-alt"></i> 220 Nguyen Van Cu, Long Bien, Ha Noi </a>
 
         </div>
 
@@ -105,7 +111,6 @@
             <a href="{{url('/')}}"><i class="fas fa-arrow-right"></i>Home</a>
             <a href="{{URL::to('/new')}}"><i class="fas fa-arrow-right"></i>New</a>
             <a href="{{URL::to('/category')}}"><i class="fas fa-arrow-right"></i>Category</a>
-            <a href="{{URL::to('/topsellers')}}"><i class="fas fa-arrow-right"></i>Top Sellers</a>
             <a href="{{URL::to('/allbooks')}}"><i class="fas fa-arrow-right"></i>All</a>
             <a href="{{URL::to('/about')}}"><i class="fas fa-arrow-right"></i>About</a>
         </div>
@@ -115,8 +120,7 @@
             <h3>contact info</h3>
             <a href="#"> <i class="fas fa-phone"></i> +123-456-7890 </a>
             <a href="#"> <i class="fas fa-phone"></i> +111-222-3333 </a>
-            <a href="#"> <i class="fas fa-envelope"></i> Name@gmail.com </a>
-            <img src="image/worldmap.png" class="map" alt="">
+            <a href="#"> <i class="fas fa-envelope"></i> Bookforest@gmail.com </a>
         </div>
 
     </div>

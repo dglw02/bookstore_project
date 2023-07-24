@@ -37,7 +37,7 @@
             <i class="fas fa-shipping-fast"></i>
             <div class="content">
                 <h3>free shipping</h3>
-                <p>order over $100</p>
+                <p>order over 500,000VND</p>
             </div>
         </div>
 
@@ -73,7 +73,7 @@
 
     <section class="featured" id="featured">
 
-        <h1 class="heading"> <span>The New York Times Best Sellers</span> </h1>
+        <h1 class="heading"> <span>Featured Products</span> </h1>
 
         <div class="swiper featured-slider">
 

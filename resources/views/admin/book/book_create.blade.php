@@ -38,7 +38,7 @@
                 </div>
                 <div class="form-group">
                     <label for="books_description">Description</label><br>
-                    <textarea name="books_description" id="editor" cols="132"> </textarea>
+                    <textarea name="books_description" id="editor" cols="156"> </textarea>
                 </div>
                 <div class="form-group">
                     <label for="books_author">Author</label>

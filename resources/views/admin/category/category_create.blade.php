@@ -26,7 +26,7 @@
                 </div>
                 <div class="form-group">
                     <label for="category_description">Name</label><br>
-                    <textarea name="category_description" id="editor" cols="132"> </textarea>
+                    <textarea name="category_description" id="editor" cols="158"> </textarea>
                 </div>
                 <button type="submit" class="btn btn-block btn-danger">Create Category</button>
             </form>

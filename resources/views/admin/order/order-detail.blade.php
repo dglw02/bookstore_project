@@ -13,7 +13,7 @@
                         <p><i class="fas fa-user"></i> <span class="mx-2">User: {{$order->user->name}}</span></p>
                         <p><i class="fas fa-phone"></i><span class="mx-2">Phone: {{$order->user->phone}}</span></p>
                         <p><i class="fas fa-map-marked"></i> <span
-                                class="mx-2">Adress: {{$order->orders_address}}</span></p>
+                                class="mx-2">Address: {{$order->orders_address}}</span></p>
                         <p><i class="fas fa-map-marked"></i> <span class="mx-2">Province: {{$order->province->province_name}}</span></p>
                         <p><i class="fas fa-map-marked"></i> <span class="mx-2">District: {{$order->district->district_name}}</span></p>
                         <p><i class="fas fa-map-marked"></i> <span class="mx-2">Wards: {{$order->wards->wards_name}}</span></p>

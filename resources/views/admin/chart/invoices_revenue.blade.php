@@ -56,6 +56,7 @@ try {
     </style>
 </head>
 <body>
+<br>
 <div class="chartCard">
     <div class="chartBox">
         <input type="date" onchange="startDateFilter(this)" value="2023-07-01" min="2000-01-01" max="2100-12-31">
