@@ -110,20 +110,12 @@
             <a href="{{URL::to('/about')}}"><i class="fas fa-arrow-right"></i>About</a>
         </div>
 
-        <div class="box">
-            <h3>extra links</h3>
-            <a href="#"> <i class="fas fa-arrow-right"></i> account info </a>
-            <a href="#"> <i class="fas fa-arrow-right"></i> ordered items </a>
-            <a href="#"> <i class="fas fa-arrow-right"></i> privacy policy </a>
-            <a href="#"> <i class="fas fa-arrow-right"></i> payment method </a>
-            <a href="#"> <i class="fas fa-arrow-right"></i> our serivces </a>
-        </div>
 
         <div class="box">
             <h3>contact info</h3>
             <a href="#"> <i class="fas fa-phone"></i> +123-456-7890 </a>
             <a href="#"> <i class="fas fa-phone"></i> +111-222-3333 </a>
-            <a href="#"> <i class="fas fa-envelope"></i> asdfghj@gmail.com </a>
+            <a href="#"> <i class="fas fa-envelope"></i> Name@gmail.com </a>
             <img src="image/worldmap.png" class="map" alt="">
         </div>
 

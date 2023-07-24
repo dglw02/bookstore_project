@@ -75,7 +75,7 @@
 
         <div class="box">
             <img src="{{$books->publisher->publisher_image}}" alt="">
-            <p>{{$books->author->author_description}}</p>
+            <p>Professional who prepares and manages the distribution of books and other materials. Publishers often work with magazines and books, but they can also work with journals and music production. A publisher typically supervises or advises writers and creators and receives direction from creative directors and publishing managers.</p>
             <h3>{{$books->publisher->publisher_name}}</h3>
         </div>
 

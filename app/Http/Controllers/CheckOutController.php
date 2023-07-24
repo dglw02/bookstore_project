@@ -104,7 +104,7 @@ class CheckOutController extends Controller
         }
         $grandtotal = $total +($total * 0.1) + Auth::user()->province->area->area_price;
         $order->orders_price = $grandtotal;
-        $order->order_tracking = 'tracking' . rand(1000, 9999);
+        $order->order_tracking = 'tracking ' . rand(10000, 99999);
         $order->save();
         $cartitems = Cart::where('user_id', Auth::id())->get();
         foreach ($cartitems as $item) {
@@ -137,9 +137,8 @@ class CheckOutController extends Controller
             $mail->SMTPSecure = 'tls';                  // encryption - ssl/tls
             $mail->Port = 587;                          // port - 587/465
 
-            $mail->setFrom('luuhaiduong101@gmail.com', 'duong');
+            $mail->setFrom('luuhaiduong101@gmail.com', 'Book Forest');
             $mail->addAddress(Auth::user()->email); // người nhận mail
-            $mail->addCC('admin1@gmail.com');// người admin
 //            $mail->addBCC($request->emailBcc);
 
             $mail->addReplyTo('sender@example.com', 'SenderReplyName');
@@ -201,7 +200,7 @@ class CheckOutController extends Controller
         }
         $grandtotal = $total +($total * 0.1) + Auth::user()->province->area->area_price;
         $order->orders_price = $grandtotal;
-        $order->order_tracking = 'tracking' . rand(1000, 9999);
+        $order->order_tracking = 'tracking ' . rand(10000, 99999);
         $order->save();
         $cartitems = Cart::where('user_id', Auth::id())->get();
         foreach ($cartitems as $item) {
@@ -263,9 +262,8 @@ class CheckOutController extends Controller
             $mail->SMTPSecure = 'tls';                  // encryption - ssl/tls
             $mail->Port = 587;                          // port - 587/465
 
-            $mail->setFrom('luuhaiduong101@gmail.com', 'duong');
+            $mail->setFrom('luuhaiduong101@gmail.com', 'Book Forest');
             $mail->addAddress(Auth::user()->email); // người nhận mail
-            $mail->addCC('admin1@gmail.com');// người admin
 //            $mail->addBCC($request->emailBcc);
 
             $mail->addReplyTo('sender@example.com', 'SenderReplyName');
@@ -281,7 +279,6 @@ class CheckOutController extends Controller
 
             $mail->Subject = 'Book Forest'; // tiều đề
             $mail->Body    = 'Thank you for purchasing from our store';// nội dung
-
 
             if( !$mail->send() ) {
                 alert()->success('failed', 'Please wait for 48 hours for order browsing');

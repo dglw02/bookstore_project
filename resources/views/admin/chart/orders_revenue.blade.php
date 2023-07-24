@@ -68,7 +68,7 @@ try {
 try
 {
 
-    $sql2 ="SELECT * FROM bookshop.orders";
+    $sql2 ="SELECT * FROM bookshop.orders WHERE orders_status=3";
     $result2 = $pdo->query($sql2);
     if($result2->rowCount() > 0)
     {
