@@ -73,13 +73,13 @@
                 </select>
             </div>
             <div class="inputBox">
-                <label for="district">district :</label>
+                <span><label for="district">district :</label></span>
                 <select class="form-control" name="orders_district" id="state_dropdown" onchange="selectStreet()" required>
                         <option value=""> </option>
                 </select>
             </div>
             <div class="inputBox">
-                <label for="wards">wards :</label>
+                <span><label for="wards">wards :</label></span>
                 <select class="form-control" name="orders_wards" id="city-dropdown" required>
                         <option value=""> </option>
                 </select>

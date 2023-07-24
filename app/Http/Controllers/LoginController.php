@@ -70,6 +70,7 @@ class LoginController extends Controller
             'password' => 'required|confirmed|min:6',
         ]);
             $storeData ['password'] = Hash::make($storeData ['password']);
+            //dd($storeData);
             User::create($storeData);
             alert()->success('Register complete','Now you can go shopping.');
             return redirect('/');
