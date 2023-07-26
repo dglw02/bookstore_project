@@ -169,7 +169,6 @@ class CheckOutController extends Controller
             }
 
         } catch (Exception $e) {
-            dd($mail);
             alert()->success('error', 'Please wait for 48 hours for order browsing');
             return back()->with('error','Message could not be sent.');
         }
@@ -293,7 +292,6 @@ class CheckOutController extends Controller
             }
 
         } catch (Exception $e) {
-            dd($mail);
             alert()->success('error', 'Please wait for 48 hours for order browsing');
             return back()->with('error','Message could not be sent.');
         }
