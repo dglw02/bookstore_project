@@ -61,7 +61,7 @@
                 </select>
             </div>
             <div class="inputBox">
-                <span>address line 01 :</span>
+                <span>address number :</span>
                 <input type="text" min="0" value="{{Auth::user()->address}}"  name="orders_address" required placeholder="e.g. flat no." required>
             </div>
             <div class="inputBox">
