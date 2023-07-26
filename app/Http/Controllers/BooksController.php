@@ -61,7 +61,7 @@ class BooksController extends Controller
         {
             $user =auth()->user();
             $books=Books::find($books_id);
-            if ($cart = Cart::where('books_id', $request->id)->first()) {
+            if ($cart = Cart::where('user_id',Auth::id())->where('books_id', $request->id)->first()) {
                 $cart->increment('books_quantity',$request->books_quantity);
                 Alert::success('Update quantity successfully', 'Thank for your purchasing.');
                 return redirect()->back();
