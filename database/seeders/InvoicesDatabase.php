@@ -15,7 +15,7 @@ class InvoicesDatabase extends Seeder
      */
     public function run()
     {
-        //
+        /*
         DB::table('Invoices')->insert(
             [
                 [
@@ -130,5 +130,6 @@ class InvoicesDatabase extends Seeder
                 ],
 
             ]);
+        */
     }
 }

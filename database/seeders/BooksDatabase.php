@@ -98,7 +98,7 @@ class BooksDatabase extends Seeder
                     'books_description'=>'Dr. Louis Creed and his wife, Rachel, relocate from Boston to rural Maine with their two young children. The couple soon discover a mysterious burial ground hidden deep in the woods near their new home. When tragedy strikes, Louis turns to his neighbor Jud Crandall, setting off a perilous chain reaction that unleashes an unspeakable evil with horrific consequences.',
                     'books_author'=>'2',
                     'books_quantity'=>'840',
-                    'books_image'=>'https://upload.wikimedia.org/wikipedia/en/5/52/StephenKingPetSematary.jpg',
+                    'books_image'=>'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Pet_Sematary_%281983%29_front_cover%2C_first_edition.jpg/1200px-Pet_Sematary_%281983%29_front_cover%2C_first_edition.jpg',
                     'books_price'=>'54000',
                     'books_ISBN'=>'477397104',
                 ],

@@ -15,7 +15,7 @@ class OrdersDatabase extends Seeder
      */
     public function run()
     {
-        //
+        /*
         DB::table('orders')->insert(
             [
                 [
@@ -394,5 +394,7 @@ class OrdersDatabase extends Seeder
                     'created_at'=>'2021-01-13'
                 ],
             ]);
+        */
     }
+
 }

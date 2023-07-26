@@ -75,7 +75,7 @@ try
     {
         while ($row2 = $result2->fetch())
         {
-            $dateArray2[] = $row2["created_at"];
+            $dateArray2[] = $row2["updated_at"];
             $priceArray2[] = $row2["orders_price"];
         }
         unset($result2);
