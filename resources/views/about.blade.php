@@ -98,7 +98,7 @@
     <div class="box-container">
 
         <div class="box">
-            <img src="" alt="">
+            <img src="{{asset('/asset/img/download (1).png')}}" alt="">
             <div class="share">
                 <a href="#" class="fab fa-facebook-f"></a>
                 <a href="#" class="fab fa-twitter"></a>
@@ -109,7 +109,7 @@
         </div>
 
         <div class="box">
-            <img src="https://scontent.fhan2-3.fna.fbcdn.net/v/t39.30808-6/261034035_605019017376367_3955150322219145211_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=4G4CuW-aa2UAX-SkIXa&_nc_ht=scontent.fhan2-3.fna&oh=00_AfDXgpmR6q2px4BlLZMEbo6ilrNuR68GQ9CnPtOGx2D3xg&oe=63B92215" alt="">
+            <img src="{{asset('/asset/img/download (1).png')}}" alt="">
             <div class="share">
                 <a href="#" class="fab fa-facebook-f"></a>
                 <a href="#" class="fab fa-twitter"></a>
