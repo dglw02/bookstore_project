@@ -36,8 +36,8 @@
         <div class="icons">
             <i class="fas fa-shipping-fast"></i>
             <div class="content">
-                <h3>free shipping</h3>
-                <p>order over 500,000VND</p>
+                <h3>reputable shipping</h3>
+                <p>ensure shipping to the right place</p>
             </div>
         </div>
 

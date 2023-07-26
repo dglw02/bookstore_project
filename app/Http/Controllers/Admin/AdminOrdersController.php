@@ -31,8 +31,19 @@ class AdminOrdersController extends Controller
         $order = Order::findOrFail($orders_id);
         $order -> orders_status = $request->input('orders_status');
         $order->update();
-        alert()->success('Success','Order have been updated.');
-        return redirect('/admin/order');
+        alert()->success('Success', 'Order have been updated.');
+        if($order -> orders_status == '1') {
+            return redirect('/admin/approved-order');
+        }
+        elseif($order -> orders_status == '2'){
+            return redirect('/admin/transported-order');
+        }
+        elseif($order -> orders_status == '3'){
+            return redirect('/admin/completed-order');
+        }
+        else{
+            return redirect('/admin/canceled-order');
+        }
 
     }
 

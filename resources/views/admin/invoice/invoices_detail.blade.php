@@ -3,8 +3,11 @@
 
 @section('content')
     <br>
-    <h1 class="text-center">Invoice Detail</h1>
-    <br><br>
+    <div class="card push-top">
+        <div class="card-header">
+            <h1>Invoice Details</h1>
+        </div>
+        <div class="card-body">
     <table class="table">
         <tr>
             <th>ISBN</th>
@@ -38,4 +41,6 @@
             </tr>
         @endforelse
     </table>
+        </div>
+    </div>
 @endsection

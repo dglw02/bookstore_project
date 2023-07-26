@@ -1,13 +1,17 @@
 @extends('layouts.admin_base')
 
 @section('content')
-    <h1 class="text-center">Update Invoice</h1>
     <?php
     $books = Illuminate\Support\Facades\DB::table('Books')
         ->select('Books.*')
         ->get();
-    ?>
+    ?> <br>
 
+    <div class="card push-top">
+        <div class="card-header">
+            <h1>Update Invoices</h1>
+        </div>
+        <div class="card-body">
     @foreach($invoice as $invoices)
         <form action="{{url('/admin/invoice/'.$invoices->invoices_id.'/edit')}}" method="POST">
             @csrf
@@ -63,12 +67,14 @@
                 <?php } ?>
             </table>
             <br>
-            <input type="button" class="btn btn-success" value="Add" onclick="row()">
+            <input type="button" class="btn btn-primary" value="Add Book" onclick="row()">
             <br>
         <br>
-        <button type="submit" class="btn btn-primary" onclick="processForm()">Update</button>
+        <button type="submit" class="btn btn-success" onclick="processForm()">Update Invoice</button>
         </form>
     @endforeach
+        </div>
+    </div>
 @endsection
 
 @section('js')

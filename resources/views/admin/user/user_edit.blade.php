@@ -2,7 +2,7 @@
 @section('content')
     <div class="card push-top">
         <div class="card-header">
-            Edit & Update Admin
+            <h1>Edit & Update Admin</h1>
         </div>
         <div class="card-body">
             @if ($errors->any())
@@ -23,7 +23,7 @@
                 </div>
                 <div class="form-group">
                     <label for="address">Address</label><br>
-                    <textarea name="address" id="editor" cols="132"> {{ $user->address }}</textarea>
+                    <textarea name="address" id="editor" cols="139"> {{ $user->address }}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="user_city">City</label>
@@ -33,7 +33,7 @@
                         @endforeach
                     </select>
                 </div>
-                <button type="submit" class="btn btn-block btn-danger">Update Admin</button>
+                <button type="submit" class="btn btn-block btn-success">Update Admin</button>
             </form>
         </div>
     </div>

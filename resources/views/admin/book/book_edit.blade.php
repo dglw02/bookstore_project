@@ -2,7 +2,7 @@
 @section('content')
     <div class="card push-top">
         <div class="card-header">
-            Edit & Update Book
+            <h1>Edit & Update Book</h1>
         </div>
         <div class="card-body">
             @if ($errors->any())
@@ -39,7 +39,7 @@
                 </div>
                 <div class="form-group">
                     <label for="books_description">Description</label><br>
-                    <textarea name="books_description" id="editor" cols="156"> {{ $book->books_description }}</textarea>
+                    <textarea name="books_description" id="editor" cols="137"> {{ $book->books_description }}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="books_author">Author</label>
@@ -64,9 +64,9 @@
                 </div>
                 <div class="form-group">
                     <label for="books_ISBN">ISBN</label>
-                    <input type="number" class="form-control" name="books_ISBN" value="{{ $book->books_ISBN }}"/>
+                    <input type="number" class="form-control" name="books_ISBN" value="{{ $book->books_ISBN }}" min="000000000" max="999999999"/>
                 </div>
-                <button type="submit" class="btn btn-block btn-danger">Update Book</button>
+                <button type="submit" class="btn btn-block btn-success">Update Book</button>
             </form>
         </div>
     </div>

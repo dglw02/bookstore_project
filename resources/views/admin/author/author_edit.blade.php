@@ -2,7 +2,7 @@
 @section('content')
     <div class="card push-top">
         <div class="card-header">
-            Edit & Update Author
+            <h1>Edit & Update Author</h1>
         </div>
         <div class="card-body">
             @if ($errors->any())
@@ -28,10 +28,10 @@
                 </div>
                 <div class="form-group">
                     <label for="author_description">Description</label> <br>
-                    <textarea name="author_description"  cols="158"> {{ $author->author_description }}</textarea>
+                    <textarea name="author_description"  cols="138"> {{ $author->author_description }}</textarea>
                 </div>
 
-                <button type="submit" class="btn btn-block btn-danger">Update Author</button>
+                <button type="submit" class="btn btn-block btn-success">Update Author</button>
             </form>
         </div>
     </div>

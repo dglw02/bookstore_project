@@ -2,7 +2,7 @@
 @section('content')
     <div class="card push-top">
         <div class="card-header">
-            Add Category
+            <h1>Add Category</h1>
         </div>
         <div class="card-body">
             @if ($errors->any())
@@ -25,10 +25,10 @@
                     <input type="text" class="form-control" name="category_image" placeholder="Please enter category image"/>
                 </div>
                 <div class="form-group">
-                    <label for="category_description">Name</label><br>
-                    <textarea name="category_description" id="editor" cols="158"> </textarea>
+                    <label for="category_description">Description</label><br>
+                    <textarea name="category_description" id="editor" cols="139"> </textarea>
                 </div>
-                <button type="submit" class="btn btn-block btn-danger">Create Category</button>
+                <button type="submit" class="btn btn-block btn-success">Create Category</button>
             </form>
         </div>
     </div>

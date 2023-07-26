@@ -227,7 +227,7 @@
                         <th>Name</th>
                         <th>Image</th>
                         <th>Sell amount</th>
-                        <th>Date</th>
+                        <th>Last purchase date</th>
                     </tr>
                     </thead>
                     <tfoot>
@@ -235,7 +235,7 @@
                         <th>Name</th>
                         <th>Image</th>
                         <th>Sell amount</th>
-                        <th>Date</th>
+                        <th>Last purchase date</th>
                     </tr>
                     </tfoot>
                     <tbody>

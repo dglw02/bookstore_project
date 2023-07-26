@@ -38,7 +38,7 @@
                 </div>
                 <div class="form-group">
                     <label for="books_description">Description</label><br>
-                    <textarea name="books_description" id="editor" cols="156"> </textarea>
+                    <textarea name="books_description" id="editor" cols="137"> </textarea>
                 </div>
                 <div class="form-group">
                     <label for="books_author">Author</label>
@@ -54,17 +54,17 @@
                 </div>
                 <div class="form-group">
                     <label for="books_image">Image</label>
-                    <input type="text" class="form-control" name="books_image" />
+                    <input type="text" class="form-control" name="books_image" placeholder="Please enter book image"/>
                 </div>
                 <div class="form-group">
                     <label for="books_price">Price</label>
-                    <input type="number" class="form-control" name="books_price" placeholder="book price" placeholder="Please enter book price"/>
+                    <input type="number" class="form-control" name="books_price"  placeholder="Please enter book price"/>
                 </div>
                 <div class="form-group">
                     <label for="books_ISBN">ISBN</label>
-                    <input type="number" class="form-control" name="books_ISBN" placeholder="book ISBN" placeholder="Please enter book ISBN"/>
+                    <input type="number" class="form-control" name="books_ISBN"  placeholder="Please enter book ISBN" min="000000000" max="999999999"/>
                 </div>
-                <button type="submit" class="btn btn-block btn-danger">Create Book</button>
+                <button type="submit" class="btn btn-block btn-success">Create Book</button>
             </form>
         </div>
     </div>

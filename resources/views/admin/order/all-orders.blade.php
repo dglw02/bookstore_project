@@ -8,7 +8,7 @@
         <div class="my-2 px-1">
             <div class="row">
                 <div class="col-6"> </div>
-                <div class="col-6" style="text-align: right;">
+                <div class="col-12" style="text-align: right">
                     <span class="mr-1"><a href="{{url('/admin/order/')}}">Pending orders</a> |</span>
                     <span class="mr-1"><a style="color:#ffd200" href="{{url('/admin/approved-order/')}}">Approved orders</a> |</span>
                     <span class="mr-1"><a style="color:#a1ffb9" href="{{url('/admin/transported-order/')}}">Transported orders</a> |</span>

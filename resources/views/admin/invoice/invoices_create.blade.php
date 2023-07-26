@@ -4,10 +4,10 @@
     $books = Illuminate\Support\Facades\DB::table('books')
         ->select('books.*')
         ->get();
-    ?>
+    ?> <br>
     <div class="card push-top">
         <div class="card-header">
-            <h1>Invoices</h1>
+            <h1>Add Invoices</h1>
         </div>
         <div class="card-body">
             @if ($errors->any())
@@ -55,10 +55,10 @@
 
                 </table>
                 <br>
-                <input type="button" class="btn btn-success" value="Add books" onclick="row()">
+                <input type="button" class="btn btn-primary" value="Add books" onclick="row()">
                 <input type="button" class="btn btn-danger" value="Delete" onclick="del()">
                 <br><br>
-                <button type="submit" class="btn btn-block btn-primary" onclick="processForm()"> Create Book</button>
+                <button type="submit" class="btn btn-block btn-success" onclick="processForm()"> Create Invoice</button>
             </form>
         </div>
     </div>
