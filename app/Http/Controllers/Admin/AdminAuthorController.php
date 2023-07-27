@@ -28,7 +28,7 @@ class AdminAuthorController extends Controller
         ]);
         $author = Author::create($storeData);
         alert()->success('Success','Author have been created.');
-        return redirect('/admin/author');
+        return redirect('/admin/author', $author);
     }
 
     /**

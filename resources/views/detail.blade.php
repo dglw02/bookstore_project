@@ -86,7 +86,7 @@
 
 
 <section class="featured" id="featured">
-    <h1 class="heading"> <span>Related Products</span> </h1>
+    <h2 style="color: red" class="heading"> <span>Related Products</span> </h2>
 <div class="swiper featured-slider">
 <div class="swiper-wrapper">
     @foreach($books->category->books as $book)

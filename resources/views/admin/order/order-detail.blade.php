@@ -1,6 +1,7 @@
 @extends('layouts.admin_base')
 
 @section('content')
+    <br>
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="container-fluid">
@@ -10,7 +11,7 @@
                         <h4>Customer Information</h4>
                     </div>
                     <div class="card-body">
-                        <p><i class="fas fa-user"></i> <span class="mx-2">User: {{$order->user->name}}</span></p>
+                        <p><i class="fas fa-user"></i> <span class="mx-2">User: {{$order->orders_name}}</span></p>
                         <p><i class="fas fa-phone"></i><span class="mx-2">Phone: {{$order->user->phone}}</span></p>
                         <p><i class="fas fa-map-marked"></i> <span
                                 class="mx-2">Address: {{$order->orders_address}}</span></p>

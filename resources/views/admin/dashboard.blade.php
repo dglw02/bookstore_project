@@ -202,7 +202,7 @@
                         <tr>
                             <td>{{$order->orders_id}}</td>
                             <td>{{$order->orders_name}}</td>
-                            <td>${{number_format($order->orders_price)}} VND</td>
+                            <td>{{number_format($order->orders_price)}} VND</td>
                             <td>{{$order->created_at}}</td>
                         </tr>
                     @endforeach

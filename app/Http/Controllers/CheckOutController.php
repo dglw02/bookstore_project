@@ -154,7 +154,9 @@ class CheckOutController extends Controller
             $mail->isHTML(true);                // Set email content format to HTML
 
             $mail->Subject = 'Book Forest'; // tiều đề
-            $mail->Body    = 'Thank you for purchasing from our store';// nội dung
+            $mail->Body    = 'Thank you for your recent purchase from our store.
+            We are honored to gain you as a customer and hope to serve you for a long time.
+            Your purchase allows us at Book Forest to continue to do what we love and provide you with quality products.';// nội dung
 
 
             if( !$mail->send() ) {
@@ -278,7 +280,9 @@ class CheckOutController extends Controller
             $mail->isHTML(true);                // Set email content format to HTML
 
             $mail->Subject = 'Book Forest'; // tiều đề
-            $mail->Body    = 'Thank you for purchasing from our store';// nội dung
+            $mail->Body    = 'Thank you for your recent purchase from our store.
+            We are honored to gain you as a customer and hope to serve you for a long time.
+            Your purchase allows us at Book Forest to continue to do what we love and provide you with quality products.';// nội dung
 
             if( !$mail->send() ) {
                 alert()->success('failed', 'Please wait for 48 hours for order browsing');

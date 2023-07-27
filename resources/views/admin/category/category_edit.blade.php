@@ -1,5 +1,6 @@
 @extends('layouts.admin_base')
 @section('content')
+    <br>
     <div class="card push-top">
         <div class="card-header">
             <h1>Edit & Update Category</h1>

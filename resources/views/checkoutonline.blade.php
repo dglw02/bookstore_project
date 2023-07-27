@@ -73,13 +73,13 @@
                 </select>
             </div>
             <div class="inputBox">
-                <label for="district">district :</label>
+               <span> <label for="district">district :</label></span>
                 <select class="form-control" name="orders_district" id="state_dropdown" onchange="selectStreet()" required>
                     <option value=""> </option>
                 </select>
             </div>
             <div class="inputBox">
-                <label for="wards">wards :</label>
+                <span><label for="wards">wards :</label></span>
                 <select class="form-control" name="orders_wards" id="city-dropdown" required>
                     <option value=""> </option>
                 </select>
@@ -155,7 +155,7 @@
             },
             dataType : 'json',
             success: function(result){
-                $('#state_dropdown').html('<option value="">Nhập quận huyện</option>');
+                $('#state_dropdown').html('<option value="">---Enter district---</option>');
                 let html = '';
                 let districts = result.district;
                 for(let i = 0; i < districts.length; i++) {
@@ -197,7 +197,7 @@
                     let id = item['wards_id']
                     html += '<option value='+id+'>'+name+ '</option>';
                 }
-                $('#city-dropdown').html('<option value="">Nhập đường,xá</option>');
+                $('#city-dropdown').html('<option value="">---Enter wards---</option>');
                 $('#city-dropdown').append(html);
                 $('#city-dropdown').niceSelect("update")
 

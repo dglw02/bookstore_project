@@ -32,7 +32,7 @@ class User extends Authenticatable
         'password',
         'user_province',
         'phone',
-        'address'
+        'address',
         ];
 
     /**

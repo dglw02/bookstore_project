@@ -45,7 +45,7 @@
             <i class="fas fa-lock"></i>
             <div class="content">
                 <h3>secure payment</h3>
-                <p>100 secure payment</p>
+                <p>2 secure payment</p>
             </div>
         </div>
 

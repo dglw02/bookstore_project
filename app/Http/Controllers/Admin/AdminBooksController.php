@@ -21,10 +21,11 @@ class AdminBooksController extends Controller
         $authors = Author::get();
         return view('admin.book.book_create', ['categories' => $categories, 'publishers' => $publishers, 'authors' => $authors]);
     }
+
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -40,15 +41,15 @@ class AdminBooksController extends Controller
             'books_price' => 'required|numeric',
             'books_ISBN' => 'required|numeric',
         ]);
+        alert()->success('Success', 'Book have been created.');
         $book = Books::create($storeData);
-        alert()->success('Success','Book have been created.');
         return redirect('/admin/products');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $books_id
+     * @param int $books_id
      * @return \Illuminate\Http\Response
      */
     public function edit($books_id)
@@ -61,11 +62,12 @@ class AdminBooksController extends Controller
             'categories' => $categories, 'publishers' => $publishers, 'authors' => $authors
         ]);
     }
+
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $books_id
+     * @param \Illuminate\Http\Request $request
+     * @param int $books_id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $books_id)
@@ -81,21 +83,22 @@ class AdminBooksController extends Controller
             'books_price' => 'required|numeric',
             'books_ISBN' => 'required|numeric',
         ]);
-        Books::where('books_id',"=",$books_id)->update($updateData);
-        alert()->success('Success','Book have been updated.');
+        Books::where('books_id', "=", $books_id)->update($updateData);
+        alert()->success('Success', 'Book have been updated.');
         return redirect('/admin/products');
     }
+
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $books_id
+     * @param int $books_id
      * @return \Illuminate\Http\Response
      */
     public function destroy($books_id)
     {
         $book = Books::findOrFail($books_id);
         $book->delete();
-        alert()->success('Success','Book have been deleted.');
+        alert()->success('Success', 'Book have been deleted.');
         return redirect('/admin/products');
     }
 
